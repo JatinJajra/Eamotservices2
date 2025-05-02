@@ -162,7 +162,9 @@ export default function Header() {
             )}
           </div>
           
-          <a href="/#blog" className="font-montserrat font-medium hover:text-primary transition duration-300">Blog</a>
+          <Link href="/blog">
+            <span className={`font-montserrat font-medium hover:text-primary transition duration-300 cursor-pointer ${location === '/blog' ? 'text-primary border-b-2 border-primary' : ''}`}>Blog</span>
+          </Link>
           
           <Link href="/careers">
             <span className={`font-montserrat font-medium hover:text-primary transition duration-300 cursor-pointer ${location === '/careers' ? 'text-primary border-b-2 border-primary' : ''}`}>Careers</span>
@@ -306,7 +308,9 @@ export default function Header() {
                 )}
               </div>
               
-              <a href="/#blog" className="font-montserrat font-medium py-2 border-b border-gray-100 block">Blog</a>
+              <Link href="/blog">
+                <span className="font-montserrat font-medium py-2 border-b border-gray-100 block cursor-pointer">Blog</span>
+              </Link>
               
               <Link href="/careers">
                 <span className="font-montserrat font-medium py-2 border-b border-gray-100 block cursor-pointer">Careers</span>

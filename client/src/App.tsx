@@ -19,6 +19,8 @@ import EnergyCalculator from "@/pages/EnergyCalculator";
 import ProductDemo from "@/pages/ProductDemo";
 import EnergySavingsCalculator from "@/pages/EnergySavingsCalculator";
 import LoadingStatesPage from "@/pages/LoadingStates";
+import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
 
 // Client Portal Pages
 import ClientPortalLogin from "@/pages/client-portal/Login";
@@ -41,6 +43,10 @@ function Router() {
         <Route path="/product-demo" component={ProductDemo} />
         <Route path="/energy-savings-calculator" component={EnergySavingsCalculator} />
         <Route path="/loading-states" component={LoadingStatesPage} />
+        
+        {/* Blog Pages */}
+        <Route path="/blog" component={Blog} />
+        <Route path="/blog/:slug" component={BlogPost} />
         
         {/* Client Portal Pages */}
         <Route path="/client-portal/login" component={ClientPortalLogin} />
