@@ -199,6 +199,18 @@ export default function Header() {
                     Product Demos
                   </span>
                 </Link>
+                <Link href="/loading-states">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/loading-states' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    Loading States
+                  </span>
+                </Link>
+                <div className="border-t border-gray-100 my-1"></div>
+                <Link href="/client-portal/login">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer font-medium text-accent ${location.startsWith('/client-portal') ? 'bg-accent/5' : ''}`}>
+                    <i className="fas fa-user-circle mr-2"></i>
+                    Client Portal
+                  </span>
+                </Link>
               </div>
             )}
           </div>
@@ -206,10 +218,20 @@ export default function Header() {
           <a href="/#contact" className="font-montserrat font-medium hover:text-primary transition duration-300">Contact</a>
         </div>
         
-        {/* CTA Button */}
-        <Button asChild className="hidden md:block bg-accent hover:bg-accent/90 text-white font-poppins font-medium">
-          <a href="/#contact">Get In Touch</a>
-        </Button>
+        {/* CTA Buttons */}
+        <div className="hidden md:flex items-center space-x-3">
+          <Button asChild variant="outline" className="hidden md:flex border-primary/30 hover:bg-primary/5 text-primary">
+            <Link href="/client-portal/login">
+              <span className="flex items-center">
+                <i className="fas fa-user-circle mr-2"></i>
+                Client Portal
+              </span>
+            </Link>
+          </Button>
+          <Button asChild className="hidden md:block bg-accent hover:bg-accent/90 text-white font-poppins font-medium">
+            <a href="/#contact">Get In Touch</a>
+          </Button>
+        </div>
         
         {/* Mobile Menu Button */}
         <button 
@@ -315,13 +337,31 @@ export default function Header() {
                     <Link href="/product-demo">
                       <span className="block py-1 text-gray-700 cursor-pointer">Product Demos</span>
                     </Link>
+                    <Link href="/loading-states">
+                      <span className="block py-1 text-gray-700 cursor-pointer">Loading States</span>
+                    </Link>
+                    <div className="border-t border-gray-100 my-2"></div>
+                    <Link href="/client-portal/login">
+                      <span className="block py-1 text-accent font-medium cursor-pointer">
+                        <i className="fas fa-user-circle mr-2"></i>
+                        Client Portal
+                      </span>
+                    </Link>
                   </div>
                 )}
               </div>
               
               <a href="/#contact" className="font-montserrat font-medium py-2 border-b border-gray-100 block">Contact</a>
               
-              <div className="pt-4 pb-4">
+              <div className="pt-4 pb-2 space-y-3">
+                <Button asChild variant="outline" className="w-full border-primary/30 hover:bg-primary/5 text-primary">
+                  <Link href="/client-portal/login">
+                    <span className="flex items-center justify-center">
+                      <i className="fas fa-user-circle mr-2"></i>
+                      Client Portal Login
+                    </span>
+                  </Link>
+                </Button>
                 <Button asChild className="w-full bg-accent hover:bg-accent/90 text-white font-poppins font-medium">
                   <a href="/#contact">Get In Touch</a>
                 </Button>
