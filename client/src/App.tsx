@@ -15,6 +15,7 @@ import Stabilizer from "@/pages/services/Stabilizer";
 
 // Other Pages
 import Careers from "@/pages/Careers";
+import EnergyCalculator from "@/pages/EnergyCalculator";
 
 function Router() {
   return (
@@ -29,6 +30,7 @@ function Router() {
         
         {/* Other Pages */}
         <Route path="/careers" component={Careers} />
+        <Route path="/energy-calculator" component={EnergyCalculator} />
         
         <Route component={NotFound} />
       </Switch>
@@ -40,8 +42,10 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Router />
+        <Layout>
+          <Toaster />
+          <Router />
+        </Layout>
       </TooltipProvider>
     </QueryClientProvider>
   );

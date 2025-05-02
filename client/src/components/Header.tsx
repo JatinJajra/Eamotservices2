@@ -170,6 +170,10 @@ export default function Header() {
           <Link href="/careers">
             <span className={`font-montserrat font-medium hover:text-primary transition duration-300 cursor-pointer ${location === '/careers' ? 'text-primary border-b-2 border-primary' : ''}`}>Careers</span>
           </Link>
+
+          <Link href="/energy-calculator">
+            <span className={`font-montserrat font-medium hover:text-primary transition duration-300 cursor-pointer ${location === '/energy-calculator' ? 'text-primary border-b-2 border-primary' : ''}`}>Energy Calculators</span>
+          </Link>
           
           <a href="/#contact" className="font-montserrat font-medium hover:text-primary transition duration-300">Contact</a>
         </div>
@@ -264,6 +268,10 @@ export default function Header() {
               
               <Link href="/careers">
                 <span className="font-montserrat font-medium py-2 border-b border-gray-100 block cursor-pointer">Careers</span>
+              </Link>
+              
+              <Link href="/energy-calculator">
+                <span className="font-montserrat font-medium py-2 border-b border-gray-100 block cursor-pointer">Energy Calculators</span>
               </Link>
               
               <a href="/#contact" className="font-montserrat font-medium py-2 border-b border-gray-100 block">Contact</a>
