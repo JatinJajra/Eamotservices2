@@ -1,15 +1,37 @@
-import { useState, useEffect } from "react";
-import { Link } from "wouter";
+import { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 export default function Header() {
+  const [location] = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [solutionsDropdownOpen, setSolutionsDropdownOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const solutionsRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
+        setServicesDropdownOpen(false);
+      }
+      if (solutionsRef.current && !solutionsRef.current.contains(event.target as Node)) {
+        setSolutionsDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +43,11 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // Close mobile menu when changing location
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
 
   return (
     <header className={`sticky top-0 z-50 bg-white shadow-md transition-all duration-300 ${isScrolled ? 'shadow-lg' : ''}`}>
@@ -51,26 +78,105 @@ export default function Header() {
       {/* Main Navigation */}
       <nav className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link href="/">
-          <a className="flex items-center">
-            <img src="https://www.eamot.com/assets/img/logo/logo-eamot.png" alt="EAMOT Logo" className="h-10 md:h-12" />
-          </a>
+          <img src="https://www.eamot.com/assets/img/logo/logo-eamot.png" alt="EAMOT Logo" className="h-10 md:h-12 cursor-pointer" />
         </Link>
         
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-8">
           <Link href="/">
-            <a className="font-montserrat font-medium text-primary border-b-2 border-primary">Home</a>
+            <span className={`font-montserrat font-medium hover:text-primary transition duration-300 cursor-pointer ${location === '/' ? 'text-primary border-b-2 border-primary' : ''}`}>Home</span>
           </Link>
-          <a href="#about" className="font-montserrat font-medium hover:text-primary transition duration-300">About</a>
-          <a href="#services" className="font-montserrat font-medium hover:text-primary transition duration-300">Services</a>
-          <a href="#portfolio" className="font-montserrat font-medium hover:text-primary transition duration-300">Portfolio</a>
-          <a href="#blog" className="font-montserrat font-medium hover:text-primary transition duration-300">Blog</a>
-          <a href="#contact" className="font-montserrat font-medium hover:text-primary transition duration-300">Contact</a>
+          <a href="/#about" className="font-montserrat font-medium hover:text-primary transition duration-300">About</a>
+          
+          {/* Services Dropdown */}
+          <div className="relative" ref={servicesRef}>
+            <button 
+              className="font-montserrat font-medium hover:text-primary transition duration-300 flex items-center"
+              onClick={() => {
+                setServicesDropdownOpen(!servicesDropdownOpen);
+                setSolutionsDropdownOpen(false);
+              }}
+            >
+              Services
+              <i className={`fas fa-chevron-down ml-2 text-xs transition-transform duration-300 ${servicesDropdownOpen ? 'rotate-180' : ''}`}></i>
+            </button>
+            
+            {servicesDropdownOpen && (
+              <div className="absolute mt-2 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100">
+                <Link href="/services/diesel-generator">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/services/diesel-generator' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    Diesel Generator
+                  </span>
+                </Link>
+                <Link href="/services/ups">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/services/ups' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    UPS
+                  </span>
+                </Link>
+                <Link href="/services/stabilizer">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/services/stabilizer' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    Stabilizer
+                  </span>
+                </Link>
+                <div className="border-t border-gray-100 my-1"></div>
+                <a href="/#services" className="block px-4 py-2 text-sm hover:bg-gray-50 text-gray-700">
+                  All Services
+                </a>
+              </div>
+            )}
+          </div>
+          
+          {/* Solutions Dropdown */}
+          <div className="relative" ref={solutionsRef}>
+            <button 
+              className="font-montserrat font-medium hover:text-primary transition duration-300 flex items-center"
+              onClick={() => {
+                setSolutionsDropdownOpen(!solutionsDropdownOpen);
+                setServicesDropdownOpen(false);
+              }}
+            >
+              Our Solutions
+              <i className={`fas fa-chevron-down ml-2 text-xs transition-transform duration-300 ${solutionsDropdownOpen ? 'rotate-180' : ''}`}></i>
+            </button>
+            
+            {solutionsDropdownOpen && (
+              <div className="absolute mt-2 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100">
+                <Link href="#">
+                  <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer text-gray-700">
+                    IoT Solutions
+                  </span>
+                </Link>
+                <Link href="#">
+                  <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer text-gray-700">
+                    Energy Management
+                  </span>
+                </Link>
+                <Link href="#">
+                  <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer text-gray-700">
+                    Predictive Maintenance
+                  </span>
+                </Link>
+                <Link href="#">
+                  <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer text-gray-700">
+                    Retrofitting Services
+                  </span>
+                </Link>
+              </div>
+            )}
+          </div>
+          
+          <a href="/#blog" className="font-montserrat font-medium hover:text-primary transition duration-300">Blog</a>
+          
+          <Link href="/careers">
+            <span className={`font-montserrat font-medium hover:text-primary transition duration-300 cursor-pointer ${location === '/careers' ? 'text-primary border-b-2 border-primary' : ''}`}>Careers</span>
+          </Link>
+          
+          <a href="/#contact" className="font-montserrat font-medium hover:text-primary transition duration-300">Contact</a>
         </div>
         
         {/* CTA Button */}
         <Button asChild className="hidden md:block bg-accent hover:bg-accent/90 text-white font-poppins font-medium">
-          <a href="#contact">Get In Touch</a>
+          <a href="/#contact">Get In Touch</a>
         </Button>
         
         {/* Mobile Menu Button */}
@@ -94,19 +200,77 @@ export default function Header() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="container mx-auto px-4 py-3 flex flex-col space-y-4">
+            <div className="container mx-auto px-4 py-3 flex flex-col">
               <Link href="/">
-                <a className="font-montserrat font-medium text-primary py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>Home</a>
+                <span className="font-montserrat font-medium py-2 border-b border-gray-100 block cursor-pointer">Home</span>
               </Link>
-              <a href="#about" className="font-montserrat font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>About</a>
-              <a href="#services" className="font-montserrat font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>Services</a>
-              <a href="#portfolio" className="font-montserrat font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>Portfolio</a>
-              <a href="#blog" className="font-montserrat font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>Blog</a>
-              <a href="#contact" className="font-montserrat font-medium py-2" onClick={() => setIsMenuOpen(false)}>Contact</a>
+              <a href="/#about" className="font-montserrat font-medium py-2 border-b border-gray-100 block">About</a>
               
-              <div className="pt-2 pb-4">
+              {/* Mobile Services Dropdown */}
+              <div className="border-b border-gray-100">
+                <button 
+                  className="font-montserrat font-medium py-2 w-full text-left flex items-center justify-between"
+                  onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
+                >
+                  <span>Services</span>
+                  <i className={`fas fa-chevron-down transition-transform duration-300 ${servicesDropdownOpen ? 'rotate-180' : ''}`}></i>
+                </button>
+                
+                {servicesDropdownOpen && (
+                  <div className="pl-4 py-2 space-y-2">
+                    <Link href="/services/diesel-generator">
+                      <span className="block py-1 text-gray-700 cursor-pointer">Diesel Generator</span>
+                    </Link>
+                    <Link href="/services/ups">
+                      <span className="block py-1 text-gray-700 cursor-pointer">UPS</span>
+                    </Link>
+                    <Link href="/services/stabilizer">
+                      <span className="block py-1 text-gray-700 cursor-pointer">Stabilizer</span>
+                    </Link>
+                    <a href="/#services" className="block py-1 text-gray-700">All Services</a>
+                  </div>
+                )}
+              </div>
+              
+              {/* Mobile Solutions Dropdown */}
+              <div className="border-b border-gray-100">
+                <button 
+                  className="font-montserrat font-medium py-2 w-full text-left flex items-center justify-between"
+                  onClick={() => setSolutionsDropdownOpen(!solutionsDropdownOpen)}
+                >
+                  <span>Our Solutions</span>
+                  <i className={`fas fa-chevron-down transition-transform duration-300 ${solutionsDropdownOpen ? 'rotate-180' : ''}`}></i>
+                </button>
+                
+                {solutionsDropdownOpen && (
+                  <div className="pl-4 py-2 space-y-2">
+                    <Link href="#">
+                      <span className="block py-1 text-gray-700 cursor-pointer">IoT Solutions</span>
+                    </Link>
+                    <Link href="#">
+                      <span className="block py-1 text-gray-700 cursor-pointer">Energy Management</span>
+                    </Link>
+                    <Link href="#">
+                      <span className="block py-1 text-gray-700 cursor-pointer">Predictive Maintenance</span>
+                    </Link>
+                    <Link href="#">
+                      <span className="block py-1 text-gray-700 cursor-pointer">Retrofitting Services</span>
+                    </Link>
+                  </div>
+                )}
+              </div>
+              
+              <a href="/#blog" className="font-montserrat font-medium py-2 border-b border-gray-100 block">Blog</a>
+              
+              <Link href="/careers">
+                <span className="font-montserrat font-medium py-2 border-b border-gray-100 block cursor-pointer">Careers</span>
+              </Link>
+              
+              <a href="/#contact" className="font-montserrat font-medium py-2 border-b border-gray-100 block">Contact</a>
+              
+              <div className="pt-4 pb-4">
                 <Button asChild className="w-full bg-accent hover:bg-accent/90 text-white font-poppins font-medium">
-                  <a href="#contact" onClick={() => setIsMenuOpen(false)}>Get In Touch</a>
+                  <a href="/#contact">Get In Touch</a>
                 </Button>
               </div>
             </div>
