@@ -65,7 +65,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-gray-50">
+    <section id="contact" className="py-16 md:py-24 bg-gray-100">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <motion.div
@@ -82,7 +82,7 @@ export default function ContactSection() {
               Ready to get started with your energy management solution?
             </h2>
             
-            <p className="text-gray-600 mb-8 max-w-lg">
+            <p className="text-gray-800 mb-8 max-w-lg">
               Contact us today for a consultation. Our team of experts is ready to help you optimize your energy usage and reduce costs.
             </p>
             
@@ -93,7 +93,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-montserrat font-semibold text-gray-800 mb-1">Our Location</h4>
-                  <p className="text-gray-600">2nd Floor, 58/1, Paramahansa Yogananda Road, Opp. Arun CADD, Bengaluru, Karnataka 560038, India.</p>
+                  <p className="text-gray-800">2nd Floor, 58/1, Paramahansa Yogananda Road, Opp. Arun CADD, Bengaluru, Karnataka 560038, India.</p>
                 </div>
               </div>
               
