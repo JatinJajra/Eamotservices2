@@ -16,6 +16,8 @@ import Stabilizer from "@/pages/services/Stabilizer";
 // Other Pages
 import Careers from "@/pages/Careers";
 import EnergyCalculator from "@/pages/EnergyCalculator";
+import ProductDemo from "@/pages/ProductDemo";
+import EnergySavingsCalculator from "@/pages/EnergySavingsCalculator";
 
 function Router() {
   return (
@@ -31,6 +33,8 @@ function Router() {
         {/* Other Pages */}
         <Route path="/careers" component={Careers} />
         <Route path="/energy-calculator" component={EnergyCalculator} />
+        <Route path="/product-demo" component={ProductDemo} />
+        <Route path="/energy-savings-calculator" component={EnergySavingsCalculator} />
         
         <Route component={NotFound} />
       </Switch>
