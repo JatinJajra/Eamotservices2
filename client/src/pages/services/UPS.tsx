@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
-import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 
 export default function UPSPage() {
   return (
-    <Layout>
-      <motion.div
+    <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -233,6 +231,5 @@ export default function UPSPage() {
           </div>
         </section>
       </motion.div>
-    </Layout>
   );
 }
