@@ -20,6 +20,10 @@ import ProductDemo from "@/pages/ProductDemo";
 import EnergySavingsCalculator from "@/pages/EnergySavingsCalculator";
 import LoadingStatesPage from "@/pages/LoadingStates";
 
+// Client Portal Pages
+import ClientPortalLogin from "@/pages/client-portal/Login";
+import ClientDashboard from "@/pages/client-portal/Dashboard";
+
 function Router() {
   return (
     <AnimatePresence mode="wait">
@@ -37,6 +41,10 @@ function Router() {
         <Route path="/product-demo" component={ProductDemo} />
         <Route path="/energy-savings-calculator" component={EnergySavingsCalculator} />
         <Route path="/loading-states" component={LoadingStatesPage} />
+        
+        {/* Client Portal Pages */}
+        <Route path="/client-portal/login" component={ClientPortalLogin} />
+        <Route path="/client-portal/dashboard" component={ClientDashboard} />
         
         <Route component={NotFound} />
       </Switch>
