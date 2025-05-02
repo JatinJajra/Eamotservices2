@@ -2,7 +2,7 @@ import { Link } from "wouter";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-800 text-white">
+    <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
@@ -15,16 +15,16 @@ export default function Footer() {
             </p>
             
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-primary-700 hover:bg-primary-600 text-white flex items-center justify-center transition duration-300">
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-600 text-white flex items-center justify-center transition duration-300">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-primary-700 hover:bg-primary-600 text-white flex items-center justify-center transition duration-300">
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-600 text-white flex items-center justify-center transition duration-300">
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-primary-700 hover:bg-primary-600 text-white flex items-center justify-center transition duration-300">
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-600 text-white flex items-center justify-center transition duration-300">
                 <i className="fab fa-linkedin-in"></i>
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-primary-700 hover:bg-primary-600 text-white flex items-center justify-center transition duration-300">
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-600 text-white flex items-center justify-center transition duration-300">
                 <i className="fab fa-instagram"></i>
               </a>
             </div>
@@ -96,7 +96,7 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-primary-700 pt-8">
+        <div className="border-t border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-white text-sm mb-4 md:mb-0">
               &copy; {new Date().getFullYear()} EAMOT. All rights reserved. Designed with ❤️ for efficient energy management.
