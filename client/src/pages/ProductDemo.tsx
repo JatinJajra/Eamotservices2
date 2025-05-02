@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -581,7 +581,7 @@ function StabilizerDemo() {
   const [stabilizerEffect, setStabilizerEffect] = useState(true);
   
   // Simulate voltage fluctuations
-  useState(() => {
+  useEffect(() => {
     const fluctuationInterval = setInterval(() => {
       const fluctuation = (Math.random() - 0.5) * volatility * 2;
       const newInputVoltage = 230 + fluctuation;

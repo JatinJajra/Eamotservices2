@@ -163,9 +163,36 @@ export default function Header() {
             <span className={`font-montserrat font-medium hover:text-primary transition duration-300 cursor-pointer ${location === '/careers' ? 'text-primary border-b-2 border-primary' : ''}`}>Careers</span>
           </Link>
 
-          <Link href="/energy-calculator">
-            <span className={`font-montserrat font-medium hover:text-primary transition duration-300 cursor-pointer ${location === '/energy-calculator' ? 'text-primary border-b-2 border-primary' : ''}`}>Energy Calculators</span>
-          </Link>
+          {/* Energy Tools Dropdown */}
+          <div className="relative">
+            <button 
+              className="font-montserrat font-medium hover:text-primary transition duration-300 flex items-center"
+              onClick={() => {
+                // You could add a state for this dropdown if needed
+              }}
+            >
+              Energy Tools
+              <i className="fas fa-chevron-down ml-2 text-xs transition-transform duration-300"></i>
+            </button>
+            
+            <div className="absolute mt-2 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100">
+              <Link href="/energy-calculator">
+                <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/energy-calculator' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                  Energy Calculator
+                </span>
+              </Link>
+              <Link href="/energy-savings-calculator">
+                <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/energy-savings-calculator' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                  Energy Savings Calculator
+                </span>
+              </Link>
+              <Link href="/product-demo">
+                <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/product-demo' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                  Product Demos
+                </span>
+              </Link>
+            </div>
+          </div>
           
           <a href="/#contact" className="font-montserrat font-medium hover:text-primary transition duration-300">Contact</a>
         </div>
@@ -254,9 +281,35 @@ export default function Header() {
                 <span className="font-montserrat font-medium py-2 border-b border-gray-100 block cursor-pointer">Careers</span>
               </Link>
               
-              <Link href="/energy-calculator">
-                <span className="font-montserrat font-medium py-2 border-b border-gray-100 block cursor-pointer">Energy Calculators</span>
-              </Link>
+              {/* Mobile Energy Tools Dropdown */}
+              <div className="border-b border-gray-100">
+                <button 
+                  className="font-montserrat font-medium py-2 w-full text-left flex items-center justify-between"
+                  onClick={() => {
+                    // Toggle a new state for energy tools dropdown
+                    // For simplicity, we'll reuse the servicesDropdownOpen state
+                    setServicesDropdownOpen(!servicesDropdownOpen);
+                    setSolutionsDropdownOpen(false);
+                  }}
+                >
+                  <span>Energy Tools</span>
+                  <i className={`fas fa-chevron-down transition-transform duration-300 ${servicesDropdownOpen ? 'rotate-180' : ''}`}></i>
+                </button>
+                
+                {servicesDropdownOpen && (
+                  <div className="pl-4 py-2 space-y-2">
+                    <Link href="/energy-calculator">
+                      <span className="block py-1 text-gray-700 cursor-pointer">Energy Calculator</span>
+                    </Link>
+                    <Link href="/energy-savings-calculator">
+                      <span className="block py-1 text-gray-700 cursor-pointer">Energy Savings Calculator</span>
+                    </Link>
+                    <Link href="/product-demo">
+                      <span className="block py-1 text-gray-700 cursor-pointer">Product Demos</span>
+                    </Link>
+                  </div>
+                )}
+              </div>
               
               <a href="/#contact" className="font-montserrat font-medium py-2 border-b border-gray-100 block">Contact</a>
               
