@@ -18,6 +18,7 @@ import Careers from "@/pages/Careers";
 import EnergyCalculator from "@/pages/EnergyCalculator";
 import ProductDemo from "@/pages/ProductDemo";
 import EnergySavingsCalculator from "@/pages/EnergySavingsCalculator";
+import LoadingStatesPage from "@/pages/LoadingStates";
 
 function Router() {
   return (
@@ -35,6 +36,7 @@ function Router() {
         <Route path="/energy-calculator" component={EnergyCalculator} />
         <Route path="/product-demo" component={ProductDemo} />
         <Route path="/energy-savings-calculator" component={EnergySavingsCalculator} />
+        <Route path="/loading-states" component={LoadingStatesPage} />
         
         <Route component={NotFound} />
       </Switch>
