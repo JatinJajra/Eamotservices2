@@ -103,7 +103,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-montserrat font-semibold text-gray-800 mb-1">Call Us</h4>
-                  <p className="text-gray-600"><a href="tel:8970001110" className="hover:text-primary transition duration-300">897 000 111 02</a></p>
+                  <p className="text-gray-800"><a href="tel:8970001110" className="text-gray-800 hover:text-primary transition duration-300">897 000 111 02</a></p>
                 </div>
               </div>
               
@@ -113,7 +113,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-montserrat font-semibold text-gray-800 mb-1">Email Address</h4>
-                  <p className="text-gray-600"><a href="mailto:info@emotservices.com" className="hover:text-primary transition duration-300">info@emotservices.com</a></p>
+                  <p className="text-gray-800"><a href="mailto:info@emotservices.com" className="text-gray-800 hover:text-primary transition duration-300">info@emotservices.com</a></p>
                 </div>
               </div>
             </div>
