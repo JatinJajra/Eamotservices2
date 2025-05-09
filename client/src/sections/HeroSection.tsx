@@ -167,7 +167,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {/* Energy Dashboard Animation Container */}
-            <div className="relative w-[70%] mx-auto mt-6 mb-12">
+            <div className="relative w-[140%] -mr-[40%] mt-6 mb-12">
               {/* Background glow effects */}
               <motion.div 
                 className="absolute inset-0 bg-cyan-500/30 blur-3xl rounded-full"
