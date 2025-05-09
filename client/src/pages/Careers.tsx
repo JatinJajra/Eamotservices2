@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -144,7 +143,6 @@ export default function CareersPage() {
   };
 
   return (
-    <Layout>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -444,6 +442,5 @@ export default function CareersPage() {
           </div>
         </section>
       </motion.div>
-    </Layout>
   );
 }
