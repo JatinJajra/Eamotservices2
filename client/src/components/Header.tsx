@@ -87,23 +87,23 @@ export default function Header() {
         </Link>
         
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center justify-center space-x-6 text-sm">
           <Link href="/">
-            <span className={`font-montserrat font-medium hover:text-primary transition duration-300 cursor-pointer ${location === '/' ? 'text-primary border-b-2 border-primary' : ''}`}>Home</span>
+            <span className={`font-montserrat hover:text-primary transition duration-300 cursor-pointer ${location === '/' ? 'text-primary border-b-2 border-primary' : ''}`}>Home</span>
           </Link>
-          <a href="/#about" className="font-montserrat font-medium hover:text-primary transition duration-300">About</a>
+          <a href="/#about" className="font-montserrat hover:text-primary transition duration-300">About</a>
           
           {/* Services Dropdown */}
           <div className="relative" ref={servicesRef}>
             <button 
-              className="font-montserrat font-medium hover:text-primary transition duration-300 flex items-center"
+              className="font-montserrat hover:text-primary transition duration-300 flex items-center text-sm"
               onClick={() => {
                 setServicesDropdownOpen(!servicesDropdownOpen);
                 setSolutionsDropdownOpen(false);
               }}
             >
               Services
-              <i className={`fas fa-chevron-down ml-2 text-xs transition-transform duration-300 ${servicesDropdownOpen ? 'rotate-180' : ''}`}></i>
+              <i className={`fas fa-chevron-down ml-1 text-[10px] transition-transform duration-300 ${servicesDropdownOpen ? 'rotate-180' : ''}`}></i>
             </button>
             
             {servicesDropdownOpen && (
@@ -134,14 +134,14 @@ export default function Header() {
           {/* Solutions Dropdown */}
           <div className="relative" ref={solutionsRef}>
             <button 
-              className="font-montserrat font-medium hover:text-primary transition duration-300 flex items-center"
+              className="font-montserrat hover:text-primary transition duration-300 flex items-center text-sm"
               onClick={() => {
                 setSolutionsDropdownOpen(!solutionsDropdownOpen);
                 setServicesDropdownOpen(false);
               }}
             >
               Our Solutions
-              <i className={`fas fa-chevron-down ml-2 text-xs transition-transform duration-300 ${solutionsDropdownOpen ? 'rotate-180' : ''}`}></i>
+              <i className={`fas fa-chevron-down ml-1 text-[10px] transition-transform duration-300 ${solutionsDropdownOpen ? 'rotate-180' : ''}`}></i>
             </button>
             
             {solutionsDropdownOpen && (
@@ -162,16 +162,16 @@ export default function Header() {
             )}
           </div>
           
-          <a href="/#blog" className="font-montserrat font-medium hover:text-primary transition duration-300">Blog</a>
+          <a href="/#blog" className="font-montserrat hover:text-primary transition duration-300 text-sm">Blog</a>
           
           <Link href="/careers">
-            <span className={`font-montserrat font-medium hover:text-primary transition duration-300 cursor-pointer ${location === '/careers' ? 'text-primary border-b-2 border-primary' : ''}`}>Careers</span>
+            <span className={`font-montserrat hover:text-primary transition duration-300 cursor-pointer text-sm ${location === '/careers' ? 'text-primary border-b-2 border-primary' : ''}`}>Careers</span>
           </Link>
 
           {/* Energy Tools Dropdown */}
           <div className="relative" ref={energyToolsRef}>
             <button 
-              className="font-montserrat font-medium hover:text-primary transition duration-300 flex items-center"
+              className="font-montserrat hover:text-primary transition duration-300 flex items-center text-sm"
               onClick={() => {
                 setEnergyToolsDropdownOpen(!energyToolsDropdownOpen);
                 setServicesDropdownOpen(false);
@@ -179,7 +179,7 @@ export default function Header() {
               }}
             >
               Energy Tools
-              <i className={`fas fa-chevron-down ml-2 text-xs transition-transform duration-300 ${energyToolsDropdownOpen ? 'rotate-180' : ''}`}></i>
+              <i className={`fas fa-chevron-down ml-1 text-[10px] transition-transform duration-300 ${energyToolsDropdownOpen ? 'rotate-180' : ''}`}></i>
             </button>
             
             {energyToolsDropdownOpen && (
@@ -215,7 +215,7 @@ export default function Header() {
             )}
           </div>
           
-          <a href="/#contact" className="font-montserrat font-medium hover:text-primary transition duration-300">Contact</a>
+          <a href="/#contact" className="font-montserrat hover:text-primary transition duration-300 text-sm">Contact</a>
         </div>
         
         {/* CTA Buttons */}
