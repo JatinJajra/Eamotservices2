@@ -85,15 +85,15 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center">
+      <div className="container mx-auto px-4 py-6 md:py-12 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 lg:gap-0 items-start">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative pt-8 md:pt-12 pl-0 lg:pl-6"
+            className="relative lg:col-span-2 pt-3 md:pt-6 pl-0 lg:pl-2 lg:mt-10"
           >
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold font-montserrat leading-tight mb-6 text-white">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold font-montserrat leading-tight mb-4 text-white">
               Energy Management with <motion.span 
                 className="text-accent inline-block"
                 animate={{ 
@@ -133,7 +133,7 @@ export default function HeroSection() {
               </motion.span>
             </h1>
             
-            <p className="text-base md:text-lg text-white/90 mb-8 max-w-lg leading-relaxed">
+            <p className="text-base md:text-lg text-white/90 mb-6 max-w-lg leading-relaxed">
               Delivering IoT-powered solutions to optimize energy consumption, reduce operational costs, and enable sustainable business practices through real-time monitoring and predictive maintenance.
             </p>
             
@@ -161,13 +161,13 @@ export default function HeroSection() {
           </motion.div>
           
           <motion.div 
-            className="relative hidden lg:flex justify-center items-center"
+            className="relative hidden lg:flex lg:col-span-3 justify-center items-start"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {/* Energy Dashboard Animation Container */}
-            <div className="relative w-[140%] -mr-[40%] mt-6 mb-12">
+            <div className="relative w-[120%] -mr-[10%] mt-0 mb-12">
               {/* Background glow effects */}
               <motion.div 
                 className="absolute inset-0 bg-cyan-500/30 blur-3xl rounded-full"
