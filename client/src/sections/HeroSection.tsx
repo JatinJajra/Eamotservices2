@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import energyDashboardImage from "../assets/energy-dashboard.png";
 
 export default function HeroSection() {
   return (
@@ -38,41 +39,121 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <img src="https://www.eamot.com/assets/img/home/1.jpg" alt="Energy Management System" className="rounded-lg shadow-2xl" />
+            {/* Energy Dashboard Image with Animated Elements */}
+            <div className="relative overflow-hidden rounded-lg shadow-2xl bg-[#091528] p-2">
+              {/* Main Dashboard Image */}
+              <motion.img 
+                src={energyDashboardImage} 
+                alt="Energy Management Dashboard" 
+                className="w-full z-10 relative"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+              />
+              
+              {/* Glow effect */}
+              <motion.div 
+                className="absolute inset-0 bg-cyan-500/20 blur-3xl rounded-full w-2/3 h-2/3 mx-auto my-auto"
+                animate={{ 
+                  opacity: [0.2, 0.5, 0.2],
+                  scale: [0.8, 1, 0.8] 
+                }}
+                transition={{ 
+                  duration: 8, 
+                  repeat: Infinity,
+                  repeatType: "reverse" 
+                }}
+              />
+            </div>
             
-            {/* Floating feature cards */}
+            {/* Animated Icons - we'll place these around the dashboard */}
             <motion.div 
-              className="absolute -top-6 -left-6 bg-white text-primary p-4 rounded-lg shadow-lg"
-              animate={{ y: [0, -8, 0] }}
+              className="absolute -top-6 -left-6 bg-primary/90 text-cyan-300 p-3 rounded-full shadow-lg shadow-cyan-500/30"
+              animate={{ 
+                y: [0, -8, 0],
+                boxShadow: [
+                  "0 0 8px 2px rgba(45, 212, 191, 0.3)",
+                  "0 0 16px 4px rgba(45, 212, 191, 0.4)",
+                  "0 0 8px 2px rgba(45, 212, 191, 0.3)"
+                ]
+              }}
               transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
             >
-              <div className="flex items-center">
-                <i className="fas fa-brain text-2xl mr-3"></i>
-                <span className="font-semibold">Smart Energy Solutions</span>
-              </div>
+              <motion.div
+                animate={{ rotate: [0, 15, 0, -15, 0] }}
+                transition={{ duration: 10, repeat: Infinity }}
+              >
+                <i className="fas fa-bolt text-xl"></i>
+              </motion.div>
             </motion.div>
             
             <motion.div 
-              className="absolute bottom-20 -right-6 bg-white text-primary p-4 rounded-lg shadow-lg"
-              animate={{ y: [0, -8, 0] }}
+              className="absolute top-1/4 -right-6 bg-primary/90 text-cyan-300 p-3 rounded-full shadow-lg shadow-cyan-500/30"
+              animate={{ 
+                y: [0, -8, 0],
+                boxShadow: [
+                  "0 0 8px 2px rgba(45, 212, 191, 0.3)",
+                  "0 0 16px 4px rgba(45, 212, 191, 0.4)",
+                  "0 0 8px 2px rgba(45, 212, 191, 0.3)"
+                ]
+              }}
               transition={{ duration: 4, delay: 1, repeat: Infinity, repeatType: "reverse" }}
             >
-              <div className="flex items-center">
-                <i className="fas fa-shield-alt text-2xl mr-3"></i>
-                <span className="font-semibold">Trusted AMC</span>
-              </div>
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+              >
+                <i className="fas fa-cog text-xl"></i>
+              </motion.div>
             </motion.div>
             
             <motion.div 
-              className="absolute -bottom-6 left-20 bg-white text-primary p-4 rounded-lg shadow-lg"
-              animate={{ y: [0, -8, 0] }}
+              className="absolute -bottom-6 left-1/4 bg-primary/90 text-cyan-300 p-3 rounded-full shadow-lg shadow-cyan-500/30"
+              animate={{ 
+                y: [0, -8, 0],
+                boxShadow: [
+                  "0 0 8px 2px rgba(45, 212, 191, 0.3)",
+                  "0 0 16px 4px rgba(45, 212, 191, 0.4)",
+                  "0 0 8px 2px rgba(45, 212, 191, 0.3)"
+                ]
+              }}
               transition={{ duration: 4, delay: 2, repeat: Infinity, repeatType: "reverse" }}
             >
-              <div className="flex items-center">
-                <i className="fas fa-map-marked-alt text-2xl mr-3"></i>
-                <span className="font-semibold">PAN India Partners</span>
-              </div>
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <i className="fas fa-network-wired text-xl"></i>
+              </motion.div>
             </motion.div>
+            
+            {/* Connection Lines - Pulsing effects */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+              <motion.circle 
+                cx="10%" 
+                cy="10%" 
+                r="4" 
+                fill="#2dd4bf"
+                animate={{ opacity: [0, 1, 0], r: [2, 4, 2] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              />
+              <motion.circle 
+                cx="90%" 
+                cy="25%" 
+                r="4" 
+                fill="#2dd4bf"
+                animate={{ opacity: [0, 1, 0], r: [2, 4, 2] }}
+                transition={{ duration: 3, delay: 1, repeat: Infinity }}
+              />
+              <motion.circle 
+                cx="25%" 
+                cy="90%" 
+                r="4" 
+                fill="#2dd4bf"
+                animate={{ opacity: [0, 1, 0], r: [2, 4, 2] }}
+                transition={{ duration: 3, delay: 2, repeat: Infinity }}
+              />
+            </svg>
           </motion.div>
         </div>
       </div>
