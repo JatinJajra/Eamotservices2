@@ -154,18 +154,26 @@ export default function Header() {
             
             {solutionsDropdownOpen && (
               <div className="absolute mt-2 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100">
-                <a href="/solutions/iot" className="block px-4 py-2 text-sm hover:bg-gray-50 text-gray-700">
-                  IoT Solutions
-                </a>
-                <a href="/solutions/energy-management" className="block px-4 py-2 text-sm hover:bg-gray-50 text-gray-700">
-                  Energy Management
-                </a>
-                <a href="/solutions/predictive-maintenance" className="block px-4 py-2 text-sm hover:bg-gray-50 text-gray-700">
-                  Predictive Maintenance
-                </a>
-                <a href="/solutions/retrofitting" className="block px-4 py-2 text-sm hover:bg-gray-50 text-gray-700">
-                  Retrofitting Services
-                </a>
+                <Link href="/solutions/iot">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/solutions/iot' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    IoT Solutions
+                  </span>
+                </Link>
+                <Link href="/solutions/energy-management">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/solutions/energy-management' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    Energy Management
+                  </span>
+                </Link>
+                <Link href="/solutions/predictive-maintenance">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/solutions/predictive-maintenance' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    Predictive Maintenance
+                  </span>
+                </Link>
+                <Link href="/solutions/retrofitting">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/solutions/retrofitting' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    Retrofitting Services
+                  </span>
+                </Link>
               </div>
             )}
           </div>
@@ -246,8 +254,16 @@ export default function Header() {
               </span>
             </Link>
           </Button>
-          <Button asChild className="hidden md:block bg-accent hover:bg-accent/90 text-white font-poppins font-medium">
-            <a href="/#contact">Get In Touch</a>
+          <Button 
+            className="hidden md:block bg-accent hover:bg-accent/90 text-white font-poppins font-medium"
+            onClick={() => {
+              const footer = document.getElementById('footer');
+              if (footer) {
+                footer.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            Get In Touch
           </Button>
         </div>
         
@@ -323,10 +339,18 @@ export default function Header() {
                 
                 {solutionsDropdownOpen && (
                   <div className="pl-4 py-2 space-y-2">
-                    <a href="/solutions/iot" className="block py-1 text-gray-700">IoT Solutions</a>
-                    <a href="/solutions/energy-management" className="block py-1 text-gray-700">Energy Management</a>
-                    <a href="/solutions/predictive-maintenance" className="block py-1 text-gray-700">Predictive Maintenance</a>
-                    <a href="/solutions/retrofitting" className="block py-1 text-gray-700">Retrofitting Services</a>
+                    <Link href="/solutions/iot">
+                      <span className="block py-1 text-gray-700 cursor-pointer">IoT Solutions</span>
+                    </Link>
+                    <Link href="/solutions/energy-management">
+                      <span className="block py-1 text-gray-700 cursor-pointer">Energy Management</span>
+                    </Link>
+                    <Link href="/solutions/predictive-maintenance">
+                      <span className="block py-1 text-gray-700 cursor-pointer">Predictive Maintenance</span>
+                    </Link>
+                    <Link href="/solutions/retrofitting">
+                      <span className="block py-1 text-gray-700 cursor-pointer">Retrofitting Services</span>
+                    </Link>
                   </div>
                 )}
               </div>
@@ -376,7 +400,18 @@ export default function Header() {
                 )}
               </div>
               
-              <a href="/#contact" className="font-montserrat font-medium py-2 border-b border-gray-100 block">Contact</a>
+              <button 
+                onClick={() => {
+                  const footer = document.getElementById('footer');
+                  if (footer) {
+                    footer.scrollIntoView({ behavior: 'smooth' });
+                    setIsMenuOpen(false);
+                  }
+                }}
+                className="font-montserrat font-medium py-2 border-b border-gray-100 block w-full text-left cursor-pointer"
+              >
+                Contact
+              </button>
               
               <div className="pt-4 pb-2 space-y-3">
                 <Button asChild variant="outline" className="w-full border-primary/30 hover:bg-primary/5 text-primary">
@@ -387,8 +422,17 @@ export default function Header() {
                     </span>
                   </Link>
                 </Button>
-                <Button asChild className="w-full bg-accent hover:bg-accent/90 text-white font-poppins font-medium">
-                  <a href="/#contact">Get In Touch</a>
+                <Button 
+                  className="w-full bg-accent hover:bg-accent/90 text-white font-poppins font-medium"
+                  onClick={() => {
+                    const footer = document.getElementById('footer');
+                    if (footer) {
+                      footer.scrollIntoView({ behavior: 'smooth' });
+                      setIsMenuOpen(false);
+                    }
+                  }}
+                >
+                  Get In Touch
                 </Button>
               </div>
             </div>
