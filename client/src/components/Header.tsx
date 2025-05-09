@@ -91,7 +91,9 @@ export default function Header() {
           <Link href="/">
             <span className={`font-montserrat hover:text-primary transition duration-300 cursor-pointer ${location === '/' ? 'text-primary border-b-2 border-primary' : ''}`}>Home</span>
           </Link>
-          <a href="/#about" className="font-montserrat hover:text-primary transition duration-300">About</a>
+          <Link href="/about">
+            <span className={`font-montserrat hover:text-primary transition duration-300 cursor-pointer ${location === '/about' ? 'text-primary border-b-2 border-primary' : ''}`}>About</span>
+          </Link>
           
           {/* Services Dropdown */}
           <div className="relative" ref={servicesRef}>
@@ -123,10 +125,16 @@ export default function Header() {
                     Stabilizer
                   </span>
                 </Link>
-                <div className="border-t border-gray-100 my-1"></div>
-                <a href="/#services" className="block px-4 py-2 text-sm hover:bg-gray-50 text-gray-700">
-                  All Services
-                </a>
+                <Link href="/services/lithium-ion-inverter">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/services/lithium-ion-inverter' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    Lithium ION Inverter
+                  </span>
+                </Link>
+                <Link href="/services/dual-fuel-kit">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/services/dual-fuel-kit' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    Dual Fuel Kit
+                  </span>
+                </Link>
               </div>
             )}
           </div>
@@ -258,7 +266,9 @@ export default function Header() {
               <Link href="/">
                 <span className="font-montserrat font-medium py-2 border-b border-gray-100 block cursor-pointer">Home</span>
               </Link>
-              <a href="/#about" className="font-montserrat font-medium py-2 border-b border-gray-100 block">About</a>
+              <Link href="/about">
+                <span className="font-montserrat font-medium py-2 border-b border-gray-100 block cursor-pointer">About</span>
+              </Link>
               
               {/* Mobile Services Dropdown */}
               <div className="border-b border-gray-100">
@@ -281,7 +291,12 @@ export default function Header() {
                     <Link href="/services/stabilizer">
                       <span className="block py-1 text-gray-700 cursor-pointer">Stabilizer</span>
                     </Link>
-                    <a href="/#services" className="block py-1 text-gray-700">All Services</a>
+                    <Link href="/services/lithium-ion-inverter">
+                      <span className="block py-1 text-gray-700 cursor-pointer">Lithium ION Inverter</span>
+                    </Link>
+                    <Link href="/services/dual-fuel-kit">
+                      <span className="block py-1 text-gray-700 cursor-pointer">Dual Fuel Kit</span>
+                    </Link>
                   </div>
                 )}
               </div>
