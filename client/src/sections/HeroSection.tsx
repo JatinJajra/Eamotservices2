@@ -10,54 +10,90 @@ export default function HeroSection() {
         <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
       </div>
       
-      <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Dark energy-themed background for the entire hero section */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-900 to-primary-950"></div>
+        
+        {/* Power grid pattern overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <pattern id="energyGrid" patternUnits="userSpaceOnUse" width="60" height="60">
+              <path d="M10,0 L10,60 M0,10 L60,10 M20,0 L20,60 M0,20 L60,20 M30,0 L30,60 M0,30 L60,30 M40,0 L40,60 M0,40 L60,40 M50,0 L50,60 M0,50 L60,50" 
+                stroke="cyan" strokeWidth="0.5" opacity="0.2" />
+              <circle cx="10" cy="10" r="1" fill="cyan" opacity="0.5" />
+              <circle cx="20" cy="20" r="1" fill="cyan" opacity="0.5" />
+              <circle cx="30" cy="30" r="1" fill="cyan" opacity="0.5" />
+              <circle cx="40" cy="40" r="1" fill="cyan" opacity="0.5" />
+              <circle cx="50" cy="50" r="1" fill="cyan" opacity="0.5" />
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#energyGrid)" />
+          </svg>
+        </div>
+        
+        {/* Energy pulses and flows */}
+        <motion.div 
+          className="absolute left-0 top-1/4 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"
+          animate={{ 
+            opacity: [0, 0.7, 0],
+            x: [-100, window.innerWidth + 100]
+          }}
+          transition={{ 
+            duration: 5,
+            repeat: Infinity,
+            repeatDelay: 3
+          }}
+        />
+        <motion.div 
+          className="absolute right-0 top-2/3 w-full h-1 bg-gradient-to-r from-transparent via-accent/30 to-transparent"
+          animate={{ 
+            opacity: [0, 0.7, 0],
+            x: [window.innerWidth + 100, -100]
+          }}
+          transition={{ 
+            duration: 5,
+            repeat: Infinity,
+            delay: 2,
+            repeatDelay: 3
+          }}
+        />
+        
+        {/* Glow effects */}
+        <motion.div 
+          className="absolute top-1/3 left-1/4 h-64 w-64 bg-cyan-500/10 blur-3xl rounded-full"
+          animate={{ 
+            opacity: [0.1, 0.3, 0.1],
+            scale: [0.8, 1.2, 0.8]
+          }}
+          transition={{ 
+            duration: 8,
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-1/4 right-1/3 h-96 w-96 bg-accent/10 blur-3xl rounded-full"
+          animate={{ 
+            opacity: [0.1, 0.2, 0.1],
+            scale: [0.9, 1.1, 0.9]
+          }}
+          transition={{ 
+            duration: 10,
+            delay: 1,
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative p-6 md:p-8 rounded-xl bg-gradient-to-br from-primary-800/70 to-primary-900/30 backdrop-blur-sm border border-white/10"
+            className="relative pt-8 md:pt-12 pl-0 lg:pl-6"
           >
-            {/* Background pattern for text area */}
-            <div className="absolute inset-0 overflow-hidden rounded-xl opacity-10 -z-10">
-              <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <pattern id="powerGridPattern" patternUnits="userSpaceOnUse" width="25" height="25">
-                    <path d="M0,0 L0,5 L20,5 L20,25 L25,25 L25,0 Z" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-                    <circle cx="5" cy="5" r="1.5" fill="currentColor"/>
-                    <circle cx="20" cy="20" r="1.5" fill="currentColor"/>
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#powerGridPattern)" />
-              </svg>
-            </div>
-          
-            {/* Background glow effects */}
-            <motion.div 
-              className="absolute -inset-4 bg-cyan-500/10 blur-2xl rounded-full -z-10"
-              animate={{ 
-                opacity: [0.05, 0.15, 0.05],
-              }}
-              transition={{ 
-                duration: 5, 
-                repeat: Infinity,
-                repeatType: "reverse" 
-              }}
-            />
-            <motion.div 
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-1/2 w-2/3 bg-accent/5 blur-3xl rounded-full -z-10"
-              animate={{ 
-                opacity: [0.05, 0.15, 0.05],
-              }}
-              transition={{ 
-                duration: 7, 
-                delay: 1,
-                repeat: Infinity,
-                repeatType: "reverse" 
-              }}
-            />
-            
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold font-montserrat leading-tight mb-6">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold font-montserrat leading-tight mb-6 text-white">
               Energy Management with <motion.span 
                 className="text-accent inline-block"
                 animate={{ 
@@ -97,7 +133,7 @@ export default function HeroSection() {
               </motion.span>
             </h1>
             
-            <p className="text-base md:text-lg opacity-90 mb-6 max-w-lg leading-relaxed">
+            <p className="text-base md:text-lg text-white/90 mb-8 max-w-lg leading-relaxed">
               Delivering IoT-powered solutions to optimize energy consumption, reduce operational costs, and enable sustainable business practices through real-time monitoring and predictive maintenance.
             </p>
             
@@ -125,13 +161,13 @@ export default function HeroSection() {
           </motion.div>
           
           <motion.div 
-            className="relative hidden lg:block"
+            className="relative hidden lg:flex justify-center items-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {/* Energy Dashboard Animation Container */}
-            <div className="relative w-full lg:w-120 xl:w-140 mx-auto mt-6 mb-12">
+            <div className="relative w-[70%] mx-auto mt-6 mb-12">
               {/* Background glow effects */}
               <motion.div 
                 className="absolute inset-0 bg-cyan-500/30 blur-3xl rounded-full"
