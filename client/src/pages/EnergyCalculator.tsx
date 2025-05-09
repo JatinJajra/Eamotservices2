@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -165,7 +164,6 @@ export default function EnergyCalculatorPage() {
   };
 
   return (
-    <Layout>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -544,6 +542,5 @@ export default function EnergyCalculatorPage() {
           </div>
         </section>
       </motion.div>
-    </Layout>
   );
 }

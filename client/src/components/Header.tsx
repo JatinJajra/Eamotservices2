@@ -223,7 +223,17 @@ export default function Header() {
             )}
           </div>
           
-          <a href="/#contact" className="font-montserrat hover:text-primary transition duration-300 text-sm">Contact</a>
+          <button 
+            onClick={() => {
+              const footer = document.getElementById('footer');
+              if (footer) {
+                footer.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="font-montserrat hover:text-primary transition duration-300 text-sm cursor-pointer"
+          >
+            Contact
+          </button>
         </div>
         
         {/* CTA Buttons */}
