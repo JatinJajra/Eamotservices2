@@ -16,13 +16,27 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative p-8 rounded-xl bg-gradient-to-br from-primary-700/50 to-transparent backdrop-blur-sm border border-white/10"
+            className="relative p-6 md:p-8 rounded-xl bg-gradient-to-br from-primary-800/70 to-primary-900/30 backdrop-blur-sm border border-white/10"
           >
-            {/* Background glow for text area */}
+            {/* Background pattern for text area */}
+            <div className="absolute inset-0 overflow-hidden rounded-xl opacity-10 -z-10">
+              <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern id="powerGridPattern" patternUnits="userSpaceOnUse" width="25" height="25">
+                    <path d="M0,0 L0,5 L20,5 L20,25 L25,25 L25,0 Z" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+                    <circle cx="5" cy="5" r="1.5" fill="currentColor"/>
+                    <circle cx="20" cy="20" r="1.5" fill="currentColor"/>
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#powerGridPattern)" />
+              </svg>
+            </div>
+          
+            {/* Background glow effects */}
             <motion.div 
               className="absolute -inset-4 bg-cyan-500/10 blur-2xl rounded-full -z-10"
               animate={{ 
-                opacity: [0.1, 0.2, 0.1],
+                opacity: [0.05, 0.15, 0.05],
               }}
               transition={{ 
                 duration: 5, 
@@ -30,8 +44,20 @@ export default function HeroSection() {
                 repeatType: "reverse" 
               }}
             />
+            <motion.div 
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-1/2 w-2/3 bg-accent/5 blur-3xl rounded-full -z-10"
+              animate={{ 
+                opacity: [0.05, 0.15, 0.05],
+              }}
+              transition={{ 
+                duration: 7, 
+                delay: 1,
+                repeat: Infinity,
+                repeatType: "reverse" 
+              }}
+            />
             
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-montserrat leading-tight mb-6">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold font-montserrat leading-tight mb-6">
               Energy Management with <motion.span 
                 className="text-accent inline-block"
                 animate={{ 
@@ -71,8 +97,8 @@ export default function HeroSection() {
               </motion.span>
             </h1>
             
-            <p className="text-lg md:text-xl opacity-90 mb-8 max-w-lg">
-              We specialize in providing cutting-edge IoT technology solutions that help businesses optimize energy usage, reduce costs, and implement sustainable practices with real-time monitoring and predictive maintenance.
+            <p className="text-base md:text-lg opacity-90 mb-6 max-w-lg leading-relaxed">
+              Delivering IoT-powered solutions to optimize energy consumption, reduce operational costs, and enable sustainable business practices through real-time monitoring and predictive maintenance.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -137,6 +163,59 @@ export default function HeroSection() {
                     <circle cx="70" cy="30" r="2" fill="cyan" />
                   </pattern>
                   <rect width="100%" height="100%" fill="url(#circuitPattern)" />
+                </svg>
+              </div>
+              
+              {/* Smart grid lines that pulse across the dashboard */}
+              <div className="absolute inset-0 overflow-hidden">
+                <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                  {/* Horizontal power line */}
+                  <motion.line 
+                    x1="0" y1="300" x2="800" y2="300" 
+                    stroke="rgba(0,200,255,0.3)" 
+                    strokeWidth="1"
+                    strokeDasharray="10,15"
+                    animate={{
+                      strokeDashoffset: [0, -50]
+                    }}
+                    transition={{
+                      duration: 10,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  />
+                  
+                  {/* Diagonal power line */}
+                  <motion.line 
+                    x1="0" y1="0" x2="800" y2="600" 
+                    stroke="rgba(0,200,255,0.2)" 
+                    strokeWidth="1"
+                    strokeDasharray="8,20"
+                    animate={{
+                      strokeDashoffset: [0, -50]
+                    }}
+                    transition={{
+                      duration: 15,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  />
+                  
+                  {/* Vertical power line */}
+                  <motion.line 
+                    x1="400" y1="0" x2="400" y2="600" 
+                    stroke="rgba(0,200,255,0.25)" 
+                    strokeWidth="1"
+                    strokeDasharray="5,15"
+                    animate={{
+                      strokeDashoffset: [0, -40]
+                    }}
+                    transition={{
+                      duration: 8,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  />
                 </svg>
               </div>
               
