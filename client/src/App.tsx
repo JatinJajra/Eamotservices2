@@ -14,6 +14,14 @@ import AboutPage from "@/pages/about";
 import DieselGenerator from "@/pages/services/DieselGenerator";
 import UPS from "@/pages/services/UPS";
 import Stabilizer from "@/pages/services/Stabilizer";
+import LithiumIonInverter from "@/pages/services/lithium-ion-inverter";
+import DualFuelKit from "@/pages/services/dual-fuel-kit";
+
+// Solution Pages
+import IoTSolutions from "@/pages/solutions/iot";
+import EnergyManagement from "@/pages/solutions/energy-management";
+import PredictiveMaintenance from "@/pages/solutions/predictive-maintenance";
+import Retrofitting from "@/pages/solutions/retrofitting";
 
 // Other Pages
 import Careers from "@/pages/Careers";
@@ -49,6 +57,14 @@ function Router() {
         <Route path="/services/diesel-generator" component={DieselGenerator} />
         <Route path="/services/ups" component={UPS} />
         <Route path="/services/stabilizer" component={Stabilizer} />
+        <Route path="/services/lithium-ion-inverter" component={LithiumIonInverter} />
+        <Route path="/services/dual-fuel-kit" component={DualFuelKit} />
+        
+        {/* Solution Pages */}
+        <Route path="/solutions/iot" component={IoTSolutions} />
+        <Route path="/solutions/energy-management" component={EnergyManagement} />
+        <Route path="/solutions/predictive-maintenance" component={PredictiveMaintenance} />
+        <Route path="/solutions/retrofitting" component={Retrofitting} />
         
         {/* Other Pages */}
         <Route path="/careers" component={Careers} />
