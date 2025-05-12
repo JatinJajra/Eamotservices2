@@ -110,72 +110,94 @@ export default function Header() {
             </button>
             
             {solutionsDropdownOpen && (
-              <div className="absolute mt-2 w-80 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100">
+              <div className="absolute mt-2 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100">
                 {/* Diesel Generator Solutions */}
-                <div className="px-4 py-2">
-                  <h3 className="font-semibold text-primary text-sm mb-1">Diesel Generator Solutions</h3>
-                  <ul className="pl-4 text-xs space-y-1 text-gray-700">
-                    <li className="hover:text-primary">DG Procurement (CPCB IV+ Compliant)</li>
-                    <li className="hover:text-primary">DG Installation & Shifting</li>
-                    <li className="hover:text-primary">DG AMC (Annual Maintenance Contract)</li>
-                    <li className="hover:text-primary">DG Overhaul & Repairs</li>
-                    <li className="hover:text-primary">IoT-based DG Monitoring</li>
-                  </ul>
+                <div className="group relative px-4 py-2 hover:bg-gray-50">
+                  <div className="flex items-center justify-between cursor-pointer">
+                    <h3 className="font-semibold text-primary text-sm">Diesel Generator Solutions</h3>
+                    <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
+                  </div>
+                  
+                  <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
+                    <ul className="px-4 py-1 space-y-2">
+                      <li className="text-sm text-gray-700 hover:text-primary">DG Procurement (CPCB IV+ Compliant)</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">DG Installation & Shifting</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">DG AMC (Annual Maintenance Contract)</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">DG Overhaul & Repairs</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">IoT-based DG Monitoring</li>
+                    </ul>
+                  </div>
                 </div>
-                
-                <div className="border-t border-gray-100 my-1"></div>
                 
                 {/* UPS System Solutions */}
-                <div className="px-4 py-2">
-                  <h3 className="font-semibold text-primary text-sm mb-1">UPS System Solutions</h3>
-                  <ul className="pl-4 text-xs space-y-1 text-gray-700">
-                    <li className="hover:text-primary">UPS System Sourcing</li>
-                    <li className="hover:text-primary">UPS Battery Sizing & Supply</li>
-                    <li className="hover:text-primary">UPS AMC</li>
-                    <li className="hover:text-primary">Load Management & Monitoring</li>
-                  </ul>
+                <div className="group relative px-4 py-2 hover:bg-gray-50">
+                  <div className="flex items-center justify-between cursor-pointer">
+                    <h3 className="font-semibold text-primary text-sm">UPS System Solutions</h3>
+                    <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
+                  </div>
+                  
+                  <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
+                    <ul className="px-4 py-1 space-y-2">
+                      <li className="text-sm text-gray-700 hover:text-primary">UPS System Sourcing</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">UPS Battery Sizing & Supply</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">UPS AMC</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Load Management & Monitoring</li>
+                    </ul>
+                  </div>
                 </div>
-                
-                <div className="border-t border-gray-100 my-1"></div>
                 
                 {/* Servo Stabilizer Solutions */}
-                <div className="px-4 py-2">
-                  <h3 className="font-semibold text-primary text-sm mb-1">Servo Stabilizer Solutions</h3>
-                  <ul className="pl-4 text-xs space-y-1 text-gray-700">
-                    <li className="hover:text-primary">Sizing & Selection Support</li>
-                    <li className="hover:text-primary">Procurement & Delivery</li>
-                    <li className="hover:text-primary">Installation & Commissioning</li>
-                    <li className="hover:text-primary">Stabilizer AMC</li>
-                    <li className="hover:text-primary">Remote Voltage Monitoring</li>
-                  </ul>
+                <div className="group relative px-4 py-2 hover:bg-gray-50">
+                  <div className="flex items-center justify-between cursor-pointer">
+                    <h3 className="font-semibold text-primary text-sm">Servo Stabilizer Solutions</h3>
+                    <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
+                  </div>
+                  
+                  <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
+                    <ul className="px-4 py-1 space-y-2">
+                      <li className="text-sm text-gray-700 hover:text-primary">Sizing & Selection Support</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Procurement & Delivery</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Installation & Commissioning</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Stabilizer AMC</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Remote Voltage Monitoring</li>
+                    </ul>
+                  </div>
                 </div>
-                
-                <div className="border-t border-gray-100 my-1"></div>
                 
                 {/* RECD Compliance Solutions */}
-                <div className="px-4 py-2">
-                  <h3 className="font-semibold text-primary text-sm mb-1">RECD Compliance Solutions</h3>
-                  <ul className="pl-4 text-xs space-y-1 text-gray-700">
-                    <li className="hover:text-primary">CQAM Norms & Compliance Advisory</li>
-                    <li className="hover:text-primary">RECD Procurement</li>
-                    <li className="hover:text-primary">Installation & Integration</li>
-                    <li className="hover:text-primary">Emission Performance Monitoring</li>
-                    <li className="hover:text-primary">Regulatory Documentation Support</li>
-                  </ul>
+                <div className="group relative px-4 py-2 hover:bg-gray-50">
+                  <div className="flex items-center justify-between cursor-pointer">
+                    <h3 className="font-semibold text-primary text-sm">RECD Compliance Solutions</h3>
+                    <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
+                  </div>
+                  
+                  <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
+                    <ul className="px-4 py-1 space-y-2">
+                      <li className="text-sm text-gray-700 hover:text-primary">CQAM Norms & Compliance Advisory</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">RECD Procurement</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Installation & Integration</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Emission Performance Monitoring</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Regulatory Documentation Support</li>
+                    </ul>
+                  </div>
                 </div>
                 
-                <div className="border-t border-gray-100 my-1"></div>
-                
                 {/* Dual Fuel Kit Conversions */}
-                <div className="px-4 py-2">
-                  <h3 className="font-semibold text-primary text-sm mb-1">Dual Fuel Kit Conversions</h3>
-                  <ul className="pl-4 text-xs space-y-1 text-gray-700">
-                    <li className="hover:text-primary">DFK Suitability Assessment</li>
-                    <li className="hover:text-primary">DFK Procurement</li>
-                    <li className="hover:text-primary">Installation & Calibration</li>
-                    <li className="hover:text-primary">Fuel Savings Analytics</li>
-                    <li className="hover:text-primary">Post-conversion Maintenance</li>
-                  </ul>
+                <div className="group relative px-4 py-2 hover:bg-gray-50">
+                  <div className="flex items-center justify-between cursor-pointer">
+                    <h3 className="font-semibold text-primary text-sm">Dual Fuel Kit Conversions</h3>
+                    <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
+                  </div>
+                  
+                  <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
+                    <ul className="px-4 py-1 space-y-2">
+                      <li className="text-sm text-gray-700 hover:text-primary">DFK Suitability Assessment</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">DFK Procurement</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Installation & Calibration</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Fuel Savings Analytics</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Post-conversion Maintenance</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             )}
@@ -196,57 +218,75 @@ export default function Header() {
             </button>
             
             {servicesDropdownOpen && (
-              <div className="absolute mt-2 w-80 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100">
+              <div className="absolute mt-2 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100">
                 {/* Installation & Integration */}
-                <div className="px-4 py-2">
-                  <h3 className="font-semibold text-primary text-sm mb-1">Installation & Integration</h3>
-                  <ul className="pl-4 text-xs space-y-1 text-gray-700">
-                    <li className="hover:text-primary">On-site Assessment & Feasibility</li>
-                    <li className="hover:text-primary">Turnkey Installation Projects</li>
-                    <li className="hover:text-primary">Synchronization & Load Testing</li>
-                    <li className="hover:text-primary">Documentation & Handover</li>
-                  </ul>
+                <div className="group relative px-4 py-2 hover:bg-gray-50">
+                  <div className="flex items-center justify-between cursor-pointer">
+                    <h3 className="font-semibold text-primary text-sm">Installation & Integration</h3>
+                    <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
+                  </div>
+                  
+                  <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
+                    <ul className="px-4 py-1 space-y-2">
+                      <li className="text-sm text-gray-700 hover:text-primary">On-site Assessment & Feasibility</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Turnkey Installation Projects</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Synchronization & Load Testing</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Documentation & Handover</li>
+                    </ul>
+                  </div>
                 </div>
-                
-                <div className="border-t border-gray-100 my-1"></div>
                 
                 {/* Annual Maintenance Contracts (AMC) */}
-                <div className="px-4 py-2">
-                  <h3 className="font-semibold text-primary text-sm mb-1">Annual Maintenance Contracts (AMC)</h3>
-                  <ul className="pl-4 text-xs space-y-1 text-gray-700">
-                    <li className="hover:text-primary">Diesel Generator AMC</li>
-                    <li className="hover:text-primary">UPS AMC</li>
-                    <li className="hover:text-primary">Servo Stabilizer AMC</li>
-                    <li className="hover:text-primary">Preventive Maintenance Schedules</li>
-                    <li className="hover:text-primary">Emergency Breakdown Services</li>
-                  </ul>
+                <div className="group relative px-4 py-2 hover:bg-gray-50">
+                  <div className="flex items-center justify-between cursor-pointer">
+                    <h3 className="font-semibold text-primary text-sm">Annual Maintenance Contracts</h3>
+                    <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
+                  </div>
+                  
+                  <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
+                    <ul className="px-4 py-1 space-y-2">
+                      <li className="text-sm text-gray-700 hover:text-primary">Diesel Generator AMC</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">UPS AMC</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Servo Stabilizer AMC</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Preventive Maintenance Schedules</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Emergency Breakdown Services</li>
+                    </ul>
+                  </div>
                 </div>
-                
-                <div className="border-t border-gray-100 my-1"></div>
                 
                 {/* Spare Parts Sourcing */}
-                <div className="px-4 py-2">
-                  <h3 className="font-semibold text-primary text-sm mb-1">Spare Parts Sourcing</h3>
-                  <ul className="pl-4 text-xs space-y-1 text-gray-700">
-                    <li className="hover:text-primary">DG Engine & Alternator Parts</li>
-                    <li className="hover:text-primary">UPS Modules & Batteries</li>
-                    <li className="hover:text-primary">Servo Control Components</li>
-                    <li className="hover:text-primary">RECD Spares</li>
-                    <li className="hover:text-primary">Logistics & Delivery Support</li>
-                  </ul>
+                <div className="group relative px-4 py-2 hover:bg-gray-50">
+                  <div className="flex items-center justify-between cursor-pointer">
+                    <h3 className="font-semibold text-primary text-sm">Spare Parts Sourcing</h3>
+                    <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
+                  </div>
+                  
+                  <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
+                    <ul className="px-4 py-1 space-y-2">
+                      <li className="text-sm text-gray-700 hover:text-primary">DG Engine & Alternator Parts</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">UPS Modules & Batteries</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Servo Control Components</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">RECD Spares</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Logistics & Delivery Support</li>
+                    </ul>
+                  </div>
                 </div>
                 
-                <div className="border-t border-gray-100 my-1"></div>
-                
                 {/* Emission Compliance Services */}
-                <div className="px-4 py-2">
-                  <h3 className="font-semibold text-primary text-sm mb-1">Emission Compliance Services</h3>
-                  <ul className="pl-4 text-xs space-y-1 text-gray-700">
-                    <li className="hover:text-primary">CQAM Registration & Guidance</li>
-                    <li className="hover:text-primary">On-field RECD Integration</li>
-                    <li className="hover:text-primary">Emission Testing Coordination</li>
-                    <li className="hover:text-primary">Compliance Reporting</li>
-                  </ul>
+                <div className="group relative px-4 py-2 hover:bg-gray-50">
+                  <div className="flex items-center justify-between cursor-pointer">
+                    <h3 className="font-semibold text-primary text-sm">Emission Compliance Services</h3>
+                    <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
+                  </div>
+                  
+                  <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
+                    <ul className="px-4 py-1 space-y-2">
+                      <li className="text-sm text-gray-700 hover:text-primary">CQAM Registration & Guidance</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">On-field RECD Integration</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Emission Testing Coordination</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">Compliance Reporting</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             )}
@@ -257,25 +297,35 @@ export default function Header() {
             <button 
               className="font-montserrat hover:text-primary transition duration-300 flex items-center text-sm"
               onClick={(e) => {
-                e.currentTarget.nextElementSibling?.classList.toggle('hidden');
-                e.currentTarget.querySelector('i')?.classList.toggle('rotate-180');
+                const dropdown = e.currentTarget.nextElementSibling as HTMLElement;
+                const icon = e.currentTarget.querySelector('i');
+                if (dropdown && icon) {
+                  dropdown.classList.toggle('hidden');
+                  icon.classList.toggle('rotate-180');
+                }
               }}
             >
               Smart Monitoring
               <i className={`fas fa-chevron-down ml-1 text-[10px] transition-transform duration-300`}></i>
             </button>
             
-            <div className="absolute mt-2 w-80 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden">
-              <div className="px-4 py-2">
-                <h3 className="font-semibold text-primary text-sm mb-1">Digital Intelligence for Real-time Visibility</h3>
-                <ul className="pl-4 text-xs space-y-1 text-gray-700">
-                  <li className="hover:text-primary">DG Monitoring Dashboard (Fuel, Load, Health)</li>
-                  <li className="hover:text-primary">UPS Monitoring (Battery Life, Load, Alarms)</li>
-                  <li className="hover:text-primary">Servo Monitoring (Voltage Stability, Faults)</li>
-                  <li className="hover:text-primary">RECD Emission Monitoring</li>
-                  <li className="hover:text-primary">Alerts, Reports & Analytics</li>
-                  <li className="hover:text-primary">Centralized Asset Monitoring Platform</li>
-                </ul>
+            <div className="absolute mt-2 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden">
+              <div className="group relative px-4 py-2 hover:bg-gray-50">
+                <div className="flex items-center justify-between cursor-pointer">
+                  <h3 className="font-semibold text-primary text-sm">Digital Intelligence</h3>
+                  <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
+                </div>
+                
+                <div className="absolute left-full top-0 w-72 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
+                  <ul className="px-4 py-1 space-y-2">
+                    <li className="text-sm text-gray-700 hover:text-primary">DG Monitoring Dashboard (Fuel, Load, Health)</li>
+                    <li className="text-sm text-gray-700 hover:text-primary">UPS Monitoring (Battery Life, Load, Alarms)</li>
+                    <li className="text-sm text-gray-700 hover:text-primary">Servo Monitoring (Voltage Stability, Faults)</li>
+                    <li className="text-sm text-gray-700 hover:text-primary">RECD Emission Monitoring</li>
+                    <li className="text-sm text-gray-700 hover:text-primary">Alerts, Reports & Analytics</li>
+                    <li className="text-sm text-gray-700 hover:text-primary">Centralized Asset Monitoring Platform</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -439,59 +489,139 @@ export default function Header() {
                 </button>
                 
                 {solutionsDropdownOpen && (
-                  <div className="pl-4 py-2 space-y-4">
-                    <div>
-                      <h3 className="font-semibold text-primary text-sm mb-1">Diesel Generator Solutions</h3>
-                      <ul className="pl-2 space-y-1 text-xs text-gray-700">
-                        <li>DG Procurement (CPCB IV+ Compliant)</li>
-                        <li>DG Installation & Shifting</li>
-                        <li>DG AMC (Annual Maintenance Contract)</li>
-                        <li>DG Overhaul & Repairs</li>
-                        <li>IoT-based DG Monitoring</li>
-                      </ul>
+                  <div className="pl-4 py-2 space-y-2">
+                    {/* Mobile Diesel Generator Solutions */}
+                    <div className="border-b border-gray-100 pb-2">
+                      <button
+                        className="font-medium text-sm w-full text-left flex items-center justify-between"
+                        onClick={(e) => {
+                          const content = e.currentTarget.nextElementSibling as HTMLElement;
+                          const icon = e.currentTarget.querySelector('i');
+                          if (content && icon) {
+                            content.classList.toggle('hidden');
+                            icon.classList.toggle('rotate-180');
+                          }
+                        }}
+                      >
+                        <span className="text-primary">Diesel Generator Solutions</span>
+                        <i className="fas fa-chevron-down ml-2 text-[10px] text-gray-400"></i>
+                      </button>
+                      <div className="pl-3 pt-2 hidden">
+                        <ul className="space-y-2">
+                          <li className="text-sm text-gray-700">DG Procurement (CPCB IV+ Compliant)</li>
+                          <li className="text-sm text-gray-700">DG Installation & Shifting</li>
+                          <li className="text-sm text-gray-700">DG AMC (Annual Maintenance Contract)</li>
+                          <li className="text-sm text-gray-700">DG Overhaul & Repairs</li>
+                          <li className="text-sm text-gray-700">IoT-based DG Monitoring</li>
+                        </ul>
+                      </div>
                     </div>
                     
-                    <div>
-                      <h3 className="font-semibold text-primary text-sm mb-1">UPS System Solutions</h3>
-                      <ul className="pl-2 space-y-1 text-xs text-gray-700">
-                        <li>UPS System Sourcing</li>
-                        <li>UPS Battery Sizing & Supply</li>
-                        <li>UPS AMC</li>
-                        <li>Load Management & Monitoring</li>
-                      </ul>
+                    {/* Mobile UPS System Solutions */}
+                    <div className="border-b border-gray-100 pb-2">
+                      <button
+                        className="font-medium text-sm w-full text-left flex items-center justify-between"
+                        onClick={(e) => {
+                          const content = e.currentTarget.nextElementSibling as HTMLElement;
+                          const icon = e.currentTarget.querySelector('i');
+                          if (content && icon) {
+                            content.classList.toggle('hidden');
+                            icon.classList.toggle('rotate-180');
+                          }
+                        }}
+                      >
+                        <span className="text-primary">UPS System Solutions</span>
+                        <i className="fas fa-chevron-down ml-2 text-[10px] text-gray-400"></i>
+                      </button>
+                      <div className="pl-3 pt-2 hidden">
+                        <ul className="space-y-2">
+                          <li className="text-sm text-gray-700">UPS System Sourcing</li>
+                          <li className="text-sm text-gray-700">UPS Battery Sizing & Supply</li>
+                          <li className="text-sm text-gray-700">UPS AMC</li>
+                          <li className="text-sm text-gray-700">Load Management & Monitoring</li>
+                        </ul>
+                      </div>
                     </div>
                     
-                    <div>
-                      <h3 className="font-semibold text-primary text-sm mb-1">Servo Stabilizer Solutions</h3>
-                      <ul className="pl-2 space-y-1 text-xs text-gray-700">
-                        <li>Sizing & Selection Support</li>
-                        <li>Procurement & Delivery</li>
-                        <li>Installation & Commissioning</li>
-                        <li>Stabilizer AMC</li>
-                        <li>Remote Voltage Monitoring</li>
-                      </ul>
+                    {/* Mobile Servo Stabilizer Solutions */}
+                    <div className="border-b border-gray-100 pb-2">
+                      <button
+                        className="font-medium text-sm w-full text-left flex items-center justify-between"
+                        onClick={(e) => {
+                          const content = e.currentTarget.nextElementSibling as HTMLElement;
+                          const icon = e.currentTarget.querySelector('i');
+                          if (content && icon) {
+                            content.classList.toggle('hidden');
+                            icon.classList.toggle('rotate-180');
+                          }
+                        }}
+                      >
+                        <span className="text-primary">Servo Stabilizer Solutions</span>
+                        <i className="fas fa-chevron-down ml-2 text-[10px] text-gray-400"></i>
+                      </button>
+                      <div className="pl-3 pt-2 hidden">
+                        <ul className="space-y-2">
+                          <li className="text-sm text-gray-700">Sizing & Selection Support</li>
+                          <li className="text-sm text-gray-700">Procurement & Delivery</li>
+                          <li className="text-sm text-gray-700">Installation & Commissioning</li>
+                          <li className="text-sm text-gray-700">Stabilizer AMC</li>
+                          <li className="text-sm text-gray-700">Remote Voltage Monitoring</li>
+                        </ul>
+                      </div>
                     </div>
                     
-                    <div>
-                      <h3 className="font-semibold text-primary text-sm mb-1">RECD Compliance Solutions</h3>
-                      <ul className="pl-2 space-y-1 text-xs text-gray-700">
-                        <li>CQAM Norms & Compliance Advisory</li>
-                        <li>RECD Procurement</li>
-                        <li>Installation & Integration</li>
-                        <li>Emission Performance Monitoring</li>
-                        <li>Regulatory Documentation Support</li>
-                      </ul>
+                    {/* Mobile RECD Compliance Solutions */}
+                    <div className="border-b border-gray-100 pb-2">
+                      <button
+                        className="font-medium text-sm w-full text-left flex items-center justify-between"
+                        onClick={(e) => {
+                          const content = e.currentTarget.nextElementSibling as HTMLElement;
+                          const icon = e.currentTarget.querySelector('i');
+                          if (content && icon) {
+                            content.classList.toggle('hidden');
+                            icon.classList.toggle('rotate-180');
+                          }
+                        }}
+                      >
+                        <span className="text-primary">RECD Compliance Solutions</span>
+                        <i className="fas fa-chevron-down ml-2 text-[10px] text-gray-400"></i>
+                      </button>
+                      <div className="pl-3 pt-2 hidden">
+                        <ul className="space-y-2">
+                          <li className="text-sm text-gray-700">CQAM Norms & Compliance Advisory</li>
+                          <li className="text-sm text-gray-700">RECD Procurement</li>
+                          <li className="text-sm text-gray-700">Installation & Integration</li>
+                          <li className="text-sm text-gray-700">Emission Performance Monitoring</li>
+                          <li className="text-sm text-gray-700">Regulatory Documentation Support</li>
+                        </ul>
+                      </div>
                     </div>
                     
-                    <div>
-                      <h3 className="font-semibold text-primary text-sm mb-1">Dual Fuel Kit Conversions</h3>
-                      <ul className="pl-2 space-y-1 text-xs text-gray-700">
-                        <li>DFK Suitability Assessment</li>
-                        <li>DFK Procurement</li>
-                        <li>Installation & Calibration</li>
-                        <li>Fuel Savings Analytics</li>
-                        <li>Post-conversion Maintenance</li>
-                      </ul>
+                    {/* Mobile Dual Fuel Kit Conversions */}
+                    <div className="border-b border-gray-100 pb-2">
+                      <button
+                        className="font-medium text-sm w-full text-left flex items-center justify-between"
+                        onClick={(e) => {
+                          const content = e.currentTarget.nextElementSibling as HTMLElement;
+                          const icon = e.currentTarget.querySelector('i');
+                          if (content && icon) {
+                            content.classList.toggle('hidden');
+                            icon.classList.toggle('rotate-180');
+                          }
+                        }}
+                      >
+                        <span className="text-primary">Dual Fuel Kit Conversions</span>
+                        <i className="fas fa-chevron-down ml-2 text-[10px] text-gray-400"></i>
+                      </button>
+                      <div className="pl-3 pt-2 hidden">
+                        <ul className="space-y-2">
+                          <li className="text-sm text-gray-700">DFK Suitability Assessment</li>
+                          <li className="text-sm text-gray-700">DFK Procurement</li>
+                          <li className="text-sm text-gray-700">Installation & Calibration</li>
+                          <li className="text-sm text-gray-700">Fuel Savings Analytics</li>
+                          <li className="text-sm text-gray-700">Post-conversion Maintenance</li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 )}
