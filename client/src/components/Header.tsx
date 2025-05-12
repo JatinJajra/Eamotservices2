@@ -433,10 +433,26 @@ export default function Header() {
                   
                   <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
                     <ul className="px-4 py-1 space-y-2">
-                      <li className="text-sm text-gray-700 hover:text-primary">CQAM Registration & Guidance</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">On-field RECD Integration</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Emission Testing Coordination</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Compliance Reporting</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/emission/cqam">
+                          <span className="block py-1 cursor-pointer">CQAM Registration & Guidance</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/emission/recd-integration">
+                          <span className="block py-1 cursor-pointer">On-field RECD Integration</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/emission/testing">
+                          <span className="block py-1 cursor-pointer">Emission Testing Coordination</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/emission/reporting">
+                          <span className="block py-1 cursor-pointer">Compliance Reporting</span>
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -470,12 +486,36 @@ export default function Header() {
                 
                 <div className="absolute left-full top-0 w-72 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
                   <ul className="px-4 py-1 space-y-2">
-                    <li className="text-sm text-gray-700 hover:text-primary">DG Monitoring Dashboard (Fuel, Load, Health)</li>
-                    <li className="text-sm text-gray-700 hover:text-primary">UPS Monitoring (Battery Life, Load, Alarms)</li>
-                    <li className="text-sm text-gray-700 hover:text-primary">Servo Monitoring (Voltage Stability, Faults)</li>
-                    <li className="text-sm text-gray-700 hover:text-primary">RECD Emission Monitoring</li>
-                    <li className="text-sm text-gray-700 hover:text-primary">Alerts, Reports & Analytics</li>
-                    <li className="text-sm text-gray-700 hover:text-primary">Centralized Asset Monitoring Platform</li>
+                    <li className="text-sm text-gray-700 hover:text-primary">
+                      <Link href="/monitoring/dg">
+                        <span className="block py-1 cursor-pointer">DG Monitoring Dashboard (Fuel, Load, Health)</span>
+                      </Link>
+                    </li>
+                    <li className="text-sm text-gray-700 hover:text-primary">
+                      <Link href="/monitoring/ups">
+                        <span className="block py-1 cursor-pointer">UPS Monitoring (Battery Life, Load, Alarms)</span>
+                      </Link>
+                    </li>
+                    <li className="text-sm text-gray-700 hover:text-primary">
+                      <Link href="/monitoring/servo">
+                        <span className="block py-1 cursor-pointer">Servo Monitoring (Voltage Stability, Faults)</span>
+                      </Link>
+                    </li>
+                    <li className="text-sm text-gray-700 hover:text-primary">
+                      <Link href="/monitoring/recd">
+                        <span className="block py-1 cursor-pointer">RECD Emission Monitoring</span>
+                      </Link>
+                    </li>
+                    <li className="text-sm text-gray-700 hover:text-primary">
+                      <Link href="/monitoring/analytics">
+                        <span className="block py-1 cursor-pointer">Alerts, Reports & Analytics</span>
+                      </Link>
+                    </li>
+                    <li className="text-sm text-gray-700 hover:text-primary">
+                      <Link href="/monitoring/platform">
+                        <span className="block py-1 cursor-pointer">Centralized Asset Monitoring Platform</span>
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -660,11 +700,31 @@ export default function Header() {
                       </button>
                       <div className="pl-3 pt-2 hidden">
                         <ul className="space-y-2">
-                          <li className="text-sm text-gray-700">DG Procurement (CPCB IV+ Compliant)</li>
-                          <li className="text-sm text-gray-700">DG Installation & Shifting</li>
-                          <li className="text-sm text-gray-700">DG AMC (Annual Maintenance Contract)</li>
-                          <li className="text-sm text-gray-700">DG Overhaul & Repairs</li>
-                          <li className="text-sm text-gray-700">IoT-based DG Monitoring</li>
+                          <li className="text-sm text-gray-700">
+                            <Link href="/solutions/diesel-generator/procurement">
+                              <span className="block py-1 cursor-pointer">DG Procurement (CPCB IV+ Compliant)</span>
+                            </Link>
+                          </li>
+                          <li className="text-sm text-gray-700">
+                            <Link href="/solutions/diesel-generator/installation">
+                              <span className="block py-1 cursor-pointer">DG Installation & Shifting</span>
+                            </Link>
+                          </li>
+                          <li className="text-sm text-gray-700">
+                            <Link href="/solutions/diesel-generator/amc">
+                              <span className="block py-1 cursor-pointer">DG AMC (Annual Maintenance Contract)</span>
+                            </Link>
+                          </li>
+                          <li className="text-sm text-gray-700">
+                            <Link href="/solutions/diesel-generator/overhaul">
+                              <span className="block py-1 cursor-pointer">DG Overhaul & Repairs</span>
+                            </Link>
+                          </li>
+                          <li className="text-sm text-gray-700">
+                            <Link href="/solutions/diesel-generator/monitoring">
+                              <span className="block py-1 cursor-pointer">IoT-based DG Monitoring</span>
+                            </Link>
+                          </li>
                         </ul>
                       </div>
                     </div>
