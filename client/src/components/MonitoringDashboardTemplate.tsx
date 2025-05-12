@@ -1,467 +1,254 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
-import Layout from './Layout';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 import { 
-  AreaChart, 
-  Area, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  Legend,
-  PieChart,
-  Pie,
-  Cell,
-  LineChart,
-  Line
-} from 'recharts';
-import { 
+  Check, 
+  ArrowRight, 
+  Zap, 
+  Shield, 
   Clock, 
   AlertTriangle, 
-  BarChart3, 
-  CheckCircle, 
-  Activity,
-  Download,
-  Share2,
-  Filter,
-  Bell,
-  Settings,
-  ChevronDown
+  BarChart4, 
+  BellRing, 
+  Smartphone, 
+  Laptop, 
+  Cloud, 
+  Cpu
 } from 'lucide-react';
-import { 
-  Card, 
-  CardContent, 
-  CardHeader, 
-  CardTitle, 
-  CardDescription,
-  CardFooter 
-} from './ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { CircuitEnergyLoader } from './ui/energy-loader';
 
-interface DashboardMetric {
-  title: string;
-  value: string | number;
-  change?: string;
-  status?: 'positive' | 'negative' | 'neutral';
+interface MonitoringFeature {
   icon: React.ReactNode;
-}
-
-interface DashboardAlert {
   title: string;
-  message: string;
-  time: string;
-  priority: 'high' | 'medium' | 'low';
+  description: string;
 }
 
-interface DashboardTimeRange {
-  label: string;
-  value: string;
+interface MonitoringBenefit {
+  title: string;
+  description: string;
+}
+
+interface MonitoringCapability {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
 }
 
 interface MonitoringDashboardTemplateProps {
   title: string;
   description: string;
-  metrics: DashboardMetric[];
-  alerts?: DashboardAlert[];
-  chartData?: any[];
-  secondaryChartData?: any[];
-  pieData?: any[];
+  subtitle: string;
+  heroImage?: string;
+  features: MonitoringFeature[];
+  benefits: MonitoringBenefit[];
+  capabilities: MonitoringCapability[];
   customComponents?: React.ReactNode;
 }
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
-
 const MonitoringDashboardTemplate: React.FC<MonitoringDashboardTemplateProps> = ({
   title,
+  subtitle,
   description,
-  metrics,
-  alerts = [],
-  chartData = [],
-  secondaryChartData = [],
-  pieData = [],
-  customComponents,
+  heroImage,
+  features,
+  benefits,
+  capabilities,
+  customComponents
 }) => {
-  const { ref: headerRef, inView: headerInView } = useIntersectionObserver({ threshold: 0.2 });
-  const { ref: metricsRef, inView: metricsInView } = useIntersectionObserver({ threshold: 0.2 });
-  const { ref: chartRef, inView: chartInView } = useIntersectionObserver({ threshold: 0.1 });
-  const { ref: alertsRef, inView: alertsInView } = useIntersectionObserver({ threshold: 0.1 });
-  
-  const [isLoading, setIsLoading] = useState(false);
-  const [selectedTimeRange, setSelectedTimeRange] = useState<string>('24h');
-  
-  const timeRanges: DashboardTimeRange[] = [
-    { label: 'Last 24 Hours', value: '24h' },
-    { label: 'Last 7 Days', value: '7d' },
-    { label: 'Last 30 Days', value: '30d' },
-    { label: 'Last Quarter', value: '90d' },
-    { label: 'Last Year', value: '1y' },
-  ];
-  
-  const refreshData = () => {
-    setIsLoading(true);
-    // Simulate refresh
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-  };
+  const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.2 });
+  const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.2 });
+  const { ref: benefitsRef, inView: benefitsInView } = useIntersectionObserver({ threshold: 0.2 });
+  const { ref: capabilitiesRef, inView: capabilitiesInView } = useIntersectionObserver({ threshold: 0.2 });
+  const { ref: customRef, inView: customInView } = useIntersectionObserver({ threshold: 0.2 });
+  const { ref: ctaRef, inView: ctaInView } = useIntersectionObserver({ threshold: 0.2 });
 
   return (
-    <Layout>
-      {/* Dashboard Header */}
+    <>
+      {/* Hero Section */}
       <motion.section
-        ref={headerRef}
-        initial={{ opacity: 0, y: 20 }}
-        animate={headerInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5 }}
-        className="pt-8 pb-4 bg-gradient-to-r from-gray-900 to-gray-800 text-white"
+        ref={heroRef}
+        initial={{ opacity: 0, y: 50 }}
+        animate={heroInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+        className="pt-20 pb-16 bg-gradient-to-b from-black to-gray-900 text-white"
       >
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div>
-              <h1 className="text-3xl font-bold">{title}</h1>
-              <p className="text-gray-300 mt-1">{description}</p>
-            </div>
-            <div className="mt-4 md:mt-0 flex space-x-2">
-              <div className="relative">
-                <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700">
-                  <Clock className="mr-2 h-4 w-4" />
-                  {timeRanges.find(r => r.value === selectedTimeRange)?.label}
-                  <ChevronDown className="ml-2 h-4 w-4" />
-                </Button>
-                {/* Time range dropdown would go here */}
-              </div>
-              <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700" onClick={refreshData}>
-                {isLoading ? <CircuitEnergyLoader size="xs" color="primary" /> : "Refresh"}
-              </Button>
+        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
+          <div className="lg:w-1/2 lg:pr-12 mb-10 lg:mb-0">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{title}</h1>
+            <p className="text-xl md:text-2xl text-primary mb-6">{subtitle}</p>
+            <p className="text-gray-300 mb-8">{description}</p>
+            <div className="flex space-x-4">
               <Button className="bg-primary hover:bg-primary/90">
-                <Download className="h-4 w-4 mr-2" /> Export
+                Get a Demo <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                Learn More
               </Button>
             </div>
           </div>
+          {heroImage && (
+            <div className="lg:w-1/2">
+              <img
+                src={heroImage}
+                alt={title}
+                className="rounded-lg shadow-xl"
+              />
+            </div>
+          )}
         </div>
       </motion.section>
 
-      {/* Key Metrics Section */}
+      {/* Features Section */}
       <motion.section
-        ref={metricsRef}
-        initial={{ opacity: 0, y: 20 }}
-        animate={metricsInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="py-6 bg-gray-50"
+        ref={featuresRef}
+        initial={{ opacity: 0, y: 50 }}
+        animate={featuresInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="py-16 bg-gray-50"
       >
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {metrics.map((metric, index) => (
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            Real-Time Monitoring Features
+          </h2>
+          <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+            Our advanced monitoring system provides exceptional visibility into your power equipment performance with these key features
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
-                animate={metricsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                animate={featuresInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
+                className="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
               >
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-gray-500 text-sm">{metric.title}</span>
-                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                        {metric.icon}
-                      </div>
-                    </div>
-                    <div className="flex items-end">
-                      <div className="text-2xl font-bold">{metric.value}</div>
-                      {metric.change && (
-                        <div className={`ml-2 text-sm ${
-                          metric.status === 'positive' ? 'text-green-500' : 
-                          metric.status === 'negative' ? 'text-red-500' : 'text-gray-500'
-                        }`}>
-                          {metric.change}
-                        </div>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </motion.section>
 
-      {/* Main Charts Section */}
+      {/* Benefits Section */}
       <motion.section
-        ref={chartRef}
-        initial={{ opacity: 0, y: 20 }}
-        animate={chartInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="py-6 bg-white"
+        ref={benefitsRef}
+        initial={{ opacity: 0, y: 50 }}
+        animate={benefitsInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="py-16 bg-white"
       >
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Main Chart */}
-            <div className="lg:col-span-2">
-              <Card className="h-full">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle>Performance Trends</CardTitle>
-                    <div className="flex space-x-2">
-                      <Button variant="ghost" size="sm">
-                        <Filter className="h-4 w-4 mr-1" /> Filter
-                      </Button>
-                      <Button variant="ghost" size="sm">
-                        <Share2 className="h-4 w-4 mr-1" /> Share
-                      </Button>
-                    </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            Benefits of Smart Monitoring
+          </h2>
+          <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+            Implementing our monitoring solution delivers these transformative benefits for your organization
+          </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={benefitsInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
+                className="flex gap-4"
+              >
+                <div className="flex-shrink-0 mt-1">
+                  <div className="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center">
+                    <Check className="h-4 w-4" />
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <Tabs defaultValue="area">
-                    <div className="flex justify-between items-center mb-4">
-                      <TabsList>
-                        <TabsTrigger value="area">Area</TabsTrigger>
-                        <TabsTrigger value="line">Line</TabsTrigger>
-                        <TabsTrigger value="bar">Bar</TabsTrigger>
-                      </TabsList>
-                    </div>
-                    
-                    <TabsContent value="area" className="h-80">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart
-                          data={chartData}
-                          margin={{
-                            top: 10,
-                            right: 30,
-                            left: 0,
-                            bottom: 0,
-                          }}
-                        >
-                          <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                          <XAxis dataKey="name" />
-                          <YAxis />
-                          <Tooltip />
-                          <Area type="monotone" dataKey="value" stroke="#0ea5e9" fill="#0ea5e9" fillOpacity={0.2} />
-                        </AreaChart>
-                      </ResponsiveContainer>
-                    </TabsContent>
-                    
-                    <TabsContent value="line" className="h-80">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <LineChart
-                          data={chartData}
-                          margin={{
-                            top: 10,
-                            right: 30,
-                            left: 0,
-                            bottom: 0,
-                          }}
-                        >
-                          <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                          <XAxis dataKey="name" />
-                          <YAxis />
-                          <Tooltip />
-                          <Line type="monotone" dataKey="value" stroke="#0ea5e9" strokeWidth={2} />
-                        </LineChart>
-                      </ResponsiveContainer>
-                    </TabsContent>
-                    
-                    <TabsContent value="bar" className="h-80">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <BarChart
-                          data={chartData}
-                          margin={{
-                            top: 10,
-                            right: 30,
-                            left: 0,
-                            bottom: 0,
-                          }}
-                        >
-                          <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                          <XAxis dataKey="name" />
-                          <YAxis />
-                          <Tooltip />
-                          <Bar dataKey="value" fill="#0ea5e9" />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </TabsContent>
-                  </Tabs>
-                </CardContent>
-              </Card>
-            </div>
-            
-            {/* Secondary Chart/Pie Chart */}
-            <div>
-              <Card className="h-full">
-                <CardHeader>
-                  <CardTitle>Distribution</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="h-80 flex items-center justify-center">
-                    {pieData.length > 0 ? (
-                      <ResponsiveContainer width="100%" height="100%">
-                        <PieChart>
-                          <Pie
-                            data={pieData}
-                            cx="50%"
-                            cy="50%"
-                            labelLine={false}
-                            outerRadius={80}
-                            fill="#8884d8"
-                            dataKey="value"
-                            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                          >
-                            {pieData.map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                            ))}
-                          </Pie>
-                          <Tooltip />
-                          <Legend />
-                        </PieChart>
-                      </ResponsiveContainer>
-                    ) : (
-                      <div className="text-center text-gray-400">
-                        <BarChart3 className="h-12 w-12 mx-auto mb-2" />
-                        <p>No distribution data available</p>
-                      </div>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">{benefit.title}</h3>
+                  <p className="text-gray-600">{benefit.description}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </motion.section>
 
-      {/* Secondary Charts/Comparison Section */}
-      {secondaryChartData.length > 0 && (
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={chartInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="py-6 bg-gray-50"
-        >
-          <div className="container mx-auto px-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Comparative Analysis</CardTitle>
-                <CardDescription>
-                  Compare trends over different periods
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="h-80">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart
-                      data={secondaryChartData}
-                      margin={{
-                        top: 20,
-                        right: 30,
-                        left: 20,
-                        bottom: 5,
-                      }}
-                    >
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Tooltip />
-                      <Legend />
-                      <Bar dataKey="current" fill="#0ea5e9" name="Current Period" />
-                      <Bar dataKey="previous" fill="#6b7280" name="Previous Period" />
-                    </BarChart>
-                  </ResponsiveContainer>
+      {/* Capabilities Section */}
+      <motion.section
+        ref={capabilitiesRef}
+        initial={{ opacity: 0, y: 50 }}
+        animate={capabilitiesInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="py-16 bg-gray-800 text-white"
+      >
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            Advanced Capabilities
+          </h2>
+          <p className="text-gray-300 text-center max-w-3xl mx-auto mb-12">
+            Our monitoring platform leverages the latest technology to deliver these powerful capabilities
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {capabilities.map((capability, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={capabilitiesInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
+                className="bg-gray-700 p-6 rounded-lg border border-gray-600 hover:bg-gray-600 transition-colors"
+              >
+                <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mb-4">
+                  {capability.icon}
                 </div>
-              </CardContent>
-            </Card>
+                <h3 className="text-xl font-semibold mb-3">{capability.title}</h3>
+                <p className="text-gray-300">{capability.description}</p>
+              </motion.div>
+            ))}
           </div>
-        </motion.section>
-      )}
-
-      {/* Alerts & Notifications Section */}
-      {alerts.length > 0 && (
-        <motion.section
-          ref={alertsRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={alertsInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="py-6 bg-white"
-        >
-          <div className="container mx-auto px-4">
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle>
-                    <div className="flex items-center">
-                      <Bell className="mr-2 h-5 w-5 text-primary" />
-                      Recent Alerts
-                    </div>
-                  </CardTitle>
-                  <Button variant="ghost" size="sm">
-                    <Settings className="h-4 w-4 mr-1" /> Configure
-                  </Button>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {alerts.map((alert, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={alertsInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className={`p-4 rounded-md border-l-4 ${
-                        alert.priority === 'high' ? 'border-red-500 bg-red-50' : 
-                        alert.priority === 'medium' ? 'border-amber-500 bg-amber-50' : 
-                        'border-blue-500 bg-blue-50'
-                      }`}
-                    >
-                      <div className="flex items-start">
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-3 ${
-                          alert.priority === 'high' ? 'bg-red-100 text-red-500' : 
-                          alert.priority === 'medium' ? 'bg-amber-100 text-amber-500' : 
-                          'bg-blue-100 text-blue-500'
-                        }`}>
-                          <AlertTriangle className="h-4 w-4" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center justify-between">
-                            <h4 className="font-medium">{alert.title}</h4>
-                            <span className="text-xs text-gray-500">{alert.time}</span>
-                          </div>
-                          <p className="text-sm text-gray-600 mt-1">{alert.message}</p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </CardContent>
-              {alerts.length > 3 && (
-                <CardFooter className="border-t border-gray-100 px-6 py-3">
-                  <Button variant="ghost" className="w-full text-primary">
-                    View All Alerts
-                  </Button>
-                </CardFooter>
-              )}
-            </Card>
-          </div>
-        </motion.section>
-      )}
+        </div>
+      </motion.section>
 
       {/* Custom Components Section */}
       {customComponents && (
         <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={alertsInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="py-6 bg-gray-50"
+          ref={customRef}
+          initial={{ opacity: 0, y: 50 }}
+          animate={customInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="py-16 bg-white"
         >
           <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
+              Monitoring Insights
+            </h2>
             {customComponents}
           </div>
         </motion.section>
       )}
-    </Layout>
+
+      {/* Call to Action Section */}
+      <motion.section
+        ref={ctaRef}
+        initial={{ opacity: 0, y: 50 }}
+        animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="py-16 bg-primary"
+      >
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Ready to Transform Your Monitoring?
+          </h2>
+          <p className="text-white/90 max-w-2xl mx-auto mb-8">
+            Contact us today to schedule a personalized demonstration of our monitoring platform and discover how it can help optimize your equipment performance, reduce downtime, and save costs.
+          </p>
+          <Button
+            className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-6"
+            size="lg"
+          >
+            Request a Demo <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+        </div>
+      </motion.section>
+    </>
   );
 };
 

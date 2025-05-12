@@ -1,263 +1,192 @@
 import React from 'react';
 import MonitoringDashboardTemplate from '@/components/MonitoringDashboardTemplate';
 import { 
-  Battery, 
-  Gauge, 
-  Clock, 
-  AlertTriangle, 
-  TrendingUp,
-  TrendingDown,
-  ThermometerIcon,
-  Zap,
-  Watch,
-  BatteryWarning,
-  Plug,
-  LucideIcon,
-  Power,
-  Timer,
-  Eye
+  Battery, Zap, ThermometerIcon, Clock, 
+  BellRing, Gauge, ShieldAlert, 
+  BarChart4, TrendingUp, Activity,
+  Settings, Smartphone, Cloud, Laptop, 
+  Server, Cpu
 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-// Sample data for the dashboard
-const chartData = [
-  { name: '12 AM', value: 90 },
-  { name: '2 AM', value: 92 },
-  { name: '4 AM', value: 91 },
-  { name: '6 AM', value: 85 },
-  { name: '8 AM', value: 75 },
-  { name: '10 AM', value: 60 },
-  { name: '12 PM', value: 45 },
-  { name: '2 PM', value: 50 },
-  { name: '4 PM', value: 65 },
-  { name: '6 PM', value: 70 },
-  { name: '8 PM', value: 85 },
-  { name: '10 PM', value: 88 },
-];
+const UPSMonitoringPage: React.FC = () => {
+  const features = [
+    {
+      icon: <Battery className="h-5 w-5 text-primary" />,
+      title: 'Battery Health Analytics',
+      description: 'Continuous monitoring of battery voltage, temperature, and charge cycles to maximize lifespan and prevent failures.'
+    },
+    {
+      icon: <Gauge className="h-5 w-5 text-primary" />,
+      title: 'Load Monitoring',
+      description: 'Real-time analysis of UPS load levels to prevent overloading and optimize capacity utilization.'
+    },
+    {
+      icon: <ThermometerIcon className="h-5 w-5 text-primary" />,
+      title: 'Temperature Monitoring',
+      description: 'Constant temperature tracking across critical components to prevent thermal-related failures and degradation.'
+    },
+    {
+      icon: <Clock className="h-5 w-5 text-primary" />,
+      title: 'Runtime Estimation',
+      description: 'Accurate backup time calculations based on current load and battery condition for reliable planning.'
+    },
+    {
+      icon: <Activity className="h-5 w-5 text-primary" />,
+      title: 'Power Quality Analysis',
+      description: 'Comprehensive monitoring of input/output voltage, frequency stability, and waveform quality for sensitive equipment protection.'
+    },
+    {
+      icon: <BellRing className="h-5 w-5 text-primary" />,
+      title: 'Multi-Channel Notifications',
+      description: 'Customizable alerts via email, SMS, and mobile app for critical events and maintenance requirements.'
+    },
+  ];
 
-const secondaryChartData = [
-  { name: 'Monday', current: 85, previous: 80 },
-  { name: 'Tuesday', current: 80, previous: 75 },
-  { name: 'Wednesday', current: 75, previous: 70 },
-  { name: 'Thursday', current: 65, previous: 72 },
-  { name: 'Friday', current: 60, previous: 68 },
-  { name: 'Saturday', current: 70, previous: 65 },
-  { name: 'Sunday', current: 82, previous: 78 },
-];
+  const benefits = [
+    {
+      title: 'Enhanced Business Continuity',
+      description: 'Minimize costly downtime with proactive monitoring that ensures your UPS systems perform reliably when needed most.'
+    },
+    {
+      title: 'Extended Equipment Lifespan',
+      description: 'Maximize the service life of your UPS systems and batteries through optimized charging cycles and preventive maintenance.'
+    },
+    {
+      title: 'Lower Total Cost of Ownership',
+      description: 'Reduce emergency service calls, prevent premature battery replacements, and avoid costly equipment damage.'
+    },
+    {
+      title: 'Improved Energy Efficiency',
+      description: 'Identify opportunities to optimize UPS efficiency and reduce energy consumption through detailed performance analytics.'
+    },
+    {
+      title: 'Simplified Compliance',
+      description: 'Automated documentation and reporting to support regulatory compliance and internal governance requirements.'
+    },
+    {
+      title: 'Peace of Mind',
+      description: 'Confidence that your critical power infrastructure is being continuously monitored 24/7/365 by advanced systems.'
+    },
+  ];
 
-const pieData = [
-  { name: 'IT Equipment', value: 45 },
-  { name: 'Lighting', value: 15 },
-  { name: 'HVAC', value: 25 },
-  { name: 'Other', value: 15 },
-];
-
-const metrics = [
-  {
-    title: 'Battery Charge',
-    value: '85%',
-    change: '-2%',
-    status: 'negative' as const,
-    icon: <Battery className="h-5 w-5" />,
-  },
-  {
-    title: 'Load',
-    value: '62%',
-    change: '+5%',
-    status: 'neutral' as const,
-    icon: <Gauge className="h-5 w-5" />,
-  },
-  {
-    title: 'Temperature',
-    value: '28°C',
-    status: 'positive' as const,
-    icon: <ThermometerIcon className="h-5 w-5" />,
-  },
-  {
-    title: 'Backup Time',
-    value: '1.8 hrs',
-    change: '-15 min',
-    status: 'negative' as const,
-    icon: <Watch className="h-5 w-5" />,
-  },
-];
-
-const alerts = [
-  {
-    title: 'Battery Replacement Needed',
-    message: 'UPS-01 battery health below 60%. Schedule replacement within 30 days.',
-    time: '2 hrs ago',
-    priority: 'medium' as const,
-  },
-  {
-    title: 'Power Event Detected',
-    message: 'Momentary power quality issue detected. UPS successfully maintained load.',
-    time: '5 hrs ago',
-    priority: 'low' as const,
-  },
-  {
-    title: 'High Load Warning',
-    message: 'UPS-02 load reached 85% of capacity. Review connected equipment.',
-    time: '1 day ago',
-    priority: 'high' as const,
-  },
-];
-
-const UPSMonitoringDashboard: React.FC = () => {
-  const customComponents = (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center">
-            <BatteryWarning className="mr-2 h-5 w-5 text-primary" />
-            Battery Health Analysis
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-5">
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <div className="flex items-center mb-2">
-                <span className="text-lg font-semibold">Battery Bank Status</span>
-                <span className="ml-2 px-2 py-1 text-xs rounded-full bg-amber-100 text-amber-800">
-                  Maintenance advised
-                </span>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4 mb-3">
-                <div>
-                  <div className="text-sm text-gray-500">Estimated Life Remaining</div>
-                  <div className="text-xl font-bold">68%</div>
-                </div>
-                <div>
-                  <div className="text-sm text-gray-500">Replacement Date</div>
-                  <div className="text-xl font-bold">Aug 2025</div>
-                </div>
-              </div>
-              
-              <div className="flex items-center justify-between text-sm mb-1">
-                <span>Battery Health</span>
-                <span>68/100</span>
-              </div>
-              <div className="w-full h-2 bg-gray-200 rounded-full">
-                <div className="h-full bg-amber-500 rounded-full" style={{ width: '68%' }}></div>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="text-sm text-gray-500 mb-1">Discharge Cycles</div>
-                <div className="text-2xl font-bold">142</div>
-                <div className="text-xs text-gray-500 mt-1">Lifetime: 500 cycles</div>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="text-sm text-gray-500 mb-1">Last Full Test</div>
-                <div className="text-xl font-bold">12 days ago</div>
-                <div className="text-xs text-gray-500 mt-1">Result: Passed</div>
-              </div>
-            </div>
-            
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span>Cell Voltage Balance</span>
-                <span className="text-green-600">Normal</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span>Internal Resistance</span>
-                <span className="text-amber-600">Elevated</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span>Temperature Spread</span>
-                <span className="text-green-600">Normal</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span>Charge Acceptance</span>
-                <span className="text-amber-600">Reduced</span>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center">
-            <Power className="mr-2 h-5 w-5 text-primary" />
-            Power Events & Runtime
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-5">
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <div className="text-lg font-semibold mb-3">Estimated Runtime</div>
-              <div className="grid grid-cols-3 gap-2 mb-3">
-                <div className="bg-white p-3 rounded shadow-sm text-center">
-                  <div className="text-2xl font-bold text-primary">1:48</div>
-                  <div className="text-xs text-gray-500">Current Load</div>
-                </div>
-                <div className="bg-white p-3 rounded shadow-sm text-center">
-                  <div className="text-2xl font-bold">2:25</div>
-                  <div className="text-xs text-gray-500">50% Load</div>
-                </div>
-                <div className="bg-white p-3 rounded shadow-sm text-center">
-                  <div className="text-2xl font-bold">0:55</div>
-                  <div className="text-xs text-gray-500">Full Load</div>
-                </div>
-              </div>
-              <div className="text-xs text-gray-500">
-                *Runtime based on current battery condition
-              </div>
-            </div>
-            
-            <div className="space-y-3">
-              <div className="text-lg font-semibold">Recent Power Events</div>
-              
-              <div className="border-l-4 border-amber-400 pl-3 py-1">
-                <div className="flex justify-between">
-                  <span className="font-medium">Voltage Sag</span>
-                  <span className="text-xs text-gray-500">Today, 09:42 AM</span>
-                </div>
-                <div className="text-sm">178V for 2.4 seconds. UPS compensated.</div>
-              </div>
-              
-              <div className="border-l-4 border-red-400 pl-3 py-1">
-                <div className="flex justify-between">
-                  <span className="font-medium">Power Failure</span>
-                  <span className="text-xs text-gray-500">Yesterday, 04:15 PM</span>
-                </div>
-                <div className="text-sm">Battery mode for 12 minutes. Clean recovery.</div>
-              </div>
-              
-              <div className="border-l-4 border-amber-400 pl-3 py-1">
-                <div className="flex justify-between">
-                  <span className="font-medium">Frequency Deviation</span>
-                  <span className="text-xs text-gray-500">3 days ago, 11:30 AM</span>
-                </div>
-                <div className="text-sm">48.2 Hz for 35 seconds. UPS stabilized.</div>
-              </div>
-            </div>
-            
-            <div className="flex items-center justify-between pt-2">
-              <span className="font-medium">Monthly Availability</span>
-              <span className="text-green-600 font-semibold">99.98%</span>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  );
+  const capabilities = [
+    {
+      icon: <Cloud className="h-5 w-5 text-primary" />,
+      title: 'Cloud Dashboard',
+      description: 'Secure, accessible anywhere cloud platform with comprehensive visuals and analytics for all your UPS systems.'
+    },
+    {
+      icon: <Smartphone className="h-5 w-5 text-primary" />,
+      title: 'Mobile Access',
+      description: 'Monitor your UPS systems on-the-go with our intuitive mobile application for iOS and Android devices.'
+    },
+    {
+      icon: <ShieldAlert className="h-5 w-5 text-primary" />,
+      title: 'Predictive Analytics',
+      description: 'Advanced machine learning algorithms to predict potential failures weeks before they occur, allowing proactive intervention.'
+    },
+    {
+      icon: <Server className="h-5 w-5 text-primary" />,
+      title: 'Multi-Site Management',
+      description: 'Centralized monitoring and management of UPS systems across multiple locations from a single dashboard.'
+    },
+    {
+      icon: <TrendingUp className="h-5 w-5 text-primary" />,
+      title: 'Historical Trending',
+      description: 'Long-term data storage and analytics to identify patterns, optimize performance, and plan for future capacity needs.'
+    },
+    {
+      icon: <Zap className="h-5 w-5 text-primary" />,
+      title: 'Power Event Correlation',
+      description: 'Identify relationships between power events, equipment behavior, and environmental factors to resolve root causes.'
+    },
+  ];
 
   return (
     <MonitoringDashboardTemplate
-      title="UPS System Monitoring"
-      description="Battery health, load analysis, and power quality metrics for your UPS systems"
-      metrics={metrics}
-      alerts={alerts}
-      chartData={chartData}
-      secondaryChartData={secondaryChartData}
-      pieData={pieData}
-      customComponents={customComponents}
+      title="UPS Monitoring Solution"
+      subtitle="Advanced Battery & Power Quality Management"
+      description="Our comprehensive UPS monitoring system provides real-time insights into your uninterruptible power supply performance, helping you maximize reliability, extend equipment life, and minimize costly downtime."
+      features={features}
+      benefits={benefits}
+      capabilities={capabilities}
+      customComponents={
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+            <h3 className="text-xl font-semibold mb-4">Case Study: Data Center</h3>
+            <p className="text-gray-600 mb-4">A major financial services data center implemented our UPS monitoring solution and achieved:</p>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2">
+                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span className="text-gray-700">99.999% power availability (up from 99.95%)</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span className="text-gray-700">42% reduction in emergency service calls</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span className="text-gray-700">31% extended battery service life</span>
+              </li>
+            </ul>
+          </div>
+          <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+            <h3 className="text-xl font-semibold mb-4">Key Integrations</h3>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                  <Server className="h-5 w-5 text-blue-600" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Building Management Systems</h4>
+                  <p className="text-sm text-gray-600">Seamless integration with major BMS platforms</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                  <Activity className="h-5 w-5 text-purple-600" />
+                </div>
+                <div>
+                  <h4 className="font-medium">DCIM Solutions</h4>
+                  <p className="text-sm text-gray-600">Compatible with all major Data Center Infrastructure Management tools</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                  <Cpu className="h-5 w-5 text-green-600" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Enterprise Management Systems</h4>
+                  <p className="text-sm text-gray-600">API connections to ServiceNow, BMC, and other ITSM platforms</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                  <Smartphone className="h-5 w-5 text-orange-600" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Mobile Platforms</h4>
+                  <p className="text-sm text-gray-600">Native iOS and Android applications with push notifications</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
     />
   );
 };
 
-export default UPSMonitoringDashboard;
+export default UPSMonitoringPage;

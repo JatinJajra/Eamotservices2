@@ -1,235 +1,184 @@
 import React from 'react';
 import MonitoringDashboardTemplate from '@/components/MonitoringDashboardTemplate';
 import { 
-  Activity, 
-  BarChart3, 
-  Droplet, 
-  Gauge, 
-  Clock, 
-  AlertTriangle, 
-  TrendingUp,
-  TrendingDown,
-  Settings as EngineIcon, // Using Settings icon as replacement for Engine
-  Thermometer as ThermometerIcon,
-  Zap,
-  Fuel
+  Gauge, Battery, Zap, Wrench, 
+  Clock, BellRing, ShieldAlert, 
+  BarChart4, TrendingUp, AreaChart,
+  Settings, Smartphone, Cloud, Laptop, 
+  Server, Cpu
 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-// Sample data for the dashboard
-const chartData = [
-  { name: '12 AM', value: 65 },
-  { name: '2 AM', value: 45 },
-  { name: '4 AM', value: 40 },
-  { name: '6 AM', value: 50 },
-  { name: '8 AM', value: 75 },
-  { name: '10 AM', value: 90 },
-  { name: '12 PM', value: 100 },
-  { name: '2 PM', value: 95 },
-  { name: '4 PM', value: 85 },
-  { name: '6 PM', value: 90 },
-  { name: '8 PM', value: 80 },
-  { name: '10 PM', value: 70 },
-];
+const DGMonitoringPage: React.FC = () => {
+  const features = [
+    {
+      icon: <Gauge className="h-5 w-5 text-primary" />,
+      title: 'Real-Time Engine Performance',
+      description: 'Monitor critical performance metrics including load levels, fuel consumption, and engine temperature in real-time.'
+    },
+    {
+      icon: <Battery className="h-5 w-5 text-primary" />,
+      title: 'Battery Health Monitoring',
+      description: 'Track battery voltage, charge status, and health diagnostics to prevent starting failures.'
+    },
+    {
+      icon: <Zap className="h-5 w-5 text-primary" />,
+      title: 'Power Output Analytics',
+      description: 'Measure voltage stability, frequency, and power output quality with advanced analytics.'
+    },
+    {
+      icon: <BellRing className="h-5 w-5 text-primary" />,
+      title: 'Proactive Alert System',
+      description: 'Receive customizable notifications for maintenance needs, anomalies, and potential failures before they occur.'
+    },
+    {
+      icon: <TrendingUp className="h-5 w-5 text-primary" />,
+      title: 'Trend Analysis',
+      description: 'Visualize performance trends over time to identify gradual degradation and optimize maintenance schedules.'
+    },
+    {
+      icon: <Wrench className="h-5 w-5 text-primary" />,
+      title: 'Maintenance Tracking',
+      description: 'Schedule and track regular maintenance activities with automated reminders based on runtime or calendar intervals.'
+    },
+  ];
 
-const secondaryChartData = [
-  { name: 'Monday', current: 55, previous: 40 },
-  { name: 'Tuesday', current: 65, previous: 45 },
-  { name: 'Wednesday', current: 60, previous: 55 },
-  { name: 'Thursday', current: 80, previous: 70 },
-  { name: 'Friday', current: 85, previous: 65 },
-  { name: 'Saturday', current: 70, previous: 60 },
-  { name: 'Sunday', current: 50, previous: 45 },
-];
+  const benefits = [
+    {
+      title: 'Increased Generator Lifespan',
+      description: 'Early detection of issues and optimized maintenance schedules can extend generator life by up to 25%, maximizing your capital investment.'
+    },
+    {
+      title: 'Reduced Unplanned Downtime',
+      description: 'Proactive monitoring can reduce unexpected failures by up to 70%, ensuring your power systems are available when you need them most.'
+    },
+    {
+      title: 'Lower Operational Costs',
+      description: 'Optimize maintenance schedules, reduce emergency repairs, and improve fuel efficiency to significantly reduce total operational costs.'
+    },
+    {
+      title: 'Enhanced Compliance',
+      description: 'Automated record-keeping and reporting help maintain compliance with regulatory requirements and warranty conditions.'
+    },
+    {
+      title: 'Remote Management',
+      description: 'Manage your generators from anywhere with secure remote access, reducing the need for physical site visits and enabling faster response times.'
+    },
+    {
+      title: 'Data-Driven Decision Making',
+      description: 'Leverage comprehensive performance data to make informed decisions about equipment upgrades, replacements, and operational adjustments.'
+    },
+  ];
 
-const pieData = [
-  { name: 'Base Load', value: 45 },
-  { name: 'Variable Load', value: 25 },
-  { name: 'Peak Load', value: 20 },
-  { name: 'Idle', value: 10 },
-];
-
-const metrics = [
-  {
-    title: 'Current Load',
-    value: '78%',
-    change: '+5%',
-    status: 'positive' as const,
-    icon: <Gauge className="h-5 w-5" />,
-  },
-  {
-    title: 'Fuel Level',
-    value: '65%',
-    change: '-3%',
-    status: 'negative' as const,
-    icon: <Droplet className="h-5 w-5" />,
-  },
-  {
-    title: 'Engine Temperature',
-    value: '82°C',
-    status: 'neutral' as const,
-    icon: <ThermometerIcon className="h-5 w-5" />,
-  },
-  {
-    title: 'Runtime Today',
-    value: '8.5 hrs',
-    change: '+1.2 hrs',
-    status: 'neutral' as const,
-    icon: <Clock className="h-5 w-5" />,
-  },
-];
-
-const alerts = [
-  {
-    title: 'Low Fuel Warning',
-    message: 'DG-01 fuel level below 25%. Schedule refueling within 24 hours.',
-    time: '35 min ago',
-    priority: 'medium' as const,
-  },
-  {
-    title: 'High Engine Temperature',
-    message: 'DG-02 engine temperature reached 95°C. Check cooling system.',
-    time: '2 hrs ago',
-    priority: 'high' as const,
-  },
-  {
-    title: 'Maintenance Due',
-    message: 'Scheduled maintenance for DG-01 due in 5 days. Contact service team.',
-    time: '12 hrs ago',
-    priority: 'low' as const,
-  },
-];
-
-const DGMonitoringDashboard: React.FC = () => {
-  const customComponents = (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center">
-            <EngineIcon className="mr-2 h-5 w-5 text-primary" />
-            Engine Health Status
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Oil Pressure</span>
-              <div className="flex items-center">
-                <span className="font-semibold mr-2">42 PSI</span>
-                <div className="w-24 h-2 bg-gray-200 rounded-full">
-                  <div className="h-full bg-green-500 rounded-full" style={{ width: '75%' }}></div>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Coolant Level</span>
-              <div className="flex items-center">
-                <span className="font-semibold mr-2">90%</span>
-                <div className="w-24 h-2 bg-gray-200 rounded-full">
-                  <div className="h-full bg-green-500 rounded-full" style={{ width: '90%' }}></div>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Battery Voltage</span>
-              <div className="flex items-center">
-                <span className="font-semibold mr-2">13.8V</span>
-                <div className="w-24 h-2 bg-gray-200 rounded-full">
-                  <div className="h-full bg-green-500 rounded-full" style={{ width: '85%' }}></div>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">RPM</span>
-              <div className="flex items-center">
-                <span className="font-semibold mr-2">1820</span>
-                <div className="w-24 h-2 bg-gray-200 rounded-full">
-                  <div className="h-full bg-amber-500 rounded-full" style={{ width: '65%' }}></div>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Exhaust Temperature</span>
-              <div className="flex items-center">
-                <span className="font-semibold mr-2">540°C</span>
-                <div className="w-24 h-2 bg-gray-200 rounded-full">
-                  <div className="h-full bg-red-500 rounded-full" style={{ width: '88%' }}></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center">
-            <Fuel className="mr-2 h-5 w-5 text-primary" />
-            Fuel Efficiency
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="text-sm text-gray-500 mb-1">Current Consumption</div>
-                <div className="text-2xl font-bold">12.8 L/hr</div>
-                <div className="flex items-center text-green-500 text-sm mt-1">
-                  <TrendingDown className="h-4 w-4 mr-1" /> 3.2% better than avg
-                </div>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="text-sm text-gray-500 mb-1">Monthly Average</div>
-                <div className="text-2xl font-bold">13.2 L/hr</div>
-                <div className="text-xs text-gray-500 mt-1">Based on last 30 days</div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <div className="flex justify-between mb-1">
-                <span className="text-sm font-medium">Efficiency Score</span>
-                <span className="text-sm font-medium">82/100</span>
-              </div>
-              <div className="w-full h-2 bg-gray-200 rounded-full">
-                <div className="h-full bg-primary rounded-full" style={{ width: '82%' }}></div>
-              </div>
-              <div className="mt-3 text-xs text-gray-500">
-                Factors: Load balance, runtime efficiency, maintenance status
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="text-sm text-gray-500 mb-1">Estimated Fuel Left</div>
-                <div className="text-xl font-bold">145 Liters</div>
-                <div className="text-xs text-gray-500 mt-1">~11.3 hours at current rate</div>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="text-sm text-gray-500 mb-1">CO₂ Emissions</div>
-                <div className="text-xl font-bold">34.2 kg/hr</div>
-                <div className="flex items-center text-amber-500 text-xs mt-1">
-                  <AlertTriangle className="h-3 w-3 mr-1" /> Near limit
-                </div>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  );
+  const capabilities = [
+    {
+      icon: <Cloud className="h-5 w-5 text-primary" />,
+      title: 'Cloud-Based Architecture',
+      description: 'Our secure cloud platform enables access from anywhere while ensuring your data is protected with enterprise-grade security protocols.'
+    },
+    {
+      icon: <Smartphone className="h-5 w-5 text-primary" />,
+      title: 'Mobile Integration',
+      description: 'Access your monitoring dashboard from any device with our responsive web interface and dedicated mobile applications.'
+    },
+    {
+      icon: <Server className="h-5 w-5 text-primary" />,
+      title: 'Edge Computing',
+      description: 'Local processing capabilities ensure monitoring continues even during internet connectivity disruptions, with automatic data synchronization when connection is restored.'
+    },
+    {
+      icon: <Laptop className="h-5 w-5 text-primary" />,
+      title: 'Custom Reporting',
+      description: 'Generate comprehensive reports customized to your specific requirements, with automated scheduling and distribution options.'
+    },
+    {
+      icon: <ShieldAlert className="h-5 w-5 text-primary" />,
+      title: 'Predictive Diagnostics',
+      description: 'Advanced algorithms analyze operational patterns to predict potential failures before they happen, allowing for preventive maintenance.'
+    },
+    {
+      icon: <Cpu className="h-5 w-5 text-primary" />,
+      title: 'IoT Sensor Integration',
+      description: 'Seamless integration with a wide range of IoT sensors and existing building management systems to create a comprehensive monitoring solution.'
+    },
+  ];
 
   return (
     <MonitoringDashboardTemplate
       title="Diesel Generator Monitoring"
-      description="Real-time performance metrics and analysis for your DG units"
-      metrics={metrics}
-      alerts={alerts}
-      chartData={chartData}
-      secondaryChartData={secondaryChartData}
-      pieData={pieData}
-      customComponents={customComponents}
+      subtitle="Real-Time Performance & Predictive Maintenance"
+      description="Our advanced DG monitoring system provides comprehensive visibility into your generator performance with real-time analytics, predictive maintenance, and automated alerting to maximize reliability and reduce operational costs."
+      features={features}
+      benefits={benefits}
+      capabilities={capabilities}
+      customComponents={
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+            <h3 className="text-xl font-semibold mb-4">Case Study: Manufacturing Facility</h3>
+            <p className="text-gray-600 mb-4">A large manufacturing facility implemented our DG monitoring solution across their backup power systems and experienced:</p>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2">
+                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span className="text-gray-700">35% reduction in generator-related downtime</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span className="text-gray-700">28% decrease in maintenance costs</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span className="text-gray-700">15% improvement in fuel efficiency</span>
+              </li>
+            </ul>
+          </div>
+          <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+            <h3 className="text-xl font-semibold mb-4">Implementation Process</h3>
+            <ol className="space-y-3">
+              <li className="flex gap-3">
+                <div className="flex-shrink-0 w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center font-semibold">1</div>
+                <div>
+                  <h4 className="font-medium">Initial Assessment</h4>
+                  <p className="text-sm text-gray-600">We evaluate your current DG infrastructure and monitoring needs</p>
+                </div>
+              </li>
+              <li className="flex gap-3">
+                <div className="flex-shrink-0 w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center font-semibold">2</div>
+                <div>
+                  <h4 className="font-medium">Sensor Installation</h4>
+                  <p className="text-sm text-gray-600">Our engineers install non-invasive sensors on your generators</p>
+                </div>
+              </li>
+              <li className="flex gap-3">
+                <div className="flex-shrink-0 w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center font-semibold">3</div>
+                <div>
+                  <h4 className="font-medium">System Configuration</h4>
+                  <p className="text-sm text-gray-600">Configure and customize the monitoring platform to your requirements</p>
+                </div>
+              </li>
+              <li className="flex gap-3">
+                <div className="flex-shrink-0 w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center font-semibold">4</div>
+                <div>
+                  <h4 className="font-medium">Training & Handover</h4>
+                  <p className="text-sm text-gray-600">Comprehensive training on system operation and maintenance</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      }
     />
   );
 };
 
-export default DGMonitoringDashboard;
+export default DGMonitoringPage;
