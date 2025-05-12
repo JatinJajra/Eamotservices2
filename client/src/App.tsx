@@ -26,7 +26,7 @@ import Retrofitting from "@/pages/solutions/retrofitting";
 // Detailed Solution Pages
 import DGProcurementPage from "@/pages/solutions/diesel-generator/procurement";
 import DGInstallationPage from "@/pages/solutions/diesel-generator/installation";
-import DGAMCPage from "@/pages/solutions/diesel-generator/amc";
+import DGSolutionAMCPage from "@/pages/solutions/diesel-generator/amc";
 import DGOverhaulPage from "@/pages/solutions/diesel-generator/overhaul";
 import DGMonitoringPage from "@/pages/solutions/diesel-generator/monitoring";
 import UPSSourcingPage from "@/pages/solutions/ups/sourcing";
@@ -50,13 +50,16 @@ import DFKAnalyticsPage from "@/pages/solutions/dfk/analytics";
 import DFKMaintenancePage from "@/pages/solutions/dfk/maintenance";
 
 // Detailed Service Pages
-import DGAMCPage from "@/pages/services/amc/diesel-generator";
+import DGServiceAMCPage from "@/pages/services/amc/diesel-generator";
 import CQAMRegistrationPage from "@/pages/services/emission/cqam";
 
 // Monitoring Dashboard Pages
 import DGMonitoringDashboard from "@/pages/monitoring/dg";
 import UPSMonitoringDashboard from "@/pages/monitoring/ups";
 import ServoMonitoringDashboard from "@/pages/monitoring/servo";
+import RECDMonitoringDashboard from "@/pages/monitoring/recd";
+import AnalyticsMonitoringDashboard from "@/pages/monitoring/analytics";
+import PlatformMonitoringDashboard from "@/pages/monitoring/platform";
 
 // Other Pages
 import Careers from "@/pages/Careers";
@@ -102,7 +105,7 @@ function Router() {
         <Route path="/services/installation/documentation" component={() => <h1>Documentation & Handover</h1>} />
         
         {/* Annual Maintenance Contracts */}
-        <Route path="/services/amc/diesel-generator" component={DGAMCPage} />
+        <Route path="/services/amc/diesel-generator" component={DGServiceAMCPage} />
         <Route path="/services/amc/ups" component={() => <h1>UPS AMC</h1>} />
         <Route path="/services/amc/servo-stabilizer" component={() => <h1>Servo Stabilizer AMC</h1>} />
         <Route path="/services/amc/preventive" component={() => <h1>Preventive Maintenance Schedules</h1>} />
@@ -125,44 +128,44 @@ function Router() {
         <Route path="/monitoring/dg" component={DGMonitoringDashboard} />
         <Route path="/monitoring/ups" component={UPSMonitoringDashboard} />
         <Route path="/monitoring/servo" component={ServoMonitoringDashboard} />
-        <Route path="/monitoring/recd" component={() => <h1>RECD Emission Monitoring</h1>} />
-        <Route path="/monitoring/analytics" component={() => <h1>Alerts, Reports & Analytics</h1>} />
-        <Route path="/monitoring/platform" component={() => <h1>Centralized Asset Monitoring Platform</h1>} />
+        <Route path="/monitoring/recd" component={RECDMonitoringDashboard} />
+        <Route path="/monitoring/analytics" component={AnalyticsMonitoringDashboard} />
+        <Route path="/monitoring/platform" component={PlatformMonitoringDashboard} />
         
         {/* Solutions Pages */}
         {/* Diesel Generator Solutions */}
         <Route path="/solutions/diesel-generator/procurement" component={DGProcurementPage} />
-        <Route path="/solutions/diesel-generator/installation" component={() => import("@/pages/solutions/diesel-generator/installation").then(module => <module.default />)} />
-        <Route path="/solutions/diesel-generator/amc" component={() => import("@/pages/solutions/diesel-generator/amc").then(module => <module.default />)} />
-        <Route path="/solutions/diesel-generator/overhaul" component={() => import("@/pages/solutions/diesel-generator/overhaul").then(module => <module.default />)} />
-        <Route path="/solutions/diesel-generator/monitoring" component={() => import("@/pages/solutions/diesel-generator/monitoring").then(module => <module.default />)} />
+        <Route path="/solutions/diesel-generator/installation" component={DGInstallationPage} />
+        <Route path="/solutions/diesel-generator/amc" component={DGSolutionAMCPage} />
+        <Route path="/solutions/diesel-generator/overhaul" component={DGOverhaulPage} />
+        <Route path="/solutions/diesel-generator/monitoring" component={DGMonitoringPage} />
         
         {/* UPS System Solutions */}
         <Route path="/solutions/ups/sourcing" component={UPSSourcingPage} />
-        <Route path="/solutions/ups/battery" component={() => <h1>UPS Battery Sizing & Supply</h1>} />
-        <Route path="/solutions/ups/amc" component={() => <h1>UPS AMC</h1>} />
-        <Route path="/solutions/ups/monitoring" component={() => <h1>Load Management & Monitoring</h1>} />
+        <Route path="/solutions/ups/battery" component={UPSBatteryPage} />
+        <Route path="/solutions/ups/amc" component={UPSAMCPage} />
+        <Route path="/solutions/ups/monitoring" component={UPSMonitoringPage} />
         
         {/* Servo Stabilizer Solutions */}
-        <Route path="/solutions/servo/sizing" component={() => <h1>Sizing & Selection Support</h1>} />
-        <Route path="/solutions/servo/procurement" component={() => <h1>Procurement & Delivery</h1>} />
-        <Route path="/solutions/servo/installation" component={() => <h1>Installation & Commissioning</h1>} />
-        <Route path="/solutions/servo/amc" component={() => <h1>Stabilizer AMC</h1>} />
-        <Route path="/solutions/servo/monitoring" component={() => <h1>Remote Voltage Monitoring</h1>} />
+        <Route path="/solutions/servo/sizing" component={ServoSizingPage} />
+        <Route path="/solutions/servo/procurement" component={ServoProcurementPage} />
+        <Route path="/solutions/servo/installation" component={ServoInstallationPage} />
+        <Route path="/solutions/servo/amc" component={ServoAMCPage} />
+        <Route path="/solutions/servo/monitoring" component={ServoMonitoringPage} />
         
         {/* RECD Compliance Solutions */}
-        <Route path="/solutions/recd/advisory" component={() => <h1>CQAM Norms & Compliance Advisory</h1>} />
-        <Route path="/solutions/recd/procurement" component={() => <h1>RECD Procurement</h1>} />
-        <Route path="/solutions/recd/integration" component={() => <h1>Installation & Integration</h1>} />
-        <Route path="/solutions/recd/monitoring" component={() => <h1>Emission Performance Monitoring</h1>} />
-        <Route path="/solutions/recd/documentation" component={() => <h1>Regulatory Documentation Support</h1>} />
+        <Route path="/solutions/recd/advisory" component={RECDAdvisoryPage} />
+        <Route path="/solutions/recd/procurement" component={RECDProcurementPage} />
+        <Route path="/solutions/recd/integration" component={RECDIntegrationPage} />
+        <Route path="/solutions/recd/monitoring" component={RECDMonitoringPage} />
+        <Route path="/solutions/recd/documentation" component={RECDDocumentationPage} />
         
         {/* Dual Fuel Kit Conversions */}
-        <Route path="/solutions/dfk/assessment" component={() => <h1>DFK Suitability Assessment</h1>} />
-        <Route path="/solutions/dfk/procurement" component={() => <h1>DFK Procurement</h1>} />
-        <Route path="/solutions/dfk/installation" component={() => <h1>Installation & Calibration</h1>} />
-        <Route path="/solutions/dfk/analytics" component={() => <h1>Fuel Savings Analytics</h1>} />
-        <Route path="/solutions/dfk/maintenance" component={() => <h1>Post-conversion Maintenance</h1>} />
+        <Route path="/solutions/dfk/assessment" component={DFKAssessmentPage} />
+        <Route path="/solutions/dfk/procurement" component={DFKProcurementPage} />
+        <Route path="/solutions/dfk/installation" component={DFKInstallationPage} />
+        <Route path="/solutions/dfk/analytics" component={DFKAnalyticsPage} />
+        <Route path="/solutions/dfk/maintenance" component={DFKMaintenancePage} />
         
         {/* Other Pages */}
         <Route path="/careers" component={Careers} />
