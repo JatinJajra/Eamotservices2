@@ -256,8 +256,9 @@ export default function Header() {
           <div className="relative" ref={useRef<HTMLDivElement>(null)}>
             <button 
               className="font-montserrat hover:text-primary transition duration-300 flex items-center text-sm"
-              onClick={() => {
-                // Smart Monitoring section will open a dropdown later
+              onClick={(e) => {
+                e.currentTarget.nextElementSibling?.classList.toggle('hidden');
+                e.currentTarget.querySelector('i')?.classList.toggle('rotate-180');
               }}
             >
               Smart Monitoring
@@ -496,6 +497,38 @@ export default function Header() {
                 )}
               </div>
               
+              {/* Smart Monitoring Mobile Section */}
+              <div className="border-b border-gray-100">
+                <button 
+                  className="font-montserrat font-medium py-2 w-full text-left flex items-center justify-between"
+                  onClick={(e) => {
+                    const content = e.currentTarget.nextElementSibling as HTMLElement;
+                    const icon = e.currentTarget.querySelector('i');
+                    if (content && icon) {
+                      content.classList.toggle('hidden');
+                      icon.classList.toggle('rotate-180');
+                    }
+                  }}
+                >
+                  <span>Smart Monitoring</span>
+                  <i className={`fas fa-chevron-down transition-transform duration-300`}></i>
+                </button>
+                
+                <div className="pl-4 py-2 space-y-2 hidden">
+                  <div>
+                    <h3 className="font-semibold text-primary text-sm mb-1">Digital Intelligence for Real-time Visibility</h3>
+                    <ul className="pl-2 space-y-1 text-xs text-gray-700">
+                      <li>DG Monitoring Dashboard (Fuel, Load, Health)</li>
+                      <li>UPS Monitoring (Battery Life, Load, Alarms)</li>
+                      <li>Servo Monitoring (Voltage Stability, Faults)</li>
+                      <li>RECD Emission Monitoring</li>
+                      <li>Alerts, Reports & Analytics</li>
+                      <li>Centralized Asset Monitoring Platform</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
               <a href="/#blog" className="font-montserrat font-medium py-2 border-b border-gray-100 block">Blog</a>
               
               <Link href="/careers">
@@ -530,39 +563,11 @@ export default function Header() {
                     <Link href="/loading-states">
                       <span className="block py-1 text-gray-700 cursor-pointer">Loading States</span>
                     </Link>
-                    <div className="border-t border-gray-100 my-2"></div>
-                    <Link href="/client-portal/login">
-                      <span className="block py-1 text-accent font-medium cursor-pointer">
-                        <i className="fas fa-user-circle mr-2"></i>
-                        Client Portal
-                      </span>
-                    </Link>
                   </div>
                 )}
               </div>
               
-              <button 
-                onClick={() => {
-                  const footer = document.getElementById('footer');
-                  if (footer) {
-                    footer.scrollIntoView({ behavior: 'smooth' });
-                    setIsMenuOpen(false);
-                  }
-                }}
-                className="font-montserrat font-medium py-2 border-b border-gray-100 block w-full text-left cursor-pointer"
-              >
-                Contact
-              </button>
-              
-              <div className="pt-4 pb-2 space-y-3">
-                <Button asChild variant="outline" className="w-full border-primary/30 hover:bg-primary/5 text-primary">
-                  <Link href="/client-portal/login">
-                    <span className="flex items-center justify-center">
-                      <i className="fas fa-user-circle mr-2"></i>
-                      Client Portal Login
-                    </span>
-                  </Link>
-                </Button>
+              <div className="pt-4 pb-2">
                 <Button 
                   className="w-full bg-accent hover:bg-accent/90 text-white font-poppins font-medium"
                   onClick={() => {
