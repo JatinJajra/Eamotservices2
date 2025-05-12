@@ -120,11 +120,31 @@ export default function Header() {
                   
                   <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
                     <ul className="px-4 py-1 space-y-2">
-                      <li className="text-sm text-gray-700 hover:text-primary">DG Procurement (CPCB IV+ Compliant)</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">DG Installation & Shifting</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">DG AMC (Annual Maintenance Contract)</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">DG Overhaul & Repairs</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">IoT-based DG Monitoring</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/diesel-generator/procurement">
+                          <span className="block py-1 cursor-pointer">DG Procurement (CPCB IV+ Compliant)</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/diesel-generator/installation">
+                          <span className="block py-1 cursor-pointer">DG Installation & Shifting</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/diesel-generator/amc">
+                          <span className="block py-1 cursor-pointer">DG AMC (Annual Maintenance Contract)</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/diesel-generator/overhaul">
+                          <span className="block py-1 cursor-pointer">DG Overhaul & Repairs</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/diesel-generator/monitoring">
+                          <span className="block py-1 cursor-pointer">IoT-based DG Monitoring</span>
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -138,10 +158,26 @@ export default function Header() {
                   
                   <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
                     <ul className="px-4 py-1 space-y-2">
-                      <li className="text-sm text-gray-700 hover:text-primary">UPS System Sourcing</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">UPS Battery Sizing & Supply</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">UPS AMC</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Load Management & Monitoring</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/ups/sourcing">
+                          <span className="block py-1 cursor-pointer">UPS System Sourcing</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/ups/battery">
+                          <span className="block py-1 cursor-pointer">UPS Battery Sizing & Supply</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/ups/amc">
+                          <span className="block py-1 cursor-pointer">UPS AMC</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/ups/monitoring">
+                          <span className="block py-1 cursor-pointer">Load Management & Monitoring</span>
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -155,11 +191,31 @@ export default function Header() {
                   
                   <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
                     <ul className="px-4 py-1 space-y-2">
-                      <li className="text-sm text-gray-700 hover:text-primary">Sizing & Selection Support</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Procurement & Delivery</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Installation & Commissioning</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Stabilizer AMC</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Remote Voltage Monitoring</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/servo/sizing">
+                          <span className="block py-1 cursor-pointer">Sizing & Selection Support</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/servo/procurement">
+                          <span className="block py-1 cursor-pointer">Procurement & Delivery</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/servo/installation">
+                          <span className="block py-1 cursor-pointer">Installation & Commissioning</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/servo/amc">
+                          <span className="block py-1 cursor-pointer">Stabilizer AMC</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/servo/monitoring">
+                          <span className="block py-1 cursor-pointer">Remote Voltage Monitoring</span>
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -173,11 +229,31 @@ export default function Header() {
                   
                   <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
                     <ul className="px-4 py-1 space-y-2">
-                      <li className="text-sm text-gray-700 hover:text-primary">CQAM Norms & Compliance Advisory</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">RECD Procurement</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Installation & Integration</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Emission Performance Monitoring</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Regulatory Documentation Support</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/recd/advisory">
+                          <span className="block py-1 cursor-pointer">CQAM Norms & Compliance Advisory</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/recd/procurement">
+                          <span className="block py-1 cursor-pointer">RECD Procurement</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/recd/integration">
+                          <span className="block py-1 cursor-pointer">Installation & Integration</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/recd/monitoring">
+                          <span className="block py-1 cursor-pointer">Emission Performance Monitoring</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/recd/documentation">
+                          <span className="block py-1 cursor-pointer">Regulatory Documentation Support</span>
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -191,11 +267,31 @@ export default function Header() {
                   
                   <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
                     <ul className="px-4 py-1 space-y-2">
-                      <li className="text-sm text-gray-700 hover:text-primary">DFK Suitability Assessment</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">DFK Procurement</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Installation & Calibration</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Fuel Savings Analytics</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Post-conversion Maintenance</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/dfk/assessment">
+                          <span className="block py-1 cursor-pointer">DFK Suitability Assessment</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/dfk/procurement">
+                          <span className="block py-1 cursor-pointer">DFK Procurement</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/dfk/installation">
+                          <span className="block py-1 cursor-pointer">Installation & Calibration</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/dfk/analytics">
+                          <span className="block py-1 cursor-pointer">Fuel Savings Analytics</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/solutions/dfk/maintenance">
+                          <span className="block py-1 cursor-pointer">Post-conversion Maintenance</span>
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -228,10 +324,26 @@ export default function Header() {
                   
                   <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
                     <ul className="px-4 py-1 space-y-2">
-                      <li className="text-sm text-gray-700 hover:text-primary">On-site Assessment & Feasibility</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Turnkey Installation Projects</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Synchronization & Load Testing</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Documentation & Handover</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/installation/assessment">
+                          <span className="block py-1 cursor-pointer">On-site Assessment & Feasibility</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/installation/turnkey">
+                          <span className="block py-1 cursor-pointer">Turnkey Installation Projects</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/installation/synchronization">
+                          <span className="block py-1 cursor-pointer">Synchronization & Load Testing</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/installation/documentation">
+                          <span className="block py-1 cursor-pointer">Documentation & Handover</span>
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -245,11 +357,31 @@ export default function Header() {
                   
                   <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
                     <ul className="px-4 py-1 space-y-2">
-                      <li className="text-sm text-gray-700 hover:text-primary">Diesel Generator AMC</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">UPS AMC</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Servo Stabilizer AMC</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Preventive Maintenance Schedules</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Emergency Breakdown Services</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/amc/diesel-generator">
+                          <span className="block py-1 cursor-pointer">Diesel Generator AMC</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/amc/ups">
+                          <span className="block py-1 cursor-pointer">UPS AMC</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/amc/servo-stabilizer">
+                          <span className="block py-1 cursor-pointer">Servo Stabilizer AMC</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/amc/preventive">
+                          <span className="block py-1 cursor-pointer">Preventive Maintenance Schedules</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/amc/emergency">
+                          <span className="block py-1 cursor-pointer">Emergency Breakdown Services</span>
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -263,11 +395,31 @@ export default function Header() {
                   
                   <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
                     <ul className="px-4 py-1 space-y-2">
-                      <li className="text-sm text-gray-700 hover:text-primary">DG Engine & Alternator Parts</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">UPS Modules & Batteries</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Servo Control Components</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">RECD Spares</li>
-                      <li className="text-sm text-gray-700 hover:text-primary">Logistics & Delivery Support</li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/parts/dg-engine">
+                          <span className="block py-1 cursor-pointer">DG Engine & Alternator Parts</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/parts/ups-modules">
+                          <span className="block py-1 cursor-pointer">UPS Modules & Batteries</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/parts/servo-control">
+                          <span className="block py-1 cursor-pointer">Servo Control Components</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/parts/recd-spares">
+                          <span className="block py-1 cursor-pointer">RECD Spares</span>
+                        </Link>
+                      </li>
+                      <li className="text-sm text-gray-700 hover:text-primary">
+                        <Link href="/services/parts/logistics">
+                          <span className="block py-1 cursor-pointer">Logistics & Delivery Support</span>
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
