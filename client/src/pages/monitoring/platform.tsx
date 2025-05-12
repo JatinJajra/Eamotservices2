@@ -1,6 +1,6 @@
 import React from 'react';
 import MonitoringDashboardTemplate from '@/components/MonitoringDashboardTemplate';
-import { Globe, Shield, Users, Devices, Smartphone, Cloud } from 'lucide-react';
+import { Globe, Shield, Users, Smartphone, Cloud, MonitorSmartphone } from 'lucide-react';
 
 const PlatformMonitoringPage: React.FC = () => {
   const features = [
@@ -10,7 +10,7 @@ const PlatformMonitoringPage: React.FC = () => {
       description: 'Centralized monitoring solution for all power equipment types with integrated dashboard views and cross-device analytics.'
     },
     {
-      icon: <Devices className="h-5 w-5 text-primary" />,
+      icon: <MonitorSmartphone className="h-5 w-5 text-primary" />,
       title: 'Multi-device Compatibility',
       description: 'Responsive design with optimized interfaces for desktop, tablet, and mobile devices for anywhere, anytime monitoring.'
     },
@@ -70,7 +70,7 @@ const PlatformMonitoringPage: React.FC = () => {
       description: 'Seamless integration with diverse equipment types and third-party systems through robust API architecture and protocol support.'
     },
     {
-      icon: <Devices className="h-5 w-5 text-primary" />,
+      icon: <MonitorSmartphone className="h-5 w-5 text-primary" />,
       title: 'Customizable Dashboards',
       description: 'Role-based, personalized dashboards with drag-and-drop configuration and user-specific KPI visualization options.'
     },

@@ -25,7 +25,29 @@ import Retrofitting from "@/pages/solutions/retrofitting";
 
 // Detailed Solution Pages
 import DGProcurementPage from "@/pages/solutions/diesel-generator/procurement";
+import DGInstallationPage from "@/pages/solutions/diesel-generator/installation";
+import DGAMCPage from "@/pages/solutions/diesel-generator/amc";
+import DGOverhaulPage from "@/pages/solutions/diesel-generator/overhaul";
+import DGMonitoringPage from "@/pages/solutions/diesel-generator/monitoring";
 import UPSSourcingPage from "@/pages/solutions/ups/sourcing";
+import UPSBatteryPage from "@/pages/solutions/ups/battery";
+import UPSAMCPage from "@/pages/solutions/ups/amc";
+import UPSMonitoringPage from "@/pages/solutions/ups/monitoring";
+import ServoSizingPage from "@/pages/solutions/servo/sizing";
+import ServoProcurementPage from "@/pages/solutions/servo/procurement";
+import ServoInstallationPage from "@/pages/solutions/servo/installation";
+import ServoAMCPage from "@/pages/solutions/servo/amc";
+import ServoMonitoringPage from "@/pages/solutions/servo/monitoring";
+import RECDAdvisoryPage from "@/pages/solutions/recd/advisory";
+import RECDProcurementPage from "@/pages/solutions/recd/procurement";
+import RECDIntegrationPage from "@/pages/solutions/recd/integration";
+import RECDMonitoringPage from "@/pages/solutions/recd/monitoring";
+import RECDDocumentationPage from "@/pages/solutions/recd/documentation";
+import DFKAssessmentPage from "@/pages/solutions/dfk/assessment";
+import DFKProcurementPage from "@/pages/solutions/dfk/procurement";
+import DFKInstallationPage from "@/pages/solutions/dfk/installation";
+import DFKAnalyticsPage from "@/pages/solutions/dfk/analytics";
+import DFKMaintenancePage from "@/pages/solutions/dfk/maintenance";
 
 // Detailed Service Pages
 import DGAMCPage from "@/pages/services/amc/diesel-generator";
@@ -110,10 +132,10 @@ function Router() {
         {/* Solutions Pages */}
         {/* Diesel Generator Solutions */}
         <Route path="/solutions/diesel-generator/procurement" component={DGProcurementPage} />
-        <Route path="/solutions/diesel-generator/installation" component={() => <h1>DG Installation & Shifting</h1>} />
-        <Route path="/solutions/diesel-generator/amc" component={() => <h1>DG AMC (Annual Maintenance Contract)</h1>} />
-        <Route path="/solutions/diesel-generator/overhaul" component={() => <h1>DG Overhaul & Repairs</h1>} />
-        <Route path="/solutions/diesel-generator/monitoring" component={() => <h1>IoT-based DG Monitoring</h1>} />
+        <Route path="/solutions/diesel-generator/installation" component={() => import("@/pages/solutions/diesel-generator/installation").then(module => <module.default />)} />
+        <Route path="/solutions/diesel-generator/amc" component={() => import("@/pages/solutions/diesel-generator/amc").then(module => <module.default />)} />
+        <Route path="/solutions/diesel-generator/overhaul" component={() => import("@/pages/solutions/diesel-generator/overhaul").then(module => <module.default />)} />
+        <Route path="/solutions/diesel-generator/monitoring" component={() => import("@/pages/solutions/diesel-generator/monitoring").then(module => <module.default />)} />
         
         {/* UPS System Solutions */}
         <Route path="/solutions/ups/sourcing" component={UPSSourcingPage} />
