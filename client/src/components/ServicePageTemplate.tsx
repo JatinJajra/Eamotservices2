@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Check, ArrowRight, Zap, Info, Clock, Settings, Shield } from 'lucide-react';
-import Layout from './Layout';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 
 interface ServiceFeature {
@@ -63,7 +62,7 @@ const ServicePageTemplate: React.FC<ServicePageTemplateProps> = ({
   const { ref: ctaRef, inView: ctaInView } = useIntersectionObserver({ threshold: 0.2 });
 
   return (
-    <Layout>
+    <>
       {/* Hero Section */}
       <motion.section
         ref={heroRef}
@@ -262,7 +261,7 @@ const ServicePageTemplate: React.FC<ServicePageTemplateProps> = ({
           </div>
         </motion.section>
       )}
-    </Layout>
+    </>
   );
 };
 
