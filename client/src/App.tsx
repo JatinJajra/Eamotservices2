@@ -23,6 +23,19 @@ import EnergyManagement from "@/pages/solutions/energy-management";
 import PredictiveMaintenance from "@/pages/solutions/predictive-maintenance";
 import Retrofitting from "@/pages/solutions/retrofitting";
 
+// Detailed Solution Pages
+import DGProcurementPage from "@/pages/solutions/diesel-generator/procurement";
+import UPSSourcingPage from "@/pages/solutions/ups/sourcing";
+
+// Detailed Service Pages
+import DGAMCPage from "@/pages/services/amc/diesel-generator";
+import CQAMRegistrationPage from "@/pages/services/emission/cqam";
+
+// Monitoring Dashboard Pages
+import DGMonitoringDashboard from "@/pages/monitoring/dg";
+import UPSMonitoringDashboard from "@/pages/monitoring/ups";
+import ServoMonitoringDashboard from "@/pages/monitoring/servo";
+
 // Other Pages
 import Careers from "@/pages/Careers";
 import EnergyCalculator from "@/pages/EnergyCalculator";
@@ -67,7 +80,7 @@ function Router() {
         <Route path="/services/installation/documentation" component={() => <h1>Documentation & Handover</h1>} />
         
         {/* Annual Maintenance Contracts */}
-        <Route path="/services/amc/diesel-generator" component={() => <h1>Diesel Generator AMC</h1>} />
+        <Route path="/services/amc/diesel-generator" component={DGAMCPage} />
         <Route path="/services/amc/ups" component={() => <h1>UPS AMC</h1>} />
         <Route path="/services/amc/servo-stabilizer" component={() => <h1>Servo Stabilizer AMC</h1>} />
         <Route path="/services/amc/preventive" component={() => <h1>Preventive Maintenance Schedules</h1>} />
@@ -81,29 +94,29 @@ function Router() {
         <Route path="/services/parts/logistics" component={() => <h1>Logistics & Delivery Support</h1>} />
         
         {/* Emission Compliance Services */}
-        <Route path="/services/emission/cqam" component={() => <h1>CQAM Registration & Guidance</h1>} />
+        <Route path="/services/emission/cqam" component={CQAMRegistrationPage} />
         <Route path="/services/emission/recd-integration" component={() => <h1>On-field RECD Integration</h1>} />
         <Route path="/services/emission/testing" component={() => <h1>Emission Testing Coordination</h1>} />
         <Route path="/services/emission/reporting" component={() => <h1>Compliance Reporting</h1>} />
         
         {/* Smart Monitoring */}
-        <Route path="/monitoring/dg" component={() => <h1>DG Monitoring Dashboard (Fuel, Load, Health)</h1>} />
-        <Route path="/monitoring/ups" component={() => <h1>UPS Monitoring (Battery Life, Load, Alarms)</h1>} />
-        <Route path="/monitoring/servo" component={() => <h1>Servo Monitoring (Voltage Stability, Faults)</h1>} />
+        <Route path="/monitoring/dg" component={DGMonitoringDashboard} />
+        <Route path="/monitoring/ups" component={UPSMonitoringDashboard} />
+        <Route path="/monitoring/servo" component={ServoMonitoringDashboard} />
         <Route path="/monitoring/recd" component={() => <h1>RECD Emission Monitoring</h1>} />
         <Route path="/monitoring/analytics" component={() => <h1>Alerts, Reports & Analytics</h1>} />
         <Route path="/monitoring/platform" component={() => <h1>Centralized Asset Monitoring Platform</h1>} />
         
         {/* Solutions Pages */}
         {/* Diesel Generator Solutions */}
-        <Route path="/solutions/diesel-generator/procurement" component={() => <h1>DG Procurement (CPCB IV+ Compliant)</h1>} />
+        <Route path="/solutions/diesel-generator/procurement" component={DGProcurementPage} />
         <Route path="/solutions/diesel-generator/installation" component={() => <h1>DG Installation & Shifting</h1>} />
         <Route path="/solutions/diesel-generator/amc" component={() => <h1>DG AMC (Annual Maintenance Contract)</h1>} />
         <Route path="/solutions/diesel-generator/overhaul" component={() => <h1>DG Overhaul & Repairs</h1>} />
         <Route path="/solutions/diesel-generator/monitoring" component={() => <h1>IoT-based DG Monitoring</h1>} />
         
         {/* UPS System Solutions */}
-        <Route path="/solutions/ups/sourcing" component={() => <h1>UPS System Sourcing</h1>} />
+        <Route path="/solutions/ups/sourcing" component={UPSSourcingPage} />
         <Route path="/solutions/ups/battery" component={() => <h1>UPS Battery Sizing & Supply</h1>} />
         <Route path="/solutions/ups/amc" component={() => <h1>UPS AMC</h1>} />
         <Route path="/solutions/ups/monitoring" component={() => <h1>Load Management & Monitoring</h1>} />

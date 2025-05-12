@@ -9,8 +9,8 @@ import {
   AlertTriangle, 
   TrendingUp,
   TrendingDown,
-  Engine,
-  ThermometerIcon,
+  Settings as EngineIcon, // Using Settings icon as replacement for Engine
+  Thermometer as ThermometerIcon,
   Zap,
   Fuel
 } from 'lucide-react';
@@ -54,27 +54,27 @@ const metrics = [
     title: 'Current Load',
     value: '78%',
     change: '+5%',
-    status: 'positive',
+    status: 'positive' as const,
     icon: <Gauge className="h-5 w-5" />,
   },
   {
     title: 'Fuel Level',
     value: '65%',
     change: '-3%',
-    status: 'negative',
+    status: 'negative' as const,
     icon: <Droplet className="h-5 w-5" />,
   },
   {
     title: 'Engine Temperature',
     value: '82°C',
-    status: 'neutral',
+    status: 'neutral' as const,
     icon: <ThermometerIcon className="h-5 w-5" />,
   },
   {
     title: 'Runtime Today',
     value: '8.5 hrs',
     change: '+1.2 hrs',
-    status: 'neutral',
+    status: 'neutral' as const,
     icon: <Clock className="h-5 w-5" />,
   },
 ];
@@ -84,19 +84,19 @@ const alerts = [
     title: 'Low Fuel Warning',
     message: 'DG-01 fuel level below 25%. Schedule refueling within 24 hours.',
     time: '35 min ago',
-    priority: 'medium',
+    priority: 'medium' as const,
   },
   {
     title: 'High Engine Temperature',
     message: 'DG-02 engine temperature reached 95°C. Check cooling system.',
     time: '2 hrs ago',
-    priority: 'high',
+    priority: 'high' as const,
   },
   {
     title: 'Maintenance Due',
     message: 'Scheduled maintenance for DG-01 due in 5 days. Contact service team.',
     time: '12 hrs ago',
-    priority: 'low',
+    priority: 'low' as const,
   },
 ];
 
@@ -106,7 +106,7 @@ const DGMonitoringDashboard: React.FC = () => {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center">
-            <Engine className="mr-2 h-5 w-5 text-primary" />
+            <EngineIcon className="mr-2 h-5 w-5 text-primary" />
             Engine Health Status
           </CardTitle>
         </CardHeader>
