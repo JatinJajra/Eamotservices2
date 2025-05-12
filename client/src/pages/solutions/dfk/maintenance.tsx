@@ -1,6 +1,6 @@
 import React from 'react';
 import ServicePageTemplate from '@/components/ServicePageTemplate';
-import { Tool, Clock, AlertTriangle, FileCheck, CheckSquare, Calendar } from 'lucide-react';
+import { Wrench, Clock, AlertTriangle, FileCheck, CheckSquare, Calendar } from 'lucide-react';
 
 const DFKMaintenancePage: React.FC = () => {
   const features = [
@@ -10,7 +10,7 @@ const DFKMaintenancePage: React.FC = () => {
       description: 'Customized maintenance schedules optimized for dual fuel systems with comprehensive service protocols and guidelines.'
     },
     {
-      icon: <Tool className="h-5 w-5 text-primary" />,
+      icon: <Wrench className="h-5 w-5 text-primary" />,
       title: 'Professional Service Execution',
       description: 'Expert maintenance services performed by technicians specifically trained in dual fuel system maintenance and optimization.'
     },

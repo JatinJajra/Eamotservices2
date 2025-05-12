@@ -1,6 +1,6 @@
 import React from 'react';
 import ServicePageTemplate from '@/components/ServicePageTemplate';
-import { Settings, BarChart4, Cpu, Server, Tool, Shield } from 'lucide-react';
+import { Settings, BarChart4, Cpu, Server, Wrench, Shield } from 'lucide-react';
 
 const RECDIntegrationPage: React.FC = () => {
   const features = [
@@ -25,7 +25,7 @@ const RECDIntegrationPage: React.FC = () => {
       description: 'Configuration of secure, reliable data transmission to pollution control board servers with redundant communication paths.'
     },
     {
-      icon: <Tool className="h-5 w-5 text-primary" />,
+      icon: <Wrench className="h-5 w-5 text-primary" />,
       title: 'Post-Installation Testing',
       description: 'Comprehensive performance and compliance testing following installation to ensure regulatory standards are met.'
     },

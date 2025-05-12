@@ -1,11 +1,11 @@
 import React from 'react';
 import ServicePageTemplate from '@/components/ServicePageTemplate';
-import { Tool, Gauge, Cpu, FileCheck, Users, Settings } from 'lucide-react';
+import { Wrench, Gauge, Cpu, FileCheck, Users, Settings } from 'lucide-react';
 
 const DFKInstallationPage: React.FC = () => {
   const features = [
     {
-      icon: <Tool className="h-5 w-5 text-primary" />,
+      icon: <Wrench className="h-5 w-5 text-primary" />,
       title: 'Professional Installation',
       description: 'Expert installation of dual fuel kits by certified technicians with specialized experience in DG conversions.'
     },
