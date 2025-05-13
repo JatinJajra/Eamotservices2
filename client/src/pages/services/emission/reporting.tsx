@@ -3,17 +3,19 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
-  Cpu, CircuitBoard, Zap, Shield, 
+  FileText, BarChart, Shield, 
   Package, Truck, Clock, CheckCircle, Search,
-  Settings, Wrench, BarChart, AlertTriangle
+  Settings, Wrench, Clipboard,
+  Calendar, ClipboardCheck, BookOpen, LineChart,
+  Database, Globe, FileLock2
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
-export default function RECDSparesPage() {
+export default function ComplianceReportingPage() {
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.1 });
-  const { ref: partsRef, inView: partsInView } = useIntersectionObserver({ threshold: 0.1 });
+  const { ref: servicesRef, inView: servicesInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: processRef, inView: processInView } = useIntersectionObserver({ threshold: 0.1 });
   
   return (
@@ -41,24 +43,24 @@ export default function RECDSparesPage() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-6 inline-flex items-center justify-center">
               <span className="bg-white/20 p-3 rounded-lg mr-4">
-                <CircuitBoard className="h-8 w-8" />
+                <FileText className="h-8 w-8" />
               </span>
               <h1 className="text-3xl md:text-5xl font-bold font-montserrat">
-                RECD <span className="text-accent">Spare Parts</span>
+                Compliance <span className="text-accent">Reporting</span>
               </h1>
             </div>
             
             <p className="text-lg md:text-xl opacity-90 mb-8 max-w-3xl mx-auto">
-              Genuine and OEM-compatible replacement parts for all Real-time Emission Control Devices (RECD),
-              ensuring compliance with emission standards and optimal performance.
+              Comprehensive emission compliance reporting services ensuring accurate documentation,
+              timely submissions, and full adherence to regulatory requirements.
             </p>
             
             <div className="flex flex-wrap gap-4 justify-center">
               <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white">
-                <a href="#contact">Request RECD Parts Quote</a>
+                <a href="#contact">Request Reporting Services</a>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
-                <a href="#parts">Browse RECD Components</a>
+                <a href="#services">Explore Reporting Options</a>
               </Button>
             </div>
           </div>
@@ -77,48 +79,48 @@ export default function RECDSparesPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4 font-medium">
-              Comprehensive RECD Parts Service
+              Comprehensive Reporting Solutions
             </span>
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6 text-gray-800">
-              Complete RECD <span className="text-primary">Sourcing Solutions</span>
+              Expert <span className="text-primary">Compliance Documentation</span>
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Our specialized RECD parts services include all components for emission control devices,
-              ensuring regulatory compliance and optimal system performance.
+              Our specialized compliance reporting services ensure your emission data is accurately
+              documented, properly formatted, and submitted on time to regulatory authorities.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: <Cpu className="h-12 w-12 text-primary" />,
-                title: "Control Unit Components",
-                description: "Processor modules, memory units, interface circuits, and other electronic components for RECD control systems."
+                icon: <Database className="h-12 w-12 text-primary" />,
+                title: "Data Management",
+                description: "Advanced systems for collecting, validating, organizing, and securely storing all emission monitoring data."
               },
               {
-                icon: <CircuitBoard className="h-12 w-12 text-primary" />,
-                title: "Sensor Replacements",
-                description: "High-quality gas analyzers, NOx sensors, particulate matter sensors, and other monitoring components."
+                icon: <BookOpen className="h-12 w-12 text-primary" />,
+                title: "Regulatory Expertise",
+                description: "In-depth knowledge of reporting requirements across all major regulatory frameworks and jurisdictions."
+              },
+              {
+                icon: <LineChart className="h-12 w-12 text-primary" />,
+                title: "Advanced Analytics",
+                description: "Sophisticated data analysis to identify trends, anomalies, and potential compliance issues before reporting."
+              },
+              {
+                icon: <ClipboardCheck className="h-12 w-12 text-primary" />,
+                title: "Documentation Preparation",
+                description: "Comprehensive preparation of all required reports, certifications, and supporting documentation."
+              },
+              {
+                icon: <Calendar className="h-12 w-12 text-primary" />,
+                title: "Submission Management",
+                description: "Timely filing of all reports with proper tracking, confirmation, and regulatory authority follow-up."
               },
               {
                 icon: <Shield className="h-12 w-12 text-primary" />,
-                title: "Compliance Guarantee",
-                description: "Components that meet or exceed regulatory requirements for emission control and monitoring accuracy."
-              },
-              {
-                icon: <Wrench className="h-12 w-12 text-primary" />,
-                title: "Technical Advisors",
-                description: "Specialist technicians to help identify the exact parts required, preventing costly ordering mistakes."
-              },
-              {
-                icon: <Package className="h-12 w-12 text-primary" />,
-                title: "Inventory Management",
-                description: "RECD parts inventory management solutions, including critical spares lists and scheduled replenishment."
-              },
-              {
-                icon: <Settings className="h-12 w-12 text-primary" />,
-                title: "Installation & Calibration",
-                description: "Professional installation services with proper calibration to ensure accurate emissions reporting."
+                title: "Compliance Assurance",
+                description: "Thorough verification processes ensuring all submissions meet or exceed regulatory requirements."
               }
             ].map((feature, index) => (
               <motion.div
@@ -139,72 +141,72 @@ export default function RECDSparesPage() {
         </div>
       </section>
       
-      {/* Parts Categories */}
+      {/* Services Categories */}
       <section 
-        id="parts"
-        ref={partsRef}
+        id="services"
+        ref={servicesRef}
         className="py-16 md:py-24 bg-gray-50"
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4 font-medium">
-              Comprehensive RECD Parts Catalog
+              Specialized Reporting Services
             </span>
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6 text-gray-800">
-              RECD <span className="text-primary">Component Categories</span>
+              Our <span className="text-primary">Reporting Solutions</span>
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Browse our extensive range of Real-time Emission Control Device parts for all major systems.
+              Explore our range of specialized compliance reporting services designed for different regulatory requirements.
             </p>
           </div>
           
-          <Tabs defaultValue="sensors" className="w-full">
+          <Tabs defaultValue="periodic" className="w-full">
             <TabsList className="w-full flex justify-center mb-8 bg-transparent">
-              <TabsTrigger value="sensors" className="px-6 py-3 rounded-lg">Sensors & Analyzers</TabsTrigger>
-              <TabsTrigger value="controllers" className="px-6 py-3 rounded-lg">Control Systems</TabsTrigger>
-              <TabsTrigger value="communication" className="px-6 py-3 rounded-lg">Communication</TabsTrigger>
+              <TabsTrigger value="periodic" className="px-6 py-3 rounded-lg">Periodic Reporting</TabsTrigger>
+              <TabsTrigger value="incident" className="px-6 py-3 rounded-lg">Incident Reporting</TabsTrigger>
+              <TabsTrigger value="audit" className="px-6 py-3 rounded-lg">Audit & Verification</TabsTrigger>
             </TabsList>
             
-            <TabsContent value="sensors" className="mt-0">
+            <TabsContent value="periodic" className="mt-0">
               <Card className="border-none shadow-xl overflow-hidden">
                 <CardContent className="p-0">
                   <div className="grid grid-cols-1 lg:grid-cols-5">
                     <div className="lg:col-span-2 bg-gray-900 text-white p-8">
                       <div className="flex items-center mb-6">
                         <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
-                          <Cpu className="h-6 w-6 text-primary" />
+                          <Calendar className="h-6 w-6 text-primary" />
                         </div>
-                        <h3 className="text-2xl font-bold">Sensors & Analyzers</h3>
+                        <h3 className="text-2xl font-bold">Periodic Reporting</h3>
                       </div>
                       
                       <p className="mb-6 text-gray-300">
-                        We source high-quality sensor components for all RECD systems, ensuring accurate 
-                        emissions monitoring and regulatory compliance.
+                        Comprehensive management of all regularly scheduled emission compliance reports
+                        required by regulatory authorities, from monthly summaries to annual certifications.
                       </p>
                       
                       <div className="space-y-4">
                         <div className="bg-white/10 p-4 rounded-lg">
-                          <h4 className="font-bold mb-2">Sensor Solutions</h4>
+                          <h4 className="font-bold mb-2">Key Advantages</h4>
                           <ul className="space-y-2">
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">Precision Calibration</span>
-                                <p className="text-sm text-gray-400">All sensors supplied with calibration certificates</p>
+                                <span className="font-medium">Never Miss a Deadline</span>
+                                <p className="text-sm text-gray-400">Automated tracking of all reporting schedules</p>
                               </div>
                             </li>
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">Extended Warranty</span>
-                                <p className="text-sm text-gray-400">Up to 24-month warranty on select sensor components</p>
+                                <span className="font-medium">Format Compliance</span>
+                                <p className="text-sm text-gray-400">Reports in exact required formats and structures</p>
                               </div>
                             </li>
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">Compliance Support</span>
-                                <p className="text-sm text-gray-400">Documentation for regulatory submissions</p>
+                                <span className="font-medium">Data Integrity</span>
+                                <p className="text-sm text-gray-400">Rigorous verification before submission</p>
                               </div>
                             </li>
                           </ul>
@@ -213,270 +215,109 @@ export default function RECDSparesPage() {
                     </div>
                     
                     <div className="lg:col-span-3 p-8">
-                      <h3 className="text-xl font-bold text-gray-800 mb-6">Sensor Components</h3>
+                      <h3 className="text-xl font-bold text-gray-800 mb-6">Periodic Reporting Services</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Gas Analysis Sensors</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Report Types</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">NOx sensors</span>
+                              <span className="text-gray-700">Monthly emissions summaries</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">CO/CO2 analyzers</span>
+                              <span className="text-gray-700">Quarterly compliance reports</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">O2 sensors</span>
+                              <span className="text-gray-700">Semi-annual monitoring reports</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">HC/NMHC analyzers</span>
+                              <span className="text-gray-700">Annual compliance certifications</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Multi-gas analyzers</span>
+                              <span className="text-gray-700">Emissions inventory reports</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Particulate Matter Monitoring</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Data Management</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">PM2.5 sensors</span>
+                              <span className="text-gray-700">Automated data collection</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">PM10 analyzers</span>
+                              <span className="text-gray-700">Data validation and verification</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Opacity meters</span>
+                              <span className="text-gray-700">Gap analysis and correction</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Particle counters</span>
+                              <span className="text-gray-700">Statistical analysis</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Filter systems</span>
+                              <span className="text-gray-700">Data archiving and retrieval</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Flow & Pressure Sensors</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Reporting Formats</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Mass flow meters</span>
+                              <span className="text-gray-700">Electronic submissions</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Pressure transducers</span>
+                              <span className="text-gray-700">XML/JSON formatted data</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Differential pressure sensors</span>
+                              <span className="text-gray-700">Agency-specific portals</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Venturi flow meters</span>
+                              <span className="text-gray-700">Certified documentation</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Ultrasonic flow meters</span>
+                              <span className="text-gray-700">Secure digital signatures</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Environmental Sensors</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Regulatory Frameworks</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Temperature sensors</span>
+                              <span className="text-gray-700">CPCB/SPCB requirements</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Humidity sensors</span>
+                              <span className="text-gray-700">Environmental clearance conditions</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Ambient pressure sensors</span>
+                              <span className="text-gray-700">Factory Act compliance</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Wind speed/direction</span>
+                              <span className="text-gray-700">Industrial emission standards</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Weather stations</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            
-            <TabsContent value="controllers" className="mt-0">
-              <Card className="border-none shadow-xl overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-5">
-                    <div className="lg:col-span-2 bg-gray-900 text-white p-8">
-                      <div className="flex items-center mb-6">
-                        <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
-                          <Settings className="h-6 w-6 text-primary" />
-                        </div>
-                        <h3 className="text-2xl font-bold">Control Systems</h3>
-                      </div>
-                      
-                      <p className="mb-6 text-gray-300">
-                        We supply advanced control system components for all RECD installations,
-                        ensuring reliable data acquisition and regulatory reporting.
-                      </p>
-                      
-                      <div className="space-y-4">
-                        <div className="bg-white/10 p-4 rounded-lg">
-                          <h4 className="font-bold mb-2">Control System Benefits</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
-                              <div>
-                                <span className="font-medium">Pre-programmed Options</span>
-                                <p className="text-sm text-gray-400">Controllers with pre-loaded calibration data</p>
-                              </div>
-                            </li>
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
-                              <div>
-                                <span className="font-medium">Legacy Support</span>
-                                <p className="text-sm text-gray-400">Components for older RECD systems</p>
-                              </div>
-                            </li>
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
-                              <div>
-                                <span className="font-medium">Configuration Services</span>
-                                <p className="text-sm text-gray-400">Professional setup and programming</p>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="lg:col-span-3 p-8">
-                      <h3 className="text-xl font-bold text-gray-800 mb-6">Control System Components</h3>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Main Control Units</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">CEMS controllers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Data acquisition systems</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">PLC controllers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Industrial computers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">HMI panels</span>
-                            </li>
-                          </ul>
-                        </div>
-                        
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">I/O Components</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Analog input modules</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Digital I/O modules</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Signal conditioners</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Relay modules</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Terminal blocks</span>
-                            </li>
-                          </ul>
-                        </div>
-                        
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Power Components</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Power supplies</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">UPS backup systems</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Surge protectors</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Voltage regulators</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Battery backup systems</span>
-                            </li>
-                          </ul>
-                        </div>
-                        
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Enclosures & Infrastructure</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">IP-rated enclosures</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Climate control systems</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Mounting hardware</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Cable management</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Earthing equipment</span>
+                              <span className="text-gray-700">International frameworks</span>
                             </li>
                           </ul>
                         </div>
@@ -484,12 +325,13 @@ export default function RECDSparesPage() {
                       
                       <div className="mt-6 bg-primary/5 p-4 rounded-lg border border-primary/10">
                         <div className="flex items-center mb-2">
-                          <Wrench className="h-5 w-5 text-primary mr-2" />
-                          <h4 className="font-bold text-gray-800">Programming & Configuration Services</h4>
+                          <Clock className="h-5 w-5 text-primary mr-2" />
+                          <h4 className="font-bold text-gray-800">Deadline-Proof Process</h4>
                         </div>
                         <p className="text-gray-600">
-                          Our technical team can pre-configure control systems with your specific parameters and 
-                          provide on-site commissioning services for seamless integration.
+                          Our periodic reporting service includes a multi-stage verification and notification system
+                          with automated reminders, early preparation schedules, and pre-submission reviews to
+                          ensure all reports are filed accurately and well before regulatory deadlines.
                         </p>
                       </div>
                     </div>
@@ -498,46 +340,46 @@ export default function RECDSparesPage() {
               </Card>
             </TabsContent>
             
-            <TabsContent value="communication" className="mt-0">
+            <TabsContent value="incident" className="mt-0">
               <Card className="border-none shadow-xl overflow-hidden">
                 <CardContent className="p-0">
                   <div className="grid grid-cols-1 lg:grid-cols-5">
                     <div className="lg:col-span-2 bg-gray-900 text-white p-8">
                       <div className="flex items-center mb-6">
                         <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
-                          <Zap className="h-6 w-6 text-primary" />
+                          <Clipboard className="h-6 w-6 text-primary" />
                         </div>
-                        <h3 className="text-2xl font-bold">Communication Systems</h3>
+                        <h3 className="text-2xl font-bold">Incident Reporting</h3>
                       </div>
                       
                       <p className="mb-6 text-gray-300">
-                        We provide reliable communication components for connecting RECD systems
-                        to regulatory agencies and remote monitoring platforms.
+                        Expert management of emission exceedance reporting, violation notifications, and
+                        other non-routine regulatory communications required during exceptional events.
                       </p>
                       
                       <div className="space-y-4">
                         <div className="bg-white/10 p-4 rounded-lg">
-                          <h4 className="font-bold mb-2">Communication Benefits</h4>
+                          <h4 className="font-bold mb-2">Incident Reporting Benefits</h4>
                           <ul className="space-y-2">
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">Secure Data Transfer</span>
-                                <p className="text-sm text-gray-400">Encrypted communication protocols</p>
+                                <span className="font-medium">Rapid Response</span>
+                                <p className="text-sm text-gray-400">Immediate handling of reporting requirements</p>
                               </div>
                             </li>
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">Redundant Systems</span>
-                                <p className="text-sm text-gray-400">Backup communication paths</p>
+                                <span className="font-medium">Risk Mitigation</span>
+                                <p className="text-sm text-gray-400">Strategic approach to minimize consequences</p>
                               </div>
                             </li>
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">Integration Support</span>
-                                <p className="text-sm text-gray-400">Protocol converters and gateways</p>
+                                <span className="font-medium">Corrective Documentation</span>
+                                <p className="text-sm text-gray-400">Comprehensive action plan development</p>
                               </div>
                             </li>
                           </ul>
@@ -546,109 +388,109 @@ export default function RECDSparesPage() {
                     </div>
                     
                     <div className="lg:col-span-3 p-8">
-                      <h3 className="text-xl font-bold text-gray-800 mb-6">Communication Components</h3>
+                      <h3 className="text-xl font-bold text-gray-800 mb-6">Incident Reporting Services</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Network Equipment</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Exceedance Reporting</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Industrial routers</span>
+                              <span className="text-gray-700">Immediate notification documentation</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Ethernet switches</span>
+                              <span className="text-gray-700">Exceedance analysis reports</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Cellular modems</span>
+                              <span className="text-gray-700">Root cause documentation</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Firewall appliances</span>
+                              <span className="text-gray-700">Corrective action reporting</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">VPN hardware</span>
+                              <span className="text-gray-700">Follow-up compliance verification</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Interface Modules</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Malfunction Reporting</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Serial converters</span>
+                              <span className="text-gray-700">Equipment failure documentation</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Modbus gateways</span>
+                              <span className="text-gray-700">Monitoring system downtime reports</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Protocol converters</span>
+                              <span className="text-gray-700">Data gap justification</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">OPC servers</span>
+                              <span className="text-gray-700">Alternate monitoring plans</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Data loggers</span>
+                              <span className="text-gray-700">Return to compliance documentation</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Wireless Components</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Corrective Actions</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Wi-Fi access points</span>
+                              <span className="text-gray-700">Corrective action plans</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">RF transmitters/receivers</span>
+                              <span className="text-gray-700">Implementation documentation</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Bluetooth modules</span>
+                              <span className="text-gray-700">Effectiveness verification</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">LoRa/LoRaWAN devices</span>
+                              <span className="text-gray-700">Preventive measure reports</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Satellite modems</span>
+                              <span className="text-gray-700">Long-term compliance strategies</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Cabling & Connectivity</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Regulatory Communication</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Industrial Ethernet cables</span>
+                              <span className="text-gray-700">Authority notification letters</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Fiber optic components</span>
+                              <span className="text-gray-700">Response to violations</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">IP-rated connectors</span>
+                              <span className="text-gray-700">Variance requests</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Lightning protection</span>
+                              <span className="text-gray-700">Compliance schedule proposals</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Junction boxes</span>
+                              <span className="text-gray-700">Settlement documentation</span>
                             </li>
                           </ul>
                         </div>
@@ -656,12 +498,187 @@ export default function RECDSparesPage() {
                       
                       <div className="mt-6 bg-primary/5 p-4 rounded-lg border border-primary/10">
                         <div className="flex items-center mb-2">
-                          <AlertTriangle className="h-5 w-5 text-primary mr-2" />
-                          <h4 className="font-bold text-gray-800">Compatibility Note</h4>
+                          <Shield className="h-5 w-5 text-primary mr-2" />
+                          <h4 className="font-bold text-gray-800">Strategic Response Protocol</h4>
                         </div>
                         <p className="text-gray-600">
-                          Our technical team will verify compatibility with your existing RECD system and regulatory 
-                          requirements to ensure proper data transmission and compliance.
+                          Our incident reporting services include a strategic response protocol that 
+                          balances full regulatory transparency with careful documentation to minimize
+                          potential consequences while maintaining complete compliance with all reporting obligations.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+            
+            <TabsContent value="audit" className="mt-0">
+              <Card className="border-none shadow-xl overflow-hidden">
+                <CardContent className="p-0">
+                  <div className="grid grid-cols-1 lg:grid-cols-5">
+                    <div className="lg:col-span-2 bg-gray-900 text-white p-8">
+                      <div className="flex items-center mb-6">
+                        <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
+                          <ClipboardCheck className="h-6 w-6 text-primary" />
+                        </div>
+                        <h3 className="text-2xl font-bold">Audit & Verification</h3>
+                      </div>
+                      
+                      <p className="mb-6 text-gray-300">
+                        Comprehensive services for emission reporting audits, data verification, and
+                        third-party validation to ensure accuracy, completeness, and regulatory trust.
+                      </p>
+                      
+                      <div className="space-y-4">
+                        <div className="bg-white/10 p-4 rounded-lg">
+                          <h4 className="font-bold mb-2">Audit Benefits</h4>
+                          <ul className="space-y-2">
+                            <li className="flex items-start">
+                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
+                              <div>
+                                <span className="font-medium">Independent Verification</span>
+                                <p className="text-sm text-gray-400">Third-party validation adds credibility</p>
+                              </div>
+                            </li>
+                            <li className="flex items-start">
+                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
+                              <div>
+                                <span className="font-medium">Error Prevention</span>
+                                <p className="text-sm text-gray-400">Multi-level review eliminates mistakes</p>
+                              </div>
+                            </li>
+                            <li className="flex items-start">
+                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
+                              <div>
+                                <span className="font-medium">Regulatory Confidence</span>
+                                <p className="text-sm text-gray-400">Builds trust with authorities</p>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="lg:col-span-3 p-8">
+                      <h3 className="text-xl font-bold text-gray-800 mb-6">Verification Services</h3>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="bg-gray-50 p-4 rounded-lg">
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Data Verification</h4>
+                          <ul className="space-y-2">
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Source data validation</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Calculation methodology review</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Statistical analysis</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Anomaly detection</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Uncertainty assessment</span>
+                            </li>
+                          </ul>
+                        </div>
+                        
+                        <div className="bg-gray-50 p-4 rounded-lg">
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Documentation Audit</h4>
+                          <ul className="space-y-2">
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Completeness verification</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Format and structure review</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Regulatory requirement alignment</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Supporting evidence verification</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Certification criteria confirmation</span>
+                            </li>
+                          </ul>
+                        </div>
+                        
+                        <div className="bg-gray-50 p-4 rounded-lg">
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Third-Party Validation</h4>
+                          <ul className="space-y-2">
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Independent expert review</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Accredited verification services</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Verification statements</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Assurance reports</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Gap identification</span>
+                            </li>
+                          </ul>
+                        </div>
+                        
+                        <div className="bg-gray-50 p-4 rounded-lg">
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Continuous Improvement</h4>
+                          <ul className="space-y-2">
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Process assessment</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Procedure optimization</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Quality management system</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Staff training recommendations</span>
+                            </li>
+                            <li className="flex items-center">
+                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                              <span className="text-gray-700">Best practice implementation</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <div className="mt-6 bg-primary/5 p-4 rounded-lg border border-primary/10">
+                        <div className="flex items-center mb-2">
+                          <FileLock2 className="h-5 w-5 text-primary mr-2" />
+                          <h4 className="font-bold text-gray-800">Verification Standards</h4>
+                        </div>
+                        <p className="text-gray-600">
+                          Our verification services follow internationally recognized standards for 
+                          environmental data verification, including ISO 14064-3, ISAE 3000, and 
+                          regulatory-specific verification protocols to ensure the highest level of 
+                          data integrity and reporting confidence.
                         </p>
                       </div>
                     </div>
@@ -673,7 +690,7 @@ export default function RECDSparesPage() {
         </div>
       </section>
       
-      {/* Service Process */}
+      {/* Reporting Process */}
       <section 
         ref={processRef}
         className="py-16 md:py-24 bg-white"
@@ -681,37 +698,42 @@ export default function RECDSparesPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4 font-medium">
-              Simplified Procurement Process
+              Our Reporting Process
             </span>
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6 text-gray-800">
-              How Our <span className="text-primary">RECD Parts Service Works</span>
+              How Our <span className="text-primary">Compliance Reporting Works</span>
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Our streamlined process ensures you receive the right RECD components with minimal hassle and downtime.
+              Our systematic approach ensures accurate, complete, and timely reporting for full regulatory compliance.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {[
               {
-                icon: <Search className="h-10 w-10 text-primary" />,
-                title: "Identification",
-                description: "Provide your RECD model, serial number, or component details. Our technical team will help identify exact part requirements if needed."
+                icon: <Database className="h-10 w-10 text-primary" />,
+                title: "Data Collection",
+                description: "Comprehensive gathering of emissions data from monitoring systems, testing results, and operational records."
               },
               {
-                icon: <CheckCircle className="h-10 w-10 text-primary" />,
-                title: "Verification",
-                description: "We confirm compatibility with your specific RECD system and regulatory requirements to ensure proper functioning and compliance."
+                icon: <BarChart className="h-10 w-10 text-primary" />,
+                title: "Data Analysis",
+                description: "Thorough verification, validation, and analysis of all data for accuracy, completeness, and regulatory compliance."
               },
               {
-                icon: <Truck className="h-10 w-10 text-primary" />,
-                title: "Fulfillment",
-                description: "After approval, we source and ship your components with express delivery options for urgent requirements."
+                icon: <FileText className="h-10 w-10 text-primary" />,
+                title: "Report Preparation",
+                description: "Expert development of all required reports in proper formats with supporting documentation and certifications."
               },
               {
-                icon: <Wrench className="h-10 w-10 text-primary" />,
-                title: "Installation",
-                description: "Optional professional installation services including recalibration and verification to ensure regulatory compliance."
+                icon: <ClipboardCheck className="h-10 w-10 text-primary" />,
+                title: "Quality Verification",
+                description: "Multi-level review and quality assurance checks to ensure accuracy, completeness, and regulatory compliance."
+              },
+              {
+                icon: <Globe className="h-10 w-10 text-primary" />,
+                title: "Submission & Follow-up",
+                description: "Timely filing with regulatory authorities, tracking of submissions, and management of agency communications."
               }
             ].map((step, index) => (
               <motion.div
@@ -721,15 +743,15 @@ export default function RECDSparesPage() {
                 transition={{ duration: 0.5, delay: 0.2 * index }}
                 className="relative"
               >
-                {index < 3 && (
+                {index < 4 && (
                   <div className="hidden md:block absolute top-10 left-[calc(100%-24px)] w-full h-0.5 bg-primary/30 z-0"></div>
                 )}
-                <div className="bg-white rounded-xl shadow-lg p-8 relative z-10">
+                <div className="bg-white rounded-xl shadow-lg p-6 relative z-10">
                   <div className="bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center mb-6 mx-auto">
                     {step.icon}
                   </div>
                   <h3 className="text-xl font-bold text-center mb-4">{step.title}</h3>
-                  <p className="text-gray-600 text-center">{step.description}</p>
+                  <p className="text-gray-600 text-center text-sm">{step.description}</p>
                 </div>
                 <div className="bg-primary w-10 h-10 rounded-full flex items-center justify-center text-white font-bold absolute top-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 border-4 border-white shadow-md">
                   {index + 1}
@@ -745,13 +767,13 @@ export default function RECDSparesPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4 font-medium">
-              Request RECD Components
+              Request Reporting Services
             </span>
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6 text-gray-800">
-              Contact Our <span className="text-primary">RECD Parts Specialists</span>
+              Contact Our <span className="text-primary">Reporting Team</span>
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Fill out the form below to request a quote or information about our RECD components and services.
+              Fill out the form below to request emission compliance reporting services for your facility.
             </p>
           </div>
           
@@ -759,7 +781,7 @@ export default function RECDSparesPage() {
             <div className="bg-white rounded-xl shadow-xl overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-5">
                 <div className="lg:col-span-2 bg-primary p-8 text-white">
-                  <h3 className="text-2xl font-bold mb-6">Parts Request Information</h3>
+                  <h3 className="text-2xl font-bold mb-6">Reporting Request Information</h3>
                   
                   <div className="space-y-6">
                     <div>
@@ -767,37 +789,37 @@ export default function RECDSparesPage() {
                       <ul className="space-y-3">
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 mr-3 mt-0.5" />
-                          <span>RECD make and model number</span>
+                          <span>Facility information and location</span>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 mr-3 mt-0.5" />
-                          <span>Serial number (if available)</span>
+                          <span>Regulatory framework and jurisdiction</span>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 mr-3 mt-0.5" />
-                          <span>Specific part details or issue description</span>
+                          <span>Reporting type and frequency</span>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 mr-3 mt-0.5" />
-                          <span>Regulatory requirements and deadlines</span>
+                          <span>Equipment/emission source details</span>
                         </li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-lg mb-3">Contact Methods</h4>
+                      <h4 className="font-semibold text-lg mb-3">Service Options</h4>
                       <div className="space-y-4">
                         <div className="flex items-center">
-                          <Clock className="h-5 w-5 mr-3" />
-                          <span>Rapid response technical support</span>
+                          <Calendar className="h-5 w-5 mr-3" />
+                          <span>Periodic reporting management</span>
                         </div>
                         <div className="flex items-center">
-                          <Package className="h-5 w-5 mr-3" />
-                          <span>Priority shipping for compliance deadlines</span>
+                          <Clipboard className="h-5 w-5 mr-3" />
+                          <span>Incident/exceedance reporting</span>
                         </div>
                         <div className="flex items-center">
-                          <Shield className="h-5 w-5 mr-3" />
-                          <span>Compliance documentation provided</span>
+                          <ClipboardCheck className="h-5 w-5 mr-3" />
+                          <span>Audit and verification services</span>
                         </div>
                       </div>
                     </div>
@@ -829,7 +851,7 @@ export default function RECDSparesPage() {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
                         <input
                           type="tel"
                           id="phone"
@@ -849,41 +871,66 @@ export default function RECDSparesPage() {
                     </div>
                     
                     <div>
-                      <label htmlFor="modelInfo" className="block text-sm font-medium text-gray-700 mb-1">RECD Model & Serial Number *</label>
+                      <label htmlFor="facilityDetails" className="block text-sm font-medium text-gray-700 mb-1">Facility/Equipment Details *</label>
                       <input
                         type="text"
-                        id="modelInfo"
+                        id="facilityDetails"
                         className="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20"
-                        placeholder="e.g., CEMS-1000, SN: 202345-ABC"
+                        placeholder="Facility location, equipment type, emission sources"
                       />
                     </div>
                     
                     <div>
-                      <label htmlFor="partDetails" className="block text-sm font-medium text-gray-700 mb-1">Parts Required / Issue Description *</label>
-                      <textarea
-                        id="partDetails"
-                        rows={4}
+                      <label htmlFor="regulatoryFramework" className="block text-sm font-medium text-gray-700 mb-1">Regulatory Framework *</label>
+                      <input
+                        type="text"
+                        id="regulatoryFramework"
                         className="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20"
-                        placeholder="Please describe the RECD components you need or any specific regulatory requirements..."
-                      ></textarea>
+                        placeholder="Applicable regulations and jurisdiction"
+                      />
                     </div>
                     
                     <div>
-                      <label htmlFor="urgency" className="block text-sm font-medium text-gray-700 mb-1">Urgency Level</label>
-                      <select
-                        id="urgency"
+                      <label htmlFor="reportingRequirements" className="block text-sm font-medium text-gray-700 mb-1">Reporting Requirements & Details *</label>
+                      <textarea
+                        id="reportingRequirements"
+                        rows={4}
                         className="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20"
-                      >
-                        <option value="standard">Standard (3-5 business days)</option>
-                        <option value="priority">Priority (1-2 business days)</option>
-                        <option value="compliance">Compliance Deadline (Urgent)</option>
-                        <option value="planned">Planned (Future scheduled date)</option>
-                      </select>
+                        placeholder="Please describe your reporting requirements, frequency, challenges, and any specific compliance needs..."
+                      ></textarea>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label htmlFor="serviceType" className="block text-sm font-medium text-gray-700 mb-1">Service Type *</label>
+                        <select
+                          id="serviceType"
+                          className="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20"
+                        >
+                          <option value="periodicReporting">Periodic Reporting</option>
+                          <option value="incidentReporting">Incident Reporting</option>
+                          <option value="verification">Audit & Verification</option>
+                          <option value="comprehensive">Comprehensive Solution</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label htmlFor="frequency" className="block text-sm font-medium text-gray-700 mb-1">Reporting Frequency *</label>
+                        <select
+                          id="frequency"
+                          className="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20"
+                        >
+                          <option value="monthly">Monthly</option>
+                          <option value="quarterly">Quarterly</option>
+                          <option value="semiannual">Semi-annual</option>
+                          <option value="annual">Annual</option>
+                          <option value="incident">As-needed (incidents only)</option>
+                        </select>
+                      </div>
                     </div>
                     
                     <div>
                       <Button type="submit" className="w-full bg-primary hover:bg-primary-600 text-white">
-                        Submit Parts Request
+                        Submit Reporting Request
                       </Button>
                     </div>
                   </form>
