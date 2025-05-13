@@ -52,6 +52,7 @@ import DFKMaintenancePage from "@/pages/solutions/dfk/maintenance";
 // Detailed Service Pages
 import DGServiceAMCPage from "@/pages/services/amc/diesel-generator";
 import CQAMRegistrationPage from "@/pages/services/emission/cqam";
+import AssessmentPage from "@/pages/services/installation/assessment";
 
 // Monitoring Dashboard Pages
 import DGMonitoringDashboard from "@/pages/monitoring/dg";
@@ -99,7 +100,7 @@ function Router() {
         <Route path="/services/dual-fuel-kit" component={DualFuelKit} />
         
         {/* Installation & Integration */}
-        <Route path="/services/installation/assessment" component={() => <h1>On-site Assessment & Feasibility</h1>} />
+        <Route path="/services/installation/assessment" component={AssessmentPage} />
         <Route path="/services/installation/turnkey" component={() => <h1>Turnkey Installation Projects</h1>} />
         <Route path="/services/installation/synchronization" component={() => <h1>Synchronization & Load Testing</h1>} />
         <Route path="/services/installation/documentation" component={() => <h1>Documentation & Handover</h1>} />

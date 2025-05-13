@@ -58,7 +58,7 @@ const AssessmentPage: React.FC = () => {
     {
       icon: <CheckCircle className="h-6 w-6 text-emerald-500" />,
       title: 'Optimized System Design',
-      description: 'Ensures your power equipment is perfectly matched to your facility's specific requirements and constraints.'
+      description: "Ensures your power equipment is perfectly matched to your facility's specific requirements and constraints."
     },
     {
       icon: <Clock className="h-6 w-6 text-blue-500" />,
