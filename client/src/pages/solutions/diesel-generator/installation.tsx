@@ -117,7 +117,7 @@ const DGInstallationPage: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-900 to-primary-800 text-white py-24">
+      <section className="relative bg-gradient-to-r from-black to-gray-900 text-white py-24">
         <div className="absolute inset-0 overflow-hidden">
           <svg className="absolute left-0 bottom-0 text-white/10" width="100%" height="100%" viewBox="0 0 800 800" preserveAspectRatio="none">
             <path d="M0,0 L0,800 C200,700 400,800 600,750 C700,725 800,700 800,600 L800,0 L0,0 Z" fill="currentColor" />
