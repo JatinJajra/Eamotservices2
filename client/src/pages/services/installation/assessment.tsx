@@ -1,92 +1,175 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  CheckCircle, 
-  Clock, 
   ClipboardCheck, 
-  Search, 
-  BarChart, 
+  FlashLight, 
+  Ruler, 
+  Wrench, 
+  Clock, 
   FileCheck,
-  AlertCircle,
-  Building,
-  PlugZap,
-  Ruler,
-  Calculator,
-  ThumbsUp
+  CheckCircle,
+  Users,
+  Shield,
+  BookOpen,
+  AlertTriangle,
+  CheckSquare,
+  BarChart
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'wouter';
+import { 
+  Tabs, 
+  TabsContent, 
+  TabsList, 
+  TabsTrigger 
+} from "@/components/ui/tabs";
 
-const AssessmentPage: React.FC = () => {
-  // Assessment Process Steps
-  const assessmentSteps = [
+const InstallationAssessmentPage: React.FC = () => {
+  // Service features
+  const installationFeatures = [
     {
-      icon: <Search className="h-8 w-8 text-primary" />,
-      title: 'Initial Site Survey',
-      description: 'Comprehensive evaluation of your facility layout, infrastructure, and existing power distribution systems.',
-    },
-    {
-      icon: <BarChart className="h-8 w-8 text-primary" />,
-      title: 'Load Analysis',
-      description: 'Detailed assessment of your power requirements, load patterns, critical equipment, and operational demands.',
+      icon: <ClipboardCheck className="h-8 w-8 text-primary" />,
+      title: 'Comprehensive Site Assessment',
+      description: 'Detailed evaluation of your facility layout, access points, and infrastructure to ensure optimal installation planning.',
+      color: 'bg-blue-50'
     },
     {
       icon: <Ruler className="h-8 w-8 text-primary" />,
-      title: 'Space & Access Evaluation',
-      description: 'Measurement of available installation space, access routes, and identification of any structural considerations.',
+      title: 'Load Analysis & Sizing',
+      description: 'Expert calculation of your power requirements to ensure the equipment is properly sized for your needs.',
+      color: 'bg-green-50'
     },
     {
-      icon: <AlertCircle className="h-8 w-8 text-primary" />,
-      title: 'Compliance & Safety Review',
-      description: 'Analysis of regulatory requirements, safety standards, and environmental considerations specific to your location.',
+      icon: <FlashLight className="h-8 w-8 text-primary" />,
+      title: 'Electrical Integration Planning',
+      description: 'Evaluation of existing electrical systems and development of integration strategy for seamless operation.',
+      color: 'bg-amber-50'
     },
     {
-      icon: <Calculator className="h-8 w-8 text-primary" />,
-      title: 'Feasibility Assessment',
-      description: 'Comprehensive evaluation of technical feasibility, potential challenges, and identification of optimal solutions.',
-    },
-    {
-      icon: <FileCheck className="h-8 w-8 text-primary" />,
-      title: 'Detailed Report & Recommendations',
-      description: 'Preparation of comprehensive report with findings, recommendations, and proposed implementation plan.',
+      icon: <Shield className="h-8 w-8 text-primary" />,
+      title: 'Regulatory Compliance Check',
+      description: 'Verification of all local codes, permits, and regulatory requirements for your installation.',
+      color: 'bg-red-50'
     }
   ];
 
-  // Key Benefits
+  // Service benefits
   const benefits = [
     {
-      icon: <CheckCircle className="h-6 w-6 text-emerald-500" />,
-      title: 'Optimized System Design',
-      description: "Ensures your power equipment is perfectly matched to your facility's specific requirements and constraints."
+      title: 'Optimized Installation',
+      description: 'Properly planned installation leads to better equipment performance and longevity.',
+      icon: <CheckCircle className="h-6 w-6 text-green-500" />
     },
     {
-      icon: <Clock className="h-6 w-6 text-blue-500" />,
-      title: 'Time & Cost Efficiency',
-      description: 'Prevents costly redesigns and implementation delays by identifying challenges before installation begins.'
+      title: 'Cost Efficiency',
+      description: 'Avoid costly mistakes and rework by implementing a well-planned installation strategy.',
+      icon: <BarChart className="h-6 w-6 text-blue-500" />
     },
     {
-      icon: <ClipboardCheck className="h-6 w-6 text-amber-500" />,
-      title: 'Compliance Assurance',
-      description: 'Validates that all proposed installations will meet local regulations, safety standards, and operational requirements.'
+      title: 'Minimized Downtime',
+      description: 'Careful planning reduces operational disruptions during installation or equipment shifting.',
+      icon: <Clock className="h-6 w-6 text-amber-500" />
     },
     {
-      icon: <ThumbsUp className="h-6 w-6 text-indigo-500" />,
-      title: 'Risk Mitigation',
-      description: 'Identifies and addresses potential installation challenges and operational risks prior to implementation.'
+      title: 'Regulatory Compliance',
+      description: 'Ensure all installations meet local codes, safety standards, and environmental regulations.',
+      icon: <Shield className="h-6 w-6 text-red-500" />
+    }
+  ];
+
+  // Equipment types
+  const equipmentTypes = [
+    {
+      type: 'power',
+      label: 'Power Generation',
+      items: [
+        {
+          name: 'Diesel Generators',
+          features: [
+            'Site foundation & civil work assessment',
+            'Acoustic requirements evaluation',
+            'Exhaust system planning',
+            'Fuel system integration',
+            'Electrical synchronization planning'
+          ]
+        },
+        {
+          name: 'UPS Systems',
+          features: [
+            'Battery room requirements assessment',
+            'Cooling system planning',
+            'Critical load circuit identification',
+            'Integration with existing backup systems',
+            'Monitoring system requirements'
+          ]
+        }
+      ]
+    },
+    {
+      type: 'conditioning',
+      label: 'Power Conditioning',
+      items: [
+        {
+          name: 'Servo Stabilizers',
+          features: [
+            'Load sensitivity analysis',
+            'Performance requirements assessment',
+            'Integration with sensitive equipment',
+            'Protection coordination planning',
+            'Sizing and capacity verification'
+          ]
+        },
+        {
+          name: 'Inverters & Converters',
+          features: [
+            'Application requirement analysis',
+            'Waveform quality needs assessment',
+            'System compatibility verification',
+            'Mounting and space requirements',
+            'Control system integration planning'
+          ]
+        }
+      ]
+    },
+    {
+      type: 'enhancement',
+      label: 'System Enhancements',
+      items: [
+        {
+          name: 'RECD Systems',
+          features: [
+            'Emission compliance verification',
+            'Generator compatibility assessment',
+            'Exhaust system modification planning',
+            'Performance impact analysis',
+            'Monitoring system requirements'
+          ]
+        },
+        {
+          name: 'Dual Fuel Kits',
+          features: [
+            'Gas availability assessment',
+            'Generator compatibility verification',
+            'Safety system requirements',
+            'Fuel storage and supply planning',
+            'Performance optimization analysis'
+          ]
+        }
+      ]
     }
   ];
 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-black to-gray-900 text-white py-24 overflow-hidden">
+      <section className="relative bg-gradient-to-r from-black to-gray-900 text-white py-24">
         <div className="absolute inset-0 opacity-20">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
             <defs>
-              <pattern id="grid-pattern" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)">
-                <rect width="1" height="10" fill="currentColor" x="0" y="0" />
-                <rect width="10" height="1" fill="currentColor" x="0" y="0" />
+              <pattern id="grid-pattern" patternUnits="userSpaceOnUse" width="20" height="20">
+                <rect width="20" height="20" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                <circle cx="10" cy="10" r="1" fill="currentColor" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid-pattern)" />
@@ -94,15 +177,15 @@ const AssessmentPage: React.FC = () => {
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="w-full md:w-2/3 mb-10 md:mb-0">
+          <div className="flex flex-col lg:flex-row items-center">
+            <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="text-4xl md:text-5xl font-bold mb-6"
               >
-                On-site Assessment & Feasibility
+                Installation Assessment Service
               </motion.h1>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -110,7 +193,7 @@ const AssessmentPage: React.FC = () => {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-xl opacity-90 mb-8 max-w-xl"
               >
-                Comprehensive site evaluation services to ensure optimal power equipment selection, installation planning, and project feasibility for your facility.
+                Comprehensive pre-installation assessment services to ensure optimal placement, integration, and performance of your power equipment.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -122,12 +205,12 @@ const AssessmentPage: React.FC = () => {
                   <Link href="/contact">Request Assessment</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-                  <Link href="/services/installation/turnkey">View Turnkey Services</Link>
+                  <Link href="/services/installation/process">View Installation Process</Link>
                 </Button>
               </motion.div>
             </div>
             
-            <div className="w-full md:w-1/3 md:pl-10">
+            <div className="w-full lg:w-1/2 lg:pl-10">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -135,48 +218,53 @@ const AssessmentPage: React.FC = () => {
                 className="bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-lg"
               >
                 <div className="flex items-center mb-4">
-                  <Building className="h-6 w-6 text-white mr-3" />
-                  <h3 className="text-xl font-semibold">Expert Site Assessments</h3>
+                  <BookOpen className="h-6 w-6 text-white mr-3" />
+                  <h3 className="text-xl font-semibold">Why Pre-Installation Assessment?</h3>
                 </div>
                 <p className="text-white/80 mb-4">
-                  Our professional assessments evaluate all aspects of your facility to ensure optimal power system implementation.
+                  Proper planning before installation ensures optimal equipment performance, regulatory compliance, and cost efficiency. Our assessment service identifies potential challenges and creates a clear installation roadmap.
                 </p>
-                <ul className="space-y-3">
-                  <li className="flex items-center">
-                    <div className="h-2 w-2 rounded-full bg-green-400 mr-2"></div>
-                    <span className="text-sm">Detailed infrastructure analysis</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="h-2 w-2 rounded-full bg-green-400 mr-2"></div>
-                    <span className="text-sm">Regulatory compliance verification</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="h-2 w-2 rounded-full bg-green-400 mr-2"></div>
-                    <span className="text-sm">Customized installation planning</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="h-2 w-2 rounded-full bg-green-400 mr-2"></div>
-                    <span className="text-sm">Comprehensive feasibility reporting</span>
-                  </li>
-                </ul>
+                <div className="space-y-3 mt-6">
+                  <div className="flex items-start">
+                    <AlertTriangle className="h-5 w-5 text-amber-400 mt-1 mr-3 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-white">Avoid Common Installation Pitfalls</h4>
+                      <p className="text-sm text-white/70">Inadequate planning can lead to performance issues, safety hazards, and regulatory violations</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <CheckSquare className="h-5 w-5 text-green-400 mt-1 mr-3 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-white">Ensure Optimal Performance</h4>
+                      <p className="text-sm text-white/70">Proper installation planning is critical for achieving equipment's rated efficiency and lifespan</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Users className="h-5 w-5 text-blue-400 mt-1 mr-3 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-white">Expert Guidance</h4>
+                      <p className="text-sm text-white/70">Benefit from our engineers' extensive experience across diverse installation environments</p>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Assessment Process */}
+      {/* Services Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Assessment Process</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Assessment Services</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              A structured approach to evaluating your facility and ensuring optimal power equipment selection and installation planning
+              Comprehensive pre-installation evaluation to ensure optimal equipment placement, integration, and performance
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {assessmentSteps.map((step, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {installationFeatures.map((feature, index) => (
               <motion.div
                 key={index}
                 initial="hidden"
@@ -193,11 +281,11 @@ const AssessmentPage: React.FC = () => {
               >
                 <Card className="h-full border-none shadow-md hover:shadow-xl transition-shadow duration-300">
                   <CardContent className="pt-6">
-                    <div className="w-16 h-16 rounded-2xl bg-primary-50 flex items-center justify-center mb-6">
-                      {step.icon}
+                    <div className={`w-16 h-16 rounded-2xl ${feature.color} flex items-center justify-center mb-6`}>
+                      {feature.icon}
                     </div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-800">{step.title}</h3>
-                    <p className="text-gray-600">{step.description}</p>
+                    <h3 className="text-xl font-bold mb-3 text-gray-800">{feature.title}</h3>
+                    <p className="text-gray-600">{feature.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -206,13 +294,65 @@ const AssessmentPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Benefit Section */}
+      {/* Equipment Types Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Why Choose Our Assessment Services</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Equipment-Specific Assessment</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Our professional assessment services provide crucial insights that ensure project success and optimal system performance
+              Our assessment services are tailored to the specific requirements of different power equipment types
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            <Tabs defaultValue="power" className="w-full">
+              <TabsList className="w-full justify-center mb-8">
+                {equipmentTypes.map((type) => (
+                  <TabsTrigger key={type.type} value={type.type} className="text-lg px-6">
+                    {type.label}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+              
+              {equipmentTypes.map((type) => (
+                <TabsContent key={type.type} value={type.type} className="mt-2">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {type.items.map((item, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className="bg-gray-50 rounded-xl p-6 shadow-md"
+                      >
+                        <h3 className="text-xl font-bold mb-4 border-b border-gray-200 pb-2">
+                          {item.name} Assessment
+                        </h3>
+                        <ul className="space-y-3">
+                          {item.features.map((feature, featureIndex) => (
+                            <li key={featureIndex} className="flex items-start">
+                              <CheckCircle className="h-5 w-5 text-primary mt-1 mr-3 flex-shrink-0" />
+                              <span className="text-gray-700">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    ))}
+                  </div>
+                </TabsContent>
+              ))}
+            </Tabs>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Assessment Benefits</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Investing in a professional pre-installation assessment provides significant advantages
             </p>
           </div>
 
@@ -220,18 +360,20 @@ const AssessmentPage: React.FC = () => {
             {benefits.map((benefit, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex gap-5"
+                className="bg-white p-6 rounded-lg shadow-md"
               >
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center">
-                  {benefit.icon}
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2 text-gray-800">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                    {benefit.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2 text-gray-800">{benefit.title}</h3>
+                    <p className="text-gray-600">{benefit.description}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -239,93 +381,140 @@ const AssessmentPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Case Study Section */}
-      <section className="py-20 bg-gray-50">
+      {/* Assessment Process */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="grid grid-cols-1 md:grid-cols-2">
-                <div className="p-8 md:p-10">
-                  <h2 className="text-2xl font-bold text-gray-800 mb-6">Case Study: Manufacturing Facility</h2>
-                  
-                  <div className="mb-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">The Challenge</h3>
-                    <p className="text-gray-600">
-                      A large manufacturing facility needed to upgrade their backup power system but faced space constraints, complex power distribution architecture, and strict regulatory requirements.
-                    </p>
-                  </div>
-                  
-                  <div className="mb-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Our Assessment</h3>
-                    <p className="text-gray-600">
-                      Our team conducted a comprehensive on-site assessment, identifying optimal equipment placement, load requirements, and necessary infrastructure modifications to ensure seamless integration.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">The Results</h3>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600">Successfully installed 3 diesel generators in limited space</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600">37% cost savings through optimized equipment selection</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600">Reduced installation timeline by 3 weeks with detailed planning</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600">Full regulatory compliance with zero post-installation issues</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-800 mb-6">Our Assessment Process</h2>
+                <p className="text-gray-600 mb-8">
+                  We follow a structured, comprehensive approach to ensure all aspects of your installation requirements are properly evaluated and documented.
+                </p>
                 
-                <div className="bg-gradient-to-r from-primary-900 to-primary-800 text-white p-8 md:p-10 flex flex-col">
-                  <h3 className="text-xl font-semibold mb-6">Assessment Scope</h3>
-                  
-                  <div className="space-y-6 flex-grow">
-                    <div className="flex items-start">
-                      <PlugZap className="h-6 w-6 text-primary-200 mr-3 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-medium">Power Requirements Analysis</h4>
-                        <p className="text-white/70 text-sm mt-1">Detailed load profiling and power demand assessment</p>
-                      </div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="space-y-6"
+                >
+                  <div className="flex items-start">
+                    <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center flex-shrink-0 mr-4">
+                      1
                     </div>
-                    
-                    <div className="flex items-start">
-                      <Building className="h-6 w-6 text-primary-200 mr-3 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-medium">Infrastructure Evaluation</h4>
-                        <p className="text-white/70 text-sm mt-1">Structural, electrical, and mechanical system examination</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start">
-                      <AlertCircle className="h-6 w-6 text-primary-200 mr-3 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-medium">Risk Identification</h4>
-                        <p className="text-white/70 text-sm mt-1">Comprehensive analysis of potential installation challenges</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start">
-                      <FileCheck className="h-6 w-6 text-primary-200 mr-3 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-medium">Compliance Review</h4>
-                        <p className="text-white/70 text-sm mt-1">Evaluation against industry standards and local regulations</p>
-                      </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-1">Initial Consultation</h3>
+                      <p className="text-gray-600">Detailed discussion of your requirements, equipment specifications, and site characteristics.</p>
                     </div>
                   </div>
                   
-                  <Button asChild variant="outline" className="mt-8 border-white text-white hover:bg-white/10 self-start">
-                    <Link href="/contact">Request Similar Assessment</Link>
-                  </Button>
-                </div>
+                  <div className="flex items-start">
+                    <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center flex-shrink-0 mr-4">
+                      2
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-1">Site Visit & Inspection</h3>
+                      <p className="text-gray-600">Comprehensive on-site evaluation of the installation environment and infrastructure.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center flex-shrink-0 mr-4">
+                      3
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-1">Technical Analysis</h3>
+                      <p className="text-gray-600">Detailed technical evaluation including electrical, mechanical, and structural requirements.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center flex-shrink-0 mr-4">
+                      4
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-1">Compliance Verification</h3>
+                      <p className="text-gray-600">Identification of all applicable regulations, codes, and permits required for installation.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center flex-shrink-0 mr-4">
+                      5
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-1">Assessment Report</h3>
+                      <p className="text-gray-600">Delivery of comprehensive report with findings, recommendations, and installation plan.</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-primary-50 to-blue-50 rounded-xl p-8 shadow-lg">
+                <h3 className="text-2xl font-bold text-gray-800 mb-6">What Our Assessment Includes</h3>
+                
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-green-500 mt-1 mr-3" />
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Site Preparation Requirements</h4>
+                      <p className="text-gray-600 text-sm">Foundation, ventilation, access, and space requirements</p>
+                    </div>
+                  </li>
+                  
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-green-500 mt-1 mr-3" />
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Infrastructure Evaluation</h4>
+                      <p className="text-gray-600 text-sm">Electrical, fuel supply, exhaust, and cooling requirements</p>
+                    </div>
+                  </li>
+                  
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-green-500 mt-1 mr-3" />
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Integration Planning</h4>
+                      <p className="text-gray-600 text-sm">Connection with existing systems, control interfaces, and monitoring</p>
+                    </div>
+                  </li>
+                  
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-green-500 mt-1 mr-3" />
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Safety & Compliance Analysis</h4>
+                      <p className="text-gray-600 text-sm">Fire safety, noise regulations, emissions, and electrical code requirements</p>
+                    </div>
+                  </li>
+                  
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-green-500 mt-1 mr-3" />
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Resource Requirements</h4>
+                      <p className="text-gray-600 text-sm">Personnel, equipment, materials, and timeline requirements</p>
+                    </div>
+                  </li>
+                  
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-green-500 mt-1 mr-3" />
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Cost Estimation</h4>
+                      <p className="text-gray-600 text-sm">Detailed breakdown of installation costs including materials, labor, and permits</p>
+                    </div>
+                  </li>
+                  
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-green-500 mt-1 mr-3" />
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Risk Assessment</h4>
+                      <p className="text-gray-600 text-sm">Identification of potential challenges and mitigation strategies</p>
+                    </div>
+                  </li>
+                </ul>
+                
+                <Button asChild className="mt-8">
+                  <Link href="/contact">Schedule Your Assessment</Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -342,18 +531,13 @@ const AssessmentPage: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl font-bold mb-6">Ready to Ensure Your Project Success?</h2>
+            <h2 className="text-3xl font-bold mb-6">Ready to Begin Your Assessment?</h2>
             <p className="opacity-90 mb-8">
-              Start with a comprehensive on-site assessment to identify the optimal equipment selection, installation approach, and implementation plan for your specific facility needs.
+              Contact our installation specialists to schedule your comprehensive pre-installation assessment. Our expert engineers will help ensure your equipment installation is planned for optimal performance and reliability.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-                <Link href="/contact">Request Assessment</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-                <Link href="/services">Explore Other Services</Link>
-              </Button>
-            </div>
+            <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
+              <Link href="/contact">Request Assessment Service</Link>
+            </Button>
           </motion.div>
         </div>
       </section>
@@ -361,4 +545,4 @@ const AssessmentPage: React.FC = () => {
   );
 };
 
-export default AssessmentPage;
+export default InstallationAssessmentPage;
