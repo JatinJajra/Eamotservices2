@@ -119,11 +119,25 @@ export default function EmissionTestingPage() {
         </div>
       </section>
       
-      {/* Service Features */}
+      {/* Service Features with Interactive Elements */}
       <section 
         ref={featuresRef}
-        className="py-16 md:py-24 bg-white"
+        className="py-16 md:py-24 bg-white relative"
       >
+        {/* Background decorative elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-green-100 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
+        
+        {/* Grid pattern background */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <style dangerouslySetInnerHTML={{ __html: `
+          .bg-grid-pattern {
+            background-image: 
+              linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: 24px 24px;
+          }
+        `}} />
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4 font-medium">
@@ -141,34 +155,46 @@ export default function EmissionTestingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: <BookOpen className="h-12 w-12 text-primary" />,
+                icon: <BookOpen className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1912&q=80",
                 title: "Regulatory Expertise",
-                description: "In-depth knowledge of emission testing requirements across international, national, and local regulatory frameworks."
+                description: "In-depth knowledge of emission testing requirements across international, national, and local regulatory frameworks.",
+                benefits: ["Cross-jurisdictional knowledge", "Up-to-date standards", "Compliance expertise"]
               },
               {
-                icon: <Microscope className="h-12 w-12 text-primary" />,
+                icon: <Microscope className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80",
                 title: "Accredited Testing Partners",
-                description: "Coordination with certified testing laboratories and authorized agencies recognized by regulatory authorities."
+                description: "Coordination with certified testing laboratories and authorized agencies recognized by regulatory authorities.",
+                benefits: ["Recognized certification bodies", "Qualified technicians", "Calibrated equipment"]
               },
               {
-                icon: <Calendar className="h-12 w-12 text-primary" />,
+                icon: <Calendar className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
                 title: "Scheduling & Logistics",
-                description: "Efficient planning and management of testing schedules, equipment preparation, and on-site coordination."
+                description: "Efficient planning and management of testing schedules, equipment preparation, and on-site coordination.",
+                benefits: ["Minimal downtime", "Optimized schedules", "Coordinated logistics"]
               },
               {
-                icon: <ClipboardCheck className="h-12 w-12 text-primary" />,
+                icon: <ClipboardCheck className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
                 title: "Pre-Testing Assessment",
-                description: "Thorough evaluation of equipment condition and testing readiness to ensure successful certification outcomes."
+                description: "Thorough evaluation of equipment condition and testing readiness to ensure successful certification outcomes.",
+                benefits: ["Risk identification", "System optimization", "Higher pass rates"]
               },
               {
-                icon: <FileText className="h-12 w-12 text-primary" />,
+                icon: <FileText className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
                 title: "Documentation Management",
-                description: "Comprehensive handling of all testing documentation, reports, and certification application processes."
+                description: "Comprehensive handling of all testing documentation, reports, and certification application processes.",
+                benefits: ["Complete record keeping", "Electronic archiving", "Audit-ready files"]
               },
               {
-                icon: <Shield className="h-12 w-12 text-primary" />,
+                icon: <Shield className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
                 title: "Compliance Assurance",
-                description: "Expert verification of testing results against regulatory standards to ensure full compliance is achieved."
+                description: "Expert verification of testing results against regulatory standards to ensure full compliance is achieved.",
+                benefits: ["Verified conformity", "Legal protection", "Operational confidence"]
               }
             ].map((feature, index) => (
               <motion.div
@@ -176,13 +202,45 @@ export default function EmissionTestingPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: featuresInView ? 1 : 0, y: featuresInView ? 0 : 30 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden group h-full"
               >
-                <div className="bg-white w-20 h-20 rounded-lg shadow-md flex items-center justify-center mb-6">
-                  {feature.icon}
+                <div className="relative h-48 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/30 z-10"></div>
+                  <img 
+                    src={feature.image} 
+                    alt={feature.title} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                    <div className="flex items-center">
+                      <div className="bg-green-600/80 backdrop-blur-sm p-3 rounded-lg mr-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                        {feature.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-white">{feature.title}</h3>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                
+                <div className="p-6">
+                  <p className="text-gray-600 mb-4">{feature.description}</p>
+                  
+                  <h4 className="font-semibold text-gray-800 mb-2">Key Benefits:</h4>
+                  <ul className="space-y-1">
+                    {feature.benefits.map((benefit, i) => (
+                      <li key={i} className="flex items-center text-gray-600">
+                        <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                        <span>{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <div className="mt-4 pt-4 border-t border-gray-100">
+                    <a href="#contact" className="text-green-600 font-medium flex items-center hover:underline">
+                      Learn more
+                      <ArrowRight className="h-4 w-4 ml-1" />
+                    </a>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

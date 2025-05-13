@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
-  FileText, BarChart, Shield, 
+  FileText, BarChart, Shield, ArrowRight,
   Package, Truck, Clock, CheckCircle, Search,
   Settings, Wrench, Clipboard,
   Calendar, ClipboardCheck, BookOpen, LineChart,
@@ -25,11 +25,62 @@ export default function ComplianceReportingPage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Hero Section */}
+      {/* Hero Section with Dynamic Background */}
       <section 
         ref={heroRef}
-        className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 md:py-28 relative overflow-hidden"
+        className="relative py-20 md:py-28 overflow-hidden text-white"
+        style={{
+          background: "linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)"
+        }}
       >
+        {/* Animated floating data elements */}
+        <div className="absolute inset-0" aria-hidden="true">
+          {Array.from({ length: 15 }).map((_, i) => (
+            <div 
+              key={i}
+              className="absolute opacity-20"
+              style={{
+                width: `${Math.random() * 100 + 30}px`,
+                height: `${Math.random() * 100 + 30}px`,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                transform: `rotate(${Math.random() * 360}deg)`,
+                animationDuration: `${Math.random() * 10 + 10}s`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationIterationCount: 'infinite',
+                animationName: i % 2 === 0 ? 'float-up' : 'float-down',
+                animationTimingFunction: 'ease-in-out',
+                backgroundColor: 'transparent',
+                border: '2px solid rgba(255, 255, 255, 0.2)',
+                borderRadius: i % 3 === 0 ? '50%' : i % 3 === 1 ? '10%' : '0%'
+              }}
+            />
+          ))}
+        </div>
+        
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes float-up {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+          }
+          
+          @keyframes float-down {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(20px) rotate(-5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+          }
+        `}} />
+        
+        {/* Data grid background */}
+        <div className="absolute inset-0 bg-data-grid opacity-10"></div>
+        <style dangerouslySetInnerHTML={{ __html: `
+          .bg-data-grid {
+            background-image: 
+              radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+          }
+        `}} />
         <div className="absolute top-0 left-0 w-full overflow-hidden">
           <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
@@ -71,11 +122,25 @@ export default function ComplianceReportingPage() {
         </div>
       </section>
       
-      {/* Service Features */}
+      {/* Service Features with Interactive Layout */}
       <section 
         ref={featuresRef}
-        className="py-16 md:py-24 bg-white"
+        className="py-16 md:py-24 bg-white relative"
       >
+        {/* Background decorative elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-100 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
+        
+        {/* Subtle data flow background */}
+        <div className="absolute inset-0 overflow-hidden">
+          <svg className="absolute w-full h-full opacity-5" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="#4f46e5" strokeWidth="0.5" strokeDasharray="6,3" />
+            <path d="M0,20 L100,50" fill="none" stroke="#4f46e5" strokeWidth="0.5" strokeDasharray="6,3" />
+            <path d="M0,40 L100,70" fill="none" stroke="#4f46e5" strokeWidth="0.5" strokeDasharray="6,3" />
+            <path d="M0,60 L100,90" fill="none" stroke="#4f46e5" strokeWidth="0.5" strokeDasharray="6,3" />
+            <path d="M0,80 L100,30" fill="none" stroke="#4f46e5" strokeWidth="0.5" strokeDasharray="6,3" />
+          </svg>
+        </div>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4 font-medium">
@@ -93,34 +158,46 @@ export default function ComplianceReportingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: <Database className="h-12 w-12 text-primary" />,
+                icon: <Database className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1774&q=80",
                 title: "Data Management",
-                description: "Advanced systems for collecting, validating, organizing, and securely storing all emission monitoring data."
+                description: "Advanced systems for collecting, validating, organizing, and securely storing all emission monitoring data.",
+                benefits: ["Secure storage", "Automated collection", "Data integrity"]
               },
               {
-                icon: <BookOpen className="h-12 w-12 text-primary" />,
+                icon: <BookOpen className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
                 title: "Regulatory Expertise",
-                description: "In-depth knowledge of reporting requirements across all major regulatory frameworks and jurisdictions."
+                description: "In-depth knowledge of reporting requirements across all major regulatory frameworks and jurisdictions.",
+                benefits: ["Current standards", "Jurisdiction expertise", "Requirement mapping"]
               },
               {
-                icon: <LineChart className="h-12 w-12 text-primary" />,
+                icon: <LineChart className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
                 title: "Advanced Analytics",
-                description: "Sophisticated data analysis to identify trends, anomalies, and potential compliance issues before reporting."
+                description: "Sophisticated data analysis to identify trends, anomalies, and potential compliance issues before reporting.",
+                benefits: ["Predictive analysis", "Pattern recognition", "Early warnings"]
               },
               {
-                icon: <ClipboardCheck className="h-12 w-12 text-primary" />,
+                icon: <ClipboardCheck className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
                 title: "Documentation Preparation",
-                description: "Comprehensive preparation of all required reports, certifications, and supporting documentation."
+                description: "Comprehensive preparation of all required reports, certifications, and supporting documentation.",
+                benefits: ["Standardized formats", "Complete documentation", "Expert review"]
               },
               {
-                icon: <Calendar className="h-12 w-12 text-primary" />,
+                icon: <Calendar className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2068&q=80",
                 title: "Submission Management",
-                description: "Timely filing of all reports with proper tracking, confirmation, and regulatory authority follow-up."
+                description: "Timely filing of all reports with proper tracking, confirmation, and regulatory authority follow-up.",
+                benefits: ["Deadline tracking", "Submission confirmation", "Regulatory liaison"]
               },
               {
-                icon: <Shield className="h-12 w-12 text-primary" />,
+                icon: <Shield className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
                 title: "Compliance Assurance",
-                description: "Thorough verification processes ensuring all submissions meet or exceed regulatory requirements."
+                description: "Thorough verification processes ensuring all submissions meet or exceed regulatory requirements.",
+                benefits: ["Multi-level review", "Validation checks", "Continuous monitoring"]
               }
             ].map((feature, index) => (
               <motion.div
@@ -128,13 +205,45 @@ export default function ComplianceReportingPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: featuresInView ? 1 : 0, y: featuresInView ? 0 : 30 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden group h-full"
               >
-                <div className="bg-white w-20 h-20 rounded-lg shadow-md flex items-center justify-center mb-6">
-                  {feature.icon}
+                <div className="relative h-48 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/30 z-10"></div>
+                  <img 
+                    src={feature.image} 
+                    alt={feature.title} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                    <div className="flex items-center">
+                      <div className="bg-indigo-600/80 backdrop-blur-sm p-3 rounded-lg mr-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                        {feature.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-white">{feature.title}</h3>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                
+                <div className="p-6">
+                  <p className="text-gray-600 mb-4">{feature.description}</p>
+                  
+                  <h4 className="font-semibold text-gray-800 mb-2">Key Benefits:</h4>
+                  <ul className="space-y-1">
+                    {feature.benefits.map((benefit, i) => (
+                      <li key={i} className="flex items-center text-gray-600">
+                        <CheckCircle className="h-4 w-4 text-indigo-500 mr-2" />
+                        <span>{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <div className="mt-4 pt-4 border-t border-gray-100">
+                    <a href="#contact" className="text-indigo-600 font-medium flex items-center hover:underline">
+                      Learn more
+                      <ArrowRight className="h-4 w-4 ml-1" />
+                    </a>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
