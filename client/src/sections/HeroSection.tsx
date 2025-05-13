@@ -1,92 +1,91 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import energyDashboardImage from "../assets/energy-dashboard.png";
+import { Brain, Zap, BarChart, Cpu, LineChart } from "lucide-react";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 export default function HeroSection() {
+  const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.2 });
+  
   return (
-    <section className="bg-gradient-to-r from-primary to-primary-700 text-white relative overflow-hidden">
-      {/* Background Pattern Elements */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden">
-        <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+    <section 
+      ref={heroRef}
+      className="bg-gradient-to-b from-slate-900 to-slate-800 text-white relative overflow-hidden min-h-[90vh]"
+    >
+      {/* Background with overlay */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/90 to-slate-900/95 z-10"></div>
+        <img
+          src="https://www.eamot.com/assets/img/home/2.jpg"
+          alt="Energy Management"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
       </div>
       
-      {/* Dark energy-themed background for the entire hero section */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-900 to-primary-950"></div>
+      {/* Data visualization elements */}
+      <div className="absolute inset-0 z-5 pointer-events-none">
+        <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 100 100" preserveAspectRatio="none">
+          {/* Stylized energy data visualization */}
+          <motion.path
+            d="M0,80 C10,70 15,90 20,75 C25,60 30,65 35,55 C40,45 45,55 50,40 C55,25 60,30 65,20 C70,10 75,25 80,15 C85,5 90,15 95,10 L100,10 L100,100 L0,100 Z"
+            fill="url(#gradient-primary)"
+            initial={{ opacity: 0, pathLength: 0 }}
+            animate={heroInView ? { opacity: 0.7, pathLength: 1 } : { opacity: 0, pathLength: 0 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+          />
+          <defs>
+            <linearGradient id="gradient-primary" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#3b82f6" />
+              <stop offset="100%" stopColor="#60a5fa" />
+            </linearGradient>
+          </defs>
+        </svg>
         
-        {/* Power grid pattern overlay */}
-        <div className="absolute inset-0 opacity-10">
+        {/* Floating data points */}
+        {[1, 2, 3, 4, 5, 6].map((i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-lg bg-gradient-to-br from-primary/20 to-primary-700/10 backdrop-blur-sm border border-primary/20 shadow-lg"
+            style={{
+              top: `${15 + i * 10}%`,
+              left: `${10 + i * 12}%`,
+              width: `${80 + i * 10}px`,
+              height: `${60 + i * 5}px`,
+              transform: `rotate(${-5 + i * 2}deg)`
+            }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={heroInView ? { opacity: 0.7, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.2 + i * 0.1 }}
+          >
+            <div className="p-3">
+              <div className="h-2 w-12 bg-primary/30 rounded-full mb-2"></div>
+              <div className="h-6 w-full rounded bg-primary/10 flex items-center justify-center">
+                {i % 3 === 0 ? 
+                  <Zap className="h-3 w-3 text-primary" /> : 
+                  i % 3 === 1 ?
+                  <BarChart className="h-3 w-3 text-primary" /> :
+                  <Cpu className="h-3 w-3 text-primary" />
+                }
+              </div>
+            </div>
+          </motion.div>
+        ))}
+        
+        {/* Grid background pattern */}
+        <div className="absolute inset-0 overflow-hidden opacity-10">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <pattern id="energyGrid" patternUnits="userSpaceOnUse" width="60" height="60">
-              <path d="M10,0 L10,60 M0,10 L60,10 M20,0 L20,60 M0,20 L60,20 M30,0 L30,60 M0,30 L60,30 M40,0 L40,60 M0,40 L60,40 M50,0 L50,60 M0,50 L60,50" 
-                stroke="cyan" strokeWidth="0.5" opacity="0.2" />
-              <circle cx="10" cy="10" r="1" fill="cyan" opacity="0.5" />
-              <circle cx="20" cy="20" r="1" fill="cyan" opacity="0.5" />
-              <circle cx="30" cy="30" r="1" fill="cyan" opacity="0.5" />
-              <circle cx="40" cy="40" r="1" fill="cyan" opacity="0.5" />
-              <circle cx="50" cy="50" r="1" fill="cyan" opacity="0.5" />
-            </pattern>
-            <rect width="100%" height="100%" fill="url(#energyGrid)" />
+            <defs>
+              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
           </svg>
         </div>
-        
-        {/* Energy pulses and flows */}
-        <motion.div 
-          className="absolute left-0 top-1/4 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"
-          animate={{ 
-            opacity: [0, 0.7, 0],
-            x: [-100, window.innerWidth + 100]
-          }}
-          transition={{ 
-            duration: 5,
-            repeat: Infinity,
-            repeatDelay: 3
-          }}
-        />
-        <motion.div 
-          className="absolute right-0 top-2/3 w-full h-1 bg-gradient-to-r from-transparent via-accent/30 to-transparent"
-          animate={{ 
-            opacity: [0, 0.7, 0],
-            x: [window.innerWidth + 100, -100]
-          }}
-          transition={{ 
-            duration: 5,
-            repeat: Infinity,
-            delay: 2,
-            repeatDelay: 3
-          }}
-        />
-        
-        {/* Glow effects */}
-        <motion.div 
-          className="absolute top-1/3 left-1/4 h-64 w-64 bg-cyan-500/10 blur-3xl rounded-full"
-          animate={{ 
-            opacity: [0.1, 0.3, 0.1],
-            scale: [0.8, 1.2, 0.8]
-          }}
-          transition={{ 
-            duration: 8,
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-        />
-        <motion.div 
-          className="absolute bottom-1/4 right-1/3 h-96 w-96 bg-accent/10 blur-3xl rounded-full"
-          animate={{ 
-            opacity: [0.1, 0.2, 0.1],
-            scale: [0.9, 1.1, 0.9]
-          }}
-          transition={{ 
-            duration: 10,
-            delay: 1,
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-        />
       </div>
 
-      <div className="container mx-auto px-4 py-6 md:py-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 lg:gap-0 items-start">
+      <div className="container mx-auto px-4 py-16 pt-28 md:py-24 md:pt-32 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
