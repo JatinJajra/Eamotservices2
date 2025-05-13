@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { 
   LineChart, BellRing, Smartphone, Gauge, Activity, Cloud, 
   Zap, Wifi, AlertCircle, BarChart3, ArrowRight, Brain, Shield,
-  Server, ChevronRight, CheckCircle, Eye, PieChart, Wrench, FileCheck
+  Server, ChevronRight, CheckCircle, Eye, PieChart, Settings
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
