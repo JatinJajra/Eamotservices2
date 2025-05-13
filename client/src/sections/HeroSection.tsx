@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import energyDashboardImage from "../assets/energy-dashboard.png";
-import { Brain, Zap, BarChart, Cpu, LineChart } from "lucide-react";
+import { Brain, Zap, BarChart, Cpu, LineChart, ArrowRight } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 export default function HeroSection() {
@@ -84,354 +84,78 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-16 pt-28 md:py-24 md:pt-32 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 pt-32 pb-20 flex min-h-[90vh] items-center relative z-10">
+        <div className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="relative lg:col-span-2 pt-3 md:pt-6 pl-0 lg:pl-2 lg:mt-10"
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="inline-flex items-center px-3 py-1.5 mb-6 rounded-full bg-blue-600/20 text-blue-400"
           >
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold font-montserrat leading-tight mb-4 text-white">
-              Energy Management with <motion.span 
-                className="text-accent inline-block"
-                animate={{ 
-                  textShadow: [
-                    "0 0 5px rgba(246, 190, 18, 0.3)", 
-                    "0 0 15px rgba(246, 190, 18, 0.5)", 
-                    "0 0 5px rgba(246, 190, 18, 0.3)"
-                  ]
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                Insights
-              </motion.span>, <motion.span 
-                className="text-accent inline-block"
-                animate={{ 
-                  textShadow: [
-                    "0 0 5px rgba(246, 190, 18, 0.3)", 
-                    "0 0 15px rgba(246, 190, 18, 0.5)", 
-                    "0 0 5px rgba(246, 190, 18, 0.3)"
-                  ]
-                }}
-                transition={{ duration: 2, delay: 0.6, repeat: Infinity }}
-              >
-                Data
-              </motion.span> & <motion.span 
-                className="text-accent inline-block"
-                animate={{ 
-                  textShadow: [
-                    "0 0 5px rgba(246, 190, 18, 0.3)", 
-                    "0 0 15px rgba(246, 190, 18, 0.5)", 
-                    "0 0 5px rgba(246, 190, 18, 0.3)"
-                  ]
-                }}
-                transition={{ duration: 2, delay: 1.2, repeat: Infinity }}
-              >
-                Service
-              </motion.span>
-            </h1>
-            
-            <p className="text-base md:text-lg text-white/90 mb-6 max-w-lg leading-relaxed">
-              Delivering IoT-powered solutions to optimize energy consumption, reduce operational costs, and enable sustainable business practices through real-time monitoring and predictive maintenance.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Button asChild className="bg-accent hover:bg-accent/90 text-white text-center font-poppins font-medium px-8 py-6 h-auto shadow-lg shadow-accent/20">
-                  <a href="#services">Our Services</a>
-                </Button>
-              </motion.div>
-              
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Button asChild variant="outline" className="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white text-center font-poppins font-medium px-8 py-6 h-auto">
-                  <a href="#contact">Get In Touch</a>
-                </Button>
-              </motion.div>
-            </div>
+            <Brain className="w-4 h-4 mr-2" />
+            <span className="text-sm font-medium">AI-Powered Energy Intelligence</span>
           </motion.div>
           
-          <motion.div 
-            className="relative hidden lg:flex lg:col-span-3 justify-center items-start"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
           >
-            {/* Energy Dashboard Animation Container */}
-            <div className="relative w-[120%] -mr-[10%] mt-0 mb-12">
-              {/* Background glow effects */}
-              <motion.div 
-                className="absolute inset-0 bg-cyan-500/30 blur-3xl rounded-full"
-                style={{ width: '80%', height: '80%', top: '10%', left: '10%' }}
-                animate={{ 
-                  opacity: [0.2, 0.5, 0.2],
-                  scale: [0.95, 1.05, 0.95] 
-                }}
-                transition={{ 
-                  duration: 6, 
-                  repeat: Infinity,
-                  repeatType: "reverse" 
-                }}
-              />
-              
-              {/* Circuit board pattern background */}
-              <div className="absolute inset-0 opacity-20 overflow-hidden">
-                <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-                  <pattern id="circuitPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-                    <path d="M10,10 L50,10 L50,50 L90,50 M50,50 L50,90 M10,50 L30,50 M70,10 L70,30" 
-                      stroke="cyan" strokeWidth="1" fill="none" />
-                    <circle cx="10" cy="10" r="2" fill="cyan" />
-                    <circle cx="50" cy="10" r="2" fill="cyan" />
-                    <circle cx="90" cy="50" r="2" fill="cyan" />
-                    <circle cx="50" cy="50" r="2" fill="cyan" />
-                    <circle cx="50" cy="90" r="2" fill="cyan" />
-                    <circle cx="10" cy="50" r="2" fill="cyan" />
-                    <circle cx="70" cy="10" r="2" fill="cyan" />
-                    <circle cx="70" cy="30" r="2" fill="cyan" />
-                  </pattern>
-                  <rect width="100%" height="100%" fill="url(#circuitPattern)" />
-                </svg>
+            Next-Gen <span className="text-blue-500">Energy</span> Management
+          </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-xl text-slate-300 mb-8 leading-relaxed"
+          >
+            Delivering IoT-powered solutions to optimize energy consumption, reduce operational costs, 
+            and enable sustainable business practices through real-time monitoring and predictive maintenance.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex flex-wrap gap-4"
+          >
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+              <a href="#services">Explore Our Services</a>
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+            <Button variant="outline" size="lg" className="border-slate-400 text-white hover:bg-white/10">
+              <a href="#contact">Get In Touch</a>
+            </Button>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="mt-12 grid grid-cols-3 gap-4"
+          >
+            {[
+              { value: "40%", label: "Energy Savings" },
+              { value: "24/7", label: "Real-time Monitoring" },
+              { value: "350+", label: "Client Implementations" }
+            ].map((stat, index) => (
+              <div key={index} className="text-center px-4 py-3 rounded-lg bg-slate-800/50 backdrop-blur-sm border border-slate-700">
+                <div className="text-2xl font-bold text-blue-400">{stat.value}</div>
+                <div className="text-xs text-slate-400">{stat.label}</div>
               </div>
-              
-              {/* Smart grid lines that pulse across the dashboard */}
-              <div className="absolute inset-0 overflow-hidden">
-                <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-                  {/* Horizontal power line */}
-                  <motion.line 
-                    x1="0" y1="300" x2="800" y2="300" 
-                    stroke="rgba(0,200,255,0.3)" 
-                    strokeWidth="1"
-                    strokeDasharray="10,15"
-                    animate={{
-                      strokeDashoffset: [0, -50]
-                    }}
-                    transition={{
-                      duration: 10,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                  />
-                  
-                  {/* Diagonal power line */}
-                  <motion.line 
-                    x1="0" y1="0" x2="800" y2="600" 
-                    stroke="rgba(0,200,255,0.2)" 
-                    strokeWidth="1"
-                    strokeDasharray="8,20"
-                    animate={{
-                      strokeDashoffset: [0, -50]
-                    }}
-                    transition={{
-                      duration: 15,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                  />
-                  
-                  {/* Vertical power line */}
-                  <motion.line 
-                    x1="400" y1="0" x2="400" y2="600" 
-                    stroke="rgba(0,200,255,0.25)" 
-                    strokeWidth="1"
-                    strokeDasharray="5,15"
-                    animate={{
-                      strokeDashoffset: [0, -40]
-                    }}
-                    transition={{
-                      duration: 8,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                  />
-                </svg>
-              </div>
-              
-              {/* Main Dashboard Image with animations */}
-              <div className="relative z-10 rounded-xl shadow-[0_0_40px_rgba(0,200,255,0.3)] bg-[#091528]/95 p-4 overflow-visible">
-                {/* Main dashboard image */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8 }}
-                  className="relative z-20"
-                >
-                  <img 
-                    src={energyDashboardImage} 
-                    alt="Energy Management Dashboard" 
-                    className="w-full rounded-lg"
-                  />
-                  
-                  {/* Animated elements overlaid on the image */}
-                  <motion.div
-                    className="absolute inset-0"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                  >
-                    {/* Pulse animations over the icons in the image */}
-                    <motion.div 
-                      className="absolute rounded-full bg-cyan-400/30"
-                      style={{ width: '12%', height: '12%', left: '15%', top: '26%' }}
-                      animate={{ 
-                        opacity: [0.2, 0.6, 0.2],
-                        scale: [1, 1.3, 1],
-                      }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                    />
-                    <motion.div 
-                      className="absolute rounded-full bg-cyan-400/30"
-                      style={{ width: '12%', height: '12%', left: '85%', top: '25%' }}
-                      animate={{ 
-                        opacity: [0.2, 0.6, 0.2],
-                        scale: [1, 1.3, 1],
-                      }}
-                      transition={{ duration: 3, delay: 0.5, repeat: Infinity }}
-                    />
-                    <motion.div 
-                      className="absolute rounded-full bg-cyan-400/30"
-                      style={{ width: '12%', height: '12%', left: '40%', top: '77%' }}
-                      animate={{ 
-                        opacity: [0.2, 0.6, 0.2],
-                        scale: [1, 1.3, 1],
-                      }}
-                      transition={{ duration: 3, delay: 1, repeat: Infinity }}
-                    />
-                    <motion.div 
-                      className="absolute rounded-full bg-cyan-400/30"
-                      style={{ width: '12%', height: '12%', left: '85%', top: '75%' }}
-                      animate={{ 
-                        opacity: [0.2, 0.6, 0.2],
-                        scale: [1, 1.3, 1],
-                      }}
-                      transition={{ duration: 3, delay: 1.5, repeat: Infinity }}
-                    />
-
-                    {/* Lightning bolt in the center that pulses and flickers */}
-                    <motion.div 
-                      className="absolute"
-                      style={{ width: '10%', height: '10%', left: '46%', top: '40%' }}
-                      animate={{ 
-                        opacity: [0.7, 1, 0.7, 1, 0.7],
-                        scale: [1, 1.1, 1, 1.1, 1],
-                        filter: ['drop-shadow(0 0 5px #0ff)', 'drop-shadow(0 0 10px #0ff)', 'drop-shadow(0 0 5px #0ff)']
-                      }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13 3L4 14H12L11 21L20 10H12L13 3Z" fill="#0ff" />
-                      </svg>
-                    </motion.div>
-
-                    {/* Animated line paths connecting the circles */}
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-                      <motion.path 
-                        d="M120,160 C200,200 300,180 380,160" 
-                        stroke="rgba(0,255,255,0.6)" 
-                        strokeWidth="2" 
-                        fill="none"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={{ pathLength: 1, opacity: [0.2, 0.8, 0.2] }}
-                        transition={{ duration: 3, repeat: Infinity }}
-                      />
-                      <motion.path 
-                        d="M500,150 C440,210 400,260 380,350" 
-                        stroke="rgba(0,255,255,0.6)" 
-                        strokeWidth="2" 
-                        fill="none"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={{ pathLength: 1, opacity: [0.2, 0.8, 0.2] }}
-                        transition={{ duration: 3, delay: 0.5, repeat: Infinity }}
-                      />
-                      <motion.path 
-                        d="M280,300 C330,350 430,360 500,400" 
-                        stroke="rgba(0,255,255,0.6)" 
-                        strokeWidth="2" 
-                        fill="none"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={{ pathLength: 1, opacity: [0.2, 0.8, 0.2] }}
-                        transition={{ duration: 3, delay: 1, repeat: Infinity }}
-                      />
-                    </svg>
-                  </motion.div>
-                </motion.div>
-              </div>
-              
-              {/* Floating button components */}
-              <motion.div 
-                className="absolute -top-8 -left-8 bg-primary/90 text-cyan-300 p-4 rounded-full shadow-[0_0_15px_rgba(0,200,255,0.5)] z-30"
-                animate={{ 
-                  y: [0, -8, 0],
-                  boxShadow: [
-                    "0 0 15px rgba(0,200,255,0.3)",
-                    "0 0 25px rgba(0,200,255,0.6)",
-                    "0 0 15px rgba(0,200,255,0.3)"
-                  ]
-                }}
-                transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
-              >
-                <motion.div
-                  animate={{ rotate: [0, 15, 0, -15, 0] }}
-                  transition={{ duration: 6, repeat: Infinity }}
-                >
-                  <i className="fas fa-bolt text-2xl"></i>
-                </motion.div>
-              </motion.div>
-              
-              <motion.div 
-                className="absolute top-1/3 -right-8 bg-primary/90 text-cyan-300 p-4 rounded-full shadow-[0_0_15px_rgba(0,200,255,0.5)] z-30"
-                animate={{ 
-                  y: [0, -8, 0],
-                  boxShadow: [
-                    "0 0 15px rgba(0,200,255,0.3)",
-                    "0 0 25px rgba(0,200,255,0.6)",
-                    "0 0 15px rgba(0,200,255,0.3)"
-                  ]
-                }}
-                transition={{ duration: 4, delay: 1, repeat: Infinity, repeatType: "reverse" }}
-              >
-                <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                >
-                  <i className="fas fa-cog text-2xl"></i>
-                </motion.div>
-              </motion.div>
-              
-              <motion.div 
-                className="absolute -bottom-8 left-1/3 bg-primary/90 text-cyan-300 p-4 rounded-full shadow-[0_0_15px_rgba(0,200,255,0.5)] z-30"
-                animate={{ 
-                  y: [0, -8, 0],
-                  boxShadow: [
-                    "0 0 15px rgba(0,200,255,0.3)",
-                    "0 0 25px rgba(0,200,255,0.6)",
-                    "0 0 15px rgba(0,200,255,0.3)"
-                  ]
-                }}
-                transition={{ duration: 4, delay: 2, repeat: Infinity, repeatType: "reverse" }}
-              >
-                <motion.div
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <i className="fas fa-network-wired text-2xl"></i>
-                </motion.div>
-              </motion.div>
-            </div>
+            ))}
           </motion.div>
         </div>
       </div>
       
-      {/* Bottom Pattern */}
+      {/* Bottom decorative wave */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-        <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-[60px]">
+          <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#e2e8f0" opacity="0.1"></path>
+          <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="#f1f5f9" opacity="0.075"></path>
+        </svg>
       </div>
     </section>
   );

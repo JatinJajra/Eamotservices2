@@ -54,41 +54,108 @@ export default function RECDIntegrationPage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Hero Section with 3D Isometric Design */}
+      {/* Hero Section with Advanced Data Visualization */}
       <section 
         ref={heroRef}
-        className="relative py-20 md:py-32 overflow-hidden"
+        className="relative min-h-[90vh] overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, #0f172a 0%, #1e40af 100%)"
+          background: "linear-gradient(135deg, #051937 0%, #004d7a 100%)"
         }}
       >
-        {/* Circuit board pattern overlay */}
-        <div className="absolute inset-0 opacity-10">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <pattern id="circuitPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-              <path d="M10,10 L50,10 L50,50 L90,50 M50,50 L50,90 M10,50 L30,50 M70,10 L70,30" 
-                stroke="cyan" strokeWidth="1" fill="none" />
-              <circle cx="10" cy="10" r="2" fill="cyan" />
-              <circle cx="50" cy="10" r="2" fill="cyan" />
-              <circle cx="90" cy="50" r="2" fill="cyan" />
-              <circle cx="50" cy="50" r="2" fill="cyan" />
-              <circle cx="50" cy="90" r="2" fill="cyan" />
-              <circle cx="10" cy="50" r="2" fill="cyan" />
-              <circle cx="70" cy="10" r="2" fill="cyan" />
-              <circle cx="70" cy="30" r="2" fill="cyan" />
-            </pattern>
-            <rect width="100%" height="100%" fill="url(#circuitPattern)" />
+        {/* Background with overlay */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/90 to-slate-900/95 z-10"></div>
+          <img
+            src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+            alt="Engine Technology"
+            className="absolute inset-0 w-full h-full object-cover z-0 opacity-40"
+          />
+        </div>
+        
+        {/* Interactive 3D visual elements */}
+        <div className="absolute inset-0 z-5 pointer-events-none">
+          <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 100 100" preserveAspectRatio="none">
+            {/* Stylized energy flow visualization */}
+            <motion.path
+              d="M0,60 C20,40 40,80 60,20 C80,50 90,30 100,50 L100,100 L0,100 Z"
+              fill="url(#gradient-emission)"
+              initial={{ opacity: 0, pathLength: 0 }}
+              animate={heroInView ? { opacity: 0.7, pathLength: 1 } : { opacity: 0, pathLength: 0 }}
+              transition={{ duration: 1.5, delay: 0.5 }}
+            />
+            <defs>
+              <linearGradient id="gradient-emission" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#60a5fa" />
+                <stop offset="100%" stopColor="#3b82f6" />
+              </linearGradient>
+            </defs>
           </svg>
+          
+          {/* Circuit board pattern overlay */}
+          <div className="absolute inset-0 opacity-10">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <pattern id="circuitPattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+                <path d="M10,10 L50,10 L50,50 L70,50 M50,50 L50,70 M10,50 L30,50 M70,10 L70,30" 
+                  stroke="cyan" strokeWidth="1" fill="none" />
+                <circle cx="10" cy="10" r="2" fill="cyan" />
+                <circle cx="50" cy="10" r="2" fill="cyan" />
+                <circle cx="70" cy="50" r="2" fill="cyan" />
+                <circle cx="50" cy="50" r="2" fill="cyan" />
+                <circle cx="50" cy="70" r="2" fill="cyan" />
+                <circle cx="10" cy="50" r="2" fill="cyan" />
+                <circle cx="70" cy="10" r="2" fill="cyan" />
+                <circle cx="70" cy="30" r="2" fill="cyan" />
+              </pattern>
+              <rect width="100%" height="100%" fill="url(#circuitPattern)" />
+            </svg>
+          </div>
+          
+          {/* Floating tech component visualization */}
+          {systemComponents.map((component, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-lg bg-gradient-to-br from-blue-500/20 to-blue-700/10 backdrop-blur-sm border border-blue-500/20 shadow-lg"
+              style={{
+                top: `${10 + i * 15}%`,
+                right: `${10 + i * 5}%`,
+                width: '140px',
+                height: '120px',
+                transform: `rotate(${-5 + i * 2}deg)`
+              }}
+              initial={{ opacity: 0, y: 20, x: 50 }}
+              animate={heroInView ? { 
+                opacity: activeSystem === i ? 0.9 : 0.5, 
+                y: 0, 
+                x: 0,
+                scale: activeSystem === i ? 1.05 : 1
+              } : { opacity: 0, y: 20, x: 50 }}
+              transition={{ duration: 0.8, delay: 0.2 + i * 0.1 }}
+              onClick={() => setActiveSystem(i)}
+            >
+              <div className="p-4 h-full flex flex-col justify-between">
+                <div className="flex justify-between items-start">
+                  <div className="p-2 bg-blue-600/30 rounded-lg">
+                    {component.icon}
+                  </div>
+                  <div className="h-2 w-2 rounded-full bg-blue-400 animate-pulse"></div>
+                </div>
+                <div>
+                  <div className="text-xs font-medium text-blue-100 mb-1">{component.name}</div>
+                  <div className="h-1 w-full bg-blue-400/30 rounded-full"></div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
         
         {/* Animated energy flows */}
         <div className="absolute inset-0">
-          {Array.from({ length: 8 }).map((_, i) => (
+          {[1, 2, 3, 4].map((i) => (
             <motion.div
               key={i}
               className="absolute h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent"
               style={{
-                top: `${15 + (i * 10)}%`,
+                top: `${15 + (i * 20)}%`,
                 left: 0,
                 right: 0,
                 width: '100%'
@@ -138,20 +205,36 @@ export default function RECDIntegrationPage() {
         </div>
         
         {/* Hero content */}
-        <div className="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 text-white mb-12 md:mb-0">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7 }}
-            >
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-                RECD <span className="text-blue-300">Integration</span> Services
-              </h1>
+        <div className="container mx-auto px-4 relative z-10 py-16 pt-24 md:pt-32">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 text-white mb-12 md:mb-0">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="inline-flex items-center px-3 py-1.5 mb-6 rounded-full bg-blue-600/20 text-blue-400"
+              >
+                <Shield className="w-4 h-4 mr-2" />
+                <span className="text-sm font-medium">Advanced Emission Control</span>
+              </motion.div>
               
-              <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-lg">
-                Seamlessly integrate Retrofit Emission Control Devices into your existing systems for improved performance and regulatory compliance.
-              </p>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+              >
+                RECD <span className="text-blue-400">Integration</span> Services
+              </motion.h1>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="text-xl text-blue-100 mb-8 max-w-lg leading-relaxed"
+              >
+                Seamlessly integrate next-generation Retrofit Emission Control Devices with your existing systems for enhanced performance, substantial emissions reduction, and full regulatory compliance.
+              </motion.p>
               
               <div className="flex flex-wrap gap-4">
                 <Button 
@@ -168,7 +251,7 @@ export default function RECDIntegrationPage() {
                   Learn More
                 </Button>
               </div>
-            </motion.div>
+            </div>
           </div>
           
           {/* Interactive 3D isometric system diagram */}
