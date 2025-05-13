@@ -57,11 +57,12 @@ export default function RECDIntegrationPage() {
       {/* Hero Section with Advanced Data Visualization */}
       <section 
         ref={heroRef}
-        className="relative min-h-[90vh] overflow-hidden bg-[#0a2351]"
+        className="relative min-h-[90vh] overflow-hidden"
+        style={{ backgroundColor: "#000000" }}
       >
         {/* Background with overlay */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[#0a2351] z-10"></div>
+          <div className="absolute inset-0 bg-black z-10"></div>
         </div>
         
         {/* Interactive 3D visual elements */}
@@ -102,100 +103,11 @@ export default function RECDIntegrationPage() {
             </svg>
           </div>
           
-          {/* Floating tech component visualization */}
-          {systemComponents.map((component, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-lg bg-gradient-to-br from-blue-500/20 to-blue-700/10 backdrop-blur-sm border border-blue-500/20 shadow-lg"
-              style={{
-                top: `${10 + i * 15}%`,
-                right: `${10 + i * 5}%`,
-                width: '140px',
-                height: '120px',
-                transform: `rotate(${-5 + i * 2}deg)`
-              }}
-              initial={{ opacity: 0, y: 20, x: 50 }}
-              animate={heroInView ? { 
-                opacity: activeSystem === i ? 0.9 : 0.5, 
-                y: 0, 
-                x: 0,
-                scale: activeSystem === i ? 1.05 : 1
-              } : { opacity: 0, y: 20, x: 50 }}
-              transition={{ duration: 0.8, delay: 0.2 + i * 0.1 }}
-              onClick={() => setActiveSystem(i)}
-            >
-              <div className="p-4 h-full flex flex-col justify-between">
-                <div className="flex justify-between items-start">
-                  <div className="p-2 bg-blue-600/30 rounded-lg">
-                    {component.icon}
-                  </div>
-                  <div className="h-2 w-2 rounded-full bg-blue-400 animate-pulse"></div>
-                </div>
-                <div>
-                  <div className="text-xs font-medium text-blue-100 mb-1">{component.name}</div>
-                  <div className="h-1 w-full bg-blue-400/30 rounded-full"></div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          {/* Floating tech component visualization - removed for better readability */}
         </div>
         
-        {/* Animated energy flows */}
-        <div className="absolute inset-0">
-          {[1, 2, 3, 4].map((i) => (
-            <motion.div
-              key={i}
-              className="absolute h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent"
-              style={{
-                top: `${15 + (i * 20)}%`,
-                left: 0,
-                right: 0,
-                width: '100%'
-              }}
-              animate={{ 
-                x: [-100, window.innerWidth + 100],
-                opacity: [0, 0.5, 0]
-              }}
-              transition={{
-                duration: 8,
-                delay: i * 0.7,
-                repeat: Infinity,
-                repeatDelay: 2
-              }}
-            />
-          ))}
-        </div>
-        
-        {/* Glowing orbs */}
-        <div className="absolute inset-0">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-full bg-blue-500 blur-xl"
-              style={{
-                width: `${30 + Math.random() * 70}px`,
-                height: `${30 + Math.random() * 70}px`,
-                top: `${Math.random() * 80 + 10}%`,
-                left: `${Math.random() * 80 + 10}%`,
-                opacity: 0.2
-              }}
-              animate={{
-                scale: [1, 1.3, 1],
-                opacity: [0.1, 0.3, 0.1]
-              }}
-              transition={{
-                duration: 5 + Math.random() * 5,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }}
-            />
-          ))}
-        </div>
+        {/* Visual elements removed for better readability */}
       
-        <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
-        </div>
-        
         {/* Hero content */}
         <div className="container mx-auto px-4 relative z-10 py-16 pt-24 md:pt-32">
           <div className="flex flex-col md:flex-row items-center">
@@ -204,7 +116,7 @@ export default function RECDIntegrationPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={heroInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="inline-flex items-center px-3 py-1.5 mb-6 rounded-full bg-blue-600/20 text-blue-400"
+                className="inline-flex items-center px-3 py-1.5 mb-6 rounded-full bg-blue-600 text-white font-bold"
               >
                 <Shield className="w-4 h-4 mr-2" />
                 <span className="text-sm font-medium">Advanced Emission Control</span>
