@@ -59,16 +59,16 @@ export default function RECDIntegrationPage() {
         ref={heroRef}
         className="relative min-h-[90vh] overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, #051525 0%, #072140 100%)"
+          background: "linear-gradient(135deg, #061120 0%, #0a1930 100%)"
         }}
       >
         {/* Background with overlay */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-slate-900/95 z-10"></div>
+          <div className="absolute inset-0 bg-black/80 z-10"></div>
           <img
             src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
             alt="Engine Technology"
-            className="absolute inset-0 w-full h-full object-cover z-0 opacity-20"
+            className="absolute inset-0 w-full h-full object-cover z-0 opacity-10"
           />
         </div>
         
@@ -222,7 +222,7 @@ export default function RECDIntegrationPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={heroInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white"
               >
                 RECD <span className="text-blue-400">Integration</span> Services
               </motion.h1>
@@ -231,7 +231,7 @@ export default function RECDIntegrationPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={heroInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-xl text-blue-100 mb-8 max-w-lg leading-relaxed"
+                className="text-xl text-white mb-8 max-w-lg leading-relaxed"
               >
                 Seamlessly integrate next-generation Retrofit Emission Control Devices with your existing systems for enhanced performance, substantial emissions reduction, and full regulatory compliance.
               </motion.p>
