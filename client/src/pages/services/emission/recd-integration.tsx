@@ -1,12 +1,13 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
   Cpu, CircuitBoard, Zap, Shield, ArrowRight,
   Package, Truck, Clock, CheckCircle, Search,
   Settings, Wrench, BarChart, AlertTriangle,
-  FileText, Clipboard, Ruler, PieChart
+  FileText, Clipboard, Ruler, PieChart, ArrowLeft, 
+  ArrowRight as ArrowRightIcon, Maximize2, Info
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
@@ -17,6 +18,35 @@ export default function RECDIntegrationPage() {
   const { ref: servicesRef, inView: servicesInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: processRef, inView: processInView } = useIntersectionObserver({ threshold: 0.1 });
   
+  // Interactive component states
+  const [activeSystem, setActiveSystem] = useState(0);
+  const systemComponents = [
+    {
+      name: "Emission Control Module",
+      icon: <Shield className="h-8 w-8" />,
+      description: "Controls and optimizes emission reduction processes",
+      details: "The central brain of the RECD system, processing sensor data and adjusting parameters in real-time to minimize emissions while maintaining optimal performance."
+    },
+    {
+      name: "Catalyst Chamber",
+      icon: <Cpu className="h-8 w-8" />,
+      description: "Converts harmful emissions into harmless substances",
+      details: "Advanced catalytic chamber utilizing precious metals to facilitate chemical reactions that convert NOx, CO, and hydrocarbons into nitrogen, carbon dioxide, and water."
+    },
+    {
+      name: "Sensor Array",
+      icon: <CircuitBoard className="h-8 w-8" />,
+      description: "Monitors emission levels and engine performance",
+      details: "Sophisticated network of temperature, pressure, and composition sensors that continuously monitor exhaust gas conditions and feed data to the control module."
+    },
+    {
+      name: "Data Analysis System",
+      icon: <BarChart className="h-8 w-8" />,
+      description: "Analyzes performance metrics and compliance data",
+      details: "Powerful software suite that provides real-time analytics, historical performance trends, and regulatory compliance reporting capabilities."
+    }
+  ];
+  
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -24,49 +54,84 @@ export default function RECDIntegrationPage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Hero Section with Dynamic Background */}
+      {/* Hero Section with 3D Isometric Design */}
       <section 
         ref={heroRef}
-        className="relative py-20 md:py-28 overflow-hidden"
+        className="relative py-20 md:py-32 overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)"
+          background: "linear-gradient(135deg, #0f172a 0%, #1e40af 100%)"
         }}
       >
-        {/* Animated particle elements */}
-        <div className="absolute inset-0" aria-hidden="true">
-          {Array.from({ length: 20 }).map((_, i) => (
-            <div 
+        {/* Circuit board pattern overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <pattern id="circuitPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+              <path d="M10,10 L50,10 L50,50 L90,50 M50,50 L50,90 M10,50 L30,50 M70,10 L70,30" 
+                stroke="cyan" strokeWidth="1" fill="none" />
+              <circle cx="10" cy="10" r="2" fill="cyan" />
+              <circle cx="50" cy="10" r="2" fill="cyan" />
+              <circle cx="90" cy="50" r="2" fill="cyan" />
+              <circle cx="50" cy="50" r="2" fill="cyan" />
+              <circle cx="50" cy="90" r="2" fill="cyan" />
+              <circle cx="10" cy="50" r="2" fill="cyan" />
+              <circle cx="70" cy="10" r="2" fill="cyan" />
+              <circle cx="70" cy="30" r="2" fill="cyan" />
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#circuitPattern)" />
+          </svg>
+        </div>
+        
+        {/* Animated energy flows */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <motion.div
               key={i}
-              className="absolute rounded-full opacity-20"
+              className="absolute h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent"
               style={{
-                width: `${Math.random() * 150 + 10}px`,
-                height: `${Math.random() * 150 + 10}px`,
-                backgroundColor: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.1)`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animationDuration: `${Math.random() * 10 + 10}s`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationIterationCount: 'infinite',
-                animationName: i % 2 === 0 ? 'float-up' : 'float-down',
-                animationTimingFunction: 'ease-in-out',
+                top: `${15 + (i * 10)}%`,
+                left: 0,
+                right: 0,
+                width: '100%'
+              }}
+              animate={{ 
+                x: [-100, window.innerWidth + 100],
+                opacity: [0, 0.5, 0]
+              }}
+              transition={{
+                duration: 8,
+                delay: i * 0.7,
+                repeat: Infinity,
+                repeatDelay: 2
               }}
             />
           ))}
         </div>
         
-        <style dangerouslySetInnerHTML={{ __html: `
-          @keyframes float-up {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-            100% { transform: translateY(0) rotate(0deg); }
-          }
-          
-          @keyframes float-down {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(20px) rotate(-5deg); }
-            100% { transform: translateY(0) rotate(0deg); }
-          }
-        `}} />
+        {/* Glowing orbs */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-blue-500 blur-xl"
+              style={{
+                width: `${30 + Math.random() * 70}px`,
+                height: `${30 + Math.random() * 70}px`,
+                top: `${Math.random() * 80 + 10}%`,
+                left: `${Math.random() * 80 + 10}%`,
+                opacity: 0.2
+              }}
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.1, 0.3, 0.1]
+              }}
+              transition={{
+                duration: 5 + Math.random() * 5,
+                repeat: Infinity,
+                repeatType: "reverse"
+              }}
+            />
+          ))}
+        </div>
       
         <div className="absolute top-0 left-0 w-full overflow-hidden">
           <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
