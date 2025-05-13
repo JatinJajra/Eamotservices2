@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
@@ -25,7 +24,7 @@ export default function AboutPage() {
   };
 
   return (
-    <Layout>
+    <>
       <div className="bg-gradient-to-b from-primary-800 to-primary-900 text-white py-20">
         <div className="container mx-auto px-4">
           <motion.div
@@ -259,6 +258,6 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }
