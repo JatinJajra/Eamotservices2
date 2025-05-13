@@ -169,15 +169,15 @@ const DGMonitoringPage: React.FC = () => {
       ]
     },
     {
-      industry: 'Data Center',
-      facility: 'Cloud Hosting Facility',
-      challenge: 'Ensuring uninterrupted power for 99.999% uptime SLA',
-      solution: 'Advanced monitoring with predictive failure analysis for 12 generator sets',
+      industry: 'BFSI',
+      facility: 'Major Banking & Financial Institution',
+      challenge: 'Ensuring continuous power for critical financial transactions and data security',
+      solution: 'Comprehensive IoT monitoring solution for 8 high-capacity generator systems with redundancy',
       results: [
-        'Zero unplanned downtime in 24 months',
-        '31% reduction in fuel consumption',
-        '52% faster response to potential issues',
-        'Real-time emissions compliance verification'
+        '99.999% power availability for critical systems',
+        '38% reduction in operational costs',
+        '45% improvement in maintenance efficiency',
+        'Enhanced regulatory compliance reporting'
       ]
     },
     {
@@ -197,7 +197,7 @@ const DGMonitoringPage: React.FC = () => {
   return (
     <>
       {/* Hero Section with Interactive Demo */}
-      <section className="relative bg-gradient-to-r from-primary-900 to-primary-800 text-white py-24 overflow-hidden">
+      <section className="relative bg-gradient-to-r from-black to-gray-900 text-white py-24 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           {/* Animated circuit board pattern background */}
           <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -517,7 +517,7 @@ const DGMonitoringPage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary-900 to-primary-800 text-white">
+      <section className="py-16 bg-gradient-to-r from-black to-gray-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

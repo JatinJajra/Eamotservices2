@@ -271,7 +271,7 @@ const UPSBatteryPage: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-900 to-primary-800 text-white py-24">
+      <section className="relative bg-gradient-to-r from-black to-gray-900 text-white py-24">
         <div className="absolute inset-0 opacity-20">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
             <defs>
@@ -612,7 +612,7 @@ const UPSBatteryPage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary-900 to-primary-800 text-white">
+      <section className="py-16 bg-gradient-to-r from-black to-gray-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
