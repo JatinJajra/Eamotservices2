@@ -84,6 +84,214 @@ export default function HeroSection() {
         </div>
       </div>
 
+      {/* 3D Energy Models */}
+      <div className="absolute inset-0 overflow-hidden z-5 pointer-events-none">
+        {/* 3D Floating elements */}
+        <motion.div
+          className="absolute h-24 w-24 md:h-32 md:w-32 top-[25%] right-[10%]"
+          initial={{ opacity: 0 }}
+          animate={heroInView ? { 
+            opacity: 1,
+            y: [0, -15, 0],
+            rotate: [0, 5, 0]
+          } : { opacity: 0 }}
+          transition={{ 
+            duration: 6, 
+            repeat: Infinity,
+            repeatType: "reverse" 
+          }}
+        >
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#60a5fa" />
+                <stop offset="100%" stopColor="#3b82f6" />
+              </linearGradient>
+            </defs>
+            <path 
+              d="M40,95 L100,20 L160,95 L100,170 Z" 
+              fill="url(#blueGradient)" 
+              stroke="#0ea5e9" 
+              strokeWidth="2"
+              fillOpacity="0.3"
+              strokeOpacity="0.8"
+            />
+            <path 
+              d="M100,20 L100,170" 
+              stroke="#0ea5e9" 
+              strokeWidth="2"
+              strokeOpacity="0.6"
+              strokeDasharray="5,5"
+            />
+            <path 
+              d="M40,95 L160,95" 
+              stroke="#0ea5e9" 
+              strokeWidth="2"
+              strokeOpacity="0.6"
+              strokeDasharray="5,5"
+            />
+          </svg>
+        </motion.div>
+
+        <motion.div
+          className="absolute h-28 w-28 md:h-40 md:w-40 bottom-[15%] right-[25%]"
+          initial={{ opacity: 0 }}
+          animate={heroInView ? { 
+            opacity: 1,
+            y: [0, 15, 0],
+            rotate: [0, -5, 0]
+          } : { opacity: 0 }}
+          transition={{ 
+            duration: 7, 
+            delay: 0.5,
+            repeat: Infinity,
+            repeatType: "reverse" 
+          }}
+        >
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#c084fc" />
+                <stop offset="100%" stopColor="#8b5cf6" />
+              </linearGradient>
+            </defs>
+            <circle 
+              cx="100" 
+              cy="100" 
+              r="70" 
+              fill="url(#purpleGradient)" 
+              fillOpacity="0.2" 
+              stroke="#c084fc" 
+              strokeWidth="2"
+              strokeOpacity="0.6"
+            />
+            <circle 
+              cx="100" 
+              cy="100" 
+              r="50" 
+              fill="none" 
+              stroke="#c084fc" 
+              strokeWidth="2"
+              strokeOpacity="0.4"
+              strokeDasharray="5,5"
+            />
+            <circle 
+              cx="100" 
+              cy="100" 
+              r="30" 
+              fill="none" 
+              stroke="#c084fc" 
+              strokeWidth="2"
+              strokeOpacity="0.3"
+              strokeDasharray="2,2"
+            />
+          </svg>
+        </motion.div>
+
+        <motion.div
+          className="absolute h-32 w-32 md:h-48 md:w-48 top-[40%] right-[30%]"
+          initial={{ opacity: 0 }}
+          animate={heroInView ? { 
+            opacity: 1,
+            y: [0, 10, 0],
+            rotate: [0, 3, 0]
+          } : { opacity: 0 }}
+          transition={{ 
+            duration: 8, 
+            delay: 1,
+            repeat: Infinity,
+            repeatType: "reverse" 
+          }}
+        >
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="cyanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#22d3ee" />
+                <stop offset="100%" stopColor="#0ea5e9" />
+              </linearGradient>
+            </defs>
+            <rect 
+              x="50" 
+              y="50" 
+              width="100" 
+              height="100" 
+              rx="10"
+              fill="url(#cyanGradient)" 
+              fillOpacity="0.2" 
+              stroke="#22d3ee" 
+              strokeWidth="2"
+              strokeOpacity="0.6"
+            />
+            <rect 
+              x="70" 
+              y="70" 
+              width="60" 
+              height="60" 
+              rx="5"
+              fill="none" 
+              stroke="#22d3ee" 
+              strokeWidth="2"
+              strokeOpacity="0.4"
+              strokeDasharray="5,5"
+            />
+            <path 
+              d="M50,100 L150,100 M100,50 L100,150" 
+              stroke="#22d3ee" 
+              strokeWidth="2"
+              strokeOpacity="0.3"
+              strokeDasharray="2,2"
+            />
+          </svg>
+        </motion.div>
+
+        {/* Energy Flow lines */}
+        {[1, 2, 3].map((i) => (
+          <motion.div
+            key={i}
+            className="absolute h-[1px] bg-gradient-to-r from-transparent via-blue-400 to-transparent"
+            style={{
+              top: `${20 + (i * 25)}%`,
+              left: 0,
+              right: 0,
+              width: '100%'
+            }}
+            animate={{ 
+              x: [-100, window.innerWidth + 100],
+              opacity: [0, 0.5, 0]
+            }}
+            transition={{
+              duration: 8,
+              delay: i * 0.7,
+              repeat: Infinity,
+              repeatDelay: 2
+            }}
+          />
+        ))}
+
+        {/* Pulsing dots */}
+        {[1, 2, 3, 4, 5].map((i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-blue-400"
+            style={{
+              height: `${4 + i * 2}px`,
+              width: `${4 + i * 2}px`,
+              top: `${10 + Math.random() * 80}%`,
+              right: `${10 + Math.random() * 40}%`,
+            }}
+            animate={{
+              scale: [1, 1.5, 1],
+              opacity: [0.3, 0.7, 0.3]
+            }}
+            transition={{
+              duration: 3 + i,
+              repeat: Infinity,
+              repeatType: "reverse"
+            }}
+          />
+        ))}
+      </div>
+
       <div className="container mx-auto px-4 pt-32 pb-20 flex min-h-[90vh] items-center relative z-10">
         <div className="max-w-3xl">
           <motion.div

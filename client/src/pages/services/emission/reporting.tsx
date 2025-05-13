@@ -9,7 +9,8 @@ import {
   Calendar, ClipboardCheck, BookOpen, LineChart,
   Database, Globe, FileLock2, FileCheck, BarChart4,
   FileBarChart, FileInput, ChevronRight, FileSpreadsheet,
-  FolderArchive, PieChart, Download, Share2, ClipboardList
+  FolderArchive, PieChart, Download, Share2, ClipboardList,
+  FileCheck2
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
@@ -27,7 +28,7 @@ export default function ComplianceReportingPage() {
   const reportDocuments = [
     {
       title: "Emission Compliance Certificate",
-      icon: <DocumentCheck className="h-10 w-10" />,
+      icon: <FileCheck2 className="h-10 w-10" />,
       date: "May 10, 2025",
       description: "Official certification document for regulatory compliance",
       color: "purple",
