@@ -500,13 +500,8 @@ export default function Header() {
               }
             }}
           >
-            Request a Quote
+            Get In Touch
           </Button>
-          <Link href="/client-portal/login">
-            <Button className="hidden md:block border-primary hover:bg-primary hover:text-white text-primary font-poppins font-medium">
-              Client Login
-            </Button>
-          </Link>
         </div>
         
         {/* Mobile Menu Button */}
@@ -700,13 +695,8 @@ export default function Header() {
                     }
                   }}
                 >
-                  Request a Quote
+                  Get In Touch
                 </Button>
-                <Link href="/client-portal/login">
-                  <Button className="w-full border-primary hover:bg-primary hover:text-white text-primary font-poppins font-medium">
-                    Client Login
-                  </Button>
-                </Link>
               </div>
             </div>
           </motion.div>
