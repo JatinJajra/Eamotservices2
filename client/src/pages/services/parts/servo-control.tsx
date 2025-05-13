@@ -3,18 +3,17 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
-  Cpu, CircuitBoard, Zap, Shield, 
-  Package, Truck, Clock, CheckCircle, Search,
-  Settings, Wrench, BarChart, AlertTriangle,
-  FileText, Clipboard, Ruler, PieChart
+  Settings, Cog, Truck, Search, 
+  FileText, Clock, CheckCircle, Calendar, Shield, 
+  Package, Layers, Wrench, Zap, BarChart4, LineChart
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
-export default function RECDIntegrationPage() {
+export default function ServoControlPage() {
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.1 });
-  const { ref: servicesRef, inView: servicesInView } = useIntersectionObserver({ threshold: 0.1 });
+  const { ref: partsRef, inView: partsInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: processRef, inView: processInView } = useIntersectionObserver({ threshold: 0.1 });
   
   return (
@@ -24,50 +23,33 @@ export default function RECDIntegrationPage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Hero Section with Dynamic Background */}
+      {/* Hero Section with Geometric Background */}
       <section 
         ref={heroRef}
-        className="relative py-20 md:py-28 overflow-hidden"
+        className="py-20 md:py-28 relative overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)"
+          background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)"
         }}
       >
-        {/* Animated particle elements */}
-        <div className="absolute inset-0" aria-hidden="true">
-          {Array.from({ length: 20 }).map((_, i) => (
+        {/* Geometric patterns */}
+        <div className="absolute inset-0 opacity-20">
+          {Array.from({ length: 10 }).map((_, i) => (
             <div 
               key={i}
-              className="absolute rounded-full opacity-20"
+              className="absolute rounded-full" 
               style={{
-                width: `${Math.random() * 150 + 10}px`,
-                height: `${Math.random() * 150 + 10}px`,
-                backgroundColor: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.1)`,
+                width: `${Math.random() * 300 + 50}px`,
+                height: `${Math.random() * 300 + 50}px`,
+                backgroundColor: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.15)`,
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
-                animationDuration: `${Math.random() * 10 + 10}s`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationIterationCount: 'infinite',
-                animationName: i % 2 === 0 ? 'float-up' : 'float-down',
-                animationTimingFunction: 'ease-in-out',
+                transform: `rotate(${Math.random() * 360}deg)`,
+                backdropFilter: 'blur(10px)'
               }}
             />
           ))}
         </div>
         
-        <style dangerouslySetInnerHTML={{ __html: `
-          @keyframes float-up {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-            100% { transform: translateY(0) rotate(0deg); }
-          }
-          
-          @keyframes float-down {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(20px) rotate(-5deg); }
-            100% { transform: translateY(0) rotate(0deg); }
-          }
-        `}} />
-      
         <div className="absolute top-0 left-0 w-full overflow-hidden">
           <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
@@ -81,24 +63,24 @@ export default function RECDIntegrationPage() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-6 inline-flex items-center justify-center">
               <span className="bg-white/20 p-3 rounded-lg mr-4">
-                <CircuitBoard className="h-8 w-8" />
+                <Cog className="h-8 w-8 text-white" />
               </span>
-              <h1 className="text-3xl md:text-5xl font-bold font-montserrat">
-                On-field <span className="text-accent">RECD Integration</span>
+              <h1 className="text-3xl md:text-5xl font-bold font-montserrat text-white">
+                Servo Control <span className="text-accent">Components</span>
               </h1>
             </div>
             
-            <p className="text-lg md:text-xl opacity-90 mb-8 max-w-3xl mx-auto">
-              Professional field integration services for Real-time Emission Control Devices (RECD), 
-              ensuring seamless installation, configuration, and compliance with regulatory standards.
+            <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+              Precision servo stabilizer components and control systems for optimal voltage regulation,
+              ensuring reliable power quality and equipment protection.
             </p>
             
             <div className="flex flex-wrap gap-4 justify-center">
               <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white">
-                <a href="#contact">Request Integration Service</a>
+                <a href="#contact">Request Components Quote</a>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
-                <a href="#services">Explore Integration Options</a>
+                <a href="#parts">Browse Component Catalog</a>
               </Button>
             </div>
           </div>
@@ -109,71 +91,60 @@ export default function RECDIntegrationPage() {
         </div>
       </section>
       
-      {/* Service Features with Interactive Cards */}
+      {/* Service Features with Animated Indicators */}
       <section 
         ref={featuresRef}
-        className="py-16 md:py-24 bg-white relative"
+        className="py-16 md:py-24 bg-white relative overflow-hidden"
       >
-        {/* Background decorative elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-green-100 rounded-full blur-3xl opacity-30"></div>
+        {/* Decorative elements */}
+        <div className="absolute -top-10 -right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-10 -left-10 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
         
-        {/* Grid pattern background */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <style dangerouslySetInnerHTML={{ __html: `
-          .bg-grid-pattern {
-            background-image: 
-              linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-            background-size: 24px 24px;
-          }
-        `}} />
-      
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4 font-medium">
-              Comprehensive RECD Integration
+              Comprehensive Servo Component Solutions
             </span>
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6 text-gray-800">
-              End-to-End <span className="text-primary">Field Integration</span>
+              Complete Servo Control <span className="text-primary">Sourcing Services</span>
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Our specialized field integration services ensure your RECD systems are properly installed, 
-              calibrated, and fully compliant with all regulatory requirements.
+              Our specialized servo components services include sourcing precision control systems, 
+              voltage regulators, motors, and control boards for optimal performance.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: <Cpu className="h-12 w-12 text-primary" />,
-                title: "Expert Integration Teams",
-                description: "Certified field technicians with specialized training in emission control systems and regulatory compliance requirements."
+                icon: <Cog className="h-12 w-12 text-primary" />,
+                title: "Precision Voltage Controllers",
+                description: "Advanced voltage regulation components with high-precision sensing and rapid response capabilities for strict voltage control."
               },
               {
-                icon: <Ruler className="h-12 w-12 text-primary" />,
-                title: "Precision Installation",
-                description: "Accurate placement and connection of all RECD components according to manufacturer specifications and regulatory guidelines."
+                icon: <LineChart className="h-12 w-12 text-primary" />,
+                title: "Digital Control Systems",
+                description: "State-of-the-art digital controllers with advanced algorithms for optimal servo performance and voltage stability."
               },
               {
-                icon: <CircuitBoard className="h-12 w-12 text-primary" />,
-                title: "System Configuration",
-                description: "Professional configuration and programming of all RECD components to ensure proper data acquisition and reporting."
-              },
-              {
-                icon: <Shield className="h-12 w-12 text-primary" />,
-                title: "Compliance Verification",
-                description: "Thorough testing and validation to ensure the integrated system meets all regulatory requirements and standards."
-              },
-              {
-                icon: <PieChart className="h-12 w-12 text-primary" />,
-                title: "Documentation & Reporting",
-                description: "Comprehensive documentation of the installation, configuration, and compliance testing for regulatory submissions."
+                icon: <Zap className="h-12 w-12 text-primary" />,
+                title: "Power Transformers",
+                description: "High-quality variable transformers engineered for durability, efficiency, and precise voltage transformation."
               },
               {
                 icon: <Wrench className="h-12 w-12 text-primary" />,
-                title: "Post-Integration Support",
-                description: "Ongoing technical assistance and troubleshooting after system integration to ensure continuous operation."
+                title: "Technical Support",
+                description: "Expert technical guidance for component selection, compatibility verification, and installation assistance."
+              },
+              {
+                icon: <Package className="h-12 w-12 text-primary" />,
+                title: "Inventory Solutions",
+                description: "Component inventory management and critical spares planning for preventive maintenance and rapid response."
+              },
+              {
+                icon: <Shield className="h-12 w-12 text-primary" />,
+                title: "Quality Assurance",
+                description: "Stringent quality testing and certification for all servo components ensuring reliability and performance."
               }
             ].map((feature, index) => (
               <motion.div
@@ -181,85 +152,98 @@ export default function RECDIntegrationPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: featuresInView ? 1 : 0, y: featuresInView ? 0 : 30 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
-                <div className="bg-white w-20 h-20 rounded-lg shadow-md flex items-center justify-center mb-6">
-                  {feature.icon}
+                <div className="relative">
+                  <div className="absolute -top-4 -left-4 w-20 h-20 bg-primary/10 rounded-full"></div>
+                  <div className="bg-white w-20 h-20 rounded-lg shadow-md flex items-center justify-center mb-6 relative z-10">
+                    {feature.icon}
+                  </div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-3">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
+                
+                {/* Animated indicator */}
+                <div className="mt-6 h-1 bg-gray-200 rounded">
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    animate={{ width: featuresInView ? '100%' : 0 }}
+                    transition={{ duration: 1, delay: 0.2 + (index * 0.1) }}
+                    className="h-full bg-primary rounded"
+                  />
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
       
-      {/* Services Categories */}
+      {/* Parts Categories with Interactive Tabs */}
       <section 
-        id="services"
-        ref={servicesRef}
+        id="parts"
+        ref={partsRef}
         className="py-16 md:py-24 bg-gray-50"
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4 font-medium">
-              Specialized Integration Services
+              Comprehensive Component Catalog
             </span>
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6 text-gray-800">
-              Our <span className="text-primary">Integration Offerings</span>
+              Servo <span className="text-primary">Component Categories</span>
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Explore our range of specialized RECD integration services designed for complete compliance and reliability.
+              Browse our extensive range of precision servo stabilizer components for all major brands and models.
             </p>
           </div>
           
-          <Tabs defaultValue="newInstallation" className="w-full">
+          <Tabs defaultValue="controllers" className="w-full">
             <TabsList className="w-full flex justify-center mb-8 bg-transparent">
-              <TabsTrigger value="newInstallation" className="px-6 py-3 rounded-lg">New Installations</TabsTrigger>
-              <TabsTrigger value="systemUpgrades" className="px-6 py-3 rounded-lg">System Upgrades</TabsTrigger>
-              <TabsTrigger value="troubleshooting" className="px-6 py-3 rounded-lg">Remediation Services</TabsTrigger>
+              <TabsTrigger value="controllers" className="px-6 py-3 rounded-lg">Control Systems</TabsTrigger>
+              <TabsTrigger value="power" className="px-6 py-3 rounded-lg">Power Components</TabsTrigger>
+              <TabsTrigger value="motors" className="px-6 py-3 rounded-lg">Motors & Drives</TabsTrigger>
             </TabsList>
             
-            <TabsContent value="newInstallation" className="mt-0">
+            <TabsContent value="controllers" className="mt-0">
               <Card className="border-none shadow-xl overflow-hidden">
                 <CardContent className="p-0">
                   <div className="grid grid-cols-1 lg:grid-cols-5">
                     <div className="lg:col-span-2 bg-gray-900 text-white p-8">
                       <div className="flex items-center mb-6">
                         <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
-                          <CircuitBoard className="h-6 w-6 text-primary" />
+                          <Cog className="h-6 w-6 text-primary" />
                         </div>
-                        <h3 className="text-2xl font-bold">New System Installation</h3>
+                        <h3 className="text-2xl font-bold">Control Systems</h3>
                       </div>
                       
                       <p className="mb-6 text-gray-300">
-                        Complete integration services for new RECD installations, from site assessment 
-                        to final compliance verification and reporting.
+                        Advanced control systems form the intelligence center of servo stabilizers, 
+                        providing precise voltage sensing, calculations, and corrective actions.
                       </p>
                       
                       <div className="space-y-4">
                         <div className="bg-white/10 p-4 rounded-lg">
-                          <h4 className="font-bold mb-2">Key Advantages</h4>
+                          <h4 className="font-bold mb-2">Controller Benefits</h4>
                           <ul className="space-y-2">
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">Turnkey Solution</span>
-                                <p className="text-sm text-gray-400">End-to-end installation and setup</p>
+                                <span className="font-medium">Rapid Response</span>
+                                <p className="text-sm text-gray-400">Millisecond correction of voltage fluctuations</p>
                               </div>
                             </li>
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">First-Time Compliance</span>
-                                <p className="text-sm text-gray-400">Ensuring immediate regulatory approval</p>
+                                <span className="font-medium">Advanced Algorithms</span>
+                                <p className="text-sm text-gray-400">Sophisticated control logic for stability</p>
                               </div>
                             </li>
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">Expert Engineering</span>
-                                <p className="text-sm text-gray-400">Optimized system design and installation</p>
+                                <span className="font-medium">Self-Diagnostics</span>
+                                <p className="text-sm text-gray-400">Built-in monitoring and error detection</p>
                               </div>
                             </li>
                           </ul>
@@ -268,109 +252,109 @@ export default function RECDIntegrationPage() {
                     </div>
                     
                     <div className="lg:col-span-3 p-8">
-                      <h3 className="text-xl font-bold text-gray-800 mb-6">New Installation Services</h3>
+                      <h3 className="text-xl font-bold text-gray-800 mb-6">Control System Components</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Site Assessment</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Microcontroller Units</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Equipment evaluation</span>
+                              <span className="text-gray-700">PIC microcontrollers</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Installation point selection</span>
+                              <span className="text-gray-700">ARM-based processors</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Power and connectivity review</span>
+                              <span className="text-gray-700">DSP controllers</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Environmental condition analysis</span>
+                              <span className="text-gray-700">FPGA solutions</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Compliance requirement analysis</span>
+                              <span className="text-gray-700">Programmable logic controllers</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Hardware Installation</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Sensing Circuits</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Sensor mounting and placement</span>
+                              <span className="text-gray-700">Voltage sensing modules</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Control unit installation</span>
+                              <span className="text-gray-700">Current transformers</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Power and signal wiring</span>
+                              <span className="text-gray-700">High-precision transducers</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Communication infrastructure</span>
+                              <span className="text-gray-700">Opto-isolators</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Enclosure and protection systems</span>
+                              <span className="text-gray-700">Analog-to-digital converters</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">System Configuration</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Display & Interface</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Control unit programming</span>
+                              <span className="text-gray-700">LCD modules</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Sensor calibration</span>
+                              <span className="text-gray-700">LED indicator panels</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Communication setup</span>
+                              <span className="text-gray-700">Touchscreen interfaces</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Data reporting configuration</span>
+                              <span className="text-gray-700">Control keypads</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Alarm and notification settings</span>
+                              <span className="text-gray-700">Remote monitoring interfaces</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Testing & Validation</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Communication</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">System functionality testing</span>
+                              <span className="text-gray-700">RS485/RS232 modules</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Accuracy verification</span>
+                              <span className="text-gray-700">Ethernet interfaces</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Data transmission testing</span>
+                              <span className="text-gray-700">Modbus RTU/TCP controllers</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Compliance parameter verification</span>
+                              <span className="text-gray-700">IoT connectivity modules</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">System stress testing</span>
+                              <span className="text-gray-700">Wireless communication options</span>
                             </li>
                           </ul>
                         </div>
@@ -378,13 +362,12 @@ export default function RECDIntegrationPage() {
                       
                       <div className="mt-6 bg-primary/5 p-4 rounded-lg border border-primary/10">
                         <div className="flex items-center mb-2">
-                          <Shield className="h-5 w-5 text-primary mr-2" />
-                          <h4 className="font-bold text-gray-800">Compliance Documentation</h4>
+                          <Wrench className="h-5 w-5 text-primary mr-2" />
+                          <h4 className="font-bold text-gray-800">Advanced Control Features</h4>
                         </div>
                         <p className="text-gray-600">
-                          Our installation service includes comprehensive documentation of the entire process, 
-                          including calibration certificates, testing results, and regulatory compliance verification 
-                          for submission to authorities.
+                          Our modern control systems offer advanced features like harmonic correction, power factor 
+                          improvement, and adaptive response capabilities to address complex power quality challenges.
                         </p>
                       </div>
                     </div>
@@ -393,7 +376,7 @@ export default function RECDIntegrationPage() {
               </Card>
             </TabsContent>
             
-            <TabsContent value="systemUpgrades" className="mt-0">
+            <TabsContent value="power" className="mt-0">
               <Card className="border-none shadow-xl overflow-hidden">
                 <CardContent className="p-0">
                   <div className="grid grid-cols-1 lg:grid-cols-5">
@@ -402,37 +385,37 @@ export default function RECDIntegrationPage() {
                         <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
                           <Zap className="h-6 w-6 text-primary" />
                         </div>
-                        <h3 className="text-2xl font-bold">System Upgrades</h3>
+                        <h3 className="text-2xl font-bold">Power Components</h3>
                       </div>
                       
                       <p className="mb-6 text-gray-300">
-                        Professional upgrade services for existing RECD systems to enhance performance, 
-                        meet new regulatory requirements, or replace obsolete components.
+                        High-quality power handling components form the backbone of servo stabilizers, 
+                        managing voltage transformation and current regulation with precision.
                       </p>
                       
                       <div className="space-y-4">
                         <div className="bg-white/10 p-4 rounded-lg">
-                          <h4 className="font-bold mb-2">Upgrade Benefits</h4>
+                          <h4 className="font-bold mb-2">Power Component Advantages</h4>
                           <ul className="space-y-2">
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">Minimal Downtime</span>
-                                <p className="text-sm text-gray-400">Efficient upgrade process with reduced interruption</p>
+                                <span className="font-medium">High Efficiency</span>
+                                <p className="text-sm text-gray-400">Minimal power loss during regulation</p>
                               </div>
                             </li>
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">Backward Compatibility</span>
-                                <p className="text-sm text-gray-400">Integration with existing infrastructure</p>
+                                <span className="font-medium">Thermal Management</span>
+                                <p className="text-sm text-gray-400">Advanced cooling for continuous operation</p>
                               </div>
                             </li>
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">Performance Enhancement</span>
-                                <p className="text-sm text-gray-400">Improved accuracy and reliability</p>
+                                <span className="font-medium">Overload Protection</span>
+                                <p className="text-sm text-gray-400">Robust design for unexpected conditions</p>
                               </div>
                             </li>
                           </ul>
@@ -441,109 +424,109 @@ export default function RECDIntegrationPage() {
                     </div>
                     
                     <div className="lg:col-span-3 p-8">
-                      <h3 className="text-xl font-bold text-gray-800 mb-6">Upgrade Services</h3>
+                      <h3 className="text-xl font-bold text-gray-800 mb-6">Power System Components</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Sensor Upgrades</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Variable Transformers</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">High-precision sensor replacement</span>
+                              <span className="text-gray-700">Toroidal transformers</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Extended range measurement</span>
+                              <span className="text-gray-700">Variac autotransformers</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Additional parameter monitoring</span>
+                              <span className="text-gray-700">Buck-boost transformers</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Enhanced durability options</span>
+                              <span className="text-gray-700">Multi-tap transformers</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Self-cleaning/maintenance systems</span>
+                              <span className="text-gray-700">IGBT-based transformers</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Control System Enhancements</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Power Switching</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Processing unit upgrades</span>
+                              <span className="text-gray-700">IGBT modules</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Memory expansion</span>
+                              <span className="text-gray-700">SCR assemblies</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Advanced analytics implementation</span>
+                              <span className="text-gray-700">MOSFET power switches</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">User interface improvements</span>
+                              <span className="text-gray-700">Solid-state relays</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Redundancy system integration</span>
+                              <span className="text-gray-700">Contactors and switches</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Communication Upgrades</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Protection Components</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Wireless connectivity addition</span>
+                              <span className="text-gray-700">Circuit breakers</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Cellular/satellite integration</span>
+                              <span className="text-gray-700">Surge protectors</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Protocol conversion modules</span>
+                              <span className="text-gray-700">Overcurrent protection</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Enhanced cybersecurity features</span>
+                              <span className="text-gray-700">Thermal protection devices</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Remote access capabilities</span>
+                              <span className="text-gray-700">EMI/RFI filters</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Regulatory Compliance Updates</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Power Supply & Regulation</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">New parameter monitoring</span>
+                              <span className="text-gray-700">Control power supplies</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Increased sampling frequency</span>
+                              <span className="text-gray-700">Voltage regulators</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Enhanced reporting capabilities</span>
+                              <span className="text-gray-700">Filter capacitors</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Standards certification</span>
+                              <span className="text-gray-700">Cooling systems</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Tamper-proof data systems</span>
+                              <span className="text-gray-700">Heat sinks and thermal management</span>
                             </li>
                           </ul>
                         </div>
@@ -551,13 +534,13 @@ export default function RECDIntegrationPage() {
                       
                       <div className="mt-6 bg-primary/5 p-4 rounded-lg border border-primary/10">
                         <div className="flex items-center mb-2">
-                          <Clock className="h-5 w-5 text-primary mr-2" />
-                          <h4 className="font-bold text-gray-800">Scheduled Upgrade Process</h4>
+                          <Shield className="h-5 w-5 text-primary mr-2" />
+                          <h4 className="font-bold text-gray-800">Reliability Engineering</h4>
                         </div>
                         <p className="text-gray-600">
-                          Our upgrade services are scheduled during planned maintenance windows to minimize 
-                          operational disruption, with comprehensive pre-planning and rapid deployment to 
-                          ensure minimal system downtime.
+                          Our power components undergo rigorous reliability engineering, with each component 
+                          designed for 24/7 continuous operation and tested for extreme conditions to ensure
+                          long-term performance in critical applications.
                         </p>
                       </div>
                     </div>
@@ -566,46 +549,46 @@ export default function RECDIntegrationPage() {
               </Card>
             </TabsContent>
             
-            <TabsContent value="troubleshooting" className="mt-0">
+            <TabsContent value="motors" className="mt-0">
               <Card className="border-none shadow-xl overflow-hidden">
                 <CardContent className="p-0">
                   <div className="grid grid-cols-1 lg:grid-cols-5">
                     <div className="lg:col-span-2 bg-gray-900 text-white p-8">
                       <div className="flex items-center mb-6">
                         <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
-                          <Wrench className="h-6 w-6 text-primary" />
+                          <Settings className="h-6 w-6 text-primary" />
                         </div>
-                        <h3 className="text-2xl font-bold">Remediation Services</h3>
+                        <h3 className="text-2xl font-bold">Motors & Drives</h3>
                       </div>
                       
                       <p className="mb-6 text-gray-300">
-                        Specialized services to address non-compliant or malfunctioning RECD systems, 
-                        resolving issues and restoring proper operation and regulatory compliance.
+                        Precision servo motors and drive systems provide the mechanical action required
+                        for variable transformer adjustment and voltage regulation.
                       </p>
                       
                       <div className="space-y-4">
                         <div className="bg-white/10 p-4 rounded-lg">
-                          <h4 className="font-bold mb-2">Remediation Benefits</h4>
+                          <h4 className="font-bold mb-2">Motor System Advantages</h4>
                           <ul className="space-y-2">
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">Rapid Resolution</span>
-                                <p className="text-sm text-gray-400">Quick return to compliant operation</p>
+                                <span className="font-medium">Precision Positioning</span>
+                                <p className="text-sm text-gray-400">Micro-step control for exact voltage adjustment</p>
                               </div>
                             </li>
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">Root Cause Analysis</span>
-                                <p className="text-sm text-gray-400">Comprehensive problem identification</p>
+                                <span className="font-medium">Rapid Response</span>
+                                <p className="text-sm text-gray-400">Quick reaction to voltage fluctuations</p>
                               </div>
                             </li>
                             <li className="flex items-start">
                               <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
                               <div>
-                                <span className="font-medium">Preventative Measures</span>
-                                <p className="text-sm text-gray-400">Solutions to prevent recurrence</p>
+                                <span className="font-medium">Durability</span>
+                                <p className="text-sm text-gray-400">Long service life under continuous operation</p>
                               </div>
                             </li>
                           </ul>
@@ -614,109 +597,109 @@ export default function RECDIntegrationPage() {
                     </div>
                     
                     <div className="lg:col-span-3 p-8">
-                      <h3 className="text-xl font-bold text-gray-800 mb-6">Remediation Solutions</h3>
+                      <h3 className="text-xl font-bold text-gray-800 mb-6">Motor & Drive Components</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Diagnostic Services</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Servo Motors</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Comprehensive system inspection</span>
+                              <span className="text-gray-700">AC servo motors</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Sensor verification testing</span>
+                              <span className="text-gray-700">DC servo motors</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Control system diagnostics</span>
+                              <span className="text-gray-700">Brushless servo motors</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Communication path analysis</span>
+                              <span className="text-gray-700">High-torque motors</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Data integrity verification</span>
+                              <span className="text-gray-700">Stepper motors</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">System Correction</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Motor Drives</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Component replacement</span>
+                              <span className="text-gray-700">Servo drives</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Sensor repositioning</span>
+                              <span className="text-gray-700">PWM controllers</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Software/firmware updates</span>
+                              <span className="text-gray-700">Stepper drivers</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Wiring and connection repair</span>
+                              <span className="text-gray-700">Motor control boards</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">System reconfiguration</span>
+                              <span className="text-gray-700">Integrated motor controllers</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Compliance Recovery</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Mechanical Components</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Regulatory gap analysis</span>
+                              <span className="text-gray-700">Gears and gearboxes</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Compliance parameter adjustment</span>
+                              <span className="text-gray-700">Couplings and adapters</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Reporting system correction</span>
+                              <span className="text-gray-700">Mounting brackets and hardware</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Verification testing</span>
+                              <span className="text-gray-700">Linear actuators</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Regulatory documentation</span>
+                              <span className="text-gray-700">Limit switches and sensors</span>
                             </li>
                           </ul>
                         </div>
                         
                         <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Preventative Services</h4>
+                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Feedback Systems</h4>
                           <ul className="space-y-2">
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">System vulnerability assessment</span>
+                              <span className="text-gray-700">Encoders</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Maintenance protocol development</span>
+                              <span className="text-gray-700">Resolvers</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Staff training programs</span>
+                              <span className="text-gray-700">Position sensors</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Automated monitoring setup</span>
+                              <span className="text-gray-700">Tachometers</span>
                             </li>
                             <li className="flex items-center">
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Backup system implementation</span>
+                              <span className="text-gray-700">Hall effect sensors</span>
                             </li>
                           </ul>
                         </div>
@@ -724,13 +707,13 @@ export default function RECDIntegrationPage() {
                       
                       <div className="mt-6 bg-primary/5 p-4 rounded-lg border border-primary/10">
                         <div className="flex items-center mb-2">
-                          <AlertTriangle className="h-5 w-5 text-primary mr-2" />
-                          <h4 className="font-bold text-gray-800">Emergency Response</h4>
+                          <BarChart4 className="h-5 w-5 text-primary mr-2" />
+                          <h4 className="font-bold text-gray-800">Performance Optimization</h4>
                         </div>
                         <p className="text-gray-600">
-                          Our remediation team is available 24/7 for emergency response to critical RECD system 
-                          failures, with rapid deployment capabilities to minimize non-compliance periods and 
-                          potential regulatory consequences.
+                          Our motor systems are pre-matched and optimized for specific servo stabilizer applications, 
+                          ensuring perfect compatibility between motor, drive, and mechanical components for maximum
+                          performance and system longevity.
                         </p>
                       </div>
                     </div>
@@ -742,7 +725,7 @@ export default function RECDIntegrationPage() {
         </div>
       </section>
       
-      {/* Integration Process */}
+      {/* Service Process with Visual Timeline */}
       <section 
         ref={processRef}
         className="py-16 md:py-24 bg-white"
@@ -750,42 +733,37 @@ export default function RECDIntegrationPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4 font-medium">
-              Our Integration Process
+              Streamlined Procurement Process
             </span>
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6 text-gray-800">
-              How Our <span className="text-primary">Field Integration Works</span>
+              How Our <span className="text-primary">Component Service Works</span>
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Our systematic approach ensures proper installation, configuration, and compliance of your RECD system.
+              Our simplified process ensures you receive the right servo components with minimal hassle and downtime.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               {
                 icon: <Search className="h-10 w-10 text-primary" />,
-                title: "Site Assessment",
-                description: "Comprehensive evaluation of installation location, equipment compatibility, power requirements, and environmental conditions."
+                title: "Component Identification",
+                description: "Provide your servo model, serial number, or specific component details. Our technical team will help identify exact part requirements."
               },
               {
                 icon: <FileText className="h-10 w-10 text-primary" />,
-                title: "Integration Planning",
-                description: "Detailed planning of installation approach, component placement, wiring routes, and system architecture design."
+                title: "Quotation & Selection",
+                description: "Receive detailed options with specifications, pricing, availability, and delivery timeframes for you to make an informed decision."
+              },
+              {
+                icon: <Truck className="h-10 w-10 text-primary" />,
+                title: "Procurement & Delivery",
+                description: "After approval, we source and deliver your components with express options available for urgent requirements."
               },
               {
                 icon: <Wrench className="h-10 w-10 text-primary" />,
-                title: "Field Installation",
-                description: "Professional installation of all hardware components, sensors, control systems, and communication infrastructure."
-              },
-              {
-                icon: <Settings className="h-10 w-10 text-primary" />,
-                title: "Configuration & Calibration",
-                description: "System programming, sensor calibration, communication setup, and parameter configuration for regulatory compliance."
-              },
-              {
-                icon: <Shield className="h-10 w-10 text-primary" />,
-                title: "Testing & Verification",
-                description: "Comprehensive testing of all components, data validation, compliance verification, and final system certification."
+                title: "Technical Support",
+                description: "Receive installation guidance, compatibility verification, and ongoing technical support for your components."
               }
             ].map((step, index) => (
               <motion.div
@@ -795,17 +773,17 @@ export default function RECDIntegrationPage() {
                 transition={{ duration: 0.5, delay: 0.2 * index }}
                 className="relative"
               >
-                {index < 4 && (
-                  <div className="hidden md:block absolute top-10 left-[calc(100%-24px)] w-full h-0.5 bg-primary/30 z-0"></div>
+                {index < 3 && (
+                  <div className="hidden md:block absolute top-16 left-[calc(100%-24px)] w-full h-1 bg-gradient-to-r from-primary/80 to-primary/20 z-0"></div>
                 )}
-                <div className="bg-white rounded-xl shadow-lg p-6 relative z-10">
-                  <div className="bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center mb-6 mx-auto">
+                <div className="bg-white rounded-xl shadow-lg p-8 relative z-10 border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300">
+                  <div className="bg-gradient-to-br from-primary/20 to-primary/5 w-24 h-24 rounded-full flex items-center justify-center mb-6 mx-auto transform transition-transform duration-300 hover:scale-110">
                     {step.icon}
                   </div>
                   <h3 className="text-xl font-bold text-center mb-4">{step.title}</h3>
-                  <p className="text-gray-600 text-center text-sm">{step.description}</p>
+                  <p className="text-gray-600 text-center">{step.description}</p>
                 </div>
-                <div className="bg-primary w-10 h-10 rounded-full flex items-center justify-center text-white font-bold absolute top-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 border-4 border-white shadow-md">
+                <div className="bg-primary w-10 h-10 rounded-full flex items-center justify-center text-white font-bold absolute top-16 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 border-4 border-white shadow-md">
                   {index + 1}
                 </div>
               </motion.div>
@@ -814,26 +792,26 @@ export default function RECDIntegrationPage() {
         </div>
       </section>
       
-      {/* Contact Section */}
-      <section id="contact" className="py-16 md:py-24 bg-gray-50">
+      {/* Contact Section with Gradient Background */}
+      <section id="contact" className="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4 font-medium">
-              Request Integration Services
+              Request Servo Components
             </span>
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6 text-gray-800">
-              Contact Our <span className="text-primary">Integration Team</span>
+              Contact Our <span className="text-primary">Component Specialists</span>
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Fill out the form below to request field integration services for your RECD system.
+              Fill out the form below to request a quote or information about our servo stabilizer components.
             </p>
           </div>
           
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-xl shadow-xl overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-5">
-                <div className="lg:col-span-2 bg-primary p-8 text-white">
-                  <h3 className="text-2xl font-bold mb-6">Integration Request Information</h3>
+                <div className="lg:col-span-2 bg-gradient-to-br from-primary to-primary-700 p-8 text-white">
+                  <h3 className="text-2xl font-bold mb-6">Component Request Information</h3>
                   
                   <div className="space-y-6">
                     <div>
@@ -841,37 +819,37 @@ export default function RECDIntegrationPage() {
                       <ul className="space-y-3">
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 mr-3 mt-0.5" />
-                          <span>RECD system details and manufacturer</span>
+                          <span>Servo stabilizer make and model</span>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 mr-3 mt-0.5" />
-                          <span>Installation location information</span>
+                          <span>Serial number (if available)</span>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 mr-3 mt-0.5" />
-                          <span>Regulatory framework/requirements</span>
+                          <span>Specific component details or issue</span>
                         </li>
                         <li className="flex items-start">
                           <CheckCircle className="h-5 w-5 mr-3 mt-0.5" />
-                          <span>Project timeline and constraints</span>
+                          <span>Urgency level and delivery requirements</span>
                         </li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-lg mb-3">Emergency Services</h4>
+                      <h4 className="font-semibold text-lg mb-3">Contact Methods</h4>
                       <div className="space-y-4">
                         <div className="flex items-center">
                           <Clock className="h-5 w-5 mr-3" />
-                          <span>24/7 emergency integration hotline</span>
+                          <span>Technical support hotline</span>
                         </div>
                         <div className="flex items-center">
-                          <Truck className="h-5 w-5 mr-3" />
-                          <span>Rapid deployment field teams</span>
+                          <Package className="h-5 w-5 mr-3" />
+                          <span>Express delivery options</span>
                         </div>
                         <div className="flex items-center">
-                          <Shield className="h-5 w-5 mr-3" />
-                          <span>Compliance verification specialists</span>
+                          <Calendar className="h-5 w-5 mr-3" />
+                          <span>Scheduled maintenance planning</span>
                         </div>
                       </div>
                     </div>
@@ -903,7 +881,7 @@ export default function RECDIntegrationPage() {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
                         <input
                           type="tel"
                           id="phone"
@@ -923,66 +901,56 @@ export default function RECDIntegrationPage() {
                     </div>
                     
                     <div>
-                      <label htmlFor="systemDetails" className="block text-sm font-medium text-gray-700 mb-1">RECD System Details *</label>
+                      <label htmlFor="servoModel" className="block text-sm font-medium text-gray-700 mb-1">Servo Model & Details *</label>
                       <input
                         type="text"
-                        id="systemDetails"
+                        id="servoModel"
                         className="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20"
-                        placeholder="Manufacturer, model, and system components"
+                        placeholder="e.g., Model XYZ-1000, 50kVA, Single-Phase"
                       />
                     </div>
                     
                     <div>
-                      <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">Installation Location *</label>
-                      <input
-                        type="text"
-                        id="location"
-                        className="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20"
-                        placeholder="Site address and specific location details"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="projectDetails" className="block text-sm font-medium text-gray-700 mb-1">Project Details & Requirements *</label>
+                      <label htmlFor="componentDetails" className="block text-sm font-medium text-gray-700 mb-1">Component Requirements *</label>
                       <textarea
-                        id="projectDetails"
+                        id="componentDetails"
                         rows={4}
                         className="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20"
-                        placeholder="Please describe your integration needs, regulatory requirements, timeline constraints, and any specific challenges..."
+                        placeholder="Please describe the components you need or the issue you're experiencing with your servo stabilizer..."
                       ></textarea>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label htmlFor="serviceType" className="block text-sm font-medium text-gray-700 mb-1">Service Type *</label>
+                        <label htmlFor="urgency" className="block text-sm font-medium text-gray-700 mb-1">Urgency Level</label>
                         <select
-                          id="serviceType"
+                          id="urgency"
                           className="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20"
                         >
-                          <option value="newInstallation">New System Installation</option>
-                          <option value="systemUpgrade">System Upgrade/Enhancement</option>
-                          <option value="remediation">Remediation/Troubleshooting</option>
-                          <option value="consultation">Technical Consultation</option>
+                          <option value="standard">Standard (3-5 business days)</option>
+                          <option value="priority">Priority (1-2 business days)</option>
+                          <option value="emergency">Emergency (Same day/Next day)</option>
+                          <option value="planned">Planned (Future scheduled date)</option>
                         </select>
                       </div>
                       <div>
-                        <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 mb-1">Preferred Timeline *</label>
+                        <label htmlFor="componentType" className="block text-sm font-medium text-gray-700 mb-1">Component Type</label>
                         <select
-                          id="timeline"
+                          id="componentType"
                           className="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20"
                         >
-                          <option value="immediate">Immediate (Emergency)</option>
-                          <option value="2weeks">Within 2 Weeks</option>
-                          <option value="month">Within a Month</option>
-                          <option value="quarter">This Quarter</option>
-                          <option value="planning">Future Planning</option>
+                          <option value="controller">Control System</option>
+                          <option value="power">Power Components</option>
+                          <option value="motor">Motors & Drives</option>
+                          <option value="multiple">Multiple Components</option>
+                          <option value="unknown">Not Sure (Need Technical Assistance)</option>
                         </select>
                       </div>
                     </div>
                     
                     <div>
                       <Button type="submit" className="w-full bg-primary hover:bg-primary-600 text-white">
-                        Submit Integration Request
+                        Submit Component Request
                       </Button>
                     </div>
                   </form>

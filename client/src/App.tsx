@@ -64,6 +64,7 @@ import DGEnginePartsPage from "@/pages/services/parts/dg-engine";
 import UPSModulesPage from "@/pages/services/parts/ups-modules";
 import RECDSparesPage from "@/pages/services/parts/recd-spares";
 import LogisticsPage from "@/pages/services/parts/logistics";
+import ServoControlPage from "@/pages/services/parts/servo-control";
 import RECDIntegrationServicePage from "@/pages/services/emission/recd-integration";
 import EmissionTestingPage from "@/pages/services/emission/testing";
 import ComplianceReportingPage from "@/pages/services/emission/reporting";
@@ -129,7 +130,7 @@ function Router() {
         {/* Spare Parts Sourcing */}
         <Route path="/services/parts/dg-engine" component={DGEnginePartsPage} />
         <Route path="/services/parts/ups-modules" component={UPSModulesPage} />
-        <Route path="/services/parts/servo-control" component={() => <h1>Servo Control Components</h1>} />
+        <Route path="/services/parts/servo-control" component={ServoControlPage} />
         <Route path="/services/parts/recd-spares" component={RECDSparesPage} />
         <Route path="/services/parts/logistics" component={LogisticsPage} />
         
