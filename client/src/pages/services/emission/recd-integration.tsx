@@ -57,19 +57,11 @@ export default function RECDIntegrationPage() {
       {/* Hero Section with Advanced Data Visualization */}
       <section 
         ref={heroRef}
-        className="relative min-h-[90vh] overflow-hidden"
-        style={{
-          background: "linear-gradient(135deg, #061120 0%, #0a1930 100%)"
-        }}
+        className="relative min-h-[90vh] overflow-hidden bg-[#0a2351]"
       >
         {/* Background with overlay */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-black/80 z-10"></div>
-          <img
-            src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-            alt="Engine Technology"
-            className="absolute inset-0 w-full h-full object-cover z-0 opacity-10"
-          />
+          <div className="absolute inset-0 bg-[#0a2351] z-10"></div>
         </div>
         
         {/* Interactive 3D visual elements */}
