@@ -61,6 +61,12 @@ import ServoStabilizerAmcPage from "@/pages/services/amc/servo-stabilizer";
 import PreventiveMaintenancePage from "@/pages/services/amc/preventive";
 import EmergencyBreakdownServicesPage from "@/pages/services/amc/emergency";
 import DGEnginePartsPage from "@/pages/services/parts/dg-engine";
+import UPSModulesPage from "@/pages/services/parts/ups-modules";
+import RECDSparesPage from "@/pages/services/parts/recd-spares";
+import LogisticsPage from "@/pages/services/parts/logistics";
+import RECDIntegrationServicePage from "@/pages/services/emission/recd-integration";
+import EmissionTestingPage from "@/pages/services/emission/testing";
+import ComplianceReportingPage from "@/pages/services/emission/reporting";
 
 // Monitoring Dashboard Pages
 import DGMonitoringDashboard from "@/pages/monitoring/dg";
@@ -122,16 +128,16 @@ function Router() {
         
         {/* Spare Parts Sourcing */}
         <Route path="/services/parts/dg-engine" component={DGEnginePartsPage} />
-        <Route path="/services/parts/ups-modules" component={() => <h1>UPS Modules & Batteries</h1>} />
+        <Route path="/services/parts/ups-modules" component={UPSModulesPage} />
         <Route path="/services/parts/servo-control" component={() => <h1>Servo Control Components</h1>} />
-        <Route path="/services/parts/recd-spares" component={() => <h1>RECD Spares</h1>} />
-        <Route path="/services/parts/logistics" component={() => <h1>Logistics & Delivery Support</h1>} />
+        <Route path="/services/parts/recd-spares" component={RECDSparesPage} />
+        <Route path="/services/parts/logistics" component={LogisticsPage} />
         
         {/* Emission Compliance Services */}
         <Route path="/services/emission/cqam" component={CQAMRegistrationPage} />
-        <Route path="/services/emission/recd-integration" component={() => <h1>On-field RECD Integration</h1>} />
-        <Route path="/services/emission/testing" component={() => <h1>Emission Testing Coordination</h1>} />
-        <Route path="/services/emission/reporting" component={() => <h1>Compliance Reporting</h1>} />
+        <Route path="/services/emission/recd-integration" component={RECDIntegrationServicePage} />
+        <Route path="/services/emission/testing" component={EmissionTestingPage} />
+        <Route path="/services/emission/reporting" component={ComplianceReportingPage} />
         
         {/* Smart Monitoring */}
         <Route path="/monitoring/dg" component={DGMonitoringDashboard} />
