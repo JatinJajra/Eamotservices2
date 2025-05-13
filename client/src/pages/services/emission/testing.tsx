@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
   Cpu, CircuitBoard, BarChart, Shield, ArrowRight,
   Package, Truck, Clock, CheckCircle, Search,
-  Settings, Wrench, FileText, Clipboard,
-  Calendar, Microscope, ClipboardCheck, BookOpen
+  Settings, Wrench, FileText, Clipboard, AlertTriangle,
+  Calendar, Microscope, ClipboardCheck, BookOpen, 
+  BarChart4, Activity, LineChart, Beaker, FlaskConical
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
@@ -17,6 +18,45 @@ export default function EmissionTestingPage() {
   const { ref: servicesRef, inView: servicesInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: processRef, inView: processInView } = useIntersectionObserver({ threshold: 0.1 });
   
+  // State for interactive elements
+  const [activeParameter, setActiveParameter] = useState(0);
+  
+  // Test parameters with mock data
+  const testParameters = [
+    { 
+      name: "Nitrogen Oxides (NOx)", 
+      icon: <Beaker className="w-6 h-6" />,
+      limit: "0.4 g/kWh",
+      typical: "0.2-0.6 g/kWh",
+      importance: "Critical air pollutant regulated under emission standards",
+      color: "from-red-500 to-red-700"
+    },
+    { 
+      name: "Carbon Monoxide (CO)", 
+      icon: <FlaskConical className="w-6 h-6" />,
+      limit: "3.5 g/kWh",
+      typical: "1.5-5.0 g/kWh",
+      importance: "Toxic gas formed by incomplete combustion",
+      color: "from-amber-500 to-amber-700" 
+    },
+    { 
+      name: "Particulate Matter (PM)", 
+      icon: <Microscope className="w-6 h-6" />,
+      limit: "0.02 g/kWh",
+      typical: "0.01-0.05 g/kWh",
+      importance: "Fine particles that cause respiratory issues",
+      color: "from-gray-500 to-gray-700"
+    },
+    { 
+      name: "Hydrocarbons (HC)", 
+      icon: <Activity className="w-6 h-6" />,
+      limit: "0.19 g/kWh",
+      typical: "0.10-0.30 g/kWh",
+      importance: "Volatile organic compounds that contribute to smog",
+      color: "from-green-500 to-green-700"
+    }
+  ];
+  
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -24,14 +64,258 @@ export default function EmissionTestingPage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Hero Section with Dynamic Background */}
+      {/* Hero Section with Laboratory Styled Interface */}
       <section 
         ref={heroRef}
         className="relative py-20 md:py-28 overflow-hidden text-white"
         style={{
-          background: "linear-gradient(135deg, #047857 0%, #10b981 100%)"
+          background: "linear-gradient(135deg, #064e3b 0%, #059669 100%)"
         }}
       >
+        {/* Laboratory-themed background elements */}
+        <div className="absolute inset-0 z-0">
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0 opacity-10">
+            <svg width="100%" height="100%">
+              <defs>
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+          </div>
+          
+          {/* Chemical formula background elements */}
+          <div className="absolute inset-0 opacity-5 flex flex-wrap justify-around content-around">
+            {["CO", "NO₂", "HC", "CO₂", "NOₓ", "O₃", "PM₂.₅"].map((formula, i) => (
+              <div 
+                key={i}
+                className="text-white text-3xl sm:text-5xl font-mono opacity-30"
+                style={{ transform: `rotate(${Math.random() * 20 - 10}deg)` }}
+              >
+                {formula}
+              </div>
+            ))}
+          </div>
+          
+          {/* Animated measuring lines */}
+          <div className="absolute inset-y-0 right-10 flex items-center">
+            <div className="h-3/4 w-[2px] bg-white/10 rounded relative">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <div 
+                  key={i}
+                  className="absolute left-0 w-2 h-[2px] bg-white/40"
+                  style={{ top: `${i * 10}%` }}
+                />
+              ))}
+              <motion.div 
+                className="absolute w-3 h-3 rounded-full bg-green-300 shadow-lg shadow-green-300/50 -left-[5px]"
+                animate={{ 
+                  top: ['5%', '80%', '30%', '60%', '5%'],
+                }}
+                transition={{
+                  duration: 15,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            </div>
+          </div>
+          
+          <div className="absolute inset-y-0 left-10 flex items-center">
+            <div className="h-3/4 w-[2px] bg-white/10 rounded relative">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <div 
+                  key={i}
+                  className="absolute left-0 w-2 h-[2px] bg-white/40"
+                  style={{ top: `${i * 10}%` }}
+                />
+              ))}
+              <motion.div 
+                className="absolute w-3 h-3 rounded-full bg-yellow-300 shadow-lg shadow-yellow-300/50 -left-[5px]"
+                animate={{ 
+                  top: ['70%', '20%', '50%', '10%', '70%'],
+                }}
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        
+        {/* Laboratory header graphics */}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div className="md:w-1/2 mb-12 md:mb-0">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7 }}
+              >
+                <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 mb-4">
+                  <div className="h-2 w-2 rounded-full bg-green-400 mr-2 animate-pulse"></div>
+                  <span className="text-sm font-medium">Precision Testing Services</span>
+                </div>
+                
+                <h1 className="text-3xl md:text-5xl font-bold mb-6">
+                  Emission <span className="text-green-300">Testing</span> Laboratory
+                </h1>
+                
+                <p className="text-lg md:text-xl text-green-100 mb-8 max-w-lg">
+                  Our state-of-the-art facility provides comprehensive emissions testing with advanced analytics to ensure regulatory compliance and environmental responsibility.
+                </p>
+                
+                <div className="flex flex-wrap gap-4">
+                  <Button 
+                    className="bg-green-600 hover:bg-green-700 text-white"
+                    size="lg"
+                  >
+                    Schedule Testing
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    className="border-white text-white hover:bg-white/10"
+                    size="lg"
+                  >
+                    View Test Parameters
+                  </Button>
+                </div>
+                
+                {/* Lab certification badges */}
+                <div className="flex mt-8 gap-4">
+                  <motion.div 
+                    className="flex items-center justify-center h-16 w-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <CheckCircle className="h-8 w-8 text-green-300" />
+                  </motion.div>
+                  <motion.div 
+                    className="flex items-center justify-center h-16 w-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <ClipboardCheck className="h-8 w-8 text-green-300" />
+                  </motion.div>
+                  <motion.div 
+                    className="flex items-center justify-center h-16 w-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <Shield className="h-8 w-8 text-green-300" />
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
+            
+            {/* Interactive lab dashboard visualization */}
+            <div className="md:w-1/2">
+              <motion.div
+                className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-6 shadow-xl"
+                initial={{ opacity: 0, x: 20 }}
+                animate={heroInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.3 }}
+              >
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="h-3 w-3 rounded-full bg-green-500 animate-pulse"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-500 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                    <div className="h-3 w-3 rounded-full bg-red-500 animate-pulse" style={{ animationDelay: '1s' }}></div>
+                  </div>
+                  <div className="text-sm font-mono">EAMOT-LAB-3000</div>
+                </div>
+                
+                <h3 className="text-lg font-medium mb-4 pb-2 border-b border-white/20">Emission Parameters Analysis</h3>
+                
+                {/* Parameter tabs */}
+                <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
+                  {testParameters.map((param, index) => (
+                    <button
+                      key={index}
+                      className={`px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                        activeParameter === index
+                          ? `bg-gradient-to-r ${param.color} text-white`
+                          : 'bg-white/10 hover:bg-white/20'
+                      }`}
+                      onClick={() => setActiveParameter(index)}
+                    >
+                      <div className="flex items-center gap-2">
+                        {param.icon}
+                        <span className="font-medium text-sm">{param.name}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+                
+                {/* Active parameter data */}
+                <div className="bg-white/5 rounded-lg p-4 mb-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <div className="text-xs text-green-200 mb-1">Regulatory Limit</div>
+                      <div className="text-lg font-mono">{testParameters[activeParameter].limit}</div>
+                    </div>
+                    <div>
+                      <div className="text-xs text-green-200 mb-1">Typical Range</div>
+                      <div className="text-lg font-mono">{testParameters[activeParameter].typical}</div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-4">
+                    <div className="text-xs text-green-200 mb-1">Environmental Impact</div>
+                    <div className="text-sm">{testParameters[activeParameter].importance}</div>
+                  </div>
+                </div>
+                
+                {/* Data visualization */}
+                <div className="h-32 relative">
+                  <div className="absolute inset-x-0 bottom-0 h-px bg-green-500/30"></div>
+                  {Array.from({ length: 10 }).map((_, i) => (
+                    <div 
+                      key={i} 
+                      className="absolute bottom-0 w-px h-full bg-green-500/20"
+                      style={{ left: `${i * 11}%` }}
+                    ></div>
+                  ))}
+                  
+                  {/* Animated data line */}
+                  <svg className="absolute inset-0 w-full h-full overflow-visible">
+                    <motion.path 
+                      d="M0,80 C20,70 40,90 60,75 C80,60 100,65 120,55 C140,45 160,55 180,40 C200,25 220,30 240,20 C260,10 280,25 300,15"
+                      stroke="url(#lineGradient)" 
+                      strokeWidth="2" 
+                      fill="none"
+                      initial={{ pathLength: 0 }}
+                      animate={heroInView ? { pathLength: 1 } : { pathLength: 0 }}
+                      transition={{ duration: 2 }}
+                    />
+                    <defs>
+                      <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#34d399" />
+                        <stop offset="100%" stopColor="#10b981" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  
+                  {/* Data points */}
+                  {[75, 55, 40, 20, 15].map((y, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute h-3 w-3 rounded-full bg-green-400 shadow-lg shadow-green-400/50"
+                      style={{ 
+                        bottom: `${y}%`, 
+                        left: `${i * 25}%`,
+                      }}
+                      initial={{ scale: 0 }}
+                      animate={heroInView ? { scale: 1 } : { scale: 0 }}
+                      transition={{ duration: 0.5, delay: 1.5 + (i * 0.1) }}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
         {/* Animated particle elements */}
         <div className="absolute inset-0" aria-hidden="true">
           {Array.from({ length: 15 }).map((_, i) => (

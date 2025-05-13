@@ -137,6 +137,175 @@ export default function RECDIntegrationPage() {
           <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
+        {/* Hero content */}
+        <div className="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center">
+          <div className="md:w-1/2 text-white mb-12 md:mb-0">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7 }}
+            >
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                RECD <span className="text-blue-300">Integration</span> Services
+              </h1>
+              
+              <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-lg">
+                Seamlessly integrate Retrofit Emission Control Devices into your existing systems for improved performance and regulatory compliance.
+              </p>
+              
+              <div className="flex flex-wrap gap-4">
+                <Button 
+                  className="bg-blue-500 hover:bg-blue-600 text-white"
+                  size="lg"
+                >
+                  Get Started
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="border-white text-white hover:bg-white/10"
+                  size="lg"
+                >
+                  Learn More
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+          
+          {/* Interactive 3D isometric system diagram */}
+          <motion.div 
+            className="md:w-1/2"
+            initial={{ opacity: 0 }}
+            animate={heroInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
+            <div className="relative aspect-square max-w-lg mx-auto">
+              {/* Hexagonal base with isometric effect */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <motion.div 
+                  className="w-3/4 h-3/4 bg-gradient-to-br from-blue-900/50 to-blue-800/50 rounded-xl border border-blue-500/30 backdrop-blur-sm shadow-2xl"
+                  initial={{ rotateX: 45, rotateZ: 0 }}
+                  animate={{ rotateX: 35, rotateZ: -5 }}
+                  style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+                />
+              </div>
+              
+              {/* Interactive components display */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative w-full h-full max-w-md max-h-md">
+                  {/* System component showcase */}
+                  <AnimatePresence mode="wait">
+                    <motion.div 
+                      key={activeSystem}
+                      className="absolute inset-0 flex items-center justify-center"
+                      initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.8, y: -20 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <div className="bg-blue-900/80 backdrop-blur-md p-6 rounded-lg border border-blue-500/50 shadow-lg text-white text-center max-w-xs">
+                        <div className="mb-4 inline-flex p-4 rounded-full bg-gradient-to-br from-blue-500 to-blue-700">
+                          {systemComponents[activeSystem].icon}
+                        </div>
+                        <h3 className="text-xl font-bold mb-2">{systemComponents[activeSystem].name}</h3>
+                        <p className="text-blue-200 mb-4">{systemComponents[activeSystem].description}</p>
+                        <p className="text-sm text-blue-300">{systemComponents[activeSystem].details}</p>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                  
+                  {/* Navigation controls */}
+                  <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-4 gap-3">
+                    <Button 
+                      size="icon" 
+                      variant="outline"
+                      className="rounded-full border-blue-400 text-blue-400 hover:bg-blue-500/20"
+                      onClick={() => setActiveSystem((prev) => (prev === 0 ? systemComponents.length - 1 : prev - 1))}
+                    >
+                      <ArrowLeft className="h-4 w-4" />
+                    </Button>
+                    
+                    {systemComponents.map((_, index) => (
+                      <div 
+                        key={index}
+                        className={`w-2 h-2 rounded-full cursor-pointer transition-colors ${
+                          index === activeSystem ? 'bg-blue-400' : 'bg-blue-700'
+                        }`}
+                        onClick={() => setActiveSystem(index)}
+                      />
+                    ))}
+                    
+                    <Button 
+                      size="icon" 
+                      variant="outline"
+                      className="rounded-full border-blue-400 text-blue-400 hover:bg-blue-500/20"
+                      onClick={() => setActiveSystem((prev) => (prev === systemComponents.length - 1 ? 0 : prev + 1))}
+                    >
+                      <ArrowRightIcon className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Connection lines */}
+              <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <motion.path 
+                  d="M150,150 C200,120 250,130 300,150" 
+                  stroke="rgba(59,130,246,0.5)" 
+                  strokeWidth="2" 
+                  fill="none"
+                  strokeDasharray="5,5"
+                  animate={{ pathLength: [0, 1], opacity: [0.3, 0.7, 0.3] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                />
+                <motion.path 
+                  d="M150,250 C200,280 250,270 300,250" 
+                  stroke="rgba(59,130,246,0.5)" 
+                  strokeWidth="2" 
+                  fill="none"
+                  strokeDasharray="5,5"
+                  animate={{ pathLength: [0, 1], opacity: [0.3, 0.7, 0.3] }}
+                  transition={{ duration: 3, delay: 0.5, repeat: Infinity }}
+                />
+                <motion.path 
+                  d="M100,200 C120,180 130,150 150,150" 
+                  stroke="rgba(59,130,246,0.5)" 
+                  strokeWidth="2" 
+                  fill="none"
+                  strokeDasharray="5,5"
+                  animate={{ pathLength: [0, 1], opacity: [0.3, 0.7, 0.3] }}
+                  transition={{ duration: 3, delay: 1, repeat: Infinity }}
+                />
+              </svg>
+              
+              {/* Floating data points */}
+              {Array.from({ length: 5 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full bg-blue-400 h-2 w-2"
+                  style={{
+                    top: `${20 + Math.random() * 60}%`,
+                    left: `${20 + Math.random() * 60}%`,
+                  }}
+                  animate={{
+                    y: [0, -10, 0],
+                    opacity: [0, 1, 0]
+                  }}
+                  transition={{
+                    duration: 4,
+                    delay: i * 0.5,
+                    repeat: Infinity,
+                  }}
+                />
+              ))}
+            </div>
+          </motion.div>
+        </div>
+        
+        {/* Bottom pattern */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+        </div>
+        
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: heroInView ? 1 : 0, y: heroInView ? 0 : 20 }}

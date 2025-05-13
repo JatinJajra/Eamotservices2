@@ -1,13 +1,15 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
   FileText, BarChart, Shield, ArrowRight,
   Package, Truck, Clock, CheckCircle, Search,
-  Settings, Wrench, Clipboard,
+  Settings, Wrench, Clipboard, BookCheck,
   Calendar, ClipboardCheck, BookOpen, LineChart,
-  Database, Globe, FileLock2
+  Database, Globe, FileLock2, FileCheck, BarChart4,
+  FileBarChart, FileInput, ChevronRight, FileSpreadsheet,
+  FolderArchive, PieChart, Download, Share2, ClipboardList
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
@@ -18,6 +20,45 @@ export default function ComplianceReportingPage() {
   const { ref: servicesRef, inView: servicesInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: processRef, inView: processInView } = useIntersectionObserver({ threshold: 0.1 });
   
+  // Document showcase state
+  const [activeDocument, setActiveDocument] = useState(0);
+  
+  // Sample reports/documents for the interactive document viewer
+  const reportDocuments = [
+    {
+      title: "Emission Compliance Certificate",
+      icon: <DocumentCheck className="h-10 w-10" />,
+      date: "May 10, 2025",
+      description: "Official certification document for regulatory compliance",
+      color: "purple",
+      badges: ["Official", "Compliance", "Certified"]
+    },
+    {
+      title: "Quarterly Performance Analysis",
+      icon: <FileBarChart className="h-10 w-10" />,
+      date: "April 15, 2025",
+      description: "Quarterly analysis of emission control system performance",
+      color: "blue",
+      badges: ["Quarterly", "Analytics", "Performance"]
+    },
+    {
+      title: "Environmental Impact Statement",
+      icon: <Globe className="h-10 w-10" />,
+      date: "March 22, 2025",
+      description: "Detailed assessment of environmental impact and mitigation measures",
+      color: "green",
+      badges: ["Environmental", "Impact", "Assessment"]
+    },
+    {
+      title: "Regulatory Compliance Checklist",
+      icon: <ClipboardCheck className="h-10 w-10" />,
+      date: "February 8, 2025",
+      description: "Comprehensive checklist of all regulatory requirements",
+      color: "orange",
+      badges: ["Checklist", "Regulatory", "Requirements"]
+    }
+  ];
+  
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -25,13 +66,239 @@ export default function ComplianceReportingPage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Hero Section with Dynamic Background */}
+      {/* Hero Section with Document/Report Theme */}
       <section 
         ref={heroRef}
         className="relative py-20 md:py-28 overflow-hidden text-white"
         style={{
-          background: "linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)"
+          background: "linear-gradient(135deg, #312e81 0%, #4338ca 100%)"
         }}
+      >
+        {/* Document-themed background elements */}
+        <div className="absolute inset-0 z-0">
+          {/* Paper texture overlay */}
+          <div className="absolute inset-0 bg-paper-texture opacity-5"></div>
+          <style dangerouslySetInnerHTML={{ __html: `
+            .bg-paper-texture {
+              background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            }
+          `}} />
+          
+          {/* Document outlines in background */}
+          <div className="absolute inset-0 flex flex-wrap justify-around items-center pointer-events-none">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <motion.div
+                key={i}
+                className="w-24 h-32 sm:w-32 sm:h-44 bg-white/5 rounded border border-white/10 shadow-lg"
+                style={{ 
+                  transform: `rotate(${-5 + Math.random() * 10}deg)`,
+                  position: 'absolute',
+                  top: `${20 + Math.random() * 60}%`,
+                  left: `${10 + Math.random() * 80}%`,
+                  zIndex: 0
+                }}
+                animate={{
+                  y: [0, -5, 0],
+                  rotate: [i % 2 === 0 ? -3 : 3, i % 2 === 0 ? 3 : -3, i % 2 === 0 ? -3 : 3],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: i * 0.7
+                }}
+              />
+            ))}
+          </div>
+          
+          {/* Floating document icons */}
+          <div className="absolute inset-0">
+            {[
+              { icon: <FileText className="h-6 w-6 text-indigo-200/40" />, top: '15%', left: '10%' },
+              { icon: <FileBarChart className="h-6 w-6 text-indigo-200/40" />, top: '70%', left: '80%' },
+              { icon: <FileCheck className="h-6 w-6 text-indigo-200/40" />, top: '30%', left: '85%' },
+              { icon: <FileSpreadsheet className="h-6 w-6 text-indigo-200/40" />, top: '80%', left: '15%' }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                className="absolute"
+                style={{ top: item.top, left: item.left }}
+                animate={{
+                  y: [0, -15, 0],
+                  opacity: [0.5, 0.8, 0.5]
+                }}
+                transition={{
+                  duration: 5 + Math.random() * 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: i * 0.6
+                }}
+              >
+                {item.icon}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Main content with document showcase */}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left content */}
+            <div className="lg:col-span-5">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7 }}
+              >
+                <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 mb-4">
+                  <div className="h-2 w-2 rounded-full bg-indigo-300 mr-2 animate-pulse"></div>
+                  <span className="text-sm font-medium">Regulatory Excellence</span>
+                </div>
+                
+                <h1 className="text-3xl md:text-5xl font-bold mb-6">
+                  Compliance <span className="text-indigo-300">Reporting</span> Services
+                </h1>
+                
+                <p className="text-lg text-indigo-100 mb-8 max-w-lg">
+                  Comprehensive documentation and reporting services to ensure your emission control systems meet all regulatory requirements with precision and clarity.
+                </p>
+                
+                <div className="flex flex-wrap gap-4">
+                  <Button 
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white"
+                    size="lg"
+                  >
+                    Get Started
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    className="border-white text-white hover:bg-white/10"
+                    size="lg"
+                  >
+                    View Sample Reports
+                  </Button>
+                </div>
+                
+                {/* Report stats */}
+                <div className="grid grid-cols-3 gap-4 mt-10">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
+                    <div className="text-3xl font-bold mb-1">100%</div>
+                    <div className="text-xs text-indigo-200">Compliance Rate</div>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
+                    <div className="text-3xl font-bold mb-1">24h</div>
+                    <div className="text-xs text-indigo-200">Turnaround Time</div>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
+                    <div className="text-3xl font-bold mb-1">50+</div>
+                    <div className="text-xs text-indigo-200">Report Types</div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+            
+            {/* Interactive document showcase */}
+            <div className="lg:col-span-7">
+              <motion.div
+                className="relative"
+                initial={{ opacity: 0, x: 20 }}
+                animate={heroInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.3 }}
+              >
+                {/* Document selector */}
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-white/20 shadow-xl">
+                  {/* Document tabs */}
+                  <div className="grid grid-cols-4 border-b border-white/20">
+                    {reportDocuments.map((doc, index) => (
+                      <button
+                        key={index}
+                        className={`py-3 px-2 text-xs md:text-sm text-center transition-colors ${
+                          activeDocument === index
+                            ? 'bg-indigo-700/50 border-b-2 border-indigo-400'
+                            : 'hover:bg-white/5'
+                        }`}
+                        onClick={() => setActiveDocument(index)}
+                      >
+                        <div className="flex flex-col items-center">
+                          <div className={`text-${reportDocuments[index].color}-400`}>
+                            {reportDocuments[index].icon}
+                          </div>
+                          <div className="mt-1 font-medium truncate max-w-full">{doc.title}</div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                  
+                  {/* Document viewer */}
+                  <div className="p-6">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeDocument}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <div className="flex items-start gap-4">
+                          <div className={`flex-shrink-0 p-4 rounded-lg bg-${reportDocuments[activeDocument].color}-500/20`}>
+                            {reportDocuments[activeDocument].icon}
+                          </div>
+                          
+                          <div className="flex-grow">
+                            <div className="flex justify-between items-start">
+                              <h3 className="text-xl font-bold mb-2">{reportDocuments[activeDocument].title}</h3>
+                              <div className="text-sm text-indigo-200">{reportDocuments[activeDocument].date}</div>
+                            </div>
+                            
+                            <p className="text-indigo-100 mb-4">{reportDocuments[activeDocument].description}</p>
+                            
+                            <div className="flex flex-wrap gap-2 mb-6">
+                              {reportDocuments[activeDocument].badges.map((badge, i) => (
+                                <span key={i} className="px-2 py-1 text-xs rounded-full bg-indigo-700/50 border border-indigo-500/50">
+                                  {badge}
+                                </span>
+                              ))}
+                            </div>
+                            
+                            {/* Document preview */}
+                            <div className="border border-white/20 rounded-lg p-4 bg-white/5 mb-4">
+                              <div className="flex justify-between items-center mb-3">
+                                <div className="text-sm font-semibold">Document Preview</div>
+                                <div className="text-xs text-indigo-200">EAMOT-{2025}-{activeDocument + 1000}</div>
+                              </div>
+                              
+                              {/* Document content preview with dummy lines */}
+                              <div className="space-y-2">
+                                {Array.from({ length: 5 }).map((_, i) => (
+                                  <div key={i} className="h-3 bg-white/10 rounded" style={{ width: `${60 + Math.random() * 40}%` }}></div>
+                                ))}
+                              </div>
+                            </div>
+                            
+                            <div className="flex gap-3">
+                              <Button variant="outline" size="sm" className="border-indigo-400/50 text-indigo-200">
+                                <Download className="w-4 h-4 mr-2" />
+                                Download
+                              </Button>
+                              <Button variant="outline" size="sm" className="border-indigo-400/50 text-indigo-200">
+                                <Share2 className="w-4 h-4 mr-2" />
+                                Share
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                </div>
+                
+                {/* Document stack effect */}
+                <div className="absolute -bottom-3 -left-3 right-3 h-3 bg-indigo-950/60 blur-sm rounded"></div>
+                <div className="absolute -bottom-6 -left-6 right-6 h-6 bg-indigo-950/40 blur-md rounded"></div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
       >
         {/* Animated floating data elements */}
         <div className="absolute inset-0" aria-hidden="true">
