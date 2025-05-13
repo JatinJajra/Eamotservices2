@@ -6,76 +6,76 @@ const ServoProcurementPage: React.FC = () => {
   const features = [
     {
       icon: <Search className="h-5 w-5 text-primary" />,
-      title: 'Market Research & Analysis',
-      description: 'Comprehensive evaluation of stabilizer manufacturers with detailed comparison of technology options and performance characteristics.'
+      title: 'Expert Market Research & Analysis',
+      description: 'We conduct thorough evaluations of leading stabilizer manufacturers to identify the perfect balance of technology, performance, and value for your unique requirements.'
     },
     {
       icon: <Scale className="h-5 w-5 text-primary" />,
-      title: 'Technical Specification Development',
-      description: 'Creation of detailed procurement specifications based on site-specific requirements and equipment protection needs.'
+      title: 'Custom Specification Development',
+      description: 'Our engineers create precise procurement specifications tailored to your specific site conditions, load characteristics, and critical equipment protection needs.'
     },
     {
       icon: <ShoppingCart className="h-5 w-5 text-primary" />,
-      title: 'Vendor Identification & Qualification',
-      description: 'Identification of reputable vendors with track record of quality stabilizer manufacturing and reliable after-sales support.'
+      title: 'Strategic Vendor Selection',
+      description: 'We partner only with manufacturers who have demonstrated excellence in product quality, innovation, reliability, and responsive after-sales support.'
     },
     {
       icon: <Award className="h-5 w-5 text-primary" />,
-      title: 'Quotation Management',
-      description: 'Coordination of vendor quotations with technical and commercial evaluation to ensure optimal value and performance.'
+      title: 'Competitive Quotation Analysis',
+      description: 'Our technical experts conduct detailed bid comparisons, negotiating the best terms while ensuring all technical requirements are met without compromise.'
     },
     {
       icon: <Truck className="h-5 w-5 text-primary" />,
-      title: 'Logistics Coordination',
-      description: 'Management of delivery scheduling, transportation arrangements, and site delivery coordination for stabilizer units.'
+      title: 'Seamless Logistics Management',
+      description: 'We handle all delivery logistics, including scheduling, transportation, customs clearance (if applicable), and secure site delivery coordination.'
     },
     {
       icon: <FileCheck className="h-5 w-5 text-primary" />,
-      title: 'Quality Assurance',
-      description: 'Pre-dispatch inspection and testing verification to ensure stabilizer performance meets specified technical requirements.'
-    },
+      title: 'Rigorous Quality Verification',
+      description: 'Our pre-dispatch inspection and testing protocols ensure your stabilizer meets all specified performance parameters before it leaves the factory.'
+    }
   ];
 
   const benefits = [
     {
-      title: 'Quality Assurance',
-      description: 'Access high-quality servo stabilizers from reputable manufacturers with proven performance and reliability.'
+      title: 'Guaranteed Premium Quality',
+      description: 'Avoid costly equipment damage and downtime with our thoroughly vetted, high-performance stabilizers that consistently exceed industry standards.'
     },
     {
-      title: 'Technical Compatibility',
-      description: 'Ensure stabilizer specifications precisely match your equipment protection requirements and site conditions.'
+      title: 'Perfect Technical Alignment',
+      description: 'Experience optimal protection and efficiency with stabilizers precisely matched to your voltage conditions, load requirements, and critical equipment specifications.'
     },
     {
-      title: 'Cost Optimization',
-      description: 'Leverage our procurement expertise and vendor relationships to secure optimal pricing and terms.'
+      title: 'Significant Cost Savings',
+      description: 'Save up to 15-20% on procurement costs through our volume purchasing power, manufacturer relationships, and expert negotiation strategies.'
     },
     {
-      title: 'Simplified Procurement',
-      description: 'Eliminate the complexity of technical evaluation and vendor management with our turnkey procurement service.'
+      title: 'Stress-Free Procurement Experience',
+      description: 'Eliminate the headaches of technical vetting, vendor management, and quality control with our comprehensive end-to-end procurement solution.'
     },
     {
-      title: 'Risk Mitigation',
-      description: 'Reduce procurement risks through expert technical evaluation and pre-delivery quality verification.'
+      title: 'Comprehensive Risk Protection',
+      description: 'Sleep easier knowing your investment is protected through our thorough technical assessment, quality verification, and performance validation protocols.'
     },
     {
-      title: 'Time Efficiency',
-      description: 'Streamline the procurement process with our established vendor relationships and procurement expertise.'
-    },
+      title: 'Accelerated Implementation',
+      description: 'Reduce procurement timelines by up to 40% with our streamlined processes, established vendor networks, and proactive project management approach.'
+    }
   ];
 
   return (
     <ServicePageTemplate
       title="Servo Stabilizer Procurement"
-      subtitle="Quality Voltage Stabilizer Sourcing"
-      description="Our comprehensive servo stabilizer procurement service helps you source high-quality, reliable voltage stabilization equipment that precisely matches your technical requirements and budget constraints."
+      subtitle="Premium Voltage Protection Solutions"
+      description="Transform your power quality management with our elite servo stabilizer procurement service. We eliminate the complexities and risks of equipment sourcing, delivering meticulously selected, performance-verified stabilizers that safeguard your critical equipment."
       features={features}
       benefits={benefits}
       heroImage="/images/servo-procurement.jpg"
       callToAction={{
-        title: "Ready to Procure Quality Stabilizers?",
-        description: "Contact our procurement specialists to discuss your servo stabilizer requirements and begin the sourcing process.",
-        buttonText: "Start Procurement Process",
-        buttonLink: "/contact",
+        title: "Protect Your Valuable Equipment Today",
+        description: "Our procurement experts are ready to develop a customized stabilizer solution that meets your exact technical needs and budget parameters with no hassle.",
+        buttonText: "Get Your Perfect Stabilizer",
+        buttonLink: "/contact"
       }}
     />
   );
