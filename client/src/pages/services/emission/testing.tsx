@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
-  Cpu, CircuitBoard, BarChart, Shield, 
+  Cpu, CircuitBoard, BarChart, Shield, ArrowRight,
   Package, Truck, Clock, CheckCircle, Search,
   Settings, Wrench, FileText, Clipboard,
   Calendar, Microscope, ClipboardCheck, BookOpen
@@ -24,11 +24,60 @@ export default function EmissionTestingPage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Hero Section */}
+      {/* Hero Section with Dynamic Background */}
       <section 
         ref={heroRef}
-        className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 md:py-28 relative overflow-hidden"
+        className="relative py-20 md:py-28 overflow-hidden text-white"
+        style={{
+          background: "linear-gradient(135deg, #047857 0%, #10b981 100%)"
+        }}
       >
+        {/* Animated particle elements */}
+        <div className="absolute inset-0" aria-hidden="true">
+          {Array.from({ length: 15 }).map((_, i) => (
+            <div 
+              key={i}
+              className="absolute rounded-full opacity-20"
+              style={{
+                width: `${Math.random() * 150 + 10}px`,
+                height: `${Math.random() * 150 + 10}px`,
+                backgroundColor: `rgba(255, 255, 255, 0.15)`,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                transform: `rotate(${Math.random() * 360}deg)`,
+                animationDuration: `${Math.random() * 10 + 10}s`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationIterationCount: 'infinite',
+                animationName: i % 2 === 0 ? 'float-up' : 'float-down',
+                animationTimingFunction: 'ease-in-out',
+              }}
+            />
+          ))}
+        </div>
+        
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes float-up {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+          }
+          
+          @keyframes float-down {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(20px) rotate(-5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+          }
+        `}} />
+        
+        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <style dangerouslySetInnerHTML={{ __html: `
+          .bg-grid-pattern {
+            background-image: 
+              linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+          }
+        `}} />
         <div className="absolute top-0 left-0 w-full overflow-hidden">
           <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>

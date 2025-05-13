@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
-  Cpu, CircuitBoard, Zap, Shield, 
+  Cpu, CircuitBoard, Zap, Shield, ArrowRight,
   Package, Truck, Clock, CheckCircle, Search,
   Settings, Wrench, BarChart, AlertTriangle,
   FileText, Clipboard, Ruler, PieChart
@@ -146,34 +146,46 @@ export default function RECDIntegrationPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: <Cpu className="h-12 w-12 text-primary" />,
+                icon: <Cpu className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
                 title: "Expert Integration Teams",
-                description: "Certified field technicians with specialized training in emission control systems and regulatory compliance requirements."
+                description: "Certified field technicians with specialized training in emission control systems and regulatory compliance requirements.",
+                benefits: ["Certified professionals", "Regulatory expertise", "Field experience"]
               },
               {
-                icon: <Ruler className="h-12 w-12 text-primary" />,
+                icon: <Ruler className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
                 title: "Precision Installation",
-                description: "Accurate placement and connection of all RECD components according to manufacturer specifications and regulatory guidelines."
+                description: "Accurate placement and connection of all RECD components according to manufacturer specifications and regulatory guidelines.",
+                benefits: ["Manufacturer-certified mounting", "Optimal sensor placement", "Secure connections"]
               },
               {
-                icon: <CircuitBoard className="h-12 w-12 text-primary" />,
+                icon: <CircuitBoard className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1580674285054-bed31e145f59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
                 title: "System Configuration",
-                description: "Professional configuration and programming of all RECD components to ensure proper data acquisition and reporting."
+                description: "Professional configuration and programming of all RECD components to ensure proper data acquisition and reporting.",
+                benefits: ["Precise calibration", "Data validation", "Custom parameters"]
               },
               {
-                icon: <Shield className="h-12 w-12 text-primary" />,
+                icon: <Shield className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
                 title: "Compliance Verification",
-                description: "Thorough testing and validation to ensure the integrated system meets all regulatory requirements and standards."
+                description: "Thorough testing and validation to ensure the integrated system meets all regulatory requirements and standards.",
+                benefits: ["Certified compliance", "Performance testing", "Audit readiness"]
               },
               {
-                icon: <PieChart className="h-12 w-12 text-primary" />,
+                icon: <PieChart className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
                 title: "Documentation & Reporting",
-                description: "Comprehensive documentation of the installation, configuration, and compliance testing for regulatory submissions."
+                description: "Comprehensive documentation of the installation, configuration, and compliance testing for regulatory submissions.",
+                benefits: ["Complete records", "Regulatory filings", "Digital archives"]
               },
               {
-                icon: <Wrench className="h-12 w-12 text-primary" />,
+                icon: <Wrench className="h-14 w-14 text-white" />,
+                image: "https://images.unsplash.com/photo-1564069114553-7215e1ff1890?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1748&q=80",
                 title: "Post-Integration Support",
-                description: "Ongoing technical assistance and troubleshooting after system integration to ensure continuous operation."
+                description: "Ongoing technical assistance and troubleshooting after system integration to ensure continuous operation.",
+                benefits: ["24/7 support", "Remote diagnostics", "Rapid response"]
               }
             ].map((feature, index) => (
               <motion.div
@@ -181,13 +193,45 @@ export default function RECDIntegrationPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: featuresInView ? 1 : 0, y: featuresInView ? 0 : 30 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden group h-full"
               >
-                <div className="bg-white w-20 h-20 rounded-lg shadow-md flex items-center justify-center mb-6">
-                  {feature.icon}
+                <div className="relative h-48 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/30 z-10"></div>
+                  <img 
+                    src={feature.image} 
+                    alt={feature.title} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                    <div className="flex items-center">
+                      <div className="bg-primary/80 backdrop-blur-sm p-3 rounded-lg mr-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                        {feature.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-white">{feature.title}</h3>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                
+                <div className="p-6">
+                  <p className="text-gray-600 mb-4">{feature.description}</p>
+                  
+                  <h4 className="font-semibold text-gray-800 mb-2">Key Benefits:</h4>
+                  <ul className="space-y-1">
+                    {feature.benefits.map((benefit, i) => (
+                      <li key={i} className="flex items-center text-gray-600">
+                        <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                        <span>{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <div className="mt-4 pt-4 border-t border-gray-100">
+                    <a href="#contact" className="text-primary font-medium flex items-center hover:underline">
+                      Learn more
+                      <ArrowRight className="h-4 w-4 ml-1" />
+                    </a>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
