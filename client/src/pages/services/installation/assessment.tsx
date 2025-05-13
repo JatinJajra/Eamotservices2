@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   ClipboardCheck, 
-  FlashLight, 
+  Flashlight, 
   Ruler, 
   Wrench, 
   Clock, 
@@ -41,7 +41,7 @@ const InstallationAssessmentPage: React.FC = () => {
       color: 'bg-green-50'
     },
     {
-      icon: <FlashLight className="h-8 w-8 text-primary" />,
+      icon: <Flashlight className="h-8 w-8 text-primary" />,
       title: 'Electrical Integration Planning',
       description: 'Evaluation of existing electrical systems and development of integration strategy for seamless operation.',
       color: 'bg-amber-50'
