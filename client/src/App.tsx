@@ -59,6 +59,8 @@ import DocumentationHandoverPage from "@/pages/services/installation/documentati
 import UPSAmcPage from "@/pages/services/amc/ups";
 import ServoStabilizerAmcPage from "@/pages/services/amc/servo-stabilizer";
 import PreventiveMaintenancePage from "@/pages/services/amc/preventive";
+import EmergencyBreakdownServicesPage from "@/pages/services/amc/emergency";
+import DGEnginePartsPage from "@/pages/services/parts/dg-engine";
 
 // Monitoring Dashboard Pages
 import DGMonitoringDashboard from "@/pages/monitoring/dg";
@@ -116,10 +118,10 @@ function Router() {
         <Route path="/services/amc/ups" component={UPSAmcPage} />
         <Route path="/services/amc/servo-stabilizer" component={ServoStabilizerAmcPage} />
         <Route path="/services/amc/preventive" component={PreventiveMaintenancePage} />
-        <Route path="/services/amc/emergency" component={() => <h1>Emergency Breakdown Services</h1>} />
+        <Route path="/services/amc/emergency" component={EmergencyBreakdownServicesPage} />
         
         {/* Spare Parts Sourcing */}
-        <Route path="/services/parts/dg-engine" component={() => <h1>DG Engine & Alternator Parts</h1>} />
+        <Route path="/services/parts/dg-engine" component={DGEnginePartsPage} />
         <Route path="/services/parts/ups-modules" component={() => <h1>UPS Modules & Batteries</h1>} />
         <Route path="/services/parts/servo-control" component={() => <h1>Servo Control Components</h1>} />
         <Route path="/services/parts/recd-spares" component={() => <h1>RECD Spares</h1>} />
