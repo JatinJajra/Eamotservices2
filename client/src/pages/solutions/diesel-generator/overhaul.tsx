@@ -364,7 +364,12 @@ const DGOverhaulPage: React.FC = () => {
                   </div>
                   <span className="text-primary font-semibold">{component.percentage}%</span>
                 </div>
-                <Progress value={component.percentage} className="h-2 w-full" indicatorClassName="bg-primary" />
+                <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-primary" 
+                    style={{ width: `${component.percentage}%` }}
+                  ></div>
+                </div>
               </motion.div>
             ))}
           </div>
