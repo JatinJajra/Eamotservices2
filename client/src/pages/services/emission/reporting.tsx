@@ -299,7 +299,7 @@ export default function ComplianceReportingPage() {
             </div>
           </div>
         </div>
-      >
+        
         {/* Animated floating data elements */}
         <div className="absolute inset-0" aria-hidden="true">
           {Array.from({ length: 15 }).map((_, i) => (
