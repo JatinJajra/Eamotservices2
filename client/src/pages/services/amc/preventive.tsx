@@ -8,10 +8,22 @@ import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { 
   Calendar, Clock, Wrench, BarChart, CheckCircle, 
   FileCheck, AlertTriangle, Shield, ZapOff, FileText, 
-  Settings, User, Gauge, Activity, Percent
+  Settings, User, Gauge, Activity, Percent, Battery
 } from "lucide-react";
 
-const BenefitCard = ({ icon, title, description, animationDelay = 0, inView = false }) => (
+const BenefitCard = ({ 
+  icon, 
+  title, 
+  description, 
+  animationDelay = 0, 
+  inView = false 
+}: { 
+  icon: React.ReactNode; 
+  title: string; 
+  description: string; 
+  animationDelay?: number; 
+  inView?: boolean;
+}) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}

@@ -53,6 +53,12 @@ import DFKMaintenancePage from "@/pages/solutions/dfk/maintenance";
 import DGServiceAMCPage from "@/pages/services/amc/diesel-generator";
 import CQAMRegistrationPage from "@/pages/services/emission/cqam";
 import AssessmentPage from "@/pages/services/installation/assessment";
+import TurnkeyInstallationPage from "@/pages/services/installation/turnkey";
+import SynchronizationPage from "@/pages/services/installation/synchronization";
+import DocumentationHandoverPage from "@/pages/services/installation/documentation";
+import UPSAmcPage from "@/pages/services/amc/ups";
+import ServoStabilizerAmcPage from "@/pages/services/amc/servo-stabilizer";
+import PreventiveMaintenancePage from "@/pages/services/amc/preventive";
 
 // Monitoring Dashboard Pages
 import DGMonitoringDashboard from "@/pages/monitoring/dg";
@@ -101,15 +107,15 @@ function Router() {
         
         {/* Installation & Integration */}
         <Route path="/services/installation/assessment" component={AssessmentPage} />
-        <Route path="/services/installation/turnkey" component={() => <h1>Turnkey Installation Projects</h1>} />
-        <Route path="/services/installation/synchronization" component={() => <h1>Synchronization & Load Testing</h1>} />
-        <Route path="/services/installation/documentation" component={() => <h1>Documentation & Handover</h1>} />
+        <Route path="/services/installation/turnkey" component={TurnkeyInstallationPage} />
+        <Route path="/services/installation/synchronization" component={SynchronizationPage} />
+        <Route path="/services/installation/documentation" component={DocumentationHandoverPage} />
         
         {/* Annual Maintenance Contracts */}
         <Route path="/services/amc/diesel-generator" component={DGServiceAMCPage} />
-        <Route path="/services/amc/ups" component={() => <h1>UPS AMC</h1>} />
-        <Route path="/services/amc/servo-stabilizer" component={() => <h1>Servo Stabilizer AMC</h1>} />
-        <Route path="/services/amc/preventive" component={() => <h1>Preventive Maintenance Schedules</h1>} />
+        <Route path="/services/amc/ups" component={UPSAmcPage} />
+        <Route path="/services/amc/servo-stabilizer" component={ServoStabilizerAmcPage} />
+        <Route path="/services/amc/preventive" component={PreventiveMaintenancePage} />
         <Route path="/services/amc/emergency" component={() => <h1>Emergency Breakdown Services</h1>} />
         
         {/* Spare Parts Sourcing */}

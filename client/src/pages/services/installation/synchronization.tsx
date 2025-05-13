@@ -35,7 +35,7 @@ export default function SynchronizationPage() {
   }, [testingInView]);
   
   React.useEffect(() => {
-    let timeout;
+    let timeout: NodeJS.Timeout;
     if (testingInView) {
       timeout = setTimeout(() => {
         setCurrentStep(s => (s % 4) + 1);
