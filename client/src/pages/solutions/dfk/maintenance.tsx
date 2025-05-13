@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import { 
   Wrench, Clock, AlertTriangle, FileCheck, CheckSquare, Calendar,
   ArrowRight, CheckCircle, Gauge, Activity, Shield, Zap, DollarSign,
-  BarChart, Award, Settings, Percent, ChevronRight, BarChart4, Aperture
+  BarChart, Award, Settings, Percent, ChevronRight, BarChart4, Aperture,
+  Brain
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";

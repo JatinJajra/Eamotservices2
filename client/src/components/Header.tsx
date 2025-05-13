@@ -309,217 +309,137 @@ export default function Header() {
                 setEnergyToolsDropdownOpen(false);
               }}
             >
-              Services
+              Our Services
               <i className={`fas fa-chevron-down ml-1 text-[10px] transition-transform duration-300 ${servicesDropdownOpen ? 'rotate-180' : ''}`}></i>
             </button>
             
             {servicesDropdownOpen && (
               <div className="absolute mt-2 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100">
+                <Link href="/services/diesel-generator">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/services/diesel-generator' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    Diesel Generator Services
+                  </span>
+                </Link>
+                <Link href="/services/ups">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/services/ups' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    UPS Systems
+                  </span>
+                </Link>
+                <Link href="/services/stabilizer">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/services/stabilizer' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    Servo Stabilizers
+                  </span>
+                </Link>
+                <Link href="/services/lithium-ion-inverter">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/services/lithium-ion-inverter' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    Lithium-Ion Inverters
+                  </span>
+                </Link>
+                <Link href="/services/dual-fuel-kit">
+                  <span className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${location === '/services/dual-fuel-kit' ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                    Dual Fuel Kit Services
+                  </span>
+                </Link>
+                
                 {/* Installation & Integration */}
                 <div className="group relative px-4 py-2 hover:bg-gray-50">
                   <div className="flex items-center justify-between cursor-pointer">
-                    <h3 className="font-semibold text-primary text-sm">Installation & Integration</h3>
+                    <h3 className="font-semibold text-gray-700 text-sm">Installation & Integration</h3>
                     <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
                   </div>
                   
                   <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
-                    <ul className="px-4 py-1 space-y-2">
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/installation/assessment">
-                          <span className="block py-1 cursor-pointer">On-site Assessment & Feasibility</span>
-                        </Link>
-                      </li>
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/installation/turnkey">
-                          <span className="block py-1 cursor-pointer">Turnkey Installation Projects</span>
-                        </Link>
-                      </li>
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/installation/synchronization">
-                          <span className="block py-1 cursor-pointer">Synchronization & Load Testing</span>
-                        </Link>
-                      </li>
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/installation/documentation">
-                          <span className="block py-1 cursor-pointer">Documentation & Handover</span>
-                        </Link>
-                      </li>
-                    </ul>
+                    <Link href="/services/installation/assessment">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">Site Assessment & Planning</span>
+                    </Link>
+                    <Link href="/services/installation/turnkey">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">Turnkey Installation Projects</span>
+                    </Link>
+                    <Link href="/services/installation/synchronization">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">Synchronization & Load Testing</span>
+                    </Link>
+                    <Link href="/services/installation/documentation">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">Documentation & Handover</span>
+                    </Link>
                   </div>
                 </div>
                 
-                {/* Annual Maintenance Contracts (AMC) */}
+                {/* Annual Maintenance Contracts */}
                 <div className="group relative px-4 py-2 hover:bg-gray-50">
                   <div className="flex items-center justify-between cursor-pointer">
-                    <h3 className="font-semibold text-primary text-sm">Annual Maintenance Contracts</h3>
+                    <h3 className="font-semibold text-gray-700 text-sm">Annual Maintenance</h3>
                     <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
                   </div>
                   
                   <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
-                    <ul className="px-4 py-1 space-y-2">
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/amc/diesel-generator">
-                          <span className="block py-1 cursor-pointer">Diesel Generator AMC</span>
-                        </Link>
-                      </li>
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/amc/ups">
-                          <span className="block py-1 cursor-pointer">UPS AMC</span>
-                        </Link>
-                      </li>
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/amc/servo-stabilizer">
-                          <span className="block py-1 cursor-pointer">Servo Stabilizer AMC</span>
-                        </Link>
-                      </li>
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/amc/preventive">
-                          <span className="block py-1 cursor-pointer">Preventive Maintenance Schedules</span>
-                        </Link>
-                      </li>
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/amc/emergency">
-                          <span className="block py-1 cursor-pointer">Emergency Breakdown Services</span>
-                        </Link>
-                      </li>
-                    </ul>
+                    <Link href="/services/amc/diesel-generator">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">DG AMC</span>
+                    </Link>
+                    <Link href="/services/amc/ups">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">UPS AMC</span>
+                    </Link>
+                    <Link href="/services/amc/servo-stabilizer">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">Servo Stabilizer AMC</span>
+                    </Link>
+                    <Link href="/services/amc/preventive">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">Preventive Maintenance</span>
+                    </Link>
+                    <Link href="/services/amc/emergency">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">Emergency Breakdown Services</span>
+                    </Link>
                   </div>
                 </div>
                 
                 {/* Spare Parts Sourcing */}
                 <div className="group relative px-4 py-2 hover:bg-gray-50">
                   <div className="flex items-center justify-between cursor-pointer">
-                    <h3 className="font-semibold text-primary text-sm">Spare Parts Sourcing</h3>
+                    <h3 className="font-semibold text-gray-700 text-sm">Spare Parts Sourcing</h3>
                     <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
                   </div>
                   
                   <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
-                    <ul className="px-4 py-1 space-y-2">
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/parts/dg-engine">
-                          <span className="block py-1 cursor-pointer">DG Engine & Alternator Parts</span>
-                        </Link>
-                      </li>
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/parts/ups-modules">
-                          <span className="block py-1 cursor-pointer">UPS Modules & Batteries</span>
-                        </Link>
-                      </li>
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/parts/servo-control">
-                          <span className="block py-1 cursor-pointer">Servo Control Components</span>
-                        </Link>
-                      </li>
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/parts/recd-spares">
-                          <span className="block py-1 cursor-pointer">RECD Spares</span>
-                        </Link>
-                      </li>
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/parts/logistics">
-                          <span className="block py-1 cursor-pointer">Logistics & Delivery Support</span>
-                        </Link>
-                      </li>
-                    </ul>
+                    <Link href="/services/parts/dg-engine">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">DG Engine & Alternator Parts</span>
+                    </Link>
+                    <Link href="/services/parts/ups-modules">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">UPS Modules & Batteries</span>
+                    </Link>
+                    <Link href="/services/parts/servo-control">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">Servo Control Components</span>
+                    </Link>
+                    <Link href="/services/parts/recd-spares">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">RECD Spares</span>
+                    </Link>
+                    <Link href="/services/parts/logistics">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">Logistics & Delivery Support</span>
+                    </Link>
                   </div>
                 </div>
                 
                 {/* Emission Compliance Services */}
                 <div className="group relative px-4 py-2 hover:bg-gray-50">
                   <div className="flex items-center justify-between cursor-pointer">
-                    <h3 className="font-semibold text-primary text-sm">Emission Compliance Services</h3>
+                    <h3 className="font-semibold text-gray-700 text-sm">Emission Compliance</h3>
                     <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
                   </div>
                   
                   <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
-                    <ul className="px-4 py-1 space-y-2">
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/emission/cqam">
-                          <span className="block py-1 cursor-pointer">CQAM Registration & Guidance</span>
-                        </Link>
-                      </li>
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/emission/recd-integration">
-                          <span className="block py-1 cursor-pointer">On-field RECD Integration</span>
-                        </Link>
-                      </li>
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/emission/testing">
-                          <span className="block py-1 cursor-pointer">Emission Testing Coordination</span>
-                        </Link>
-                      </li>
-                      <li className="text-sm text-gray-700 hover:text-primary">
-                        <Link href="/services/emission/reporting">
-                          <span className="block py-1 cursor-pointer">Compliance Reporting</span>
-                        </Link>
-                      </li>
-                    </ul>
+                    <Link href="/services/emission/cqam">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">CQAM Registration Support</span>
+                    </Link>
+                    <Link href="/services/emission/recd-integration">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">On-field RECD Integration</span>
+                    </Link>
+                    <Link href="/services/emission/testing">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">Emission Testing Coordination</span>
+                    </Link>
+                    <Link href="/services/emission/reporting">
+                      <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">Compliance Reporting</span>
+                    </Link>
                   </div>
                 </div>
               </div>
             )}
-          </div>
-          
-          {/* Smart Monitoring */}
-          <div className="relative" ref={useRef<HTMLDivElement>(null)}>
-            <button 
-              className="font-montserrat hover:text-primary transition duration-300 flex items-center text-sm"
-              onClick={(e) => {
-                const dropdown = e.currentTarget.nextElementSibling as HTMLElement;
-                const icon = e.currentTarget.querySelector('i');
-                if (dropdown && icon) {
-                  dropdown.classList.toggle('hidden');
-                  icon.classList.toggle('rotate-180');
-                }
-              }}
-            >
-              Smart Monitoring
-              <i className={`fas fa-chevron-down ml-1 text-[10px] transition-transform duration-300`}></i>
-            </button>
-            
-            <div className="absolute mt-2 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden">
-              <div className="group relative px-4 py-2 hover:bg-gray-50">
-                <div className="flex items-center justify-between cursor-pointer">
-                  <h3 className="font-semibold text-primary text-sm">Digital Intelligence</h3>
-                  <i className="fas fa-chevron-right ml-2 text-[10px] text-gray-400"></i>
-                </div>
-                
-                <div className="absolute left-full top-0 w-72 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
-                  <ul className="px-4 py-1 space-y-2">
-                    <li className="text-sm text-gray-700 hover:text-primary">
-                      <Link href="/monitoring/dg">
-                        <span className="block py-1 cursor-pointer">DG Monitoring Dashboard (Fuel, Load, Health)</span>
-                      </Link>
-                    </li>
-                    <li className="text-sm text-gray-700 hover:text-primary">
-                      <Link href="/monitoring/ups">
-                        <span className="block py-1 cursor-pointer">UPS Monitoring (Battery Life, Load, Alarms)</span>
-                      </Link>
-                    </li>
-                    <li className="text-sm text-gray-700 hover:text-primary">
-                      <Link href="/monitoring/servo">
-                        <span className="block py-1 cursor-pointer">Servo Monitoring (Voltage Stability, Faults)</span>
-                      </Link>
-                    </li>
-                    <li className="text-sm text-gray-700 hover:text-primary">
-                      <Link href="/monitoring/recd">
-                        <span className="block py-1 cursor-pointer">RECD Emission Monitoring</span>
-                      </Link>
-                    </li>
-                    <li className="text-sm text-gray-700 hover:text-primary">
-                      <Link href="/monitoring/analytics">
-                        <span className="block py-1 cursor-pointer">Alerts, Reports & Analytics</span>
-                      </Link>
-                    </li>
-                    <li className="text-sm text-gray-700 hover:text-primary">
-                      <Link href="/monitoring/platform">
-                        <span className="block py-1 cursor-pointer">Centralized Asset Monitoring Platform</span>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
           
           <a href="/#blog" className="font-montserrat hover:text-primary transition duration-300 text-sm">Blog</a>
@@ -537,11 +457,6 @@ export default function Header() {
               Energy Tools
               <i className={`fas fa-chevron-down ml-1 text-[10px] transition-transform duration-300 ${energyToolsDropdownOpen ? 'rotate-180' : ''}`}></i>
             </button>
-          </div>
-          
-          <Link href="/careers">
-            <span className={`font-montserrat hover:text-primary transition duration-300 cursor-pointer text-sm ${location === '/careers' ? 'text-primary border-b-2 border-primary' : ''}`}>Careers</span>
-          </Link>
             
             {energyToolsDropdownOpen && (
               <div className="absolute mt-2 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100">
@@ -568,6 +483,10 @@ export default function Header() {
               </div>
             )}
           </div>
+          
+          <Link href="/careers">
+            <span className={`font-montserrat hover:text-primary transition duration-300 cursor-pointer text-sm ${location === '/careers' ? 'text-primary border-b-2 border-primary' : ''}`}>Careers</span>
+          </Link>
         </div>
         
         {/* CTA Buttons */}
@@ -581,336 +500,196 @@ export default function Header() {
               }
             }}
           >
-            Get In Touch
+            Request a Quote
           </Button>
+          <Link href="/client-portal/login">
+            <Button className="hidden md:block border-primary hover:bg-primary hover:text-white text-primary font-poppins font-medium">
+              Client Login
+            </Button>
+          </Link>
         </div>
         
         {/* Mobile Menu Button */}
-        <button 
-          className="lg:hidden text-gray-700 focus:outline-none" 
-          onClick={toggleMenu}
-          aria-expanded={isMenuOpen}
-          aria-label="Toggle menu"
-        >
-          <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
-        </button>
+        <div className="lg:hidden">
+          <button 
+            className="text-gray-700 focus:outline-none p-2 rounded-md" 
+            onClick={toggleMenu}
+          >
+            <svg 
+              className="w-6 h-6" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {isMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
       </nav>
       
       {/* Mobile Navigation */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            className="lg:hidden bg-white absolute w-full z-50 shadow-lg"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-white shadow-md overflow-auto max-h-[calc(100vh-120px)]"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="container mx-auto px-4 py-3 flex flex-col">
+            <div className="container mx-auto px-4 py-4 space-y-3">
               <Link href="/">
-                <span className="font-montserrat font-medium py-2 border-b border-gray-100 block cursor-pointer">Home</span>
+                <span className={`block py-2 ${location === '/' ? 'text-primary font-medium' : ''}`}>Home</span>
               </Link>
               <Link href="/about">
-                <span className="font-montserrat font-medium py-2 border-b border-gray-100 block cursor-pointer">About</span>
+                <span className={`block py-2 ${location === '/about' ? 'text-primary font-medium' : ''}`}>About</span>
               </Link>
               
-              {/* Mobile Services Dropdown */}
-              <div className="border-b border-gray-100">
-                <button 
-                  className="font-montserrat font-medium py-2 w-full text-left flex items-center justify-between"
-                  onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
-                >
-                  <span>Services</span>
-                  <i className={`fas fa-chevron-down transition-transform duration-300 ${servicesDropdownOpen ? 'rotate-180' : ''}`}></i>
-                </button>
-                
-                {servicesDropdownOpen && (
-                  <div className="pl-4 py-2 space-y-4">
-                    <div>
-                      <h3 className="font-semibold text-primary text-sm mb-1">Installation & Integration</h3>
-                      <ul className="pl-2 space-y-1 text-xs text-gray-700">
-                        <li>On-site Assessment & Feasibility</li>
-                        <li>Turnkey Installation Projects</li>
-                        <li>Synchronization & Load Testing</li>
-                        <li>Documentation & Handover</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h3 className="font-semibold text-primary text-sm mb-1">Annual Maintenance Contracts (AMC)</h3>
-                      <ul className="pl-2 space-y-1 text-xs text-gray-700">
-                        <li>Diesel Generator AMC</li>
-                        <li>UPS AMC</li>
-                        <li>Servo Stabilizer AMC</li>
-                        <li>Preventive Maintenance Schedules</li>
-                        <li>Emergency Breakdown Services</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h3 className="font-semibold text-primary text-sm mb-1">Spare Parts Sourcing</h3>
-                      <ul className="pl-2 space-y-1 text-xs text-gray-700">
-                        <li>DG Engine & Alternator Parts</li>
-                        <li>UPS Modules & Batteries</li>
-                        <li>Servo Control Components</li>
-                        <li>RECD Spares</li>
-                        <li>Logistics & Delivery Support</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h3 className="font-semibold text-primary text-sm mb-1">Emission Compliance Services</h3>
-                      <ul className="pl-2 space-y-1 text-xs text-gray-700">
-                        <li>CQAM Registration & Guidance</li>
-                        <li>On-field RECD Integration</li>
-                        <li>Emission Testing Coordination</li>
-                        <li>Compliance Reporting</li>
-                      </ul>
-                    </div>
-                  </div>
-                )}
-              </div>
-              
               {/* Mobile Solutions Dropdown */}
-              <div className="border-b border-gray-100">
+              <div className="border-b border-gray-100 pb-2">
                 <button 
-                  className="font-montserrat font-medium py-2 w-full text-left flex items-center justify-between"
+                  className="flex items-center justify-between w-full py-2"
                   onClick={() => setSolutionsDropdownOpen(!solutionsDropdownOpen)}
                 >
-                  <span>Our Solutions</span>
-                  <i className={`fas fa-chevron-down transition-transform duration-300 ${solutionsDropdownOpen ? 'rotate-180' : ''}`}></i>
+                  <span className={location.startsWith('/solutions') ? 'text-primary font-medium' : ''}>Our Solutions</span>
+                  <i className={`fas fa-chevron-down text-sm transition-transform duration-300 ${solutionsDropdownOpen ? 'rotate-180' : ''}`}></i>
                 </button>
                 
                 {solutionsDropdownOpen && (
-                  <div className="pl-4 py-2 space-y-2">
-                    {/* Mobile Diesel Generator Solutions */}
-                    <div className="border-b border-gray-100 pb-2">
-                      <button
-                        className="font-medium text-sm w-full text-left flex items-center justify-between"
-                        onClick={(e) => {
-                          const content = e.currentTarget.nextElementSibling as HTMLElement;
-                          const icon = e.currentTarget.querySelector('i');
-                          if (content && icon) {
-                            content.classList.toggle('hidden');
-                            icon.classList.toggle('rotate-180');
-                          }
-                        }}
-                      >
-                        <span className="text-primary">Diesel Generator Solutions</span>
-                        <i className="fas fa-chevron-down ml-2 text-[10px] text-gray-400"></i>
-                      </button>
-                      <div className="pl-3 pt-2 hidden">
-                        <ul className="space-y-2">
-                          <li className="text-sm text-gray-700">
-                            <Link href="/solutions/diesel-generator/procurement">
-                              <span className="block py-1 cursor-pointer">DG Procurement (CPCB IV+ Compliant)</span>
-                            </Link>
-                          </li>
-                          <li className="text-sm text-gray-700">
-                            <Link href="/solutions/diesel-generator/installation">
-                              <span className="block py-1 cursor-pointer">DG Installation & Shifting</span>
-                            </Link>
-                          </li>
-                          <li className="text-sm text-gray-700">
-                            <Link href="/solutions/diesel-generator/amc">
-                              <span className="block py-1 cursor-pointer">DG AMC (Annual Maintenance Contract)</span>
-                            </Link>
-                          </li>
-                          <li className="text-sm text-gray-700">
-                            <Link href="/solutions/diesel-generator/overhaul">
-                              <span className="block py-1 cursor-pointer">DG Overhaul & Repairs</span>
-                            </Link>
-                          </li>
-                          <li className="text-sm text-gray-700">
-                            <Link href="/solutions/diesel-generator/monitoring">
-                              <span className="block py-1 cursor-pointer">IoT-based DG Monitoring</span>
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
+                  <div className="pl-4 space-y-2 mt-2">
+                    <div className="mb-3">
+                      <h3 className="font-medium text-primary">Diesel Generator Solutions</h3>
+                      <ul className="pl-4 mt-1 space-y-1">
+                        <li>
+                          <Link href="/solutions/diesel-generator/procurement">
+                            <span className="block py-1 text-sm">DG Procurement (CPCB IV+ Compliant)</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/solutions/diesel-generator/installation">
+                            <span className="block py-1 text-sm">DG Installation & Shifting</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/solutions/diesel-generator/amc">
+                            <span className="block py-1 text-sm">DG AMC</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/solutions/diesel-generator/overhaul">
+                            <span className="block py-1 text-sm">DG Overhaul & Repairs</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/solutions/diesel-generator/monitoring">
+                            <span className="block py-1 text-sm">IoT-based DG Monitoring</span>
+                          </Link>
+                        </li>
+                      </ul>
                     </div>
                     
-                    {/* Mobile UPS System Solutions */}
-                    <div className="border-b border-gray-100 pb-2">
-                      <button
-                        className="font-medium text-sm w-full text-left flex items-center justify-between"
-                        onClick={(e) => {
-                          const content = e.currentTarget.nextElementSibling as HTMLElement;
-                          const icon = e.currentTarget.querySelector('i');
-                          if (content && icon) {
-                            content.classList.toggle('hidden');
-                            icon.classList.toggle('rotate-180');
-                          }
-                        }}
-                      >
-                        <span className="text-primary">UPS System Solutions</span>
-                        <i className="fas fa-chevron-down ml-2 text-[10px] text-gray-400"></i>
-                      </button>
-                      <div className="pl-3 pt-2 hidden">
-                        <ul className="space-y-2">
-                          <li className="text-sm text-gray-700">UPS System Sourcing</li>
-                          <li className="text-sm text-gray-700">UPS Battery Sizing & Supply</li>
-                          <li className="text-sm text-gray-700">UPS AMC</li>
-                          <li className="text-sm text-gray-700">Load Management & Monitoring</li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    {/* Mobile Servo Stabilizer Solutions */}
-                    <div className="border-b border-gray-100 pb-2">
-                      <button
-                        className="font-medium text-sm w-full text-left flex items-center justify-between"
-                        onClick={(e) => {
-                          const content = e.currentTarget.nextElementSibling as HTMLElement;
-                          const icon = e.currentTarget.querySelector('i');
-                          if (content && icon) {
-                            content.classList.toggle('hidden');
-                            icon.classList.toggle('rotate-180');
-                          }
-                        }}
-                      >
-                        <span className="text-primary">Servo Stabilizer Solutions</span>
-                        <i className="fas fa-chevron-down ml-2 text-[10px] text-gray-400"></i>
-                      </button>
-                      <div className="pl-3 pt-2 hidden">
-                        <ul className="space-y-2">
-                          <li className="text-sm text-gray-700">Sizing & Selection Support</li>
-                          <li className="text-sm text-gray-700">Procurement & Delivery</li>
-                          <li className="text-sm text-gray-700">Installation & Commissioning</li>
-                          <li className="text-sm text-gray-700">Stabilizer AMC</li>
-                          <li className="text-sm text-gray-700">Remote Voltage Monitoring</li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    {/* Mobile RECD Compliance Solutions */}
-                    <div className="border-b border-gray-100 pb-2">
-                      <button
-                        className="font-medium text-sm w-full text-left flex items-center justify-between"
-                        onClick={(e) => {
-                          const content = e.currentTarget.nextElementSibling as HTMLElement;
-                          const icon = e.currentTarget.querySelector('i');
-                          if (content && icon) {
-                            content.classList.toggle('hidden');
-                            icon.classList.toggle('rotate-180');
-                          }
-                        }}
-                      >
-                        <span className="text-primary">RECD Compliance Solutions</span>
-                        <i className="fas fa-chevron-down ml-2 text-[10px] text-gray-400"></i>
-                      </button>
-                      <div className="pl-3 pt-2 hidden">
-                        <ul className="space-y-2">
-                          <li className="text-sm text-gray-700">CQAM Norms & Compliance Advisory</li>
-                          <li className="text-sm text-gray-700">RECD Procurement</li>
-                          <li className="text-sm text-gray-700">Installation & Integration</li>
-                          <li className="text-sm text-gray-700">Emission Performance Monitoring</li>
-                          <li className="text-sm text-gray-700">Regulatory Documentation Support</li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    {/* Mobile Dual Fuel Kit Conversions */}
-                    <div className="border-b border-gray-100 pb-2">
-                      <button
-                        className="font-medium text-sm w-full text-left flex items-center justify-between"
-                        onClick={(e) => {
-                          const content = e.currentTarget.nextElementSibling as HTMLElement;
-                          const icon = e.currentTarget.querySelector('i');
-                          if (content && icon) {
-                            content.classList.toggle('hidden');
-                            icon.classList.toggle('rotate-180');
-                          }
-                        }}
-                      >
-                        <span className="text-primary">Dual Fuel Kit Conversions</span>
-                        <i className="fas fa-chevron-down ml-2 text-[10px] text-gray-400"></i>
-                      </button>
-                      <div className="pl-3 pt-2 hidden">
-                        <ul className="space-y-2">
-                          <li className="text-sm text-gray-700">DFK Suitability Assessment</li>
-                          <li className="text-sm text-gray-700">DFK Procurement</li>
-                          <li className="text-sm text-gray-700">Installation & Calibration</li>
-                          <li className="text-sm text-gray-700">Fuel Savings Analytics</li>
-                          <li className="text-sm text-gray-700">Post-conversion Maintenance</li>
-                        </ul>
-                      </div>
+                    <div className="mb-3">
+                      <h3 className="font-medium text-primary">UPS System Solutions</h3>
+                      <ul className="pl-4 mt-1 space-y-1">
+                        <li>
+                          <Link href="/solutions/ups/sourcing">
+                            <span className="block py-1 text-sm">UPS System Sourcing</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/solutions/ups/battery">
+                            <span className="block py-1 text-sm">UPS Battery Sizing & Supply</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/solutions/ups/amc">
+                            <span className="block py-1 text-sm">UPS AMC</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/solutions/ups/monitoring">
+                            <span className="block py-1 text-sm">Load Management & Monitoring</span>
+                          </Link>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 )}
               </div>
               
-              {/* Smart Monitoring Mobile Section */}
-              <div className="border-b border-gray-100">
+              {/* Mobile Services Dropdown */}
+              <div className="border-b border-gray-100 pb-2">
                 <button 
-                  className="font-montserrat font-medium py-2 w-full text-left flex items-center justify-between"
-                  onClick={(e) => {
-                    const content = e.currentTarget.nextElementSibling as HTMLElement;
-                    const icon = e.currentTarget.querySelector('i');
-                    if (content && icon) {
-                      content.classList.toggle('hidden');
-                      icon.classList.toggle('rotate-180');
-                    }
-                  }}
+                  className="flex items-center justify-between w-full py-2"
+                  onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
                 >
-                  <span>Smart Monitoring</span>
-                  <i className={`fas fa-chevron-down transition-transform duration-300`}></i>
+                  <span className={location.startsWith('/services') ? 'text-primary font-medium' : ''}>Our Services</span>
+                  <i className={`fas fa-chevron-down text-sm transition-transform duration-300 ${servicesDropdownOpen ? 'rotate-180' : ''}`}></i>
                 </button>
                 
-                <div className="pl-4 py-2 space-y-2 hidden">
-                  <div>
-                    <h3 className="font-semibold text-primary text-sm mb-1">Digital Intelligence for Real-time Visibility</h3>
-                    <ul className="pl-2 space-y-1 text-xs text-gray-700">
-                      <li>DG Monitoring Dashboard (Fuel, Load, Health)</li>
-                      <li>UPS Monitoring (Battery Life, Load, Alarms)</li>
-                      <li>Servo Monitoring (Voltage Stability, Faults)</li>
-                      <li>RECD Emission Monitoring</li>
-                      <li>Alerts, Reports & Analytics</li>
-                      <li>Centralized Asset Monitoring Platform</li>
-                    </ul>
+                {servicesDropdownOpen && (
+                  <div className="pl-4 space-y-2 mt-2">
+                    <Link href="/services/diesel-generator">
+                      <span className="block py-1">Diesel Generator Services</span>
+                    </Link>
+                    <Link href="/services/ups">
+                      <span className="block py-1">UPS Systems</span>
+                    </Link>
+                    <Link href="/services/stabilizer">
+                      <span className="block py-1">Servo Stabilizers</span>
+                    </Link>
+                    <Link href="/services/lithium-ion-inverter">
+                      <span className="block py-1">Lithium-Ion Inverters</span>
+                    </Link>
+                    <Link href="/services/dual-fuel-kit">
+                      <span className="block py-1">Dual Fuel Kit Services</span>
+                    </Link>
                   </div>
-                </div>
+                )}
               </div>
               
-              <a href="/#blog" className="font-montserrat font-medium py-2 border-b border-gray-100 block">Blog</a>
-              
-              <Link href="/careers">
-                <span className="font-montserrat font-medium py-2 border-b border-gray-100 block cursor-pointer">Careers</span>
+              <Link href="/#blog">
+                <span className="block py-2">Blog</span>
               </Link>
               
               {/* Mobile Energy Tools Dropdown */}
-              <div className="border-b border-gray-100">
+              <div className="border-b border-gray-100 pb-2">
                 <button 
-                  className="font-montserrat font-medium py-2 w-full text-left flex items-center justify-between"
-                  onClick={() => {
-                    setEnergyToolsDropdownOpen(!energyToolsDropdownOpen);
-                    setServicesDropdownOpen(false);
-                    setSolutionsDropdownOpen(false);
-                  }}
+                  className="flex items-center justify-between w-full py-2"
+                  onClick={() => setEnergyToolsDropdownOpen(!energyToolsDropdownOpen)}
                 >
                   <span>Energy Tools</span>
-                  <i className={`fas fa-chevron-down transition-transform duration-300 ${energyToolsDropdownOpen ? 'rotate-180' : ''}`}></i>
+                  <i className={`fas fa-chevron-down text-sm transition-transform duration-300 ${energyToolsDropdownOpen ? 'rotate-180' : ''}`}></i>
                 </button>
                 
                 {energyToolsDropdownOpen && (
-                  <div className="pl-4 py-2 space-y-2">
+                  <div className="pl-4 space-y-2 mt-2">
                     <Link href="/energy-calculator">
-                      <span className="block py-1 text-gray-700 cursor-pointer">Energy Calculator</span>
+                      <span className="block py-1">Energy Calculator</span>
                     </Link>
                     <Link href="/energy-savings-calculator">
-                      <span className="block py-1 text-gray-700 cursor-pointer">Energy Savings Calculator</span>
+                      <span className="block py-1">Energy Savings Calculator</span>
                     </Link>
                     <Link href="/product-demo">
-                      <span className="block py-1 text-gray-700 cursor-pointer">Product Demos</span>
+                      <span className="block py-1">Product Demos</span>
                     </Link>
                     <Link href="/loading-states">
-                      <span className="block py-1 text-gray-700 cursor-pointer">Loading States</span>
+                      <span className="block py-1">Loading States</span>
                     </Link>
                   </div>
                 )}
               </div>
               
-              <div className="pt-4 pb-2">
+              <Link href="/careers">
+                <span className={`block py-2 ${location === '/careers' ? 'text-primary font-medium' : ''}`}>Careers</span>
+              </Link>
+              
+              <div className="pt-4 space-y-3">
                 <Button 
                   className="w-full bg-accent hover:bg-accent/90 text-white font-poppins font-medium"
                   onClick={() => {
@@ -921,8 +700,13 @@ export default function Header() {
                     }
                   }}
                 >
-                  Get In Touch
+                  Request a Quote
                 </Button>
+                <Link href="/client-portal/login">
+                  <Button className="w-full border-primary hover:bg-primary hover:text-white text-primary font-poppins font-medium">
+                    Client Login
+                  </Button>
+                </Link>
               </div>
             </div>
           </motion.div>
