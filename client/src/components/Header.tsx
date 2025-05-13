@@ -524,10 +524,6 @@ export default function Header() {
           
           <a href="/#blog" className="font-montserrat hover:text-primary transition duration-300 text-sm">Blog</a>
           
-          <Link href="/careers">
-            <span className={`font-montserrat hover:text-primary transition duration-300 cursor-pointer text-sm ${location === '/careers' ? 'text-primary border-b-2 border-primary' : ''}`}>Careers</span>
-          </Link>
-
           {/* Energy Tools Dropdown */}
           <div className="relative" ref={energyToolsRef}>
             <button 
@@ -541,6 +537,11 @@ export default function Header() {
               Energy Tools
               <i className={`fas fa-chevron-down ml-1 text-[10px] transition-transform duration-300 ${energyToolsDropdownOpen ? 'rotate-180' : ''}`}></i>
             </button>
+          </div>
+          
+          <Link href="/careers">
+            <span className={`font-montserrat hover:text-primary transition duration-300 cursor-pointer text-sm ${location === '/careers' ? 'text-primary border-b-2 border-primary' : ''}`}>Careers</span>
+          </Link>
             
             {energyToolsDropdownOpen && (
               <div className="absolute mt-2 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100">
