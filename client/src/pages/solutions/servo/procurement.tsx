@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Search, ShoppingCart, Scale, Award, Truck, FileCheck, 
@@ -6,8 +6,12 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
+import ContactModal from '@/components/Popup/ContectModal';
 
 const ServoProcurementPage: React.FC = () => {
+   const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const features = [
     {
       icon: <Search className="h-5 w-5 text-primary" />,
@@ -77,6 +81,7 @@ const ServoProcurementPage: React.FC = () => {
 
   return (
     <>
+          <ContactModal isOpen={isModalOpen} onClose={closeModal} />
       {/* Custom Hero Section with Side-by-Side Comparison */}
       <motion.section
         ref={heroRef}
@@ -101,12 +106,12 @@ const ServoProcurementPage: React.FC = () => {
                   Transform your power quality management with our elite servo stabilizer procurement service. We eliminate the complexities and risks of equipment sourcing, delivering meticulously selected, performance-verified stabilizers that safeguard your critical equipment.
                 </p>
                 <div className="flex flex-wrap gap-4 mb-10">
-                  <Button className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3">
+                  <Button onClick={openModal} className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3">
                     Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
-                  <Button variant="outline" className="border-white text-white hover:bg-white/10 font-semibold">
+                  {/* <Button variant="outline" className="border-white text-white hover:bg-white/10 font-semibold">
                     Learn More
-                  </Button>
+                  </Button> */}
                 </div>
               </motion.div>
 
@@ -226,7 +231,7 @@ const ServoProcurementPage: React.FC = () => {
       </motion.section>
 
       {/* Custom Stats Section */}
-      <motion.section
+      {/* <motion.section
         ref={statsRef}
         initial={{ opacity: 0, y: 50 }}
         animate={statsInView ? { opacity: 1, y: 0 } : {}}
@@ -304,7 +309,7 @@ const ServoProcurementPage: React.FC = () => {
             </motion.div>
           </div>
         </div>
-      </motion.section>
+      </motion.section> */}
 
       {/* Features with Visual Process Flow */}
       <motion.section
@@ -478,7 +483,7 @@ const ServoProcurementPage: React.FC = () => {
                     <span>Detailed pricing and timeline</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold">
+                <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold" onClick={openModal}>
                   Get Your Perfect Stabilizer <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>

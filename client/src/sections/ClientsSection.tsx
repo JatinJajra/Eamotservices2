@@ -40,7 +40,7 @@ export default function ClientsSection() {
               <motion.img 
                 src={client.logo} 
                 alt={client.alt} 
-                className="h-16 grayscale hover:grayscale-0 transition duration-300"
+                className="h-16  hover:grayscale-0 transition duration-300"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               />

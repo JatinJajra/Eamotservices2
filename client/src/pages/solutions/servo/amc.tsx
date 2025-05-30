@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Wrench, Clock, AlertTriangle, Calendar, Settings, Shield, 
@@ -8,8 +8,12 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
+import ContactModal from '@/components/Popup/ContectModal';
 
 const ServoAMCPage: React.FC = () => {
+     const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: tabsRef, inView: tabsInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.2 });
@@ -20,6 +24,8 @@ const ServoAMCPage: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-50 to-white">
+                <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Hero Section with Animated Elements */}
       <motion.section 
         ref={heroRef}
@@ -99,10 +105,18 @@ const ServoAMCPage: React.FC = () => {
               transition={{ duration: 0.7, delay: 0.8 }}
               className="flex flex-wrap gap-4"
             >
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white"   onClick={() => {
+    const section = document.getElementById('plans');
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  }}>
                 View Protection Plans
               </Button>
-              <Button variant="outline" size="lg" className="text-white border-white hover:bg-white/10">
+              <Button variant="outline" onClick={openModal} size="lg" className="bg-primary hover:bg-primary/90 text-white">
                 Schedule Consultation
               </Button>
             </motion.div>
@@ -484,8 +498,9 @@ const ServoAMCPage: React.FC = () => {
         animate={plansInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
         className="py-24 bg-gray-50"
+        id='plans'
       >
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4" >
           <div className="text-center mb-16">
             <motion.span
               initial={{ opacity: 0 }}
@@ -687,8 +702,8 @@ const ServoAMCPage: React.FC = () => {
               animate={ctaInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg">
-                <a href="/contact">Get Unbreakable Stabilizer Protection</a>
+              <Button size="lg" onClick={openModal} asChild className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg">
+                <a href="#">Get Unbreakable Stabilizer Protection</a>
               </Button>
             </motion.div>
           </div>

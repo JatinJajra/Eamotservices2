@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Check, ArrowRight, Zap, Info, Clock, Settings, Shield } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
+import ContactModal from './Popup/ContectModal';
 
 interface ServiceFeature {
   icon: React.ReactNode;
@@ -54,6 +55,10 @@ const ServicePageTemplate: React.FC<ServicePageTemplateProps> = ({
   faqs,
   callToAction,
 }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+      const openModal = () => setIsModalOpen(true);
+const closeModal = () => setIsModalOpen(false);
+  
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: benefitsRef, inView: benefitsInView } = useIntersectionObserver({ threshold: 0.2 });
@@ -64,6 +69,7 @@ const ServicePageTemplate: React.FC<ServicePageTemplateProps> = ({
   return (
     <>
       {/* Hero Section */}
+      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
       <motion.section
         ref={heroRef}
         initial={{ opacity: 0, y: 50 }}
@@ -77,15 +83,15 @@ const ServicePageTemplate: React.FC<ServicePageTemplateProps> = ({
             <p className="text-xl md:text-2xl text-primary font-semibold mb-6">{subtitle}</p>
             <p className="text-white text-lg mb-8 leading-relaxed">{description}</p>
             <div className="flex space-x-4">
-              <Button className="bg-primary hover:bg-primary/90 text-white font-semibold">
+              <Button  onClick={openModal} className="bg-primary hover:bg-primary/90 text-white font-semibold">
                 Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-white/10 font-semibold">
+              {/* <Button variant="outline" className="border-white text-white hover:bg-white/10 font-semibold">
                 Learn More
-              </Button>
+              </Button> */}
             </div>
           </div>
-          {heroImage && (
+          {/* {heroImage && (
             <div className="lg:w-1/2">
               <img
                 src={heroImage}
@@ -93,7 +99,7 @@ const ServicePageTemplate: React.FC<ServicePageTemplateProps> = ({
                 className="rounded-lg shadow-xl border-2 border-primary/20"
               />
             </div>
-          )}
+          )} */}
         </div>
       </motion.section>
 
@@ -256,7 +262,7 @@ const ServicePageTemplate: React.FC<ServicePageTemplateProps> = ({
               size="lg"
               asChild
             >
-              <a href={callToAction.buttonLink}>{callToAction.buttonText}</a>
+              <a href={"#"}  onClick={openModal}>{callToAction.buttonText}</a>
             </Button>
           </div>
         </motion.section>

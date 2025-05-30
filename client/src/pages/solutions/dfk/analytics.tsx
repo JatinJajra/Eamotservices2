@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import ContactModal from "@/components/Popup/ContectModal";
 
 const DFKAnalyticsPage: React.FC = () => {
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.2 });
@@ -26,6 +27,8 @@ const DFKAnalyticsPage: React.FC = () => {
   
   // Calculate savings
   const calculateMonthlySavings = () => {
+    
+     
     const dailyConsumption = fuelConsumption * operatingHours;
     const dailyCost = dailyConsumption * fuelPrice / 1000; // Convert to liters
     const monthlyCost = dailyCost * 30;
@@ -56,8 +59,11 @@ const DFKAnalyticsPage: React.FC = () => {
   }
 
   const Slider: React.FC<SliderProps> = ({ value, setValue, min, max, step, label, unit }) => {
+    
+    
     return (
       <div className="mb-6">
+        
         <div className="flex justify-between mb-2">
           <label className="text-sm font-medium text-slate-300">{label}</label>
           <span className="text-sm font-semibold text-blue-400">{value} {unit}</span>
@@ -78,10 +84,16 @@ const DFKAnalyticsPage: React.FC = () => {
       </div>
     );
   };
+     const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   
   return (
     <div className="bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+
       {/* Hero Section */}
+                                <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       <motion.section
         ref={heroRef}
         className="relative min-h-[90vh] overflow-hidden"
@@ -182,10 +194,15 @@ const DFKAnalyticsPage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-wrap gap-4"
             >
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Button size="lg" onClick={openModal} className="bg-blue-600 hover:bg-blue-700 text-white">
                 Calculate Your Savings Potential
               </Button>
-              <Button variant="outline" size="lg" className="border-slate-400 text-white hover:bg-white/10">
+              <Button variant="outline" size="lg" className="border-slate-400 text-black hover:bg-white/10"  onClick={() => {
+    const section = document.getElementById("jai-ho");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  }}>
                 Explore the Platform
               </Button>
             </motion.div>
@@ -231,7 +248,7 @@ const DFKAnalyticsPage: React.FC = () => {
           </svg>
         </div>
         
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10" id="jai-ho">
           <div className="text-center mb-16">
             <motion.span
               initial={{ opacity: 0 }}
@@ -378,7 +395,7 @@ const DFKAnalyticsPage: React.FC = () => {
                   </div>
                 </div>
                 
-                <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white">
+                <Button onClick={openModal} className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white">
                   Get Your Detailed Savings Analysis
                 </Button>
               </div>
@@ -602,9 +619,9 @@ const DFKAnalyticsPage: React.FC = () => {
                 </div>
               </div>
               
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+              {/* <Button className="bg-blue-600 hover:bg-blue-700 text-white">
                 Explore All AI Capabilities <ChevronRight className="ml-2 h-4 w-4" />
-              </Button>
+              </Button> */}
             </motion.div>
           </div>
         </div>
@@ -875,8 +892,8 @@ const DFKAnalyticsPage: React.FC = () => {
               animate={ctaInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <Button size="lg" asChild className="bg-white text-blue-700 hover:bg-gray-100 px-8 py-6 text-lg">
-                <a href="/contact">Calculate Your Hidden Savings Potential</a>
+              <Button size="lg" onClick={openModal} asChild className="bg-white text-blue-700 hover:bg-gray-100 px-8 py-6 text-lg">
+                <a href="#">Calculate Your Hidden Savings Potential</a>
               </Button>
             </motion.div>
             

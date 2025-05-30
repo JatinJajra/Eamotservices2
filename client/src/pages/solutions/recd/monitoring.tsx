@@ -9,8 +9,12 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import ContactModal from "@/components/Popup/ContectModal";
 
 const RECDMonitoringPage: React.FC = () => {
+     const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: demoRef, inView: demoInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.2 });
@@ -75,6 +79,8 @@ const RECDMonitoringPage: React.FC = () => {
   
   return (
     <div className="bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+                      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Hero Section with Particle Animation */}
       <motion.section
         ref={heroRef}
@@ -184,10 +190,15 @@ const RECDMonitoringPage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-wrap gap-4"
             >
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Button size="lg" onClick={openModal} className="bg-blue-600 hover:bg-blue-700 text-white">
                 Explore the Platform
               </Button>
-              <Button variant="outline" size="lg" className="border-slate-400 text-white hover:bg-white/10">
+              <Button variant="outline" size="lg" className="border-slate-400 text-black hover:bg-white/10"  onClick={() => {
+    const section = document.getElementById("live-emission-monitoring");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  }}>
                 View Demo Dashboard
               </Button>
             </motion.div>
@@ -243,7 +254,7 @@ const RECDMonitoringPage: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="max-w-6xl mx-auto bg-slate-900 border border-slate-700 rounded-xl p-6 shadow-xl"
           >
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex justify-between items-center mb-6" id="live-emission-monitoring">
               <h3 className="text-xl font-bold">Live Emission Monitoring Dashboard</h3>
               <div className="flex items-center">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse mr-2"></div>
@@ -576,9 +587,9 @@ const RECDMonitoringPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-8 bg-blue-600 hover:bg-blue-700 text-white">
+                  {/* <Button className="mt-8 bg-blue-600 hover:bg-blue-700 text-white">
                     Explore Sensor Technology
-                  </Button>
+                  </Button> */}
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-xl h-80">
                   <img 
@@ -639,9 +650,9 @@ const RECDMonitoringPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-8 bg-green-600 hover:bg-green-700 text-white">
+                  {/* <Button className="mt-8 bg-green-600 hover:bg-green-700 text-white">
                     View Prediction Capabilities
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </TabsContent>
@@ -672,9 +683,9 @@ const RECDMonitoringPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-8 bg-purple-600 hover:bg-purple-700 text-white">
+                  {/* <Button className="mt-8 bg-purple-600 hover:bg-purple-700 text-white">
                     Explore Security Features
-                  </Button>
+                  </Button> */}
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-xl h-80">
                   <img 
@@ -891,8 +902,8 @@ const RECDMonitoringPage: React.FC = () => {
               animate={ctaInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <Button size="lg" asChild className="bg-white text-blue-700 hover:bg-gray-100 px-8 py-6 text-lg">
-                <a href="/contact">Secure Your Compliance Future</a>
+              <Button size="lg" onClick={openModal} asChild className="bg-white text-blue-700 hover:bg-gray-100 px-8 py-6 text-lg">
+                <a href="#">Secure Your Compliance Future</a>
               </Button>
             </motion.div>
             

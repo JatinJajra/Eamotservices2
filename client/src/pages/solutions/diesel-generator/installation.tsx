@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Truck, 
@@ -18,8 +18,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'wouter';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import ContactModal from '@/components/Popup/ContectModal';
 
 const DGInstallationPage: React.FC = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+        const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
   const installationSteps = [
     {
       icon: <ClipboardList className="h-8 w-8 text-primary" />,
@@ -116,6 +120,8 @@ const DGInstallationPage: React.FC = () => {
 
   return (
     <>
+          <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+    
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-black to-gray-900 text-white py-24">
         <div className="absolute inset-0 overflow-hidden">
@@ -151,7 +157,7 @@ const DGInstallationPage: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-                <Link href="/contact">Schedule Installation Service</Link>
+                <Link href="#" onClick={openModal} >Schedule Installation Service</Link>
               </Button>
             </motion.div>
           </div>
@@ -330,8 +336,8 @@ const DGInstallationPage: React.FC = () => {
       <section className="py-16 bg-gradient-to-br from-primary-900 to-primary-800 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Performance Metrics</h2>
-            <p className="max-w-2xl mx-auto opacity-90">
+            <h2 className="text-3xl font-bold mb-4 text-primary">Our Performance Metrics</h2>
+            <p className="max-w-2xl mx-auto opacity-90 text-gray-700">
               We take pride in our installation and shifting service quality, measured by these key performance indicators
             </p>
           </div>
@@ -349,9 +355,9 @@ const DGInstallationPage: React.FC = () => {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 mb-5 mx-auto">
                   {metric.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-1">{metric.title}</h3>
+                <h3 className="text-xl font-bold mb-1 text-primary">{metric.title}</h3>
                 <div className="text-3xl font-bold text-accent mb-3">{metric.value}</div>
-                <p className="text-white/80 text-sm">{metric.description}</p>
+                <p className=" text-sm text-gray-700">{metric.description}</p>
               </motion.div>
             ))}
           </div>
@@ -371,7 +377,7 @@ const DGInstallationPage: React.FC = () => {
               </div>
               <div className="text-center md:text-right">
                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white">
-                  <Link href="/contact">Get Started</Link>
+                  <Link href="#" onClick={openModal}>Get Started</Link>
                 </Button>
               </div>
             </div>

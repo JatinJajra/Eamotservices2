@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   BookOpen, 
@@ -16,8 +16,12 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Link } from 'wouter';
+import ContactModal from '@/components/Popup/ContectModal';
 
 const RECDAdvisoryPage: React.FC = () => {
+     const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   // Advisory Services
   const advisoryServices = [
     {
@@ -118,6 +122,9 @@ const RECDAdvisoryPage: React.FC = () => {
 
   return (
     <>
+
+                    <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-black to-gray-900 text-white py-24">
         <div className="absolute inset-0 opacity-20">
@@ -158,10 +165,10 @@ const RECDAdvisoryPage: React.FC = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="flex flex-wrap gap-4"
               >
-                <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-                  <Link href="/contact">Request Advisory Services</Link>
+                <Button asChild size="lg" onClick={openModal} className="bg-white text-primary hover:bg-white/90">
+                  <Link href="#">Request Advisory Services</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+                <Button asChild variant="outline" size="lg" className="bg-white text-primary hover:bg-white/90">
                   <Link href="/solutions/recd/procurement">View RECD Procurement</Link>
                 </Button>
               </motion.div>
@@ -425,8 +432,8 @@ const RECDAdvisoryPage: React.FC = () => {
             <p className="opacity-90 mb-8">
               Contact our emission compliance specialists to begin the assessment and advisory process for your facility. Our experts will help you navigate regulatory requirements and develop an optimal implementation strategy.
             </p>
-            <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-              <Link href="/contact">Request Advisory Services</Link>
+            <Button asChild size="lg" onClick={openModal} className="bg-white text-primary hover:bg-white/90">
+              <Link href="#">Request Advisory Services</Link>
             </Button>
           </motion.div>
         </div>

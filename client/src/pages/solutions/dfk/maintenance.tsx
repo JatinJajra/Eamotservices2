@@ -11,6 +11,7 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import ContactModal from "@/components/Popup/ContectModal";
 
 const DFKMaintenancePage: React.FC = () => {
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.2 });
@@ -26,9 +27,14 @@ const DFKMaintenancePage: React.FC = () => {
   
   // Plan selector state
   const [selectedPlan, setSelectedPlan] = useState("premium");
+      const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   
   return (
     <div className="bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+                          <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Hero Section with Animated Efficiency Graph */}
       <motion.section
         ref={heroRef}
@@ -176,10 +182,15 @@ const DFKMaintenancePage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-wrap gap-4"
             >
-              <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white">
+              <Button size="lg" onClick={openModal} className="bg-green-600 hover:bg-green-700 text-white">
                 Lock In Your Performance Guarantee
               </Button>
-              <Button variant="outline" size="lg" className="border-slate-400 text-white hover:bg-white/10">
+              <Button variant="outline" size="lg" className="border-slate-400 text-black hover:bg-white/10"  onClick={() => {
+    const section = document.getElementById("Performance-Protection-Plans");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  }}>
                 View Maintenance Plans
               </Button>
             </motion.div>
@@ -243,6 +254,7 @@ const DFKMaintenancePage: React.FC = () => {
         animate={planInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
         className="py-20 bg-slate-900"
+        id="Performance-Protection-Plans"
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -383,7 +395,7 @@ const DFKMaintenancePage: React.FC = () => {
             className="text-center mt-12"
           >
             <p className="text-slate-400 mb-4">Need a custom maintenance solution for your specific requirements?</p>
-            <Button variant="outline" className="border-slate-600 hover:border-green-500 text-white">
+            <Button variant="outline" onClick={openModal} className="border-slate-600 hover:border-green-500 text-black">
               Contact Us for Custom Plans <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </motion.div>
@@ -904,8 +916,8 @@ const DFKMaintenancePage: React.FC = () => {
               animate={ctaInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <Button size="lg" asChild className="bg-white text-green-700 hover:bg-gray-100 px-8 py-6 text-lg">
-                <a href="/contact">Lock In Your Performance Guarantee</a>
+              <Button size="lg" onClick={openModal} asChild className="bg-white text-green-700 hover:bg-gray-100 px-8 py-6 text-lg">
+                <a href="#">Lock In Your Performance Guarantee</a>
               </Button>
             </motion.div>
             
@@ -932,5 +944,4 @@ const DFKMaintenancePage: React.FC = () => {
     </div>
   );
 };
-
 export default DFKMaintenancePage;

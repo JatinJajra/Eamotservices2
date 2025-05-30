@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Wrench, 
@@ -20,13 +20,19 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Link } from 'wouter';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import ContactModal from '@/components/Popup/ContectModal';
 
 const DGOverhaulPage: React.FC = () => {
+   const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   // Animated counter hook
   const useCounter = (end: number, duration: number = 2000) => {
     const [count, setCount] = React.useState(0);
     const countRef = React.useRef(0);
     const [inView, setInView] = React.useState(false);
+      
+      
     
     React.useEffect(() => {
       if (!inView) return;
@@ -194,8 +200,10 @@ const DGOverhaulPage: React.FC = () => {
 
   return (
     <>
+          <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+    
       {/* Hero Section with Animated Chart */}
-      <section className="relative bg-gradient-to-r from-primary-900 to-primary-800 text-white py-24">
+      {/* <section className="relative bg-gradient-to-r from-primary-900 to-primary-800 text-white py-24">
         <div className="absolute inset-0 opacity-10">
           <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
@@ -214,7 +222,7 @@ const DGOverhaulPage: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-4xl md:text-5xl font-bold mb-6"
+                className="text-4xl md:text-5xl font-bold mb-6 text-primary  "
               >
                 DG Overhaul & Repairs
               </motion.h1>
@@ -222,7 +230,7 @@ const DGOverhaulPage: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-xl opacity-90 mb-8"
+                className="text-xl opacity-90 mb-8 text-gray-700"
               >
                 Comprehensive restoration of aging or underperforming generator systems to extend operational lifespan and restore peak performance.
               </motion.p>
@@ -231,7 +239,7 @@ const DGOverhaulPage: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
+                <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 ">
                   <Link href="/contact">Schedule Overhaul Assessment</Link>
                 </Button>
               </motion.div>
@@ -242,7 +250,7 @@ const DGOverhaulPage: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7 }}
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-lg text-primary"
               >
                 <h3 className="text-xl font-semibold mb-6 text-center">Performance Improvement After Overhaul</h3>
                 <div className="space-y-6">
@@ -276,7 +284,90 @@ const DGOverhaulPage: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+      <section className="relative bg-gradient-to-r from-black to-gray-800 text-white py-24">
+  <div className="absolute inset-0 opacity-10 text-white">
+    <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <defs>
+        <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse">
+          <path d="M 8 0 L 0 0 0 8" fill="none" stroke="currentColor" strokeWidth="0.5" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+    </svg>
+  </div>
+
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="flex flex-col lg:flex-row items-center">
+      <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl md:text-5xl font-bold mb-6 text-white"
+        >
+          DG Overhaul & Repairs
+        </motion.h1>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-xl opacity-90 mb-8 text-gray-300"
+        >
+          Comprehensive restoration of aging or underperforming generator systems to extend operational lifespan and restore peak performance.
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <Button asChild size="lg" onClick={openModal} className="bg-white text-primary hover:bg-white/90">
+            <Link href="#">Schedule Overhaul Assessment</Link>
+          </Button>
+        </motion.div>
+      </div>
+
+      <div className="w-full lg:w-1/2 pl-0 lg:pl-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7 }}
+          className="bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-lg text-white"
+        >
+          <h3 className="text-xl font-semibold mb-6 text-center">Performance Improvement After Overhaul</h3>
+          <div className="space-y-6">
+            {performanceMetrics.map((metric, index) => (
+              <div key={index} className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <span className={`${metric.color}`}>{metric.icon}</span>
+                    <span>{metric.label}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <span className="opacity-70">{metric.initialValue}{metric.unit}</span>
+                    <span className="text-accent">→</span>
+                    <span className="font-bold">{metric.overhauledValue}{metric.unit}</span>
+                  </div>
+                </div>
+                <div className="relative pt-1">
+                  <div className="overflow-hidden h-2 text-xs flex rounded bg-gray-300/30">
+                    <motion.div
+                      initial={{ width: `${metric.initialValue}%` }}
+                      animate={{ width: `${metric.overhauledValue}%` }}
+                      transition={{ duration: 1.5, delay: 0.3 + index * 0.1 }}
+                      className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-accent"
+                    ></motion.div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Visual Timeline of Overhaul Process */}
       <section className="py-20 bg-gray-50">
@@ -442,12 +533,12 @@ const DGOverhaulPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold mb-6">Ready to Restore Your Generator Performance?</h2>
-            <p className="max-w-2xl mx-auto mb-8 opacity-90">
+            <h2 className="text-3xl font-bold mb-6 text-primary">Ready to Restore Your Generator Performance?</h2>
+            <p className="max-w-2xl mx-auto mb-8 opacity-90 text-gray-700">
               Contact our overhaul specialists to discuss your generator restoration requirements and schedule an assessment. Extend the life of your investment with our expert services.
             </p>
-            <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white">
-              <Link href="/contact">Schedule Overhaul Assessment</Link>
+            <Button asChild size="lg" onClick={openModal} className="bg-accent hover:bg-accent/90 text-white">
+              <Link href="#">Schedule Overhaul Assessment</Link>
             </Button>
           </motion.div>
         </div>

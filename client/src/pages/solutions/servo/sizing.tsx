@@ -23,8 +23,12 @@ import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Slider } from '@/components/ui/slider';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import ContactModal from '@/components/Popup/ContectModal';
 
 const ServoSizingPage: React.FC = () => {
+   const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   // State for the sizing calculator
   const [loadKVA, setLoadKVA] = useState<string>('20');
   const [voltageLevel, setVoltageLevel] = useState<string>('415');
@@ -186,6 +190,8 @@ const ServoSizingPage: React.FC = () => {
 
   return (
     <>
+          <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-black to-gray-900 text-white py-24">
         <div className="absolute inset-0 opacity-20">
@@ -225,8 +231,8 @@ const ServoSizingPage: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-                  <Link href="/contact">Request Sizing Assessment</Link>
+                <Button asChild size="lg" onClick={openModal} className="bg-white text-primary hover:bg-white/90">
+                  <Link href="#">Request Sizing Assessment</Link>
                 </Button>
               </motion.div>
             </div>
@@ -249,7 +255,7 @@ const ServoSizingPage: React.FC = () => {
                         value={loadKVA}
                         onChange={(e) => setLoadKVA(e.target.value)}
                         min="1"
-                        className="mt-1"
+                        className="mt-1 text-primary"
                       />
                     </div>
                     
@@ -620,8 +626,8 @@ const ServoSizingPage: React.FC = () => {
             <p className="max-w-2xl mx-auto mb-8 opacity-90">
               Contact our servo stabilizer specialists to begin the assessment and sizing process for your specific requirements. Our experts will help you identify the optimal solution for your facility.
             </p>
-            <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-              <Link href="/contact">Request Sizing Assessment</Link>
+            <Button asChild size="lg" onClick={openModal} className="bg-white text-primary hover:bg-white/90">
+              <Link href="#">Request Sizing Assessment</Link>
             </Button>
           </motion.div>
         </div>

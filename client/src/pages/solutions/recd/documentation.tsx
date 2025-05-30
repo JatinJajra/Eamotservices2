@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { 
   FileText, CheckSquare, ClipboardCheck, BookOpen, Globe, Mail, 
@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import ContactModal from "@/components/Popup/ContectModal";
 
 interface FeatureCardProps {
   icon: React.ReactNode;
@@ -22,6 +23,8 @@ interface FeatureCardProps {
 }
 
 const FeatureCard = ({ icon, title, description, stats, metric, color, delay, inView }: FeatureCardProps) => {
+ 
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -88,6 +91,9 @@ const StatCard = ({ icon, value, label, description, delay, inView }: StatCardPr
 };
 
 const RECDDocumentationPage: React.FC = () => {
+      const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: complianceRef, inView: complianceInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.2 });
@@ -97,7 +103,10 @@ const RECDDocumentationPage: React.FC = () => {
   const { ref: ctaRef, inView: ctaInView } = useIntersectionObserver({ threshold: 0.2 });
   
   return (
+    
     <div className="bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+                          <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Hero Section with Visual Impact */}
       <section 
         ref={heroRef}
@@ -179,12 +188,12 @@ const RECDDocumentationPage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-wrap gap-4"
             >
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
+              <Button size="lg" onClick={openModal} className="bg-primary hover:bg-primary/90 text-white">
                 Schedule Consultation
               </Button>
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+              {/* <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
                 Download Compliance Guide
-              </Button>
+              </Button> */}
             </motion.div>
           </div>
         </div>
@@ -680,13 +689,13 @@ const RECDDocumentationPage: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Button size="lg" asChild className="bg-white text-primary hover:bg-gray-100 px-8 text-lg">
+              <Button size="lg" onClick={openModal} asChild className="bg-white text-primary hover:bg-gray-100 px-8 text-lg">
                 <a href="/contact">Secure Your Compliance Future</a>
               </Button>
               
-              <Button variant="outline" size="lg" className="text-white border-white hover:bg-white/10">
+              {/* <Button variant="outline" size="lg" className="text-white border-white hover:bg-white/10">
                 Book Free Assessment
-              </Button>
+              </Button> */}
             </motion.div>
             
             {/* Success metrics */}

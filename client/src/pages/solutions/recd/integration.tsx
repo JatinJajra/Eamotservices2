@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Settings, BarChart4, Cpu, Server, Wrench, Shield, 
@@ -9,8 +9,12 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
+import ContactModal from '@/components/Popup/ContectModal';
 
 const RECDIntegrationPage: React.FC = () => {
+     const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: benefitsRef, inView: benefitsInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: processRef, inView: processInView } = useIntersectionObserver({ threshold: 0.2 });
@@ -21,6 +25,8 @@ const RECDIntegrationPage: React.FC = () => {
 
   return (
     <div className="bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+                      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Hero Section with 3D Elements */}
       <motion.section
         ref={heroRef}
@@ -128,12 +134,12 @@ const RECDIntegrationPage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-wrap gap-4"
             >
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Button size="lg" onClick={openModal} className="bg-blue-600 hover:bg-blue-700 text-white">
                 Schedule Zero-Downtime Implementation
               </Button>
-              <Button variant="outline" size="lg" className="border-slate-400 text-white hover:bg-white/10">
+              {/* <Button variant="outline" size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
                 Explore Our Methodology
-              </Button>
+              </Button> */}
             </motion.div>
           </div>
         </div>
@@ -211,11 +217,11 @@ const RECDIntegrationPage: React.FC = () => {
               >
                 <div className="absolute inset-0 z-0">
                   <div className={`absolute inset-0 bg-gradient-to-b ${benefit.color} mix-blend-multiply`}></div>
-                  <img 
+                  {/* <img 
                     src={benefit.image} 
                     alt={benefit.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                  /> */}
                 </div>
                 
                 <div className="relative z-10 p-6 flex flex-col h-80">
@@ -237,9 +243,9 @@ const RECDIntegrationPage: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="mt-12 text-center"
           >
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+            {/* <Button className="bg-blue-600 hover:bg-blue-700 text-white">
               View All Benefits <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            </Button> */}
           </motion.div>
         </div>
       </motion.section>
@@ -432,16 +438,16 @@ const RECDIntegrationPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-8 bg-blue-600 hover:bg-blue-700 text-white">
+                  {/* <Button className="mt-8 bg-blue-600 hover:bg-blue-700 text-white">
                     Read Zero-Downtime Case Study
-                  </Button>
+                  </Button> */}
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-xl h-80">
-                  <img 
+                  {/* <img 
                     src="/images/zero-operational-impact.jpg" 
                     alt="Zero Operational Impact" 
                     className="w-full h-full object-cover"
-                  />
+                  /> */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                   <div className="absolute bottom-6 left-6 right-6">
                     <div className="flex items-center gap-3 mb-2">
@@ -495,9 +501,9 @@ const RECDIntegrationPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-8 bg-green-600 hover:bg-green-700 text-white">
+                  {/* <Button className="mt-8 bg-green-600 hover:bg-green-700 text-white">
                     View Performance Data
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </TabsContent>
@@ -528,9 +534,9 @@ const RECDIntegrationPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-8 bg-purple-600 hover:bg-purple-700 text-white">
+                  {/* <Button className="mt-8 bg-purple-600 hover:bg-purple-700 text-white">
                     Download Compliance Guarantee
-                  </Button>
+                  </Button> */}
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-xl h-80">
                   <img 
@@ -721,7 +727,7 @@ const RECDIntegrationPage: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
             >
               <Button size="lg" asChild className="bg-white text-blue-700 hover:bg-gray-100 px-8 py-6 text-lg">
-                <a href="/contact">Schedule Your Zero-Downtime Implementation</a>
+                <a href="#" onClick={openModal}>Schedule Your Zero-Downtime Implementation</a>
               </Button>
             </motion.div>
           </div>

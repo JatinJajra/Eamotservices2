@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Wrench, Cable, ClipboardList, Zap, BookOpen, Shield, Users, CheckCircle, AlertTriangle, Clock, BarChart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
+import ContactModal from '@/components/Popup/ContectModal';
 
 const ServoInstallationPage: React.FC = () => {
+     const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: processRef, inView: processInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: expertiseRef, inView: expertiseInView } = useIntersectionObserver({ threshold: 0.2 });
@@ -14,6 +18,8 @@ const ServoInstallationPage: React.FC = () => {
 
   return (
     <div className="bg-black text-white">
+    <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Advanced Hero Section */}
       <motion.section
         ref={heroRef}
@@ -78,12 +84,12 @@ const ServoInstallationPage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-wrap gap-4"
             >
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
+              <Button size="lg" onClick={openModal} className="bg-primary hover:bg-primary/90 text-white">
                 Schedule Expert Installation
               </Button>
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-                Download Installation Guide
-              </Button>
+                {/* <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+                  Download Installation Guide
+                </Button> */}
             </motion.div>
           </div>
         </div>
@@ -302,7 +308,7 @@ const ServoInstallationPage: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 title: "Peak Performance",
@@ -363,7 +369,70 @@ const ServoInstallationPage: React.FC = () => {
                 </div>
               </motion.div>
             ))}
+          </div> */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+  {[
+    {
+      title: "Peak Performance",
+      description: "98% efficiency with precision installation ensuring optimal voltage regulation under all conditions",
+      icon: <BarChart className="h-8 w-8 text-primary" />,
+      image: "/images/servo-peak-performance.jpg",
+      metric: "98%",
+      metricLabel: "EFFICIENCY"
+    },
+    {
+      title: "Extended Lifespan",
+      description: "Proper installation extends your stabilizer lifespan while maintaining full warranty protection",
+      icon: <Clock className="h-8 w-8 text-primary" />,
+      image: "/images/servo-extended-life.jpg",
+      metric: "+40%",
+      metricLabel: "LONGER LIFE"
+    },
+    {
+      title: "Minimum Disruption",
+      description: "Our streamlined process completes faster than industry averages with after-hours options",
+      icon: <CheckCircle className="h-8 w-8 text-primary" />,
+      image: "/images/servo-disruption.jpg",
+      metric: "-60%",
+      metricLabel: "DOWNTIME"
+    }
+  ].map((benefit, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      animate={benefitsInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
+      className="relative group rounded-xl overflow-hidden h-96 shadow-lg"
+    >
+      <div className="absolute inset-0 z-0">
+        {/* <img 
+          src={benefit.image} 
+          alt={benefit.title} 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-110"
+        /> */}
+        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/50 to-white/20"></div>
+      </div>
+      
+      <div className="relative z-10 h-full flex flex-col p-6 justify-between">
+        <div>
+          <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+            {benefit.icon}
           </div>
+          <h3 className="text-2xl font-bold mb-3 text-gray-900">{benefit.title}</h3>
+          <p className="text-gray-700">{benefit.description}</p>
+        </div>
+        
+        <div className="mt-6">
+          <div className="flex items-end">
+            <span className="text-4xl font-bold text-primary">{benefit.metric}</span>
+            <span className="text-sm ml-2 mb-1 text-primary/80">{benefit.metricLabel}</span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  ))}
+</div>
+
         </div>
       </motion.section>
 
@@ -375,7 +444,7 @@ const ServoInstallationPage: React.FC = () => {
         transition={{ duration: 0.6 }}
         className="py-16 bg-gradient-to-r from-primary/10 to-primary/5"
       >
-        <div className="container mx-auto px-4">
+        {/* <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { value: "98%", label: "Efficiency Rate" },
@@ -395,7 +464,7 @@ const ServoInstallationPage: React.FC = () => {
               </motion.div>
             ))}
           </div>
-        </div>
+        </div> */}
       </motion.section>
 
       {/* CTA Section */}
@@ -439,8 +508,8 @@ const ServoInstallationPage: React.FC = () => {
               animate={ctaInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <Button size="lg" asChild className="bg-white text-primary hover:bg-gray-100 text-lg px-8">
-                <a href="/contact">Schedule Expert Installation</a>
+              <Button size="lg"  onClick={openModal} asChild className="bg-white text-primary hover:bg-gray-100 text-lg px-8">
+                <a href="#">Schedule Expert Installation</a>
               </Button>
             </motion.div>
           </div>

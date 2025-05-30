@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Gauge, 
@@ -21,8 +21,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'wouter';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import ContactModal from '@/components/Popup/ContectModal';
 
 const DGMonitoringPage: React.FC = () => {
+   const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   // Key Monitoring Capabilities
   const monitoringParams = [
     { name: 'Voltage Monitoring', active: true },
@@ -196,6 +200,7 @@ const DGMonitoringPage: React.FC = () => {
 
   return (
     <>
+          <ContactModal isOpen={isModalOpen} onClose={closeModal} />
       {/* Hero Section with Interactive Demo */}
       <section className="relative bg-gradient-to-r from-black to-gray-900 text-white py-24 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
@@ -269,12 +274,12 @@ const DGMonitoringPage: React.FC = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="flex flex-wrap gap-4"
               >
-                <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-                  <Link href="/contact">Get IoT Monitoring</Link>
+                <Button asChild size="lg"onClick={openModal} className="bg-white text-primary hover:bg-white/90">
+                  <Link href="#">Get IoT Monitoring</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+                {/* <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
                   <Link href="/product-demo">View Live Demo</Link>
-                </Button>
+                </Button> */}
               </motion.div>
             </div>
             
@@ -503,8 +508,8 @@ const DGMonitoringPage: React.FC = () => {
                       </div>
                       
                       <div className="mt-8 pt-6 border-t border-primary-100">
-                        <Button asChild variant="link" className="p-0 h-auto text-primary">
-                          <Link href="/contact">Request full case study</Link>
+                        <Button asChild variant="link" onClick={openModal} className="p-0 h-auto text-primary">
+                          <Link href="#">Request full case study</Link>
                         </Button>
                       </div>
                     </div>
@@ -531,11 +536,11 @@ const DGMonitoringPage: React.FC = () => {
               Contact our monitoring specialists to discuss implementing advanced IoT monitoring for your diesel generators. Transform your power infrastructure with smart, connected technology.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-                <Link href="/contact">Get IoT Monitoring</Link>
+              <Button asChild size="lg" onClick={openModal} className="bg-white text-primary hover:bg-white/70">
+                <Link href="#">Get IoT Monitoring</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-                <Link href="/energy-calculator">Calculate ROI</Link>
+              <Button asChild variant="outline" size="lg" className="border-white text-primary hover:bg-white/70">
+                <Link href="/energy-calculator text-primary">Calculate ROI</Link>
               </Button>
             </div>
           </motion.div>

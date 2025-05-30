@@ -26,6 +26,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
+import ContactModal from '@/components/Popup/ContectModal';
 
 interface BatteryOption {
   type: string;
@@ -39,6 +40,10 @@ interface BatteryOption {
 }
 
 const UPSBatteryPage: React.FC = () => {
+
+   const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   // State for the battery sizing calculator
   const [upsCapacity, setUpsCapacity] = useState<string>('10');
   const [desiredRuntime, setDesiredRuntime] = useState<string>('30');
@@ -270,6 +275,8 @@ const UPSBatteryPage: React.FC = () => {
 
   return (
     <>
+          <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-black to-gray-900 text-white py-24">
         <div className="absolute inset-0 opacity-20">
@@ -307,8 +314,8 @@ const UPSBatteryPage: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-                  <Link href="/contact">Start Battery Consultation</Link>
+                <Button asChild size="lg" onClick={openModal} className="bg-white text-primary hover:bg-white/90">
+                  <Link href="#">Start Battery Consultation</Link>
                 </Button>
               </motion.div>
             </div>
@@ -331,7 +338,7 @@ const UPSBatteryPage: React.FC = () => {
                         value={upsCapacity}
                         onChange={(e) => setUpsCapacity(e.target.value)}
                         min="1"
-                        className="mt-1"
+                        className="mt-1 text-primary"
                       />
                     </div>
                     
@@ -343,7 +350,7 @@ const UPSBatteryPage: React.FC = () => {
                         value={desiredRuntime}
                         onChange={(e) => setDesiredRuntime(e.target.value)}
                         min="5"
-                        className="mt-1"
+                        className="mt-1 text-primary"
                       />
                     </div>
                     
@@ -624,8 +631,8 @@ const UPSBatteryPage: React.FC = () => {
             <p className="max-w-2xl mx-auto mb-8 opacity-90">
               Contact our battery specialists to begin the assessment and selection process for your UPS battery needs. Our experts will help you identify the optimal solution for your specific requirements.
             </p>
-            <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-              <Link href="/contact">Start Battery Consultation</Link>
+            <Button asChild size="lg" onClick={openModal} className="bg-white text-primary hover:bg-white/90">
+              <Link href="#">Start Battery Consultation</Link>
             </Button>
           </motion.div>
         </div>

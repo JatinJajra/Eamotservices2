@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { 
   Wrench, Gauge, Cpu, FileCheck, Users, Settings, 
@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import ContactModal from "@/components/Popup/ContectModal";
 
 // Custom component for animated percentage counter
 const PercentageCounter = ({ value, label, color, delay, inView }: { 
@@ -54,6 +55,10 @@ const PercentageCounter = ({ value, label, color, delay, inView }: {
 };
 
 const DFKInstallationPage: React.FC = () => {
+
+      const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: metricsRef, inView: metricsInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: processRef, inView: processInView } = useIntersectionObserver({ threshold: 0.2 });
@@ -63,7 +68,10 @@ const DFKInstallationPage: React.FC = () => {
   const { ref: ctaRef, inView: ctaInView } = useIntersectionObserver({ threshold: 0.2 });
   
   return (
+
     <div className="bg-gray-900 text-white">
+                          <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Hero Section */}
       <motion.section
         ref={heroRef}
@@ -129,10 +137,15 @@ const DFKInstallationPage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-wrap gap-4"
             >
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
+              <Button size="lg" onClick={openModal} className="bg-primary hover:bg-primary/90 text-white">
                 Calculate Your Fuel Savings
               </Button>
-              <Button variant="outline" size="lg" className="text-white border-white hover:bg-white/10">
+              <Button variant="outline" size="lg" className="text-black border-white hover:bg-white/70"  onClick={() => {
+    const section = document.getElementById("installation-process");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  }}>
                 View Conversion Process
               </Button>
             </motion.div>
@@ -294,6 +307,7 @@ const DFKInstallationPage: React.FC = () => {
         animate={processInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
         className="py-20 bg-gray-800"
+        id="installation-process"
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -718,8 +732,8 @@ const DFKInstallationPage: React.FC = () => {
               animate={ctaInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <Button size="lg" asChild className="bg-white text-primary hover:bg-gray-100 px-8 py-6 text-lg">
-                <a href="/contact">Calculate Your Fuel Savings</a>
+              <Button size="lg" onClick={openModal} asChild className="bg-white text-primary hover:bg-gray-100 px-8 py-6 text-lg">
+                <a href="#">Calculate Your Fuel Savings</a>
               </Button>
             </motion.div>
             

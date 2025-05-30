@@ -8,8 +8,12 @@ import {
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
+import ContactModal from '@/components/Popup/ContectModal';
 
 const ServoMonitoringPage: React.FC = () => {
+     const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: demoRef, inView: demoInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: featureRef, inView: featureInView } = useIntersectionObserver({ threshold: 0.2 });
@@ -71,6 +75,8 @@ const ServoMonitoringPage: React.FC = () => {
 
   return (
     <div className="bg-gradient-to-b from-gray-900 to-black text-white">
+                      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Hero Section with Dynamic Graphics */}
       <motion.section
         ref={heroRef}
@@ -159,12 +165,12 @@ const ServoMonitoringPage: React.FC = () => {
               </p>
               
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
+                <Button size="lg" onClick={openModal} className="bg-primary hover:bg-primary/90 text-white">
                   Schedule a Demo
                 </Button>
-                <Button variant="outline" size="lg" className="text-white border-white hover:bg-white/10">
+                {/* <Button variant="outline" size="lg" className="text-white border-white hover:bg-white/10">
                   View Technical Specs
-                </Button>
+                </Button> */}
               </div>
             </motion.div>
             
@@ -420,9 +426,9 @@ const ServoMonitoringPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
+                  {/* <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
                     View Technical Specifications
-                  </Button>
+                  </Button> */}
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-xl border border-gray-700">
                   <img 
@@ -737,9 +743,9 @@ const ServoMonitoringPage: React.FC = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
                 className="flex flex-col h-full"
               >
-                <div className="rounded-xl overflow-hidden mb-6 aspect-video">
+                {/* <div className="rounded-xl overflow-hidden mb-6 aspect-video">
                   <img src={benefit.image} alt={benefit.title} className="w-full h-full object-cover" />
-                </div>
+                </div> */}
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-lg bg-primary/10 flex-shrink-0 mt-1">
                     {benefit.icon}
@@ -812,8 +818,8 @@ const ServoMonitoringPage: React.FC = () => {
               animate={ctaInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <Button size="lg" asChild className="bg-white text-primary hover:bg-gray-100 px-8 py-6 text-lg">
-                <a href="/contact">Activate Intelligent Power Monitoring</a>
+              <Button size="lg" onClick={openModal} asChild className="bg-white text-primary hover:bg-gray-100 px-8 py-6 text-lg">
+                <a href="#">Activate Intelligent Power Monitoring</a>
               </Button>
             </motion.div>
           </div>

@@ -118,8 +118,7 @@ export default function FeaturesSection() {
 >
   <div className="p-8 lg:p-12">
     <h4 className="text-2xl md:text-3xl font-bold font-montserrat text-white mb-4">
-      Focused on Decarbonisation, Carbon Footprint for your organisation or evaluation Sustainable Alternatives?
-    </h4>
+Committed to optimizing critical energy assets through advanced system integration, predictive analytics, and lifecycle management to ensure operational continuity, maximize efficiency, and support sustainable energy objectives.    </h4>
 
     <Button asChild className="mt-4 bg-white hover:bg-gray-100 text-primary">
       <a href="#contact">Get In Touch</a>

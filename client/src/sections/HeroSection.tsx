@@ -304,13 +304,21 @@ export default function HeroSection() {
             <span className="text-sm font-medium">AI-Powered Energy Intelligence</span>
           </motion.div>
           
-          <motion.h1
+          {/* <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
           >
             Next-Gen <span className="text-blue-500">Energy</span> Management
+          </motion.h1> */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
+          >
+            Making Your Power Systems <span className="text-blue-500">Smarter, Cleaner,  </span> and Compliant
           </motion.h1>
           
           <motion.p
@@ -319,8 +327,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-xl text-slate-300 mb-8 leading-relaxed"
           >
-            Delivering IoT-powered solutions to optimize energy consumption, reduce operational costs, 
-            and enable sustainable business practices through real-time monitoring and predictive maintenance.
+          Reliable solutions for your power systems — backed by IoT-based monitoring, regulatory expertise, and end-to-end field support to drive uptime, efficiency, and compliance.
           </motion.p>
           
           <motion.div
@@ -333,7 +340,7 @@ export default function HeroSection() {
               <a href="#services">Explore Our Services</a>
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button variant="outline" size="lg" className="border-slate-400 text-white hover:bg-white/10">
+            <Button variant="outline" size="lg" className="border-slate-400 text-black hover:bg-white/50">
               <a href="#contact">Get In Touch</a>
             </Button>
           </motion.div>
@@ -345,9 +352,13 @@ export default function HeroSection() {
             className="mt-12 grid grid-cols-3 gap-4"
           >
             {[
-              { value: "40%", label: "Energy Savings" },
-              { value: "24/7", label: "Real-time Monitoring" },
-              { value: "350+", label: "Client Implementations" }
+              { value: "350+", label: "Assets Supported" },
+              { value: "25+", label: "Years of Proven Expertise" },
+              { value: "50+ ", label: "Happy Clients" },
+              { value: "15+ ", label: "Years Experience" },
+              { value: "25% ", label: "Energy Savings" }
+
+
             ].map((stat, index) => (
               <div key={index} className="text-center px-4 py-3 rounded-lg bg-slate-800/50 backdrop-blur-sm border border-slate-700">
                 <div className="text-2xl font-bold text-blue-400">{stat.value}</div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Calendar, 
@@ -18,8 +18,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Link } from 'wouter';
+import ContactModal from '@/components/Popup/ContectModal';
 
 const UPSAMCPage: React.FC = () => {
+   const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const amcFeatures = [
     {
       icon: <Calendar className="h-8 w-8 text-primary" />,
@@ -179,8 +183,10 @@ const UPSAMCPage: React.FC = () => {
 
   return (
     <>
+          <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-900 to-primary-800 text-white overflow-hidden py-24">
+      {/* <section className="relative bg-gradient-to-r from-primary-900 to-primary-800 text-white overflow-hidden py-24">
         <div className="absolute inset-0 opacity-20">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
@@ -238,7 +244,67 @@ const UPSAMCPage: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+      <section className="relative bg-gradient-to-r from-black to-gray-800 text-white overflow-hidden py-24">
+  <div className="absolute inset-0 opacity-20 text-white">
+    <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <defs>
+        <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse">
+          <path d="M 8 0 L 0 0 0 8" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+        </pattern>
+        <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+          <rect width="80" height="80" fill="url(#smallGrid)"/>
+          <path d="M 80 0 L 0 0 0 80" fill="none" stroke="currentColor" strokeWidth="1"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+    </svg>
+  </div>
+  
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="flex flex-col lg:flex-row items-center">
+      <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">UPS Annual Maintenance Contract</h1>
+          <p className="text-xl opacity-90 mb-8 max-w-xl text-gray-300">
+            Comprehensive maintenance coverage and technical support that ensures maximum reliability for your critical UPS infrastructure.
+          </p>
+          <Button asChild size="lg" onClick={openModal} className="bg-white text-primary hover:bg-white/90">
+            <Link href="#">Explore AMC Options</Link>
+          </Button>
+        </motion.div>
+      </div>
+      
+      <div className="w-full lg:w-1/2 lg:pl-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7 }}
+          className="relative aspect-video rounded-xl overflow-hidden shadow-2xl"
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" 
+            alt="UPS Maintenance" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div className="bg-white/90 backdrop-blur-sm rounded-lg py-3 px-5 shadow-lg">
+              <div className="flex items-center gap-2">
+                <Phone className="h-5 w-5 text-primary" />
+                <span className="text-primary font-semibold">24/7 AMC Helpline: 1800-200-3000</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Key AMC Features Grid */}
       <section className="py-20 bg-gray-50">
@@ -425,12 +491,12 @@ const UPSAMCPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold mb-6">Ready to Protect Your UPS Investment?</h2>
-            <p className="max-w-2xl mx-auto mb-8 opacity-90">
+            <h2 className="text-3xl font-bold mb-6 text-primary">Ready to Protect Your UPS Investment?</h2>
+            <p className="max-w-2xl mx-auto mb-8 opacity-90 text-gray-700">
               Contact our service team to discuss AMC options tailored to your specific UPS maintenance requirements.
             </p>
-            <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-              <Link href="/contact">Explore AMC Options</Link>
+            <Button asChild size="lg" onClick={openModal} className="bg-white text-primary hover:bg-white/90">
+              <Link href="#">Explore AMC Options</Link>
             </Button>
           </motion.div>
         </div>
