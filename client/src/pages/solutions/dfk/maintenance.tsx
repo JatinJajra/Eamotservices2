@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import { 
   Wrench, Clock, AlertTriangle, FileCheck, CheckSquare, Calendar,
   ArrowRight, CheckCircle, Gauge, Activity, Shield, Zap, DollarSign,
@@ -21,7 +21,8 @@ const DFKMaintenancePage: React.FC = () => {
   const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: processRef, inView: processInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: ctaRef, inView: ctaInView } = useIntersectionObserver({ threshold: 0.2 });
-  
+   const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px 0px" });
   // Animated counter for percentage
   const [count, setCount] = useState(0);
   
@@ -297,7 +298,7 @@ const DFKMaintenancePage: React.FC = () => {
                 highlight: "bg-blue-900/20",
                 icon: <Settings className="h-8 w-8 text-blue-500" />,
                 features: [
-                  { name: "Preventive Maintenance Visits", value: "2 per year" },
+                  { name: "Preventive Maintenance Visits", value: "4 per year" },
                   { name: "Remote System Monitoring", value: "Basic" },
                   { name: "Emergency Response Time", value: "24 Hours" },
                   { name: "Efficiency Retention", value: "90-92%" },
@@ -316,7 +317,7 @@ const DFKMaintenancePage: React.FC = () => {
                 features: [
                   { name: "Preventive Maintenance Visits", value: "4 per year" },
                   { name: "Remote System Monitoring", value: "Advanced" },
-                  { name: "Emergency Response Time", value: "8 Hours" },
+                  { name: "Emergency Response Time", value: "12 Hours" },
                   { name: "Efficiency Retention", value: "94-97%" },
                   { name: "Parts & Labor Coverage", value: "Premium" },
                   { name: "System Health Reports", value: "Monthly" }
@@ -333,7 +334,7 @@ const DFKMaintenancePage: React.FC = () => {
                 features: [
                   { name: "Preventive Maintenance Visits", value: "6 per year" },
                   { name: "Remote System Monitoring", value: "24/7 Premium" },
-                  { name: "Emergency Response Time", value: "4 Hours" },
+                  { name: "Emergency Response Time", value: "6 Hours" },
                   { name: "Efficiency Retention", value: "97%+ Guaranteed" },
                   { name: "Parts & Labor Coverage", value: "Comprehensive" },
                   { name: "System Health Reports", value: "Weekly" }
@@ -713,7 +714,7 @@ const DFKMaintenancePage: React.FC = () => {
       </motion.section>
       
       {/* Business Benefits */}
-      <motion.section
+      {/* <motion.section
         initial={{ opacity: 0, y: 40 }}
         animate={processInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
@@ -863,9 +864,187 @@ const DFKMaintenancePage: React.FC = () => {
             </div>
           </div>
         </div>
-      </motion.section>
+      </motion.section> */}
       
+       <motion.section
+      ref={sectionRef}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6 }}
+      className="py-20 bg-slate-900"
+    >
+      <div className="container mx-auto px-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-green-500 font-medium"
+              >
+                BUSINESS IMPACT
+              </motion.span>
+
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-3xl md:text-4xl font-bold mt-2 mb-6 text-white"
+              >
+                Tangible Benefits
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="text-xl text-slate-300 mb-6"
+              >
+                Our maintenance program delivers measurable business advantages beyond just keeping equipment running
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="space-y-4"
+              >
+                {[
+                  {
+                    title: "Maintain 94-97% of Initial Substitution Rates",
+                    description: "While competitors' systems typically lose 15-20% efficiency after 12 months"
+                  },
+                  {
+                    title: "Add 5-7 Years to Generator Lifespan",
+                    description: "Through precision care of critical components and combustion dynamics"
+                  },
+                  {
+                    title: "99.8% Unplanned Downtime Prevention",
+                    description: "Translating to 36+ more production days annually versus industry average"
+                  }
+                ].map((benefit, i) => (
+                  <div key={i} className="flex">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="w-5 h-5 rounded-full bg-green-900 flex items-center justify-center">
+                        <CheckCircle className="h-3 w-3 text-green-400" />
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="font-bold text-white">{benefit.title}</h3>
+                      <p className="text-slate-400 text-sm">{benefit.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="mt-8"
+              >
+                <Button className="bg-green-600 hover:bg-green-700 text-white">
+                  View Client Success Stories <ChevronRight className="ml-2 h-4 w-4" />
+                </Button>
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="bg-slate-800 border border-slate-700 rounded-xl p-8"
+            >
+              <h3 className="text-xl font-bold mb-6 text-white">Financial Impact Calculator</h3>
+
+              <div className="space-y-6">
+                {[
+                  {
+                    label: "Annual Operating Cost Savings",
+                    value: "₹7.8L+",
+                    color: "green",
+                    percent: "75%"
+                  },
+                  {
+                    label: "Extended Equipment Life Value",
+                    value: "₹38L+",
+                    color: "blue",
+                    percent: "85%"
+                  },
+                  {
+                    label: "Avoided Downtime Value",
+                    value: "₹22L+",
+                    color: "purple",
+                    percent: "65%"
+                  },
+                  {
+                    label: "Insurance Premium Reduction",
+                    value: "₹4.6L+",
+                    color: "amber",
+                    percent: "40%"
+                  }
+                ].map((item, index) => (
+                  <div key={index}>
+                    <div className="flex justify-between mb-2">
+                      <span className="text-sm text-slate-400">{item.label}</span>
+                      <span className={`font-bold text-${item.color}-400`}>{item.value}</span>
+                    </div>
+                    <div className="h-3 w-full bg-slate-700 rounded-full overflow-hidden">
+                      <div className={`h-full bg-${item.color}-500`} style={{ width: item.percent }}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-slate-700">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-sm font-medium text-slate-300">Total 5-Year Financial Impact</span>
+                  <span className="text-2xl font-bold text-white">₹98L+</span>
+                </div>
+                <p className="text-xs text-slate-400">
+                  Based on a 2 MW dual fuel generator installation with typical usage patterns
+                </p>
+              </div>
+
+              <div className="mt-6">
+                <Button variant="outline" className="w-full border-slate-600 text-black">
+                  Get Your Custom ROI Analysis
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </motion.section>
       {/* CTA Section */}
+        <motion.section
+      ref={ctaRef}
+      initial={{ opacity: 0, y: 40 }}
+      animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6 }}
+      className="py-20 bg-gradient-to-r from-green-600 to-green-800 relative overflow-hidden"
+    >
+      {/* Decorative elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/10 -mt-24 -mr-24"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/10 -mb-20 -ml-20"></div>
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-white/10"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
+        
+
+          
+
+        
+       
+
+      
+        </div>
+      </div>
+    </motion.section>
       <motion.section
         ref={ctaRef}
         initial={{ opacity: 0, y: 40 }}

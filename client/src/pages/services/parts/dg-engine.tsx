@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,8 +9,12 @@ import {
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import ContactModal from "@/components/Popup/ContectModal";
 
 export default function DGEnginePartsPage() {
+      const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: partsRef, inView: partsInView } = useIntersectionObserver({ threshold: 0.1 });
@@ -24,12 +28,12 @@ export default function DGEnginePartsPage() {
       transition={{ duration: 0.5 }}
     >
       {/* Hero Section */}
-      <section 
+      {/* <section 
         ref={heroRef}
         className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 md:py-28 relative overflow-hidden"
       >
         <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
         <motion.div 
@@ -65,9 +69,56 @@ export default function DGEnginePartsPage() {
         </motion.div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
         </div>
-      </section>
+      </section> */}
+                             <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
+      <section 
+  ref={heroRef}
+  className="bg-[#154679] text-white py-20 md:py-28 relative overflow-hidden"
+>
+  <div className="absolute top-0 left-0 w-full overflow-hidden opacity-20 pointer-events-none">
+    <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+  </div>
+
+  <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: heroInView ? 1 : 0, y: heroInView ? 0 : 20 }}
+    transition={{ duration: 0.7, delay: 0.2 }}
+    className="container mx-auto px-4 relative z-10"
+  >
+    <div className="max-w-4xl mx-auto text-center">
+      <div className="mb-6 inline-flex items-center justify-center">
+        <span className="bg-white/20 p-3 rounded-lg mr-4">
+          <Settings className="h-8 w-8" />
+        </span>
+        <h1 className="text-3xl md:text-5xl font-bold font-montserrat">
+          DG Engine & <span className="text-accent">Alternator Parts</span>
+        </h1>
+      </div>
+
+      <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+        Genuine and OEM-compatible replacement parts for all major diesel generator
+        engines and alternators, with expert sourcing and logistics support.
+      </p>
+
+      <div className="flex flex-wrap gap-4 justify-center">
+        <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white">
+          <a href="#" onClick={openModal}>Request Parts Quote</a>
+        </Button>
+        <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary">
+          <a href="#parts">Browse Parts Catalog</a>
+        </Button>
+      </div>
+    </div>
+  </motion.div>
+
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden opacity-20 pointer-events-none">
+    <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+  </div>
+</section>
+
       
       {/* Service Features */}
       <section 
@@ -178,8 +229,8 @@ export default function DGEnginePartsPage() {
                       </div>
                       
                       <p className="mb-6 text-gray-300">
-                        We source genuine and OEM-compatible replacement parts for all major diesel engine manufacturers, 
-                        including Cummins, Perkins, Volvo Penta, Caterpillar, MTU, Mitsubishi, and more.
+                        We source genuine and OEM-compatible replacement parts for all major diesel engine Parts, 
+                        including 'Cummins, Kirloskar, Ashok Leyland, TMTL, Mahindra and more'.
                       </p>
                       
                       <div className="space-y-4">
@@ -394,7 +445,7 @@ export default function DGEnginePartsPage() {
                       
                       <p className="mb-6 text-gray-300">
                         We provide genuine and compatible alternator components for all major brands including 
-                        Stamford, Leroy Somer, Marathon, AVK, and other leading manufacturers.
+                        'Stamford, Leroy Somer, Marathon, AVK' with Crompton Greaves'
                       </p>
                       
                       <div className="space-y-4">
@@ -831,8 +882,8 @@ export default function DGEnginePartsPage() {
                 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
                   <div className="bg-white p-4 rounded-lg shadow-sm text-center">
-                    <div className="text-3xl font-bold text-primary">12+</div>
-                    <p className="text-sm text-gray-500">Months warranty</p>
+                    <div className="text-3xl font-bold text-primary">100%</div>
+                    <p className="text-sm text-gray-500">Compatibility assurance with system specifications</p>
                   </div>
                   
                   <div className="bg-white p-4 rounded-lg shadow-sm text-center">
@@ -871,9 +922,9 @@ export default function DGEnginePartsPage() {
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white">
-                  <a href="#contact">Request Parts Quote</a>
+                  <a href="#" onClick={openModal}>Request Parts Quote</a>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
+                <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary">
                   <a href="tel:8970001110">Call Us: 897 000 111 02</a>
                 </Button>
               </div>

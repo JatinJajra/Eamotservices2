@@ -49,6 +49,8 @@ const UPSBatteryPage: React.FC = () => {
   const [desiredRuntime, setDesiredRuntime] = useState<string>('30');
   const [loadPercentage, setLoadPercentage] = useState<number>(70);
   const [calculatedSize, setCalculatedSize] = useState<string>('');
+  const [batteryVoltage, setBatteryVoltage] = useState("12"); // default value
+
 
   // Function to calculate basic battery size (simplified)
   const calculateBatterySize = () => {
@@ -112,79 +114,117 @@ const UPSBatteryPage: React.FC = () => {
   const batteryOptions: BatteryOption[] = [
     {
       type: 'VRLA (Valve Regulated Lead Acid)',
-      description: 'Maintenance-free sealed lead-acid batteries with excellent reliability and balanced cost.',
-      advantages: [
-        'Cost-effective initial investment',
-        'Proven technology with established reliability',
-        'Wide availability and support',
-        'Good tolerance to various operating conditions'
-      ],
-      considerations: [
-        'Heavier than lithium-ion alternatives',
-        '3-5 year typical lifespan',
-        'Temperature sensitive performance',
-        'Larger footprint than newer technologies'
-      ],
-      applications: [
-        'Small to medium businesses',
-        'IT server rooms',
-        'Budget-conscious deployments',
-        'Moderate runtime requirements'
-      ],
-      lifespan: '3-5 years',
-      icon: Battery,
-      color: 'bg-blue-50 border-blue-200'
+       description: 'Compact, high-performance batteries ideal for modern energy needs with superior charge retention and minimal maintenance.',
+  advantages: [
+    'High energy density – more power in a compact size.',
+    'Lightweight compared to lead-acid or NiMH batteries.',
+    'Low self-discharge rate, retaining charge longer when idle.',
+    'Low maintenance – no need for regular water topping like lead-acid.'
+  ],
+  considerations: [
+    'Higher upfront cost compared to other chemistries.',
+    'Requires Battery Management System (BMS) for safety and longevity.',
+    'Thermal runaway risk if overcharged or physically damaged.',
+    'Performance can degrade under high temperatures or overuse.'
+  ],
+  applications: [
+    'Renewable energy storage – solar inverters, home backup systems.',
+    'Industrial UPS systems and data center backup.',
+    'Medical devices, drones, and robotics.',
+    'Telecom tower backup systems.'
+  ],
+  lifespan: '5–10 years',
+  icon: Lightbulb,
+  color: 'bg-amber-50 border-amber-200'
     },
+
     {
-      type: 'Lithium-Ion',
-      description: 'Advanced battery technology offering longer lifespan, smaller footprint, and superior performance.',
-      advantages: [
-        'Significantly longer service life (8-10 years)',
-        'Smaller footprint and lighter weight',
-        'Better performance in high-temperature environments',
-        'Enhanced monitoring and management capabilities'
-      ],
-      considerations: [
-        'Higher initial investment',
-        'Specialized installation and handling',
-        'Requires advanced management systems',
-        'Temperature monitoring important'
-      ],
-      applications: [
-        'Data centers and critical facilities',
-        'Space-constrained installations',
-        'Long-term cost optimization focus',
-        'Environments with higher ambient temperatures'
-      ],
-      lifespan: '8-10 years',
-      icon: Lightbulb,
-      color: 'bg-amber-50 border-amber-200'
-    },
-    {
-      type: 'Nickel-Cadmium',
-      description: 'Robust industrial battery solution for extreme operating conditions and specialized applications.',
-      advantages: [
-        'Extremely long service life (15-20 years)',
-        'Excellent performance in extreme temperatures',
-        'Highly abuse-resistant',
-        'Very stable performance over lifetime'
-      ],
-      considerations: [
-        'Highest initial cost',
-        'Environmental considerations for disposal',
-        'Requires maintenance in some configurations',
-        'Larger space requirements'
-      ],
-      applications: [
-        'Industrial applications',
-        'Extreme environmental conditions',
-        'Oil & gas facilities',
-        'Transportation and infrastructure'
-      ],
-      lifespan: '15-20 years',
-      icon: Building2,
-      color: 'bg-green-50 border-green-200'
-    }
+  type: 'Lithium-Ion',
+  slug: 'lithium-ion',
+  description: '*depending on use conditions. Charge cycles: ~1000 to 3000 full charge-discharge cycles.',
+  advantages: [ /* ... */ ],
+  considerations: [ /* ... */ ],
+  applications: [ /* ... */ ],
+  lifespan: '',
+  icon: Lightbulb,
+  color: 'bg-blue-50 border-blue-200'
+}
+    // {
+    //   type: 'Lithium-Ion',
+    //   description: 'Advanced battery technology offering longer lifespan, smaller footprint, and superior performance.',
+    //   advantages: [
+    //     'Significantly longer service life (8-10 years)',
+    //     'Smaller footprint and lighter weight',
+    //     'Better performance in high-temperature environments',
+    //     'Enhanced monitoring and management capabilities'
+    //   ],
+    //   considerations: [
+    //     'Higher initial investment',
+    //     'Specialized installation and handling',
+    //     'Requires advanced management systems',
+    //     'Temperature monitoring important'
+    //   ],
+    //   applications: [
+    //     'Data centers and critical facilities',
+    //     'Space-constrained installations',
+    //     'Long-term cost optimization focus',
+    //     'Environments with higher ambient temperatures'
+    //   ],
+    //   lifespan: '8-10 years',
+    //   icon: Lightbulb,
+    //   color: 'bg-amber-50 border-amber-200'
+    // },
+//     {
+//   type: 'lithium',
+//   description: 'Compact, high-performance batteries ideal for modern energy needs with superior charge retention and minimal maintenance.',
+//   advantages: [
+//     'High energy density – more power in a compact size.',
+//     'Lightweight compared to lead-acid or NiMH batteries.',
+//     'Low self-discharge rate, retaining charge longer when idle.',
+//     'Low maintenance – no need for regular water topping like lead-acid.'
+//   ],
+//   considerations: [
+//     'Higher upfront cost compared to other chemistries.',
+//     'Requires Battery Management System (BMS) for safety and longevity.',
+//     'Thermal runaway risk if overcharged or physically damaged.',
+//     'Performance can degrade under high temperatures or overuse.'
+//   ],
+//   applications: [
+//     'Renewable energy storage – solar inverters, home backup systems.',
+//     'Industrial UPS systems and data center backup.',
+//     'Medical devices, drones, and robotics.',
+//     'Telecom tower backup systems.'
+//   ],
+//   lifespan: '5–10 years',
+//   icon: Lightbulb,
+//   color: 'bg-amber-50 border-amber-200'
+// }
+// ,
+//     {
+//       type: 'Nickel-Cadmium',
+//       description: 'Robust industrial battery solution for extreme operating conditions and specialized applications.',
+//       advantages: [
+//         'Extremely long service life (15-20 years)',
+//         'Excellent performance in extreme temperatures',
+//         'Highly abuse-resistant',
+//         'Very stable performance over lifetime'
+//       ],
+//       considerations: [
+//         'Highest initial cost',
+//         'Environmental considerations for disposal',
+//         'Requires maintenance in some configurations',
+//         'Larger space requirements'
+//       ],
+//       applications: [
+//         'Industrial applications',
+//         'Extreme environmental conditions',
+//         'Oil & gas facilities',
+//         'Transportation and infrastructure'
+//       ],
+//       lifespan: '15-20 years',
+//       icon: Building2,
+//       color: 'bg-green-50 border-green-200'
+//     }
   ];
 
   // Common application scenarios
@@ -341,6 +381,45 @@ const UPSBatteryPage: React.FC = () => {
                         className="mt-1 text-primary"
                       />
                     </div>
+                    <div>
+  <Label className="text-gray-700 mb-2 block">Battery Voltage</Label>
+  <div className="flex items-center space-x-6">
+    <label className="flex items-center space-x-2">
+      <input
+        type="radio"
+        name="batteryVoltage"
+        value="12"
+        checked={batteryVoltage === "12"}
+        onChange={(e) => setBatteryVoltage(e.target.value)}
+        className="text-primary focus:ring-primary"
+      />
+      <span className="text-gray-700">12V</span>
+    </label>
+    <label className="flex items-center space-x-2">
+      <input
+        type="radio"
+        name="batteryVoltage"
+        value="24"
+        checked={batteryVoltage === "24"}
+        onChange={(e) => setBatteryVoltage(e.target.value)}
+        className="text-primary focus:ring-primary"
+      />
+      <span className="text-gray-700">24V</span>
+    </label>
+    <label className="flex items-center space-x-2">
+      <input
+        type="radio"
+        name="batteryVoltage"
+        value="48"
+        checked={batteryVoltage === "48"}
+        onChange={(e) => setBatteryVoltage(e.target.value)}
+        className="text-primary focus:ring-primary"
+      />
+      <span className="text-gray-700">48V</span>
+    </label>
+  </div>
+</div>
+
                     
                     <div>
                       <Label htmlFor="runtime" className="text-gray-700">Desired Runtime (minutes)</Label>
@@ -432,7 +511,6 @@ const UPSBatteryPage: React.FC = () => {
           </div>
         </div>
       </section>
-
       {/* Battery Technology Comparison */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -445,10 +523,12 @@ const UPSBatteryPage: React.FC = () => {
 
           <div className="max-w-6xl mx-auto">
             <Tabs defaultValue="vrla" className="w-full">
-              <TabsList className="grid grid-cols-3 w-full mb-8">
+              <TabsList className="grid grid-cols-2 w-full mb-8">
                 <TabsTrigger value="vrla">VRLA</TabsTrigger>
-                <TabsTrigger value="lithium">Lithium-Ion</TabsTrigger>
-                <TabsTrigger value="nicad">Nickel-Cadmium</TabsTrigger>
+                {/* <TabsTrigger value="lithium">Lithium-Ion</TabsTrigger> */}
+                <TabsTrigger value="lithium-ion">Lithium-Ion</TabsTrigger>
+
+                {/* <TabsTrigger value="nicad">Nickel-Cadmium</TabsTrigger> */}
               </TabsList>
               
               {batteryOptions.map((option, index) => (
@@ -465,7 +545,7 @@ const UPSBatteryPage: React.FC = () => {
                     </CardHeader>
                     <CardContent>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
-                        <div>
+                       {option.advantages?.length>0&& <div>
                           <h3 className="text-lg font-semibold flex items-center mb-3 text-green-600">
                             <CheckCircle className="h-5 w-5 mr-2" />
                             Advantages
@@ -478,9 +558,9 @@ const UPSBatteryPage: React.FC = () => {
                               </li>
                             ))}
                           </ul>
-                        </div>
+                        </div>}
                         
-                        <div>
+                      {option.considerations.length>0&&  <div>
                           <h3 className="text-lg font-semibold flex items-center mb-3 text-amber-600">
                             <AlertCircle className="h-5 w-5 mr-2" />
                             Considerations
@@ -493,11 +573,11 @@ const UPSBatteryPage: React.FC = () => {
                               </li>
                             ))}
                           </ul>
-                        </div>
+                        </div>}
                       </div>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-                        <div>
+                        {option.applications?.length>0&&<div>
                           <h3 className="text-lg font-semibold mb-3 text-blue-600 flex items-center">
                             <Building2 className="h-5 w-5 mr-2" />
                             Ideal Applications
@@ -510,11 +590,21 @@ const UPSBatteryPage: React.FC = () => {
                               </li>
                             ))}
                           </ul>
-                        </div>
+                        </div>}
                         
                         <div className="bg-gray-50 p-4 rounded-lg flex flex-col items-center justify-center">
                           <h3 className="text-lg font-semibold mb-2 text-gray-800">Typical Lifespan</h3>
                           <div className="text-3xl font-bold text-primary">{option.lifespan}</div>
+                      {option.slug === 'lithium-ion' && (
+    <p className="text-sm text-gray-500 mt-4 text-center">
+      {/* *Depending on use conditions. Charge cycles: ~1000 to 3000 full charge-discharge cycles. <br /> */}
+      <span className="block mt-2 font-medium text-gray-700">Lifespan affected by:</span>
+      <span className="block">1. Depth of discharge (DoD)</span>
+      <span className="block">2. Charge/discharge rate</span>
+      <span className="block">3. Operating temperature</span>
+    </p>
+  )}
+
                         </div>
                       </div>
                     </CardContent>

@@ -95,7 +95,7 @@ export default function AboutPage() {
                 </div>
                 <div className="bg-gray-50 rounded-lg p-6 shadow-sm flex flex-col items-center md:w-36">
                   <span className="text-primary text-3xl font-bold mb-2">
-                    50+
+                    150+
                   </span>
                   <span className="text-gray-600 text-center">
                     Clients Served
@@ -119,13 +119,21 @@ export default function AboutPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="rounded-xl overflow-hidden shadow-xl">
+              {/* <div className="rounded-xl overflow-hidden shadow-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                  src="http://13.232.18.39/assets/img/team/team-photo.jpg"
                   alt="EAMOT Team"
                   className="w-full h-auto"
                 />
+              </div> */}
+              <div className="rounded-xl overflow-hidden shadow-xl w-full aspect-[16/9]">
+                <img
+                  src="http://13.232.18.39/assets/img/team/team-photo.jpg"
+                  alt="EAMOT Team"
+                  className="w-full h-full object-cover"
+                />
               </div>
+
               <div className="absolute -bottom-6 -right-6 bg-accent p-8 rounded-lg shadow-lg">
                 <p className="text-white font-bold text-xl">
                   Backed by Experience,

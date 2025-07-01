@@ -6,7 +6,7 @@ import { Link } from "wouter";
 const services = [
   {
     id: 1,
-    image: "https://www.eamot.com/assets/img/services/1.jpg",
+    image: "assets/img/services/1.jpg",
     title: "Diesel Generator",
     description: "Routine inspection, oil change, filter replacement, performance test for reliability.",
     link: "/services/diesel-generator",
@@ -16,7 +16,7 @@ const services = [
   },
   {
     id: 2,
-    image: "https://www.eamot.com/assets/img/services/2.jpg",
+    image: "assets/img/services/2.jpg",
     title: "Stabilizer",
     description: "Testing, calibrating, and maintaining stabilizer components for reliable voltage regulation.",
     link: "/services/stabilizer",
@@ -26,7 +26,7 @@ const services = [
   },
   {
     id: 3,
-    image: "https://www.eamot.com/assets/img/services/3.jpg",
+    image: "assets/img/services/3.jpg",
     title: "UPS",
     description: "Inspecting, testing, and replacing batteries, ensuring efficiency and reliability.",
     link: "/services/ups",
@@ -36,7 +36,7 @@ const services = [
   },
   {
     id: 4,
-    image: "https://www.eamot.com/assets/img/services/4.jpg",
+    image: "assets/img/services/4.jpg",
     title: "Lithium ION Inverter",
     description: "Monitoring health, ensuring proper charging, and replacing when necessary.",
     link: "/services/lithium-ion-inverter",
@@ -46,7 +46,7 @@ const services = [
   },
   {
     id: 5,
-    image: "https://www.eamot.com/assets/img/services/5.jpg",
+    image: "assets/img/services/5.jpg",
     title: "Retro Fit Diesel Generator",
     description: "Inspecting, cleaning, and recalibrating for optimal emission reduction performance.",
     link: "#",
@@ -56,7 +56,7 @@ const services = [
   },
   {
     id: 6,
-    image: "https://www.eamot.com/assets/img/services/solutions.jpg",
+    image: "assets/img/services/solutions.jpg",
     title: "Duel Fuel Kit",
     description: "Enabling diesel generators to efficiently operate on dual fuel sources.",
     link: "/services/dual-fuel-kit",

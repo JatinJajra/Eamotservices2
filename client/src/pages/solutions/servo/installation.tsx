@@ -308,90 +308,46 @@ const ServoInstallationPage: React.FC = () => {
             </p>
           </div>
           
-          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Peak Performance",
-                description: "98% efficiency with precision installation ensuring optimal voltage regulation under all conditions",
-                icon: <BarChart className="h-8 w-8 text-primary" />,
-                image: "/images/servo-peak-performance.jpg",
-                metric: "98%",
-                metricLabel: "EFFICIENCY"
-              },
-              {
-                title: "Extended Lifespan",
-                description: "Proper installation extends your stabilizer lifespan while maintaining full warranty protection",
-                icon: <Clock className="h-8 w-8 text-primary" />,
-                image: "/images/servo-extended-life.jpg",
-                metric: "+40%",
-                metricLabel: "LONGER LIFE"
-              },
-              {
-                title: "Minimum Disruption",
-                description: "Our streamlined process completes faster than industry averages with after-hours options",
-                icon: <CheckCircle className="h-8 w-8 text-primary" />,
-                image: "/images/servo-disruption.jpg",
-                metric: "-60%",
-                metricLabel: "DOWNTIME"
-              }
-            ].map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                animate={benefitsInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
-                className="relative group rounded-xl overflow-hidden h-96"
-              >
-                <div className="absolute inset-0 z-0">
-                  <img 
-                    src={benefit.image} 
-                    alt={benefit.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30"></div>
-                </div>
-                
-                <div className="relative z-10 h-full flex flex-col p-6 justify-between">
-                  <div>
-                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
-                      {benefit.icon}
-                    </div>
-                    <h3 className="text-2xl font-bold mb-3">{benefit.title}</h3>
-                    <p className="text-gray-300">{benefit.description}</p>
-                  </div>
-                  
-                  <div className="mt-6">
-                    <div className="flex items-end">
-                      <span className="text-4xl font-bold text-primary">{benefit.metric}</span>
-                      <span className="text-sm ml-2 mb-1 text-primary/80">{benefit.metricLabel}</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div> */}
+      
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
   {[
     {
-      title: "Peak Performance",
-      description: "98% efficiency with precision installation ensuring optimal voltage regulation under all conditions",
-      icon: <BarChart className="h-8 w-8 text-primary" />,
+      title: "Why Professional Commissioning Matters",
+ description: (
+    <ul className="list-disc list-inside text-gray-700 space-y-1">
+      <li>Optimized stabilizer efficiency</li>
+      <li>Maximum equipment protection</li>
+      <li>Compliance with warranty and safety standards</li>
+      <li>Reduction in service interruptions and repairs</li>
+    </ul>
+  ),      icon: <BarChart className="h-8 w-8 text-primary" />,
       image: "/images/servo-peak-performance.jpg",
       metric: "98%",
       metricLabel: "EFFICIENCY"
     },
     {
-      title: "Extended Lifespan",
-      description: "Proper installation extends your stabilizer lifespan while maintaining full warranty protection",
-      icon: <Clock className="h-8 w-8 text-primary" />,
+      title: "What You Need to Provide",
+ description: (
+    <ul className="list-disc list-inside text-gray-700 space-y-1">
+      <li>Ensure availability of stabilized input power</li>
+      <li>Keep the installation area accessible and ready</li>
+      <li>Provide access to the LT panel or main connection point</li>
+      <li>Ensure load availability for commissioning tests</li>
+    </ul>
+  ),        icon: <Clock className="h-8 w-8 text-primary" />,
       image: "/images/servo-extended-life.jpg",
       metric: "+40%",
       metricLabel: "LONGER LIFE"
     },
     {
-      title: "Minimum Disruption",
-      description: "Our streamlined process completes faster than industry averages with after-hours options",
-      icon: <CheckCircle className="h-8 w-8 text-primary" />,
+      title: "Post-Installation Support",
+description: (
+    <ul className="list-disc list-inside text-gray-700 space-y-1">
+      <li>Operator training and handholding</li>
+      <li>Preventive maintenance recommendations</li>
+      <li>Fast support for any post-installation performance concerns</li>
+    </ul>
+  ),        icon: <CheckCircle className="h-8 w-8 text-primary" />,
       image: "/images/servo-disruption.jpg",
       metric: "-60%",
       metricLabel: "DOWNTIME"
@@ -410,7 +366,7 @@ const ServoInstallationPage: React.FC = () => {
           alt={benefit.title} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-110"
         /> */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/50 to-white/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/50 to-white/100"></div>
       </div>
       
       <div className="relative z-10 h-full flex flex-col p-6 justify-between">
@@ -435,6 +391,7 @@ const ServoInstallationPage: React.FC = () => {
 
         </div>
       </motion.section>
+      
 
       {/* Performance Metrics */}
       <motion.section

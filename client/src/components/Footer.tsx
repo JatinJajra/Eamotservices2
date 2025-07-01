@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <Link href="/">
-              <img src="https://www.eamot.com/assets/img/logo/logo-eamot.png" alt="EAMOT Logo" className="h-12 mb-6 cursor-pointer" />
+              <img src="assets/img/logo/logo-eamot.png" alt="EAMOT Logo" className="h-12 mb-6 cursor-pointer" />
             </Link>
             
             <p className="text-white mb-6">

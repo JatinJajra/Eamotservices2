@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   ClipboardCheck, 
@@ -24,8 +24,12 @@ import {
   TabsList, 
   TabsTrigger 
 } from "@/components/ui/tabs";
+import ContactModal from '@/components/Popup/ContectModal';
 
 const InstallationAssessmentPage: React.FC = () => {
+      const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   // Service features
   const installationFeatures = [
     {
@@ -88,9 +92,11 @@ const InstallationAssessmentPage: React.FC = () => {
           name: 'Diesel Generators',
           features: [
             'Site foundation & civil work assessment',
-            'Acoustic requirements evaluation',
+            // 'Acoustic requirements evaluation',
+            "Ventilation for fresh air inlet & hot air outlet",
             'Exhaust system planning',
-            'Fuel system integration',
+            // 'Fuel system integration',
+            "Earthing Location",
             'Electrical synchronization planning'
           ]
         },
@@ -163,6 +169,8 @@ const InstallationAssessmentPage: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
+                            <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       <section className="relative bg-gradient-to-r from-black to-gray-900 text-white py-24">
         <div className="absolute inset-0 opacity-20">
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
@@ -202,11 +210,11 @@ const InstallationAssessmentPage: React.FC = () => {
                 className="flex flex-wrap gap-4"
               >
                 <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-                  <Link href="/contact">Request Assessment</Link>
+                  <Link href="#" onClick={openModal}>Request Assessment</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+                {/* <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
                   <Link href="/services/installation/process">View Installation Process</Link>
-                </Button>
+                </Button> */}
               </motion.div>
             </div>
             
@@ -513,7 +521,7 @@ const InstallationAssessmentPage: React.FC = () => {
                 </ul>
                 
                 <Button asChild className="mt-8">
-                  <Link href="/contact">Schedule Your Assessment</Link>
+                  <Link href="#" onClick={openModal}>Schedule Your Assessment</Link>
                 </Button>
               </div>
             </div>
@@ -536,7 +544,7 @@ const InstallationAssessmentPage: React.FC = () => {
               Contact our installation specialists to schedule your comprehensive pre-installation assessment. Our expert engineers will help ensure your equipment installation is planned for optimal performance and reliability.
             </p>
             <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-              <Link href="/contact">Request Assessment Service</Link>
+              <Link href="#" onClick={openModal}>Request Assessment Service</Link>
             </Button>
           </motion.div>
         </div>

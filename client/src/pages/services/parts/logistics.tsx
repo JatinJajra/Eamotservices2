@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,8 +9,12 @@ import {
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import ContactModal from "@/components/Popup/ContectModal";
 
 export default function LogisticsPage() {
+      const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: servicesRef, inView: servicesInView } = useIntersectionObserver({ threshold: 0.1 });
@@ -24,12 +28,14 @@ export default function LogisticsPage() {
       transition={{ duration: 0.5 }}
     >
       {/* Hero Section */}
-      <section 
+                                   <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
+      {/* <section 
         ref={heroRef}
         className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 md:py-28 relative overflow-hidden"
       >
         <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
         <motion.div 
@@ -65,9 +71,77 @@ export default function LogisticsPage() {
         </motion.div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
         </div>
-      </section>
+      </section> */}
+
+      <section 
+  ref={heroRef}
+  className="py-20 md:py-28 relative overflow-hidden"
+  style={{
+    background: "linear-gradient(135deg, #154679 0%, #1e3a8a 100%)"
+  }}
+>
+  {/* Optional animated/frosted geometric patterns */}
+  <div className="absolute inset-0 opacity-10 pointer-events-none">
+    {Array.from({ length: 10 }).map((_, i) => (
+      <div 
+        key={i}
+        className="absolute rounded-full" 
+        style={{
+          width: `${Math.random() * 300 + 50}px`,
+          height: `${Math.random() * 300 + 50}px`,
+          backgroundColor: `rgba(255, 255, 255, 0.08)`,
+          top: `${Math.random() * 100}%`,
+          left: `${Math.random() * 100}%`,
+          transform: `rotate(${Math.random() * 360}deg)`,
+          backdropFilter: 'blur(10px)'
+        }}
+      />
+    ))}
+  </div>
+
+  <div className="absolute top-0 left-0 w-full overflow-hidden">
+    <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full opacity-20" />
+  </div>
+
+  <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: heroInView ? 1 : 0, y: heroInView ? 0 : 20 }}
+    transition={{ duration: 0.7, delay: 0.2 }}
+    className="container mx-auto px-4 relative z-10"
+  >
+    <div className="max-w-4xl mx-auto text-center">
+      <div className="mb-6 inline-flex items-center justify-center">
+        <span className="bg-white/20 p-3 rounded-lg mr-4">
+          <Truck className="h-8 w-8 text-white" />
+        </span>
+        <h1 className="text-3xl md:text-5xl font-bold font-montserrat text-white">
+          Logistics & <span className="text-accent">Delivery Support</span>
+        </h1>
+      </div>
+
+      <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+        End-to-end logistics and delivery solutions for energy equipment parts and components,
+        with priority handling, customs assistance, and reliable tracking.
+      </p>
+
+      <div className="flex flex-wrap gap-4 justify-center">
+        <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white">
+          <a href="#" onClick={openModal}>Request Logistics Support</a>
+        </Button>
+        <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary">
+          <a href="#services">Explore Services</a>
+        </Button>
+      </div>
+    </div>
+  </motion.div>
+
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+    <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full opacity-20" />
+  </div>
+</section>
+
       
       {/* Service Features */}
       <section 
@@ -140,7 +214,7 @@ export default function LogisticsPage() {
       </section>
       
       {/* Services Categories */}
-      <section 
+      {/* <section 
         id="services"
         ref={servicesRef}
         className="py-16 md:py-24 bg-gray-50"
@@ -671,7 +745,7 @@ export default function LogisticsPage() {
             </TabsContent>
           </Tabs>
         </div>
-      </section>
+      </section> */}
       
       {/* Service Process */}
       <section 

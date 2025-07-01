@@ -99,7 +99,7 @@ export default function ClientPortalLogin() {
         <div className="w-full lg:w-1/2 bg-white p-6 md:p-12">
           <div className="mx-auto w-full max-w-sm">
             <div className="mb-10 text-center">
-              <img src="https://www.eamot.com/assets/img/logo/logo-eamot.png" alt="EAMOT Logo" className="h-12 mx-auto mb-4" />
+              <img src="assets/img/logo/logo-eamot.png" alt="EAMOT Logo" className="h-12 mx-auto mb-4" />
               <h2 className="text-2xl font-bold text-gray-900">EAMOT Energy Portal</h2>
               <p className="mt-2 text-gray-600">Access your energy management dashboard</p>
             </div>

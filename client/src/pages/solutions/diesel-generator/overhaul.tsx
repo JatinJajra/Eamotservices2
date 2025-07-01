@@ -108,11 +108,11 @@ const DGOverhaulPage: React.FC = () => {
       title: "Inspection & Diagnostics",
       description: "Comprehensive multi-point inspection to identify all issues affecting generator performance and reliability.",
       tasks: [
-        "Load bank testing to verify real output capacity",
-        "Compression and leakage testing on all cylinders",
-        "Electrical system diagnostics with advanced equipment",
-        "Oil sample analysis for contamination detection",
-        "Exhaust emission testing and measurement"
+        "Generator operation assessment for output, noise, vibration, fuel consumption, and irregularities",
+        "Generator operation assessment for output, noise, vibration, fuel consumption, and irregularities",
+        "Compression testing to evaluate cylinder performance and diagnose piston ring or valve issues",
+        "Detailed examination of injectors, turbochargers, bearings, liners, and valves for wear, tolerances, and serviceability",
+        "Controller and electrical system diagnostics using advanced tools"
       ],
       image: "https://images.unsplash.com/photo-1580901368919-7738efb0f87e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
       color: "from-blue-50 to-blue-100"
@@ -189,10 +189,9 @@ const DGOverhaulPage: React.FC = () => {
       icon: <Settings className="h-5 w-5 text-purple-500" />
     }
   ];
-
   // ROI calculation data  
   const roiStats = [
-    { label: 'Average Overhaul Cost', value: '₹3-5 Lakh', icon: <BarChart3 className="h-5 w-5 text-primary" /> },
+    { label: 'Average Overhaul Cost', value: '₹1-2 Lakh', icon: <BarChart3 className="h-5 w-5 text-primary" /> },
     { label: 'Extended Lifespan', value: '5-7 Years', icon: <Timer className="h-5 w-5 text-primary" /> },
     { label: 'Efficiency Improvement', value: '15-25%', icon: <BarChart4 className="h-5 w-5 text-primary" /> },
     { label: 'Downtime Reduction', value: '70-85%', icon: <PieChart className="h-5 w-5 text-primary" /> }

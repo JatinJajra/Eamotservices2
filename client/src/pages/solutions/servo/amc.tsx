@@ -212,9 +212,9 @@ const ServoAMCPage: React.FC = () => {
                   <h3 className="text-2xl font-bold mb-6 text-gray-900">Comprehensive Preventive Maintenance</h3>
                   <ul className="space-y-4">
                     {[
-                      "Factory-certified 42-point inspection procedure",
+                      "PM Visits shall be done as per manufacturer guidelines / SOP",
                       "Customized maintenance schedule based on your specific model",
-                      "Detailed environmental analysis to optimize performance",
+                      "Detailed analysis to optimize performance",
                       "Early identification of potential failure points",
                       "Complete system cleaning and precision calibration"
                     ].map((item, i) => (
@@ -535,10 +535,10 @@ const ServoAMCPage: React.FC = () => {
               {
                 name: "Standard",
                 description: "Essential protection for non-critical applications",
-                price: "Starting at ₹25,000/year",
+                price: "Starting at ₹/year",
                 features: [
                   "Bi-annual preventive maintenance",
-                  "8-hour emergency response",
+                  // "8-hour emergency response",
                   "Basic phone support (business hours)",
                   "Parts at preferential pricing",
                   "Annual performance report"
@@ -549,10 +549,10 @@ const ServoAMCPage: React.FC = () => {
               {
                 name: "Premium",
                 description: "Comprehensive coverage for mission-critical systems",
-                price: "Starting at ₹45,000/year",
+                price: "Starting at ₹/year",
                 features: [
                   "Quarterly preventive maintenance",
-                  "4-hour emergency response",
+                  // "4-hour emergency response",
                   "24/7 phone support with priority queue",
                   "Parts & labor included",
                   "Quarterly performance optimization",
@@ -564,10 +564,10 @@ const ServoAMCPage: React.FC = () => {
               {
                 name: "Enterprise",
                 description: "Maximum protection for high-performance environments",
-                price: "Starting at ₹75,000/year",
+                price: "Starting at ₹/year",
                 features: [
                   "Monthly preventive maintenance",
-                  "2-hour emergency response guarantee",
+                  // "2-hour emergency response guarantee",
                   "24/7 VIP technical support",
                   "All parts & labor included",
                   "Remote monitoring system included",
@@ -626,7 +626,7 @@ const ServoAMCPage: React.FC = () => {
               { value: "99.9%", label: "Uptime Guarantee" },
               { value: "100%", label: "Extended Equipment Life" },
               { value: "40%", label: "Reduced Ownership Costs" },
-              { value: "4hrs", label: "Emergency Response Time" }
+              { value: "4-6hrs", label: "Emergency Response Time" }
             ].map((stat, index) => (
               <motion.div
                 key={index}

@@ -8,6 +8,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import ContactModal from "@/components/Popup/ContectModal";
+import { useInView } from "react-intersection-observer"; // make sure this is imported
+
 
 // Custom component for animated percentage counter
 const PercentageCounter = ({ value, label, color, delay, inView }: { 
@@ -333,7 +335,7 @@ const DFKInstallationPage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={processInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-xl text-gray-300 max-w-3xl mx-auto"
+              className="text-xl text-gray-300 max-w-3xl mx-auto "
             >
               Our comprehensive approach ensures the highest performance and reliability
             </motion.p>
@@ -345,41 +347,54 @@ const DFKInstallationPage: React.FC = () => {
             
             {[
               {
-                title: "Site Assessment & Planning",
-                description: "Our engineers conduct a detailed analysis of your generator infrastructure, operational patterns, and specific requirements to create a tailored conversion plan.",
+                title: "Feasibility Study & Engine Assessment",
+                description: "Detailed evaluation of DG make, model, and operating conditions to ensure compatibility.",
                 image: "/images/dfk-assessment.jpg",
                 icon: <ClipboardCheck className="h-6 w-6 text-primary" />
               },
               {
-                title: "Master Technician Installation",
-                description: "Our Elite DFK Installation Team, averaging 8+ years of specialized experience, performs the physical conversion with a perfect safety record across all generator brands.",
+                title: "Custom Kit Design & Selection",
+                description: "Tailored dual-fuel kit (DFK) configured for optimal PNG + Diesel blending ratio. ",
                 image: "/images/dfk-installation-process.jpg",
                 icon: <Wrench className="h-6 w-6 text-primary" />
               },
               {
-                title: "Dynamic Load Optimization",
-                description: "Our proprietary 18-point calibration protocol precisely tunes the system across 12 different load profiles, achieving 30% higher substitution rates than standard installations.",
+                title: "High-Precision Gas Train Installation",
+                description: "Includes pressure regulators, flame arrestors, solenoid valves, and safety sensors.",
                 image: "/images/dfk-optimization.jpg",
                 icon: <Settings className="h-6 w-6 text-primary" />
               },
               {
-                title: "Performance Certification",
-                description: "Our rigorous 72-hour testing regimen subjects your system to 14 distinct operational scenarios including extreme load variations, guaranteeing flawless performance.",
+                title: "Seamless Integration with DG Controls",
+                description: "Non-invasive setup without altering engine internals or primary diesel system. ",
                 image: "/images/dfk-testing.jpg",
                 icon: <Gauge className="h-6 w-6 text-primary" />
               },
               {
-                title: "Control System Integration",
-                description: "Our advanced integration service connects your dual fuel system to existing BMS/SCADA systems, providing unified monitoring and remote management capabilities.",
+                title: "Load-Based Calibration",
+                description: "Fine-tuning gas-diesel ratio based on actual load patterns for best performance and fuel savings. ",
                 image: "/images/dfk-integration.jpg",
                 icon: <Cpu className="h-6 w-6 text-primary" />
               },
               {
-                title: "Operator Training & Handover",
-                description: "Our intensive training transforms your staff into dual fuel specialists through hands-on scenarios and proprietary troubleshooting simulations with 24/7 support access.",
+                title: "Multi-Layer Safety System",
+                description: "Real-time gas leak detection, auto-cutoff, and emergency shutdown interlocks.",
                 image: "/images/dfk-training.jpg",
                 icon: <Users className="h-6 w-6 text-primary" />
-              }
+              },
+              //   {
+              //   title: "Compliance & Commissioning",
+              //   description: "Verified by qualified technicians with documentation support for statutory compliance.",
+              //   image: "/images/dfk-training.jpg",
+              //   icon: <Users className="h-6 w-6 text-primary" />
+              // }
+              // ,
+              //   {
+              //   title: "Performance Testing & Handover",
+              //   description: "Final emission and fuel efficiency tests conducted before system handover. ",
+              //   image: "/images/dfk-training.jpg",
+              //   icon: <Users className="h-6 w-6 text-primary" />
+              // }
             ].map((step, index) => (
               <motion.div
                 key={index}
@@ -564,38 +579,38 @@ const DFKInstallationPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
             {[
               {
-                title: "Industry-Leading Substitution Rates",
-                description: "Our proprietary calibration methodology consistently achieves 50-65% diesel substitution rates versus the industry average of 30-40%, delivering substantially higher cost savings.",
+                title: "Up to 60% Diesel Reduction",
+                description: "lowering operating costs significantly.",
                 icon: <BarChart className="h-8 w-8 text-primary" />,
                 color: "bg-blue-900/20 border-blue-600/30"
               },
               {
-                title: "Zero-Downtime Implementation",
-                description: "Our revolutionary phased installation approach ensures continuous power availability throughout the entire conversion process, eliminating revenue or productivity losses.",
+                title: "Cleaner Emissions",
+                description: "aligning with green building and sustainability goals.",
                 icon: <Clock className="h-8 w-8 text-primary" />,
                 color: "bg-green-900/20 border-green-600/30"
               },
               {
-                title: "Extended Generator Lifespan",
-                description: "Our precision implementation reduces engine wear by 18-25% through optimized combustion dynamics, lower operating temperatures, and reduced carbon deposits.",
+                title: "Faster ROI",
+                description: "typically within 12–18 months depending on usage.",
                 icon: <Gauge className="h-8 w-8 text-primary" />,
                 color: "bg-purple-900/20 border-purple-600/30"
               },
               {
-                title: "Guaranteed Cost Reduction",
-                description: "We provide the industry's only written guarantee of at least 34% fuel cost reduction within the first year of operation, backed by our performance bond and third-party verification.",
+                title: "No Engine Modification",
+                description: "retaining OEM warranty and serviceability.",
                 icon: <DollarSign className="h-8 w-8 text-primary" />,
                 color: "bg-amber-900/20 border-amber-600/30"
               },
               {
-                title: "Exceptional System Reliability",
-                description: "Our installations maintain 99.997% operational reliability - significantly exceeding the industry average - due to our proprietary safeguard protocols and component redundancies.",
+                title: "Zero Downtime for Residents",
+                description: "installation done with minimal disruption.",
                 icon: <ShieldCheck className="h-8 w-8 text-primary" />,
                 color: "bg-red-900/20 border-red-600/30"
               },
               {
-                title: "Immediate Operator Proficiency",
-                description: "Clients report 96% operator confidence scores following our training program, enabling your staff to maximize system benefits from the first day of independent operation.",
+                title: "Full Statutory Compliance",
+                description: "Clients report 96% operator confidence scores following our training program, enabling your staff to maximize system benefits from the first day of independent operation.with CPCB, PNGRB, and fire safety norms.",
                 icon: <BadgeCheck className="h-8 w-8 text-primary" />,
                 color: "bg-cyan-900/20 border-cyan-600/30"
               }
@@ -714,7 +729,7 @@ const DFKInstallationPage: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-3xl md:text-4xl font-bold mb-6 text-white"
             >
-              Cut Your Fuel Costs by 34% - Guaranteed
+              Cut Your Fuel Costs by 34% 
             </motion.h2>
             
             <motion.p

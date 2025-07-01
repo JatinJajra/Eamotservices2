@@ -13,7 +13,7 @@ export default function PredictiveMaintenancePage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -28,7 +28,7 @@ export default function PredictiveMaintenancePage() {
         </div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
         </div>
       </section>
       
@@ -94,7 +94,7 @@ export default function PredictiveMaintenancePage() {
             >
               <div className="rounded-xl overflow-hidden shadow-xl">
                 <img 
-                  src="https://www.eamot.com/assets/img/service/service-03.jpg" 
+                  src="assets/img/service/service-03.jpg" 
                   alt="Predictive Maintenance Dashboard" 
                   className="w-full h-auto rounded-xl"
                 />
@@ -242,7 +242,7 @@ export default function PredictiveMaintenancePage() {
               className="order-2 md:order-1"
             >
               <img 
-                src="https://www.eamot.com/assets/img/about/about-02.jpg" 
+                src="assets/img/about/about-02.jpg" 
                 alt="Maintenance team working with equipment" 
                 className="rounded-xl shadow-xl w-full h-auto"
               />

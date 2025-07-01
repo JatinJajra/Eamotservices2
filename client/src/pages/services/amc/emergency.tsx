@@ -8,8 +8,12 @@ import {
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import ContactModal from "@/components/Popup/ContectModal";
 
 export default function EmergencyBreakdownServicesPage() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: processRef, inView: processInView } = useIntersectionObserver({ threshold: 0.1 });
@@ -32,12 +36,14 @@ export default function EmergencyBreakdownServicesPage() {
       transition={{ duration: 0.5 }}
     >
       {/* Hero Section */}
-      <section 
+                                   <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
+      {/* <section 
         ref={heroRef}
         className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 md:py-28 relative overflow-hidden"
       >
         <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
         <motion.div 
@@ -76,9 +82,57 @@ export default function EmergencyBreakdownServicesPage() {
         </motion.div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
         </div>
-      </section>
+      </section> */}
+      <section 
+  ref={heroRef}
+  className="bg-[#154679] text-white py-20 md:py-28 relative overflow-hidden"
+>
+  <div className="absolute top-0 left-0 w-full overflow-hidden opacity-20 pointer-events-none">
+    <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+  </div>
+
+  <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: heroInView ? 1 : 0, y: heroInView ? 0 : 20 }}
+    transition={{ duration: 0.7, delay: 0.2 }}
+    className="container mx-auto px-4 relative z-10"
+  >
+    <div className="max-w-4xl mx-auto text-center">
+      <div className="mb-6 inline-flex items-center justify-center">
+        <span className="bg-white/20 p-3 rounded-lg mr-4">
+          <AlertTriangle className="h-8 w-8" />
+        </span>
+        <h1 className="text-3xl md:text-5xl font-bold font-montserrat">
+          Emergency <span className="text-accent">Breakdown Services</span>
+        </h1>
+      </div>
+
+      <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+        Rapid response technical support and emergency repair services for critical power equipment,
+        ensuring minimal downtime during unexpected failures.
+      </p>
+
+      <div className="flex flex-wrap gap-4 justify-center">
+        <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white">
+          <a href="tel:+918970001110" className="flex items-center">
+            <Phone className="mr-2 h-5 w-5" />
+            Emergency Hotline
+          </a>
+        </Button>
+        <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary">
+          <a href="#process">How It Works</a>
+        </Button>
+      </div>
+    </div>
+  </motion.div>
+
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden opacity-20 pointer-events-none">
+    <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+  </div>
+</section>
+
       
       {/* Service Features */}
       <section 
@@ -103,8 +157,8 @@ export default function EmergencyBreakdownServicesPage() {
             {[
               {
                 icon: <Clock className="h-12 w-12 text-primary" />,
-                title: "24/7 Rapid Response",
-                description: "Round-the-clock emergency support with guaranteed response times as fast as 2 hours for critical systems, available 365 days a year."
+                title: "4-6 hours response time.",
+                description: "Emergency Support with fast response time for critical systems, available 365 days a year."
               },
               {
                 icon: <Truck className="h-12 w-12 text-primary" />,
@@ -524,8 +578,8 @@ export default function EmergencyBreakdownServicesPage() {
                     Emergency Hotline: 897 000 111 0
                   </a>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
-                  <a href="#contact">Request AMC Quote</a>
+                <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary">
+                  <a href="#" onClick={openModal}>Request AMC Quote</a>
                 </Button>
               </div>
             </motion.div>

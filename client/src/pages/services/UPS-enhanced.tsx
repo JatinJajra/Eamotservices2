@@ -97,7 +97,7 @@ export default function UPSPage() {
         className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 relative overflow-hidden"
       >
         <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
         <motion.div 
@@ -135,7 +135,7 @@ export default function UPSPage() {
         </motion.div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
         </div>
       </section>
       
@@ -404,7 +404,7 @@ export default function UPSPage() {
                       </div>
                       <div className="relative">
                         <img 
-                          src="https://www.eamot.com/assets/img/service/service-01.jpg" 
+                          src="assets/img/service/service-01.jpg" 
                           alt="Battery Management" 
                           className="h-full w-full object-cover"
                         />
@@ -498,7 +498,7 @@ export default function UPSPage() {
                       </div>
                       <div className="relative">
                         <img 
-                          src="https://www.eamot.com/assets/img/services/3.jpg" 
+                          src="assets/img/services/3.jpg" 
                           alt="UPS Maintenance" 
                           className="h-full w-full object-cover"
                         />
@@ -597,7 +597,7 @@ export default function UPSPage() {
                       </div>
                       <div className="relative">
                         <img 
-                          src="https://www.eamot.com/assets/img/gallery/03.jpg" 
+                          src="assets/img/gallery/03.jpg" 
                           alt="Emergency Services" 
                           className="h-full w-full object-cover"
                         />

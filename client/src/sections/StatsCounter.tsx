@@ -5,8 +5,8 @@ import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 const stats = [
   { id: 1, value: 150, label: "Happy Clients", suffix: "+" },
   { id: 2, value: 200, label: "Projects Completed", suffix: "+" },
-  { id: 3, value: 15, label: "Years Experience", suffix: "+" },
-  { id: 4, value: 25, label: "Energy Savings", suffix: "%" }
+  { id: 3, value: 25, label: "Years Experience", suffix: "+" },
+  { id: 4, value: 1400, label: "AMC Clients Served", suffix: "+" }
 ];
 
 export default function StatsCounter() {

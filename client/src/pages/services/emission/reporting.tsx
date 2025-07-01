@@ -14,13 +14,24 @@ import {
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import ContactModal from "@/components/Popup/ContectModal";
 
 export default function ComplianceReportingPage() {
+     const [isModalOpen, setIsModalOpen] = useState(false);
+            const openModal = () => setIsModalOpen(true);
+      const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: servicesRef, inView: servicesInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: processRef, inView: processInView } = useIntersectionObserver({ threshold: 0.1 });
   
+  <style>
+{`
+  .custom-dark-bg {
+    background: linear-gradient(135deg, #050510 0%, #181642 100%) !important;
+  }
+`}
+</style>
   // Document showcase state
   const [activeDocument, setActiveDocument] = useState(0);
   
@@ -68,12 +79,18 @@ export default function ComplianceReportingPage() {
       transition={{ duration: 0.5 }}
     >
       {/* Hero Section with Document/Report Theme */}
+                                               <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       <section 
         ref={heroRef}
-        className="relative py-20 md:py-28 overflow-hidden text-white"
+  className="relative py-20 md:py-28 overflow-hidden text-gray-700 custom-dark-bg"
         style={{
           background: "linear-gradient(135deg, #312e81 0%, #4338ca 100%)"
         }}
+//     style={{
+//   background: "linear-gradient(135deg, #050510 0%, #181642 100%)"
+// }}
+
       >
         {/* Document-themed background elements */}
         <div className="absolute inset-0 z-0">
@@ -142,7 +159,7 @@ export default function ComplianceReportingPage() {
         </div>
         
         {/* Main content with document showcase */}
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 text-white">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left content */}
             <div className="lg:col-span-5">
@@ -151,20 +168,20 @@ export default function ComplianceReportingPage() {
                 animate={heroInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7 }}
               >
-                <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 mb-4">
+                <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 mb-4 ">
                   <div className="h-2 w-2 rounded-full bg-indigo-300 mr-2 animate-pulse"></div>
                   <span className="text-sm font-medium">Regulatory Excellence</span>
                 </div>
                 
                 <h1 className="text-3xl md:text-5xl font-bold mb-6">
-                  Compliance <span className="text-indigo-300">Reporting</span> Services
+                  Compliance <span className="text-indigo-300" style={{color:"#F98D14"}}>Reporting</span> Services
                 </h1>
                 
-                <p className="text-lg text-indigo-100 mb-8 max-w-lg">
+                <p className="text-lg text-indigo-900 mb-8 max-w-lg text-white">
                   Comprehensive documentation and reporting services to ensure your emission control systems meet all regulatory requirements with precision and clarity.
                 </p>
                 
-                <div className="flex flex-wrap gap-4">
+                {/* <div className="flex flex-wrap gap-4">
                   <Button 
                     className="bg-indigo-600 hover:bg-indigo-700 text-white"
                     size="lg"
@@ -178,21 +195,21 @@ export default function ComplianceReportingPage() {
                   >
                     View Sample Reports
                   </Button>
-                </div>
+                </div> */}
                 
                 {/* Report stats */}
                 <div className="grid grid-cols-3 gap-4 mt-10">
                   <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
                     <div className="text-3xl font-bold mb-1">100%</div>
-                    <div className="text-xs text-indigo-200">Compliance Rate</div>
+                    <div className="text-xs text-indigo-000">Compliance Rate</div>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
                     <div className="text-3xl font-bold mb-1">24h</div>
-                    <div className="text-xs text-indigo-200">Turnaround Time</div>
+                    <div className="text-xs text-indigo-900 text-white">Turnaround Time</div>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
                     <div className="text-3xl font-bold mb-1">50+</div>
-                    <div className="text-xs text-indigo-200">Report Types</div>
+                    <div className="text-xs text-indigo-900 text-white">Report Types</div>
                   </div>
                 </div>
               </motion.div>
@@ -207,15 +224,15 @@ export default function ComplianceReportingPage() {
                 transition={{ duration: 0.7, delay: 0.3 }}
               >
                 {/* Document selector */}
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-white/20 shadow-xl">
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-white/20 shadow-xl ">
                   {/* Document tabs */}
-                  <div className="grid grid-cols-4 border-b border-white/20">
+                  <div className="grid grid-cols-4 border-b border-white/20 ">
                     {reportDocuments.map((doc, index) => (
                       <button
                         key={index}
                         className={`py-3 px-2 text-xs md:text-sm text-center transition-colors ${
                           activeDocument === index
-                            ? 'bg-indigo-700/50 border-b-2 border-indigo-400'
+                            ? 'bg-indigo-700/50 border-b-2 border-indigo-500 '
                             : 'hover:bg-white/5'
                         }`}
                         onClick={() => setActiveDocument(index)}
@@ -231,7 +248,7 @@ export default function ComplianceReportingPage() {
                   </div>
                   
                   {/* Document viewer */}
-                  <div className="p-6">
+                  <div className="p-6 ">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={activeDocument}
@@ -248,12 +265,12 @@ export default function ComplianceReportingPage() {
                           <div className="flex-grow">
                             <div className="flex justify-between items-start">
                               <h3 className="text-xl font-bold mb-2">{reportDocuments[activeDocument].title}</h3>
-                              <div className="text-sm text-indigo-200">{reportDocuments[activeDocument].date}</div>
+                              <div className="text-sm text-indigo-900 text-white">{reportDocuments[activeDocument].date}</div>
                             </div>
                             
-                            <p className="text-indigo-100 mb-4">{reportDocuments[activeDocument].description}</p>
+                            <p className="text-indigo-900 mb-4 text-white">{reportDocuments[activeDocument].description}</p>
                             
-                            <div className="flex flex-wrap gap-2 mb-6">
+                            <div className="flex flex-wrap gap-2 mb-6 text-white">
                               {reportDocuments[activeDocument].badges.map((badge, i) => (
                                 <span key={i} className="px-2 py-1 text-xs rounded-full bg-indigo-700/50 border border-indigo-500/50">
                                   {badge}
@@ -265,7 +282,7 @@ export default function ComplianceReportingPage() {
                             <div className="border border-white/20 rounded-lg p-4 bg-white/5 mb-4">
                               <div className="flex justify-between items-center mb-3">
                                 <div className="text-sm font-semibold">Document Preview</div>
-                                <div className="text-xs text-indigo-200">EAMOT-{2025}-{activeDocument + 1000}</div>
+                                <div className="text-xs text-indigo-900 text-white">EAMOT-{2025}-{activeDocument + 1000}</div>
                               </div>
                               
                               {/* Document content preview with dummy lines */}
@@ -277,11 +294,11 @@ export default function ComplianceReportingPage() {
                             </div>
                             
                             <div className="flex gap-3">
-                              <Button variant="outline" size="sm" className="border-indigo-400/50 text-indigo-200">
+                              <Button variant="outline" size="sm" className="border-indigo-400/50 text-indigo-900">
                                 <Download className="w-4 h-4 mr-2" />
                                 Download
                               </Button>
-                              <Button variant="outline" size="sm" className="border-indigo-400/50 text-indigo-200">
+                              <Button variant="outline" size="sm" className="border-indigo-400/50 text-indigo-900">
                                 <Share2 className="w-4 h-4 mr-2" />
                                 Share
                               </Button>
@@ -350,7 +367,7 @@ export default function ComplianceReportingPage() {
           }
         `}} />
         <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
         <motion.div 
@@ -359,26 +376,26 @@ export default function ComplianceReportingPage() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="container mx-auto px-4 relative z-10"
         >
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center mt-5 pt-5">
             <div className="mb-6 inline-flex items-center justify-center">
               <span className="bg-white/20 p-3 rounded-lg mr-4">
                 <FileText className="h-8 w-8" />
               </span>
-              <h1 className="text-3xl md:text-5xl font-bold font-montserrat">
+              <h1 className="text-3xl md:text-5xl font-bold font-montserrat text-white">
                 Compliance <span className="text-accent">Reporting</span>
               </h1>
             </div>
             
-            <p className="text-lg md:text-xl opacity-90 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl opacity-90 mb-8 max-w-3xl mx-auto text-white">
               Comprehensive emission compliance reporting services ensuring accurate documentation,
               timely submissions, and full adherence to regulatory requirements.
             </p>
             
             <div className="flex flex-wrap gap-4 justify-center">
               <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white">
-                <a href="#contact">Request Reporting Services</a>
+                <a href="#" onClick={openModal}>Request Reporting Services</a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
+              <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary">
                 <a href="#services">Explore Reporting Options</a>
               </Button>
             </div>
@@ -386,7 +403,7 @@ export default function ComplianceReportingPage() {
         </motion.div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
         </div>
       </section>
       
@@ -409,8 +426,8 @@ export default function ComplianceReportingPage() {
             <path d="M0,80 L100,30" fill="none" stroke="#4f46e5" strokeWidth="0.5" strokeDasharray="6,3" />
           </svg>
         </div>
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+        <div className="container mx-auto px-4 ">
+          <div className="text-center mb-16 ">
             <span className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4 font-medium">
               Comprehensive Reporting Solutions
             </span>

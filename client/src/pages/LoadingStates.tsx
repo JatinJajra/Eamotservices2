@@ -32,7 +32,7 @@ export default function LoadingStatesPage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -47,7 +47,7 @@ export default function LoadingStatesPage() {
         </div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
         </div>
       </section>
       

@@ -15,7 +15,6 @@ export default function AboutSection() {
       }
     }
   };
-
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -167,7 +166,7 @@ export default function AboutSection() {
                   className="relative z-20"
                 >
                   <img 
-                    src="https://www.eamot.com/assets/img/home/2.jpg" 
+                    src="assets/img/home/2.jpg" 
                     alt="EAMOT Team" 
                     className="w-full rounded-lg transform transition-transform duration-500 group-hover:scale-105" 
                   />

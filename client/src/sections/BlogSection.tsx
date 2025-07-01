@@ -5,7 +5,7 @@ import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 const blogPosts = [
   {
     id: 1,
-    image: "https://www.eamot.com/assets/img/services/1.jpg",
+    image: "assets/img/services/1.jpg",
     date: { day: "17", month: "June" },
     category: "Diesel Generator",
     author: "Admin",
@@ -14,7 +14,7 @@ const blogPosts = [
   },
   {
     id: 2,
-    image: "https://www.eamot.com/assets/img/services/4.jpg",
+    image: "assets/img/services/4.jpg",
     date: { day: "19", month: "July" },
     category: "Sustainable",
     author: "Admin",
@@ -23,7 +23,7 @@ const blogPosts = [
   },
   {
     id: 3,
-    image: "https://www.eamot.com/assets/img/services/5.jpg",
+    image: "assets/img/services/5.jpg",
     date: { day: "23", month: "July" },
     category: "RECD",
     author: "Admin",

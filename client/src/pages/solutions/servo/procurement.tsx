@@ -468,7 +468,7 @@ const ServoProcurementPage: React.FC = () => {
               
               <div className="bg-gray-800 p-6 rounded-lg mb-8 border-l-4 border-primary">
                 <h3 className="text-xl font-semibold mb-4">Ready to Get Started?</h3>
-                <p className="mb-4">Schedule a free consultation with our expert team:</p>
+                <p className="mb-4">schedule a consultation with our expert team:</p>
                 <ul className="space-y-2 mb-6">
                   <li className="flex items-start gap-2">
                     <Check className="h-5 w-5 text-primary mt-0.5" />

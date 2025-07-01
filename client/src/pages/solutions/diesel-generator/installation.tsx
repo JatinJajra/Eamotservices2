@@ -93,7 +93,8 @@ const DGInstallationPage: React.FC = () => {
       icon: <Clock className="h-6 w-6 text-primary" />,
       title: 'Fast Turnaround',
       value: '24-48 hrs',
-      description: 'Average installation completion time for standard deployments'
+      description: 'Average installation completion time for standard deployments',
+      extraText: "Depends on scope of work and location"
     },
     {
       icon: <Shield className="h-6 w-6 text-primary" />,
@@ -254,6 +255,24 @@ const DGInstallationPage: React.FC = () => {
                         <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
                         <span className="text-gray-700">Complete testing and commissioning procedures</span>
                       </li>
+                      <li className="flex items-start">
+                        <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                        <span className="text-gray-700">Loading / Unloading</span>
+                      </li>
+                       <li className="flex items-start">
+                        <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                        <span className="text-gray-700">Earthings</span>
+                      </li> <li className="flex items-start">
+                        <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                        <span className="text-gray-700">Changeover Switch</span>
+                      </li> <li className="flex items-start">
+                        <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                        <span className="text-gray-700">Cabling</span>
+                      </li> 
+                       <li className="flex items-start">
+                        <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                        <span className="text-gray-700">Electrical Inspectorate Approval </span>
+                      </li>
                     </ul>
                   </div>
                   <div className="relative">
@@ -281,11 +300,11 @@ const DGInstallationPage: React.FC = () => {
                     <ul className="space-y-3">
                       <li className="flex items-start">
                         <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
-                        <span className="text-gray-700">Comprehensive pre-move inspection and assessment</span>
+                        <span className="text-gray-700">Comprehensive pre-installation inspection and assessment at both existing and new locations.</span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
-                        <span className="text-gray-700">Professional disconnection and preparation for transport</span>
+                        <span className="text-gray-700">Ensuring safety of the DG set through secure placement, enclosure planning, and compliance with safety standards</span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
@@ -358,6 +377,7 @@ const DGInstallationPage: React.FC = () => {
                 <h3 className="text-xl font-bold mb-1 text-primary">{metric.title}</h3>
                 <div className="text-3xl font-bold text-accent mb-3">{metric.value}</div>
                 <p className=" text-sm text-gray-700">{metric.description}</p>
+                <p className=" text-sm text-gray-700"><small className='text-gray-700'><sup>*</sup>{metric?.extraText}</small></p> 
               </motion.div>
             ))}
           </div>

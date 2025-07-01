@@ -11,8 +11,12 @@ import {
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import ContactModal from "@/components/Popup/ContectModal";
 
 export default function EmissionTestingPage() {
+   const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: servicesRef, inView: servicesInView } = useIntersectionObserver({ threshold: 0.1 });
@@ -65,12 +69,20 @@ export default function EmissionTestingPage() {
       transition={{ duration: 0.5 }}
     >
       {/* Hero Section with Laboratory Styled Interface */}
+                                         <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       <section 
         ref={heroRef}
-        className="relative py-20 md:py-28 overflow-hidden text-white"
-        style={{
-          background: "linear-gradient(135deg, #064e3b 0%, #059669 100%)"
-        }}
+        // className="relative py-20 md:py-28 overflow-hidden text-white"
+          className="relative py-20 md:py-28 overflow-hidden text-white)]"
+
+        // style={{
+        //   background: "linear-gradient(135deg, #064e3b 0%, #059669 100%)"
+        // }}
+   style={{
+    backgroundImage: 'linear-gradient(135deg, #001F3F 0%, #000C1F 100%)'
+  }}
+  
       >
         {/* Laboratory-themed background elements */}
         <div className="absolute inset-0 z-0">
@@ -158,10 +170,10 @@ export default function EmissionTestingPage() {
               >
                 <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 mb-4">
                   <div className="h-2 w-2 rounded-full bg-green-400 mr-2 animate-pulse"></div>
-                  <span className="text-sm font-medium">Precision Testing Services</span>
+                  <span className="text-sm font-medium text-white">Precision Testing Services</span>
                 </div>
                 
-                <h1 className="text-3xl md:text-5xl font-bold mb-6">
+                <h1 className="text-3xl md:text-5xl font-bold mb-6 text-white">
                   Emission <span className="text-green-300">Testing</span> Laboratory
                 </h1>
                 
@@ -178,7 +190,7 @@ export default function EmissionTestingPage() {
                   </Button>
                   <Button 
                     variant="outline" 
-                    className="border-white text-white hover:bg-white/10"
+                    className="border-white text-white hover:bg-white/10 text-black "
                     size="lg"
                   >
                     View Test Parameters
@@ -217,7 +229,7 @@ export default function EmissionTestingPage() {
                 animate={heroInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.3 }}
               >
-                <div className="mb-4 flex items-center justify-between">
+                <div className="mb-4 flex items-center justify-between text-white">
                   <div className="flex items-center gap-2">
                     <div className="h-3 w-3 rounded-full bg-green-500 animate-pulse"></div>
                     <div className="h-3 w-3 rounded-full bg-yellow-500 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
@@ -226,10 +238,10 @@ export default function EmissionTestingPage() {
                   <div className="text-sm font-mono">EAMOT-LAB-3000</div>
                 </div>
                 
-                <h3 className="text-lg font-medium mb-4 pb-2 border-b border-white/20">Emission Parameters Analysis</h3>
+                <h3 className="text-lg font-medium mb-4 pb-2 border-b border-white/20 text-white">Emission Parameters Analysis</h3>
                 
                 {/* Parameter tabs */}
-                <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
+                <div className="flex gap-2 mb-6 overflow-x-auto pb-2 text-white">
                   {testParameters.map((param, index) => (
                     <button
                       key={index}
@@ -249,7 +261,7 @@ export default function EmissionTestingPage() {
                 </div>
                 
                 {/* Active parameter data */}
-                <div className="bg-white/5 rounded-lg p-4 mb-4">
+                <div className="bg-white/5 rounded-lg p-4 mb-4 text-white">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="text-xs text-green-200 mb-1">Regulatory Limit</div>
@@ -363,7 +375,7 @@ export default function EmissionTestingPage() {
           }
         `}} />
         <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
         <motion.div 
@@ -372,26 +384,26 @@ export default function EmissionTestingPage() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="container mx-auto px-4 relative z-10"
         >
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center mt-5 pt-5">
             <div className="mb-6 inline-flex items-center justify-center">
               <span className="bg-white/20 p-3 rounded-lg mr-4">
                 <Microscope className="h-8 w-8" />
               </span>
-              <h1 className="text-3xl md:text-5xl font-bold font-montserrat">
+              <h1 className="text-3xl md:text-5xl font-bold font-montserrat text-gray-200">
                 Emission <span className="text-accent">Testing Coordination</span>
               </h1>
             </div>
             
-            <p className="text-lg md:text-xl opacity-90 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl opacity-90 mb-8 max-w-3xl mx-auto text-gray-200">
               Comprehensive emission testing coordination services, ensuring regulatory compliance
               through accurate testing, documentation, and certification processes.
             </p>
             
             <div className="flex flex-wrap gap-4 justify-center">
               <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white">
-                <a href="#contact">Request Testing Services</a>
+                <a href="#" onClick={openModal}>Request Testing Services</a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
+              <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary">
                 <a href="#services">Explore Testing Options</a>
               </Button>
             </div>
@@ -399,7 +411,7 @@ export default function EmissionTestingPage() {
         </motion.div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
         </div>
       </section>
       
@@ -518,12 +530,12 @@ export default function EmissionTestingPage() {
                     ))}
                   </ul>
                   
-                  <div className="mt-4 pt-4 border-t border-gray-100">
+                  {/* <div className="mt-4 pt-4 border-t border-gray-100">
                     <a href="#contact" className="text-green-600 font-medium flex items-center hover:underline">
                       Learn more
                       <ArrowRight className="h-4 w-4 ml-1" />
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </motion.div>
             ))}

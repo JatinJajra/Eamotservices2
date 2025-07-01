@@ -292,57 +292,57 @@ const RECDIntegrationPage: React.FC = () => {
             {[
               {
                 number: "01",
-                title: "Site Assessment",
-                description: "Comprehensive analysis of your facility and equipment",
+                title: "Requirement Assessment",
+                description: "Understand DG set specifications, site conditions, and emission compliance needs. ",
                 icon: <FileCheck className="h-6 w-6 text-blue-500" />,
                 delay: 0.5
               },
               {
                 number: "02",
-                title: "Custom Engineering",
-                description: "Tailored design optimized for your specific requirements",
+                title: "Site Survey & Feasibility",
+                description: "On-site evaluation of space, exhaust routing, mounting options, and access.",
                 icon: <Settings className="h-6 w-6 text-blue-500" />,
                 delay: 0.6
               },
               {
                 number: "03",
-                title: "Phased Installation",
-                description: "Zero-downtime implementation with continuous operation",
+                title: "Custom Solution Design",
+                description: "Engineer RECD fitment based on DG make/model. ",
                 icon: <Wrench className="h-6 w-6 text-blue-500" />,
                 delay: 0.7
               },
               {
                 number: "04",
-                title: "Precision Calibration",
-                description: "Performance optimization for maximum efficiency",
+                title: "Procurement & Manufacturing",
+                description: "Order placement, Pre-dispatch quality check and documentation. ",
                 icon: <Gauge className="h-6 w-6 text-blue-500" />,
                 delay: 0.8
               },
               {
                 number: "05",
-                title: "Monitoring Integration",
-                description: "Seamless connection with data acquisition systems",
+                title: "Dispatch & Logistics",
+                description: "Coordinated dispatch of RECD unit, tools, and installation team.",
                 icon: <BarChart className="h-6 w-6 text-blue-500" />,
                 delay: 0.9
               },
               {
                 number: "06",
-                title: "Compliance Testing",
-                description: "78-point protocol exceeding regulatory requirements",
+                title: "Installation & Fitment",
+                description: "Mechanical installation of RECD on exhaust system. Electrical/sensor wiring, insulation, and sealing. ",
                 icon: <CheckCircle className="h-6 w-6 text-blue-500" />,
                 delay: 1.0
               },
               {
                 number: "07",
-                title: "Documentation",
-                description: "Comprehensive audit-ready compliance package",
+                title: "Testing & Commissioning ",
+                description: "Backpressure, noise, emission readings validated. ",
                 icon: <FileCheck className="h-6 w-6 text-blue-500" />,
                 delay: 1.1
               },
               {
                 number: "08",
-                title: "Certification",
-                description: "100% guaranteed regulatory approval and validation",
+                title: "Post-Installation Support",
+                description: "Periodic health checks or integration with remote monitoring (if applicable). ",
                 icon: <Shield className="h-6 w-6 text-blue-500" />,
                 delay: 1.2
               }
@@ -480,16 +480,15 @@ const RECDIntegrationPage: React.FC = () => {
                 <div className="order-1 md:order-2">
                   <h3 className="text-2xl font-bold mb-6 text-white">Performance Enhancement</h3>
                   <p className="text-slate-300 mb-6">
-                    Unlike standard installations that reduce generator efficiency by 3-8%, our advanced 
-                    integration actually improves fuel efficiency by 2-4% while achieving full emission compliance.
+                  While conventional RECD retrofits can strain DG performance, our advanced integration enhances engine efficiency and reliability right from Day 1.
                   </p>
                   <ul className="space-y-4">
                     {[
-                      "Proprietary backpressure reduction technology",
-                      "Advanced combustion optimization algorithms",
-                      "Precision-engineered flow dynamics",
-                      "Thermal management system integration",
-                      "Continuous performance monitoring and adjustment"
+                      "Smoother engine operation with stable backpressure and cleaner exhaust flow",
+                      "Better load response under fluctuating demand",
+                      "Significant reduction in visible black smoke",
+                      "Lower maintenance needs and extended service intervals",
+                      "Longer lifespan for critical combustion and exhaust parts"
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <div className="mt-1 flex-shrink-0">
@@ -513,16 +512,16 @@ const RECDIntegrationPage: React.FC = () => {
                 <div>
                   <h3 className="text-2xl font-bold mb-6 text-white">Bulletproof Compliance</h3>
                   <p className="text-slate-300 mb-6">
-                    We offer the industry's only written guarantee of continuous regulatory compliance, 
-                    backed by our 24/7 monitoring and rapid response protocols.
+                    Unlike unverified solutions, our RECD installations meet emission norms with end-to-end compliance assurance built into the process.
+
                   </p>
                   <ul className="space-y-4">
                     {[
-                      "100% approval guarantee for all regulatory submissions",
-                      "Comprehensive 78-point testing protocol",
-                      "Continuous compliance monitoring with alerts",
-                      "Documentation package exceeding regulatory requirements",
-                      "Single-source accountability for all compliance matters"
+                      "Fully compliant with CPCB retrofit emission guidelines for DG sets",
+                      "Emission levels optionally verified through on-site post-installation testing",
+                      "Certified RECD units sourced from CPCB-approved manufacturers",
+                      "Complete documentation support for audits and regulatory submissions",
+                      "Optional ongoing performance monitoring for sustained compliance"
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <div className="mt-1 flex-shrink-0">
@@ -593,7 +592,8 @@ const RECDIntegrationPage: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-xl text-slate-300 max-w-3xl mx-auto"
             >
-              Our comprehensive approach includes advanced capabilities not available from other providers
+Our testing protocol exceeds regulatory requirements by 200%, ensuring your system not only meets 
+current standards but anticipates future regulatory changes. 
             </motion.p>
           </div>
           
@@ -607,12 +607,12 @@ const RECDIntegrationPage: React.FC = () => {
               {
                 icon: <BarChart4 className="h-6 w-6 text-blue-500" />,
                 title: 'Comprehensive Monitoring Integration',
-                description: 'We seamlessly connect all emission sensors with our state-of-the-art data acquisition systems, providing real-time visibility and advanced analytics through a unified dashboard.'
+                description: 'We seamlessly connect pressure and temperature sensors with our state-of-the-art data acquisition systems, providing real-time visibility and advanced analytics through a unified dashboard.'
               },
               {
                 icon: <Cpu className="h-6 w-6 text-blue-500" />,
                 title: 'Precision Control System Optimization',
-                description: 'Our engineers meticulously calibrate your system using proprietary algorithms that deliver maximum emission reduction while enhancing generator performance by up to 4%.'
+                description: 'Our engineers meticulously calibrate your system using proprietary algorithms that deliver maximum emission reduction.'
               },
               {
                 icon: <Server className="h-6 w-6 text-blue-500" />,
@@ -727,7 +727,7 @@ const RECDIntegrationPage: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
             >
               <Button size="lg" asChild className="bg-white text-blue-700 hover:bg-gray-100 px-8 py-6 text-lg">
-                <a href="#" onClick={openModal}>Schedule Your Zero-Downtime Implementation</a>
+                <a href="#" onClick={openModal}>Schedule your Minimal Downtime Implentation</a>
               </Button>
             </motion.div>
           </div>

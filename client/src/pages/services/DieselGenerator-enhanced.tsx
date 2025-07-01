@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { 
-  Engine, Wrench, BarChart, Settings, Clock, Activity, 
+Engine, Wrench, BarChart, Settings, Clock, Activity, 
   AlertTriangle, Shield, CheckSquare, Zap, Calendar, FileCheck
 } from "lucide-react";
 
@@ -29,7 +29,7 @@ export default function DieselGeneratorPage() {
         className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 relative overflow-hidden"
       >
         <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
         <motion.div 
@@ -67,7 +67,7 @@ export default function DieselGeneratorPage() {
         </motion.div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
         </div>
       </section>
       
@@ -146,7 +146,7 @@ export default function DieselGeneratorPage() {
             >
               <div className="relative">
                 <img 
-                  src="https://www.eamot.com/assets/img/services/1.jpg" 
+                  src="assets/img/services/1.jpg" 
                   alt="Diesel Generator Maintenance" 
                   className="rounded-lg shadow-lg w-full"
                 />
@@ -293,7 +293,7 @@ export default function DieselGeneratorPage() {
                       </div>
                       <div className="relative">
                         <img 
-                          src="https://www.eamot.com/assets/img/service/service-04.jpg" 
+                          src="assets/img/service/service-04.jpg" 
                           alt="Preventive Maintenance" 
                           className="h-full w-full object-cover"
                         />
@@ -374,7 +374,7 @@ export default function DieselGeneratorPage() {
                       </div>
                       <div className="relative">
                         <img 
-                          src="https://www.eamot.com/assets/img/gallery/service-03.jpg" 
+                          src="assets/img/gallery/service-03.jpg" 
                           alt="Repair Services" 
                           className="h-full w-full object-cover"
                         />
@@ -456,7 +456,7 @@ export default function DieselGeneratorPage() {
                       </div>
                       <div className="relative">
                         <img 
-                          src="https://www.eamot.com/assets/img/service/service-02.jpg" 
+                          src="assets/img/service/service-02.jpg" 
                           alt="Performance Testing" 
                           className="h-full w-full object-cover"
                         />

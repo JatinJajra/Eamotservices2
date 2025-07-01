@@ -67,42 +67,45 @@ const UPSAMCPage: React.FC = () => {
   const serviceLevels = [
     {
       name: "Standard",
-      ideal: "Small Businesses",
+      ideal: "Low-usage or stable environments",
       features: [
         "Quarterly preventive maintenance visits",
-        "Normal business hours technical support (9 AM - 6 PM)",
-        "Annual battery health assessment",
-        "24-hour emergency response time",
-        "Parts at additional cost",
-        "Basic performance reporting"
+        "Breakdown visit limit- 4 in a year.",
+        "Visual inspection of UPS & battery bank",
+        "Cleaning of UPS system and terminals",
+        "Battery health assessment",
+        "Dedicated technical support available during business hours",
+        "First-level response time (TAT) 24 Hours"
       ],
       icon: <Shield className="h-10 w-10 text-primary/80" />,
       highlight: false
     },
     {
       name: "Premium",
-      ideal: "Medium Enterprises",
+      ideal: "Mid-critical applications like offices, banks, and retail spaces",
       features: [
         "Bi-monthly preventive maintenance visits",
+        "Breakdown visit limit- 6 in a year",
+        "Checking logs and event history from UPS memory ",
         "Extended technical support (7 AM - 9 PM, 7 days)",
-        "Quarterly battery health assessment",
-        "12-hour emergency response time",
-        "Parts covered up to 50% of cost",
-        "Detailed performance optimization reporting"
+        "Recommendations on battery or part replacement in advance ",
+        "+Everything in basic",
+        "Recommendations on battery or part replacement in advance "
       ],
       icon: <Shield className="h-10 w-10 text-primary" />,
       highlight: true
     },
     {
       name: "Platinum",
-      ideal: "Critical Infrastructure",
+      ideal: "Critical environments like hospitals, data centers, etc.",
       features: [
         "Monthly preventive maintenance visits",
-        "24x7 technical support with dedicated engineer",
-        "Monthly battery health assessment & testing",
-        "4-hour emergency response time",
-        "All parts & labor fully covered",
-        "Advanced monitoring with real-time alerts"
+        "Assistance with remote monitoring setup provided where applicable",
+        "Full battery bank audit (Quarterly) ",
+        "Trending analysis on UPS performance ",
+        "Unlimited Emergency breakdown visits",
+        "Spare parts inventory planning support ",
+        "First-level response time (TAT) 4-6 Hours. "
       ],
       icon: <Shield className="h-10 w-10 text-accent" />,
       highlight: false

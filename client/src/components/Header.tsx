@@ -111,7 +111,7 @@ export default function Header() {
       {/* Main Navigation */}
       <nav className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link href="/">
-          {/* <img src="https://www.eamot.com/assets/img/logo/logo-eamot.png" alt="EAMOT Logo" className="h-10 md:h-12 cursor-pointer" /> */}
+          {/* <img src="assets/img/logo/logo-eamot.png" alt="EAMOT Logo" className="h-10 md:h-12 cursor-pointer" /> */}
           <img
             src="https://eamot-iot.s3.ap-south-1.amazonaws.com/media/dgsets/logo-eamot.png"
             alt="EAMOT Logo"
@@ -535,17 +535,17 @@ export default function Header() {
                   </div>
 
                   <div className="absolute left-full top-0 w-60 bg-white rounded-md shadow-lg z-50 py-2 border border-gray-100 hidden group-hover:block">
-                    <Link href="/services/amc/diesel-generator">
+                    <Link href="/solutions/diesel-generator/amc">
                       <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">
                         DG AMC
                       </span>
                     </Link>
-                    <Link href="/services/amc/ups">
+                    <Link href="/solutions/ups/amc">
                       <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">
                         UPS AMC
                       </span>
                     </Link>
-                    <Link href="/services/amc/servo-stabilizer">
+                    <Link href="/solutions/servo/amc">
                       <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">
                         Servo Stabilizer AMC
                       </span>
@@ -588,11 +588,11 @@ export default function Header() {
                         Servo Control Components
                       </span>
                     </Link>
-                    <Link href="/services/parts/recd-spares">
+                    {/* <Link href="/services/parts/recd-spares">
                       <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">
                         RECD Spares
                       </span>
-                    </Link>
+                    </Link> */}
                     <Link href="/services/parts/logistics">
                       <span className="block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer">
                         Logistics & Delivery Support
@@ -686,7 +686,7 @@ export default function Header() {
                     Energy Savings Calculator
                   </span>
                 </Link>
-                <Link href="/product-demo">
+                {/* <Link href="/product-demo">
                   <span
                     className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${
                       location === "/product-demo"
@@ -696,8 +696,8 @@ export default function Header() {
                   >
                     Product Demos
                   </span>
-                </Link>
-                <Link href="/loading-states">
+                </Link> */}
+                {/* <Link href="/loading-states">
                   <span
                     className={`block px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${
                       location === "/loading-states"
@@ -707,7 +707,7 @@ export default function Header() {
                   >
                     Loading States
                   </span>
-                </Link>
+                </Link> */}
               </div>
             )}
           </div>

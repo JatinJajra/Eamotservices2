@@ -16,7 +16,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/90 to-slate-900/95 z-10"></div>
         <img
-          src="https://www.eamot.com/assets/img/home/2.jpg"
+          src="assets/img/home/2.jpg"
           alt="Energy Management"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
@@ -354,9 +354,9 @@ export default function HeroSection() {
             {[
               { value: "350+", label: "Assets Supported" },
               { value: "25+", label: "Years of Proven Expertise" },
-              { value: "50+ ", label: "Happy Clients" },
-              { value: "15+ ", label: "Years Experience" },
-              { value: "25% ", label: "Energy Savings" }
+              { value: "500+ ", label: " DG Sets Installed." },
+              // { value: "15+ ", label: "Years Experience" },
+              // { value: "25% ", label: "Energy Savings" }
 
 
             ].map((stat, index) => (

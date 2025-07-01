@@ -10,6 +10,7 @@ import {
   FileCheck, AlertTriangle, Shield, ZapOff, FileText, 
   Settings, User, Gauge, Activity, Percent, Battery
 } from "lucide-react";
+import ContactModal from "@/components/Popup/ContectModal";
 
 const BenefitCard = ({ 
   icon, 
@@ -43,6 +44,9 @@ const BenefitCard = ({
 );
 
 export default function PreventiveMaintenancePage() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: benefitsRef, inView: benefitsInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: processRef, inView: processInView } = useIntersectionObserver({ threshold: 0.1 });
@@ -66,12 +70,12 @@ export default function PreventiveMaintenancePage() {
       transition={{ duration: 0.5 }}
     >
       {/* Hero Section */}
-      <section 
+      {/* <section 
         ref={heroRef}
         className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 md:py-28 relative overflow-hidden"
       >
         <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
         <motion.div 
@@ -107,9 +111,56 @@ export default function PreventiveMaintenancePage() {
         </motion.div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
         </div>
-      </section>
+      </section> */}
+                                   <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
+      <section 
+  ref={heroRef}
+  className="bg-[#154679] text-white py-20 md:py-28 relative overflow-hidden"
+>
+  <div className="absolute top-0 left-0 w-full overflow-hidden opacity-20 pointer-events-none">
+    <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+  </div>
+
+  <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: heroInView ? 1 : 0, y: heroInView ? 0 : 20 }}
+    transition={{ duration: 0.7, delay: 0.2 }}
+    className="container mx-auto px-4 relative z-10"
+  >
+    <div className="max-w-4xl mx-auto text-center">
+      <div className="mb-6 inline-flex items-center justify-center">
+        <span className="bg-white/20 p-3 rounded-lg mr-4">
+          <Calendar className="h-8 w-8" />
+        </span>
+        <h1 className="text-3xl md:text-5xl font-bold font-montserrat">
+          Preventive <span className="text-accent">Maintenance</span>
+        </h1>
+      </div>
+
+      <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+        Proactive maintenance solutions designed to maximize equipment reliability, 
+        extend operational lifespan, and prevent costly unplanned downtime.
+      </p>
+
+      <div className="flex flex-wrap gap-4 justify-center">
+        <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white">
+          <a href="#" onClick={openModal}>Explore Our Approach</a>
+        </Button>
+        <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary">
+          <a href="#schedules">View Maintenance Schedules</a>
+        </Button>
+      </div>
+    </div>
+  </motion.div>
+
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden opacity-20 pointer-events-none">
+    <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+  </div>
+</section>
+
       
       {/* Benefits Section */}
       <section 
@@ -960,9 +1011,9 @@ export default function PreventiveMaintenancePage() {
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white">
-                  <a href="#contact">Request Maintenance Quote</a>
+                  <a href="#" onClick={openModal}>Request Maintenance Quote</a>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
+                <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary">
                   <a href="tel:8970001110">Call Us: 897 000 111 02</a>
                 </Button>
               </div>

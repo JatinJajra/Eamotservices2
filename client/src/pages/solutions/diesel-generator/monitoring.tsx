@@ -159,44 +159,112 @@ const DGMonitoringPage: React.FC = () => {
   ];
 
   // Case Studies
-  const caseStudies = [
-    {
-      industry: 'Healthcare',
-      facility: 'Regional Hospital',
-      challenge: 'Critical backup power reliability for life-saving equipment',
-      solution: 'Implemented IoT monitoring across 5 diesel generators with 24/7 alerting',
-      results: [
-        '98.7% reduction in backup power failures',
-        '43% decrease in maintenance costs',
-        '27% improvement in generator lifespan',
-        'Seamless regulatory compliance reporting'
-      ]
-    },
-    {
-      industry: 'BFSI',
-      facility: 'Major Banking & Financial Institution',
-      challenge: 'Ensuring continuous power for critical financial transactions and data security',
-      solution: 'Comprehensive IoT monitoring solution for 8 high-capacity generator systems with redundancy',
-      results: [
-        '99.999% power availability for critical systems',
-        '38% reduction in operational costs',
-        '45% improvement in maintenance efficiency',
-        'Enhanced regulatory compliance reporting'
-      ]
-    },
-    {
-      industry: 'Manufacturing',
-      facility: 'Automotive Production Plant',
-      challenge: 'Preventing costly production shutdowns from power interruptions',
-      solution: 'Full integration of generator monitoring with factory management systems',
-      results: [
-        '38% reduction in production disruptions',
-        '29% decrease in generator maintenance expenses',
-        '41% improvement in power transition times',
-        'Enhanced environmental compliance reporting'
-      ]
-    }
-  ];
+  // const caseStudies = [
+  //   {
+  //     industry: 'Healthcare',
+  //     facility: 'Leading Financial Services Group with PAN India Operations',
+  //     challenge: 'Critical backup power reliability for life-saving equipment',
+  //     solution: 'Implemented IoT monitoring across 5 diesel generators with 24/7 alerting',
+  //     results: [
+  //       '98.7% reduction in backup power failures',
+  //       '43% decrease in maintenance costs',
+  //       '27% improvement in generator lifespan',
+  //       'Seamless regulatory compliance reporting'
+  //     ]
+  //   },
+  //   {
+  //     industry: 'BFSI',
+  //     facility: 'Major Banking & Financial Institution',
+  //     challenge: 'Ensuring continuous power for critical financial transactions and data security',
+  //     solution: 'Comprehensive IoT monitoring solution for 8 high-capacity generator systems with redundancy',
+  //     results: [
+  //       '99.999% power availability for critical systems',
+  //       '38% reduction in operational costs',
+  //       '45% improvement in maintenance efficiency',
+  //       'Enhanced regulatory compliance reporting'
+  //     ]
+  //   },
+  //   {
+  //     industry: 'Manufacturing',
+  //     facility: 'Automotive Production Plant',
+  //     challenge: 'Preventing costly production shutdowns from power interruptions',
+  //     solution: 'Full integration of generator monitoring with factory management systems',
+  //     results: [
+  //       '38% reduction in production disruptions',
+  //       '29% decrease in generator maintenance expenses',
+  //       '41% improvement in power transition times',
+  //       'Enhanced environmental compliance reporting'
+  //     ]
+  //   }
+  // ];
+
+const caseStudies = [
+  {
+    tabValue: 'fuel-optimization',
+    title: 'Fuel Optimization & Compliance Visibility',
+    facility: 'Leading Financial Services Group with PAN India Operations',
+    challenge: `Inefficient generator operations leading to excess fuel usage
+
+No structured data for DG rating selection or ESG reporting
+
+Lack of centralized visibility across multiple sites`,
+    solution: `Deployed our IoT-enabled Diesel Generator Management System (DGMS) across branches nationwide
+
+Delivered real-time fuel consumption, generator health, and emission insights
+
+Created IPMVP-aligned reports for performance verification`,
+    results: [
+      '29% optimization in fuel usage',
+      '15% decrease in fuel consumption',
+      '100% generator compliance visibility',
+      '30% reduction in downtime',
+      'Robust carbon reporting for ESG'
+    ]
+  },
+  {
+    tabValue: 'predictive-maintenance',
+    title: 'Maintenance Transformation with Predictive Analytics',
+    facility: 'Financial Enterprise Operating in 566 Cities',
+    challenge: `High breakdown frequency and poor maintenance coordination
+
+No transparency in spare parts usage or service timelines
+
+Delays in response time during generator failures`,
+    solution: `Introduced predictive analytics through our Intelligent Field Service App
+
+Enabled real-time alerts, automated maintenance schedules, and part-tracking
+
+Provided 4–6 hour response SLA across Tier 1–3 cities`,
+    results: [
+      '25% improvement in uptime',
+      '30% boost in maintenance efficiency',
+      '90% predictive failure alerts achieved',
+      '15% cost reduction through optimized service delivery'
+    ]
+  },
+  {
+    tabValue: 'energy-efficiency',
+    title: 'Energy Efficiency & Electrical Health Monitoring',
+    facility: 'National Branch Network Across India',
+    challenge: `High power factor penalties in 80% of branches
+
+33% additional energy usage beyond office hours
+
+Unmonitored fire risk due to poor electrical health`,
+    solution: `Implemented EMS with real-time anomaly detection and power analytics
+
+Enabled automated power factor correction and consumption alerts
+
+Delivered dashboards for electrical safety and operational control`,
+    results: [
+      '12% reduction in overall energy usage',
+      '25% gain in operational efficiency',
+      '40% improvement in power factor',
+      '90% accuracy in fire hazard detection'
+    ]
+  }
+];
+
 
   return (
     <>
@@ -467,7 +535,7 @@ const DGMonitoringPage: React.FC = () => {
             </p>
           </div>
 
-          <Tabs defaultValue="healthcare" className="max-w-4xl mx-auto">
+          {/* <Tabs defaultValue="healthcare" className="max-w-4xl mx-auto">
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="healthcare">Healthcare</TabsTrigger>
               <TabsTrigger value="datacenter">Data Center</TabsTrigger>
@@ -517,7 +585,64 @@ const DGMonitoringPage: React.FC = () => {
                 </div>
               </TabsContent>
             ))}
-          </Tabs>
+
+          </Tabs> */}
+          <Tabs defaultValue="fuel-optimization" className="max-w-4xl mx-auto">
+  <TabsList className="grid w-full grid-cols-3">
+    <TabsTrigger value="fuel-optimization">Fuel Optimization</TabsTrigger>
+    <TabsTrigger value="predictive-maintenance">Predictive Maintenance</TabsTrigger>
+    <TabsTrigger value="energy-efficiency">Energy Efficiency</TabsTrigger>
+  </TabsList>
+
+  {caseStudies.map((study, index) => (
+    <TabsContent
+      key={index}
+      value={study.tabValue}
+      className="mt-8"
+    >
+      <div className="bg-gradient-to-br from-primary-50 to-blue-50 rounded-xl p-8 shadow-md">
+        <div className="flex flex-col md:flex-row gap-10">
+          <div className="md:w-1/2">
+            <h3 className="text-2xl font-bold text-primary mb-2">{study.title}</h3>
+
+            <div className="mb-6">
+              <h4 className="text-lg font-semibold text-gray-800 mb-2">The Challenge</h4>
+              <p className="text-gray-700 whitespace-pre-line">{study.challenge}</p>
+            </div>
+
+            <div>
+              <h4 className="text-lg font-semibold text-gray-800 mb-2">Our Solution</h4>
+              <p className="text-gray-700 whitespace-pre-line">{study.solution}</p>
+            </div>
+          </div>
+
+          <div className="md:w-1/2">
+            <h4 className="text-lg font-semibold text-gray-800 mb-4">Results Achieved</h4>
+            <div className="space-y-3">
+              {study.results.map((result, i) => (
+                <div key={i} className="flex items-start">
+                  <div className="bg-accent/10 text-accent p-1 rounded-full mr-3 mt-0.5">
+                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-700">{result}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-primary-100">
+              <Button asChild variant="link" onClick={openModal} className="p-0 h-auto text-primary">
+                <Link href="#">Request full case study</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </TabsContent>
+  ))}
+</Tabs>
+
         </div>
       </section>
 

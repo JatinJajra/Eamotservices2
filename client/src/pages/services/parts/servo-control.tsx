@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,8 +9,12 @@ import {
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import ContactModal from "@/components/Popup/ContectModal";
 
 export default function ServoControlPage() {
+      const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: partsRef, inView: partsInView } = useIntersectionObserver({ threshold: 0.1 });
@@ -24,14 +28,13 @@ export default function ServoControlPage() {
       transition={{ duration: 0.5 }}
     >
       {/* Hero Section with Geometric Background */}
-      <section 
+      {/* <section 
         ref={heroRef}
         className="py-20 md:py-28 relative overflow-hidden"
         style={{
           background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)"
         }}
       >
-        {/* Geometric patterns */}
         <div className="absolute inset-0 opacity-20">
           {Array.from({ length: 10 }).map((_, i) => (
             <div 
@@ -51,7 +54,7 @@ export default function ServoControlPage() {
         </div>
         
         <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
         <motion.div 
@@ -87,9 +90,78 @@ export default function ServoControlPage() {
         </motion.div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
         </div>
-      </section>
+      </section> */}
+                                <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
+      <section 
+  ref={heroRef}
+  className="py-20 md:py-28 relative overflow-hidden"
+  style={{
+    background: "linear-gradient(135deg, #154679 0%, #1e3a8a 100%)"
+  }}
+>
+  {/* Geometric patterns */}
+  <div className="absolute inset-0 opacity-10 pointer-events-none">
+    {Array.from({ length: 10 }).map((_, i) => (
+      <div 
+        key={i}
+        className="absolute rounded-full" 
+        style={{
+          width: `${Math.random() * 300 + 50}px`,
+          height: `${Math.random() * 300 + 50}px`,
+          backgroundColor: `rgba(255, 255, 255, 0.08)`,
+          top: `${Math.random() * 100}%`,
+          left: `${Math.random() * 100}%`,
+          transform: `rotate(${Math.random() * 360}deg)`,
+          backdropFilter: 'blur(10px)'
+        }}
+      />
+    ))}
+  </div>
+
+  <div className="absolute top-0 left-0 w-full overflow-hidden">
+    <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full opacity-20" />
+  </div>
+
+  <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: heroInView ? 1 : 0, y: heroInView ? 0 : 20 }}
+    transition={{ duration: 0.7, delay: 0.2 }}
+    className="container mx-auto px-4 relative z-10"
+  >
+    <div className="max-w-4xl mx-auto text-center">
+      <div className="mb-6 inline-flex items-center justify-center">
+        <span className="bg-white/20 p-3 rounded-lg mr-4">
+          <Cog className="h-8 w-8 text-white" />
+        </span>
+        <h1 className="text-3xl md:text-5xl font-bold font-montserrat text-white">
+          Servo Control <span className="text-accent">Components</span>
+        </h1>
+      </div>
+
+      <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+        Precision servo stabilizer components and control systems for optimal voltage regulation,
+        ensuring reliable power quality and equipment protection.
+      </p>
+
+      <div className="flex flex-wrap gap-4 justify-center">
+        <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white">
+          <a href="#" onClick={openModal}>Request Components Quote</a>
+        </Button>
+        <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary">
+          <a href="#parts">Browse Component Catalog</a>
+        </Button>
+      </div>
+    </div>
+  </motion.div>
+
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+    <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full opacity-20" />
+  </div>
+</section>
+
       
       {/* Service Features with Animated Indicators */}
       <section 
@@ -192,536 +264,537 @@ export default function ServoControlPage() {
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6 text-gray-800">
               Servo <span className="text-primary">Component Categories</span>
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Browse our extensive range of precision servo stabilizer components for all major brands and models.
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              We offer a range of spare parts for servo stabilizers, available upon request. Share your specific requirement, and our team will provide details on compatibility and pricing tailored to your model.
+
             </p>
           </div>
           
-          <Tabs defaultValue="controllers" className="w-full">
-            <TabsList className="w-full flex justify-center mb-8 bg-transparent">
-              <TabsTrigger value="controllers" className="px-6 py-3 rounded-lg">Control Systems</TabsTrigger>
-              <TabsTrigger value="power" className="px-6 py-3 rounded-lg">Power Components</TabsTrigger>
-              <TabsTrigger value="motors" className="px-6 py-3 rounded-lg">Motors & Drives</TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="controllers" className="mt-0">
-              <Card className="border-none shadow-xl overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-5">
-                    <div className="lg:col-span-2 bg-gray-900 text-white p-8">
-                      <div className="flex items-center mb-6">
-                        <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
-                          <Cog className="h-6 w-6 text-primary" />
-                        </div>
-                        <h3 className="text-2xl font-bold">Control Systems</h3>
-                      </div>
-                      
-                      <p className="mb-6 text-gray-300">
-                        Advanced control systems form the intelligence center of servo stabilizers, 
-                        providing precise voltage sensing, calculations, and corrective actions.
-                      </p>
-                      
-                      <div className="space-y-4">
-                        <div className="bg-white/10 p-4 rounded-lg">
-                          <h4 className="font-bold mb-2">Controller Benefits</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
-                              <div>
-                                <span className="font-medium">Rapid Response</span>
-                                <p className="text-sm text-gray-400">Millisecond correction of voltage fluctuations</p>
-                              </div>
-                            </li>
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
-                              <div>
-                                <span className="font-medium">Advanced Algorithms</span>
-                                <p className="text-sm text-gray-400">Sophisticated control logic for stability</p>
-                              </div>
-                            </li>
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
-                              <div>
-                                <span className="font-medium">Self-Diagnostics</span>
-                                <p className="text-sm text-gray-400">Built-in monitoring and error detection</p>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="lg:col-span-3 p-8">
-                      <h3 className="text-xl font-bold text-gray-800 mb-6">Control System Components</h3>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Microcontroller Units</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">PIC microcontrollers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">ARM-based processors</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">DSP controllers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">FPGA solutions</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Programmable logic controllers</span>
-                            </li>
-                          </ul>
+            {/* <Tabs defaultValue="controllers" className="w-full">
+              <TabsList className="w-full flex justify-center mb-8 bg-transparent">
+                <TabsTrigger value="controllers" className="px-6 py-3 rounded-lg">Control Systems</TabsTrigger>
+                <TabsTrigger value="power" className="px-6 py-3 rounded-lg">Power Components</TabsTrigger>
+                <TabsTrigger value="motors" className="px-6 py-3 rounded-lg">Motors & Drives</TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="controllers" className="mt-0">
+                <Card className="border-none shadow-xl overflow-hidden">
+                  <CardContent className="p-0">
+                    <div className="grid grid-cols-1 lg:grid-cols-5">
+                      <div className="lg:col-span-2 bg-gray-900 text-white p-8">
+                        <div className="flex items-center mb-6">
+                          <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
+                            <Cog className="h-6 w-6 text-primary" />
+                          </div>
+                          <h3 className="text-2xl font-bold">Control Systems</h3>
                         </div>
                         
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Sensing Circuits</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Voltage sensing modules</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Current transformers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">High-precision transducers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Opto-isolators</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Analog-to-digital converters</span>
-                            </li>
-                          </ul>
-                        </div>
-                        
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Display & Interface</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">LCD modules</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">LED indicator panels</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Touchscreen interfaces</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Control keypads</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Remote monitoring interfaces</span>
-                            </li>
-                          </ul>
-                        </div>
-                        
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Communication</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">RS485/RS232 modules</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Ethernet interfaces</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Modbus RTU/TCP controllers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">IoT connectivity modules</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Wireless communication options</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      
-                      <div className="mt-6 bg-primary/5 p-4 rounded-lg border border-primary/10">
-                        <div className="flex items-center mb-2">
-                          <Wrench className="h-5 w-5 text-primary mr-2" />
-                          <h4 className="font-bold text-gray-800">Advanced Control Features</h4>
-                        </div>
-                        <p className="text-gray-600">
-                          Our modern control systems offer advanced features like harmonic correction, power factor 
-                          improvement, and adaptive response capabilities to address complex power quality challenges.
+                        <p className="mb-6 text-gray-300">
+                          Advanced control systems form the intelligence center of servo stabilizers, 
+                          providing precise voltage sensing, calculations, and corrective actions.
                         </p>
+                        
+                        <div className="space-y-4">
+                          <div className="bg-white/10 p-4 rounded-lg">
+                            <h4 className="font-bold mb-2">Controller Benefits</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
+                                <div>
+                                  <span className="font-medium">Rapid Response</span>
+                                  <p className="text-sm text-gray-400">Millisecond correction of voltage fluctuations</p>
+                                </div>
+                              </li>
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
+                                <div>
+                                  <span className="font-medium">Advanced Algorithms</span>
+                                  <p className="text-sm text-gray-400">Sophisticated control logic for stability</p>
+                                </div>
+                              </li>
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
+                                <div>
+                                  <span className="font-medium">Self-Diagnostics</span>
+                                  <p className="text-sm text-gray-400">Built-in monitoring and error detection</p>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="lg:col-span-3 p-8">
+                        <h3 className="text-xl font-bold text-gray-800 mb-6">Control System Components</h3>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Microcontroller Units</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">PIC microcontrollers</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">ARM-based processors</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">DSP controllers</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">FPGA solutions</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Programmable logic controllers</span>
+                              </li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Sensing Circuits</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Voltage sensing modules</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Current transformers</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">High-precision transducers</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Opto-isolators</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Analog-to-digital converters</span>
+                              </li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Display & Interface</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">LCD modules</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">LED indicator panels</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Touchscreen interfaces</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Control keypads</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Remote monitoring interfaces</span>
+                              </li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Communication</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">RS485/RS232 modules</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Ethernet interfaces</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Modbus RTU/TCP controllers</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">IoT connectivity modules</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Wireless communication options</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-6 bg-primary/5 p-4 rounded-lg border border-primary/10">
+                          <div className="flex items-center mb-2">
+                            <Wrench className="h-5 w-5 text-primary mr-2" />
+                            <h4 className="font-bold text-gray-800">Advanced Control Features</h4>
+                          </div>
+                          <p className="text-gray-600">
+                            Our modern control systems offer advanced features like harmonic correction, power factor 
+                            improvement, and adaptive response capabilities to address complex power quality challenges.
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            
-            <TabsContent value="power" className="mt-0">
-              <Card className="border-none shadow-xl overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-5">
-                    <div className="lg:col-span-2 bg-gray-900 text-white p-8">
-                      <div className="flex items-center mb-6">
-                        <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
-                          <Zap className="h-6 w-6 text-primary" />
-                        </div>
-                        <h3 className="text-2xl font-bold">Power Components</h3>
-                      </div>
-                      
-                      <p className="mb-6 text-gray-300">
-                        High-quality power handling components form the backbone of servo stabilizers, 
-                        managing voltage transformation and current regulation with precision.
-                      </p>
-                      
-                      <div className="space-y-4">
-                        <div className="bg-white/10 p-4 rounded-lg">
-                          <h4 className="font-bold mb-2">Power Component Advantages</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
-                              <div>
-                                <span className="font-medium">High Efficiency</span>
-                                <p className="text-sm text-gray-400">Minimal power loss during regulation</p>
-                              </div>
-                            </li>
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
-                              <div>
-                                <span className="font-medium">Thermal Management</span>
-                                <p className="text-sm text-gray-400">Advanced cooling for continuous operation</p>
-                              </div>
-                            </li>
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
-                              <div>
-                                <span className="font-medium">Overload Protection</span>
-                                <p className="text-sm text-gray-400">Robust design for unexpected conditions</p>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="lg:col-span-3 p-8">
-                      <h3 className="text-xl font-bold text-gray-800 mb-6">Power System Components</h3>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Variable Transformers</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Toroidal transformers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Variac autotransformers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Buck-boost transformers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Multi-tap transformers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">IGBT-based transformers</span>
-                            </li>
-                          </ul>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+              
+              <TabsContent value="power" className="mt-0">
+                <Card className="border-none shadow-xl overflow-hidden">
+                  <CardContent className="p-0">
+                    <div className="grid grid-cols-1 lg:grid-cols-5">
+                      <div className="lg:col-span-2 bg-gray-900 text-white p-8">
+                        <div className="flex items-center mb-6">
+                          <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
+                            <Zap className="h-6 w-6 text-primary" />
+                          </div>
+                          <h3 className="text-2xl font-bold">Power Components</h3>
                         </div>
                         
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Power Switching</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">IGBT modules</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">SCR assemblies</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">MOSFET power switches</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Solid-state relays</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Contactors and switches</span>
-                            </li>
-                          </ul>
-                        </div>
-                        
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Protection Components</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Circuit breakers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Surge protectors</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Overcurrent protection</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Thermal protection devices</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">EMI/RFI filters</span>
-                            </li>
-                          </ul>
-                        </div>
-                        
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Power Supply & Regulation</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Control power supplies</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Voltage regulators</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Filter capacitors</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Cooling systems</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Heat sinks and thermal management</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      
-                      <div className="mt-6 bg-primary/5 p-4 rounded-lg border border-primary/10">
-                        <div className="flex items-center mb-2">
-                          <Shield className="h-5 w-5 text-primary mr-2" />
-                          <h4 className="font-bold text-gray-800">Reliability Engineering</h4>
-                        </div>
-                        <p className="text-gray-600">
-                          Our power components undergo rigorous reliability engineering, with each component 
-                          designed for 24/7 continuous operation and tested for extreme conditions to ensure
-                          long-term performance in critical applications.
+                        <p className="mb-6 text-gray-300">
+                          High-quality power handling components form the backbone of servo stabilizers, 
+                          managing voltage transformation and current regulation with precision.
                         </p>
+                        
+                        <div className="space-y-4">
+                          <div className="bg-white/10 p-4 rounded-lg">
+                            <h4 className="font-bold mb-2">Power Component Advantages</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
+                                <div>
+                                  <span className="font-medium">High Efficiency</span>
+                                  <p className="text-sm text-gray-400">Minimal power loss during regulation</p>
+                                </div>
+                              </li>
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
+                                <div>
+                                  <span className="font-medium">Thermal Management</span>
+                                  <p className="text-sm text-gray-400">Advanced cooling for continuous operation</p>
+                                </div>
+                              </li>
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
+                                <div>
+                                  <span className="font-medium">Overload Protection</span>
+                                  <p className="text-sm text-gray-400">Robust design for unexpected conditions</p>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="lg:col-span-3 p-8">
+                        <h3 className="text-xl font-bold text-gray-800 mb-6">Power System Components</h3>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Variable Transformers</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Toroidal transformers</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Variac autotransformers</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Buck-boost transformers</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Multi-tap transformers</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">IGBT-based transformers</span>
+                              </li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Power Switching</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">IGBT modules</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">SCR assemblies</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">MOSFET power switches</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Solid-state relays</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Contactors and switches</span>
+                              </li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Protection Components</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Circuit breakers</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Surge protectors</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Overcurrent protection</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Thermal protection devices</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">EMI/RFI filters</span>
+                              </li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Power Supply & Regulation</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Control power supplies</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Voltage regulators</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Filter capacitors</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Cooling systems</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Heat sinks and thermal management</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-6 bg-primary/5 p-4 rounded-lg border border-primary/10">
+                          <div className="flex items-center mb-2">
+                            <Shield className="h-5 w-5 text-primary mr-2" />
+                            <h4 className="font-bold text-gray-800">Reliability Engineering</h4>
+                          </div>
+                          <p className="text-gray-600">
+                            Our power components undergo rigorous reliability engineering, with each component 
+                            designed for 24/7 continuous operation and tested for extreme conditions to ensure
+                            long-term performance in critical applications.
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            
-            <TabsContent value="motors" className="mt-0">
-              <Card className="border-none shadow-xl overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-5">
-                    <div className="lg:col-span-2 bg-gray-900 text-white p-8">
-                      <div className="flex items-center mb-6">
-                        <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
-                          <Settings className="h-6 w-6 text-primary" />
-                        </div>
-                        <h3 className="text-2xl font-bold">Motors & Drives</h3>
-                      </div>
-                      
-                      <p className="mb-6 text-gray-300">
-                        Precision servo motors and drive systems provide the mechanical action required
-                        for variable transformer adjustment and voltage regulation.
-                      </p>
-                      
-                      <div className="space-y-4">
-                        <div className="bg-white/10 p-4 rounded-lg">
-                          <h4 className="font-bold mb-2">Motor System Advantages</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
-                              <div>
-                                <span className="font-medium">Precision Positioning</span>
-                                <p className="text-sm text-gray-400">Micro-step control for exact voltage adjustment</p>
-                              </div>
-                            </li>
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
-                              <div>
-                                <span className="font-medium">Rapid Response</span>
-                                <p className="text-sm text-gray-400">Quick reaction to voltage fluctuations</p>
-                              </div>
-                            </li>
-                            <li className="flex items-start">
-                              <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
-                              <div>
-                                <span className="font-medium">Durability</span>
-                                <p className="text-sm text-gray-400">Long service life under continuous operation</p>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="lg:col-span-3 p-8">
-                      <h3 className="text-xl font-bold text-gray-800 mb-6">Motor & Drive Components</h3>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Servo Motors</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">AC servo motors</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">DC servo motors</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Brushless servo motors</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">High-torque motors</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Stepper motors</span>
-                            </li>
-                          </ul>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+              
+              <TabsContent value="motors" className="mt-0">
+                <Card className="border-none shadow-xl overflow-hidden">
+                  <CardContent className="p-0">
+                    <div className="grid grid-cols-1 lg:grid-cols-5">
+                      <div className="lg:col-span-2 bg-gray-900 text-white p-8">
+                        <div className="flex items-center mb-6">
+                          <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
+                            <Settings className="h-6 w-6 text-primary" />
+                          </div>
+                          <h3 className="text-2xl font-bold">Motors & Drives</h3>
                         </div>
                         
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Motor Drives</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Servo drives</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">PWM controllers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Stepper drivers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Motor control boards</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Integrated motor controllers</span>
-                            </li>
-                          </ul>
-                        </div>
-                        
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Mechanical Components</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Gears and gearboxes</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Couplings and adapters</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Mounting brackets and hardware</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Linear actuators</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Limit switches and sensors</span>
-                            </li>
-                          </ul>
-                        </div>
-                        
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Feedback Systems</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Encoders</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Resolvers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Position sensors</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Tachometers</span>
-                            </li>
-                            <li className="flex items-center">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                              <span className="text-gray-700">Hall effect sensors</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      
-                      <div className="mt-6 bg-primary/5 p-4 rounded-lg border border-primary/10">
-                        <div className="flex items-center mb-2">
-                          <BarChart4 className="h-5 w-5 text-primary mr-2" />
-                          <h4 className="font-bold text-gray-800">Performance Optimization</h4>
-                        </div>
-                        <p className="text-gray-600">
-                          Our motor systems are pre-matched and optimized for specific servo stabilizer applications, 
-                          ensuring perfect compatibility between motor, drive, and mechanical components for maximum
-                          performance and system longevity.
+                        <p className="mb-6 text-gray-300">
+                          Precision servo motors and drive systems provide the mechanical action required
+                          for variable transformer adjustment and voltage regulation.
                         </p>
+                        
+                        <div className="space-y-4">
+                          <div className="bg-white/10 p-4 rounded-lg">
+                            <h4 className="font-bold mb-2">Motor System Advantages</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
+                                <div>
+                                  <span className="font-medium">Precision Positioning</span>
+                                  <p className="text-sm text-gray-400">Micro-step control for exact voltage adjustment</p>
+                                </div>
+                              </li>
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
+                                <div>
+                                  <span className="font-medium">Rapid Response</span>
+                                  <p className="text-sm text-gray-400">Quick reaction to voltage fluctuations</p>
+                                </div>
+                              </li>
+                              <li className="flex items-start">
+                                <CheckCircle className="h-4 w-4 text-primary mr-2 mt-1" />
+                                <div>
+                                  <span className="font-medium">Durability</span>
+                                  <p className="text-sm text-gray-400">Long service life under continuous operation</p>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="lg:col-span-3 p-8">
+                        <h3 className="text-xl font-bold text-gray-800 mb-6">Motor & Drive Components</h3>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Servo Motors</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">AC servo motors</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">DC servo motors</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Brushless servo motors</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">High-torque motors</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Stepper motors</span>
+                              </li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Motor Drives</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Servo drives</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">PWM controllers</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Stepper drivers</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Motor control boards</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Integrated motor controllers</span>
+                              </li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Mechanical Components</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Gears and gearboxes</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Couplings and adapters</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Mounting brackets and hardware</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Linear actuators</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Limit switches and sensors</span>
+                              </li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-gray-50 p-4 rounded-lg">
+                            <h4 className="font-bold text-primary border-b border-gray-200 pb-2 mb-3">Feedback Systems</h4>
+                            <ul className="space-y-2">
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Encoders</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Resolvers</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Position sensors</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Tachometers</span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                <span className="text-gray-700">Hall effect sensors</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-6 bg-primary/5 p-4 rounded-lg border border-primary/10">
+                          <div className="flex items-center mb-2">
+                            <BarChart4 className="h-5 w-5 text-primary mr-2" />
+                            <h4 className="font-bold text-gray-800">Performance Optimization</h4>
+                          </div>
+                          <p className="text-gray-600">
+                            Our motor systems are pre-matched and optimized for specific servo stabilizer applications, 
+                            ensuring perfect compatibility between motor, drive, and mechanical components for maximum
+                            performance and system longevity.
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs> */}
         </div>
       </section>
       

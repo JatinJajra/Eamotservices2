@@ -92,7 +92,7 @@ const DGProcurementPage: React.FC = () => {
     },
     {
       question: 'What is the typical delivery and installation timeframe?',
-      answer: 'For standard capacities (up to 500kVA), we typically deliver within 2-3 weeks from order confirmation. Installation and commissioning usually takes 2-4 days depending on site conditions. For larger or customized units, the timeline may extend to 4-6 weeks. We can expedite delivery in emergency situations.'
+      answer: 'For standard capacities (up to 500kVA), we typically deliver within 3-4 weeks from order confirmation. Installation and commissioning usually takes 2-4 days depending on site conditions. For larger or customized units, the timeline may extend to 4-6 weeks. We can expedite delivery in emergency situations.'
     },
     {
       question: 'What maintenance support is provided after procurement?',
@@ -100,7 +100,7 @@ const DGProcurementPage: React.FC = () => {
     },
     {
       question: 'Can existing older DG sets be upgraded to CPCB IV+ compliance?',
-      answer: 'In most cases, older DG sets cannot be directly upgraded to meet CPCB IV+ norms as these standards require fundamental changes to engine design and exhaust systems. However, we offer trade-in programs where we can evaluate your existing unit and provide credits toward a new compliant model.'
+      answer: "In most cases, older DG sets cannot be directly upgraded to meet CPCB IV+ norms as these standards require fundamental changes to engine design and exhaust systems. However, we offer trade-in programs where we can evaluate your existing unit and provide credits toward a new compliant model.However, we offer retrofit solutions where we can evaluate your existing unit and add a Retrofit Emission Control Device (RECD) to help reduce emissions and improve compliance."
     },
   ];
 

@@ -150,9 +150,9 @@ export default function CareersPage() {
         transition={{ duration: 0.5 }}
       >
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 relative overflow-hidden">
+        {/* <section className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full overflow-hidden">
-            <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+            <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
           </div>
           
           <div className="container mx-auto px-4 relative z-10">
@@ -167,9 +167,40 @@ export default function CareersPage() {
           </div>
           
           <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-            <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+            <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
           </div>
-        </section>
+        </section> */}
+
+        <section className="relative py-20 overflow-hidden text-white">
+  {/* Dark Rich Blue Gradient */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#154679] to-[#103b5c]"></div>
+
+  {/* Optional Black Overlay for Extra Depth */}
+  <div className="absolute inset-0 bg-black opacity-30"></div>
+
+  {/* Top Decoration Pattern */}
+  <div className="absolute top-0 left-0 w-full overflow-hidden z-10">
+    <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+  </div>
+
+  {/* Content */}
+  <div className="container mx-auto px-4 relative z-20">
+    <div className="max-w-3xl mx-auto text-center">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-montserrat leading-tight mb-6">
+        Join Our <span className="text-accent">Team</span>
+      </h1>
+      <p className="text-lg md:text-xl opacity-90 mb-8">
+        Discover exciting career opportunities at EAMOT and be part of our mission to revolutionize energy management through innovative solutions.
+      </p>
+    </div>
+  </div>
+
+  {/* Bottom Decoration Pattern */}
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden z-10">
+    <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+  </div>
+</section>
+
         
         {/* Application Form - Shown when a job is selected */}
         {selectedJob && (
@@ -443,4 +474,4 @@ export default function CareersPage() {
         </section>
       </motion.div>
   );
-}
+}  

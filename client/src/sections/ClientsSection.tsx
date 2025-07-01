@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 const clients = [
-  { id: 1, logo: "https://www.eamot.com/assets/img/brand/11.jpg", alt: "Client Logo" },
-  { id: 2, logo: "https://www.eamot.com/assets/img/brand/12.jpg", alt: "Client Logo" },
-  { id: 3, logo: "https://www.eamot.com/assets/img/brand/13.jpg", alt: "Client Logo" },
-  { id: 4, logo: "https://www.eamot.com/assets/img/brand/14.jpg", alt: "Client Logo" },
-  { id: 5, logo: "https://www.eamot.com/assets/img/brand/16.png", alt: "Client Logo" },
-  { id: 6, logo: "https://www.eamot.com/assets/img/brand/17.png", alt: "Client Logo" }
+  { id: 1, logo: "assets/img/brand/11.jpg", alt: "Client Logo" },
+  { id: 2, logo: "assets/img/brand/12.jpg", alt: "Client Logo" },
+  { id: 3, logo: "assets/img/brand/13.jpg", alt: "Client Logo" },
+  { id: 4, logo: "assets/img/brand/14.jpg", alt: "Client Logo" },
+  { id: 5, logo: "assets/img/brand/16.png", alt: "Client Logo" },
+  { id: 6, logo: "assets/img/brand/17.png", alt: "Client Logo" }
 ];
 
 export default function ClientsSection() {

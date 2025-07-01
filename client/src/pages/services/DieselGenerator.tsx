@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import ContactModal from "@/components/Popup/ContectModal";
 
 export default function DieselGeneratorPage() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+            const openModal = () => setIsModalOpen(true);
+      const closeModal = () => setIsModalOpen(false);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -10,9 +15,9 @@ export default function DieselGeneratorPage() {
       transition={{ duration: 0.5 }}
     >
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 relative overflow-hidden">
+      {/* <section className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -30,91 +35,71 @@ export default function DieselGeneratorPage() {
         </div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
         </div>
-      </section>
+      </section> */}
+
+      {/* <section className="bg-[#0d0d0d] text-white py-20 relative overflow-hidden">
+  <div className="absolute top-0 left-0 w-full overflow-hidden">
+    <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+  </div>
+
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="max-w-3xl mx-auto text-center">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-montserrat leading-tight mb-6">
+        Diesel Generator <span className="text-accent">Maintenance & Services</span>
+      </h1>
+      <p className="text-lg md:text-xl opacity-90 mb-8">
+        Professional diesel generator maintenance services for optimal performance, reliability, and longevity.
+      </p>
+      <Button asChild className="bg-accent hover:bg-accent/90 text-white text-center font-poppins font-medium px-8 py-6 h-auto">
+        <a href="#contact">Get A Quote</a>
+      </Button>
+    </div>
+  </div>
+
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+    <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+  </div>
+</section> */}
+                <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       
-      {/* Service Overview */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4">
-                <span className="font-semibold">Diesel Generator Services</span>
-              </div>
-              
-              <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6 text-gray-800">
-                Comprehensive Diesel Generator <span className="text-primary">Maintenance</span>
-              </h2>
-              
-              <p className="text-gray-700 mb-6">
-                Our team of skilled technicians provides comprehensive maintenance services for all types of diesel generators. We ensure your generator is operating at peak performance levels, minimizing downtime and maximizing efficiency.
-              </p>
-              
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start">
-                  <div className="mt-1 mr-4 text-secondary">
-                    <i className="fas fa-check-circle text-xl"></i>
-                  </div>
-                  <p className="text-gray-700">
-                    Routine inspections to identify potential issues before they cause problems
-                  </p>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="mt-1 mr-4 text-secondary">
-                    <i className="fas fa-check-circle text-xl"></i>
-                  </div>
-                  <p className="text-gray-700">
-                    Regular oil changes and filter replacements to maintain optimal performance
-                  </p>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="mt-1 mr-4 text-secondary">
-                    <i className="fas fa-check-circle text-xl"></i>
-                  </div>
-                  <p className="text-gray-700">
-                    Comprehensive performance testing to ensure reliability during power outages
-                  </p>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="mt-1 mr-4 text-secondary">
-                    <i className="fas fa-check-circle text-xl"></i>
-                  </div>
-                  <p className="text-gray-700">
-                    Expert repairs and part replacements when issues are identified
-                  </p>
-                </div>
-              </div>
-              
-              <Button asChild className="bg-primary hover:bg-primary/90 text-white font-poppins font-medium">
-                <a href="#contact">Schedule Maintenance</a>
-              </Button>
-            </div>
-            
-            <div className="relative">
-              <img 
-                src="https://www.eamot.com/assets/img/services/1.jpg" 
-                alt="Diesel Generator Maintenance" 
-                className="rounded-lg shadow-lg w-full"
-              />
-              <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-xl">
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center mr-4">
-                    <i className="fas fa-tools text-primary text-xl"></i>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-800 mb-1">Expert Service</h4>
-                    <p className="text-gray-600 text-sm">By certified technicians</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+   <section className="bg-black text-white py-20 relative overflow-hidden">
+  {/* Top Pattern */}
+  <div className="absolute top-0 left-0 w-full overflow-hidden opacity-20 pointer-events-none">
+    <img
+      src="assets/img/hero/nav-parrten-top.png"
+      alt=""
+      className="w-full"
+    />
+  </div>
+
+  {/* Content */}
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="max-w-3xl mx-auto text-center">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-montserrat leading-tight mb-6">
+        Diesel Generator <span className="text-accent">Maintenance & Services</span>
+      </h1>
+      <p className="text-lg md:text-xl text-gray-300 mb-8">
+        Professional diesel generator maintenance services for optimal performance, reliability, and longevity.
+      </p>
+      <Button asChild className="bg-accent hover:bg-accent/90 text-white text-center font-poppins font-medium px-8 py-6 h-auto">
+        <a href="#" onClick={openModal}>Get A Quote</a>
+      </Button>
+    </div>
+  </div>
+
+  {/* Bottom Pattern */}
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden opacity-20 pointer-events-none">
+    <img
+      src="assets/img/hero/nav-parrten-botoom.png"
+      alt=""
+      className="w-full"
+    />
+  </div>
+</section>
+
       
       {/* Service Features */}
       <section className="py-16 md:py-24 bg-gray-50">
@@ -221,7 +206,7 @@ export default function DieselGeneratorPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild className="bg-accent hover:bg-accent/90 text-white text-center font-poppins font-medium px-8 py-6 h-auto">
-                <a href="#contact">Schedule Consultation</a>
+                <a href="#" onClick={openModal}>Schedule Consultation</a>
               </Button>
               <Button asChild variant="outline" className="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white text-center font-poppins font-medium px-8 py-6 h-auto">
                 <a href="tel:8970001110">Call Now: 897 000 111 02</a>

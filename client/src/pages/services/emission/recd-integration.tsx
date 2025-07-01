@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { 
@@ -20,8 +20,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { Badge } from "@/components/ui/badge";
+import ContactModal from "@/components/Popup/ContectModal";
 
 export default function RECDIntegrationPage() {
+      const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   const { ref: heroRef, inView: heroInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: featuresRef, inView: featuresInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: benefitsRef, inView: benefitsInView } = useIntersectionObserver({ threshold: 0.1 });
@@ -81,6 +85,8 @@ export default function RECDIntegrationPage() {
   return (
     <div className="bg-[#071128] min-h-screen text-white">
       {/* Hero Section with solid background */}
+                                   <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       <section 
         ref={heroRef}
         className="bg-[#0a1a3a] text-white py-16 md:py-24 relative overflow-hidden"
@@ -161,16 +167,17 @@ export default function RECDIntegrationPage() {
                 <Button 
                   className="bg-blue-600 hover:bg-blue-700 text-white"
                   size="lg"
+                  onClick={openModal}
                 >
                   Get Started
                 </Button>
-                <Button 
+                {/* <Button 
                   variant="outline" 
                   className="border-white text-white hover:bg-white/10"
                   size="lg"
                 >
                   Learn More
-                </Button>
+                </Button> */}
               </motion.div>
               
               <motion.div 
@@ -426,15 +433,15 @@ export default function RECDIntegrationPage() {
                       <ul className="mt-4 space-y-2">
                         <li className="flex items-start gap-2">
                           <Check className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                          <span>Self-learning algorithms for continuous optimization</span>
+                          <span className="text-white">Self-learning algorithms for continuous optimization</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <Check className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                          <span>Millisecond response time to operational changes</span>
+                          <span className="text-white">Millisecond response time to operational changes</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <Check className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                          <span>Military-grade reliability with redundant systems</span>
+                          <span className="text-white">Military-grade reliability with redundant systems</span>
                         </li>
                       </ul>
                     </div>
@@ -452,15 +459,15 @@ export default function RECDIntegrationPage() {
                       <ul className="mt-4 space-y-2">
                         <li className="flex items-start gap-2">
                           <Check className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                          <span>Proprietary catalyst formulation for 2x standard lifespan</span>
+                          <span className="text-white">Proprietary catalyst formulation for 2x standard lifespan</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <Check className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                          <span>Ultra-high surface area design for maximum contact</span>
+                          <span className="text-white">Ultra-high surface area design for maximum contact</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <Check className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                          <span>Temperature-resistant coating prevents degradation</span>
+                          <span className="text-white">Temperature-resistant coating prevents degradation</span>
                         </li>
                       </ul>
                     </div>
@@ -478,15 +485,15 @@ export default function RECDIntegrationPage() {
                       <ul className="mt-4 space-y-2">
                         <li className="flex items-start gap-2">
                           <Check className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                          <span>Wide-spectrum gas analyzers with ppb sensitivity</span>
+                          <span className="text-white">Wide-spectrum gas analyzers with ppb sensitivity</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <Check className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                          <span>Self-calibrating sensors maintain accuracy over time</span>
+                          <span className="text-white"> Self-calibrating sensors maintain accuracy over time</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <Check className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                          <span>Extreme environment rating for reliable operation</span>
+                          <span className="text-white">Extreme environment rating for reliable operation</span>
                         </li>
                       </ul>
                     </div>
@@ -504,15 +511,15 @@ export default function RECDIntegrationPage() {
                       <ul className="mt-4 space-y-2">
                         <li className="flex items-start gap-2">
                           <Check className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                          <span>Cloud-based dashboard accessible from any device</span>
+                          <span className="text-white">Cloud-based dashboard accessible from any device</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <Check className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                          <span>Predictive maintenance alerts prevent downtime</span>
+                          <span className="text-white">Predictive maintenance alerts prevent downtime</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <Check className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                          <span>Automated compliance report generation for audits</span>
+                          <span className="text-white">Automated compliance report generation for audits</span>
                         </li>
                       </ul>
                     </div>
@@ -896,12 +903,12 @@ export default function RECDIntegrationPage() {
             <div className="bg-[#0c2150] p-8 rounded-xl border border-blue-900/50 mt-12 text-center">
               <h3 className="text-2xl font-bold mb-6">Ready to Transform Your Emission Control Systems?</h3>
               <div className="flex flex-wrap justify-center gap-6">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white" onClick={openModal}>
                   Request Integration Service
                 </Button>
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+                {/* <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
                   Download Compatibility Guide
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>
@@ -976,6 +983,7 @@ export default function RECDIntegrationPage() {
             <Button 
               className="bg-blue-600 hover:bg-blue-700 text-white"
               size="lg"
+              onClick={openModal}
             >
               Contact Us <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

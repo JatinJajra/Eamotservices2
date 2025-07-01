@@ -20,11 +20,16 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Link } from 'wouter';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import ContactModal from '@/components/Popup/ContectModal';
+import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 
 const DFKAssessmentPage: React.FC = () => {
      const [isModalOpen, setIsModalOpen] = useState(false);
           const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
+      const { ref: testimonialsRef, inView: testimonialsInView } = useIntersectionObserver({ threshold: 0.2 });
+        // const { ref: testimonialsRef, inView: testimonialsInView } = useIntersectionObserver({ threshold: 0.2 });
+      
+    
   // Assessment Services
   const assessmentServices = [
     {
@@ -372,45 +377,47 @@ const DFKAssessmentPage: React.FC = () => {
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="bg-gradient-to-br from-primary-50 to-blue-50 rounded-xl p-8 shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Case Study: Manufacturing Facility</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">Case Study: Dual-Fuel Conversion at a Premium High-Rise Condominium </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-800">Client Profile</h4>
-                    <p className="text-gray-700">Large manufacturing plant with three 500 kVA diesel generators operating 12 hours daily</p>
+                    <h4 className="text-lg font-semibold text-gray-800">Client Overview</h4>
+                    <p className="text-gray-700">A prestigious residential high-rise condominium in Gurgaon, known for its upscale living standards 
+and commitment to sustainability and compliance. </p>
                   </div>
                   
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-800">Assessment Findings</h4>
+                    <h4 className="text-lg font-semibold text-gray-800">Objective</h4>
                     <ul className="space-y-2 mt-2">
                       <li className="flex items-start">
                         <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">All generators suitable for dual fuel conversion</span>
+                        <span className="text-gray-700">To reduce diesel dependency, lower operational fuel costs, and adopt a cleaner energy solution 
+while maintaining uninterrupted power backup for residents. </span>
                       </li>
-                      <li className="flex items-start">
+                      {/* <li className="flex items-start">
                         <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                         <span className="text-gray-700">Natural gas connection available at site perimeter</span>
                       </li>
                       <li className="flex items-start">
                         <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                         <span className="text-gray-700">Minor infrastructure modifications required</span>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                   
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-800">Implementation Results</h4>
+                    <h4 className="text-lg font-semibold text-gray-800">DG Set Profile</h4>
                     <ul className="space-y-2 mt-2">
                       <li className="flex items-start">
                         <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">39% reduction in monthly fuel costs</span>
+                        <span className="text-gray-700">1 × 500 kVA </span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">ROI achieved in 7.5 months</span>
+                        <span className="text-gray-700">1 × 625 kVA </span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">35% reduction in carbon emissions</span>
+                        <span className="text-gray-700">1 × 1010 kVA </span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
@@ -422,49 +429,57 @@ const DFKAssessmentPage: React.FC = () => {
               </div>
               
               <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-8 shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Case Study: Commercial Complex</h3>
+                {/* <h3 className="text-2xl font-bold text-gray-800 mb-4">Case Study: Commercial Complex</h3> */}
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-800">Client Profile</h4>
-                    <p className="text-gray-700">Shopping mall with two 250 kVA diesel generators for backup power</p>
+                    <h4 className="text-lg font-semibold text-gray-800">Solution Implemented</h4>
+                    <p className="text-gray-700">EAMOT successfully installed Dual-Fuel Conversion Kits (PNG + Diesel) on all three DG Sets, 
+enabling the systems to run efficiently on a combination of piped natural gas (PNG) and diesel. </p>
                   </div>
                   
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-800">Assessment Findings</h4>
+                    <h4 className="text-lg font-semibold text-gray-800">Implementation Highlights</h4>
                     <ul className="space-y-2 mt-2">
                       <li className="flex items-start">
                         <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">Generators fully compatible with dual fuel technology</span>
+                        <span className="text-gray-700">Detailed site survey and statutory planning approvals</span>
                       </li>
                       <li className="flex items-start">
                         <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">CNG pipeline available in close proximity</span>
+                        <span className="text-gray-700">Installation done with minimal downtime, aligned with resident comfort and power 
+schedules.</span>
                       </li>
                       <li className="flex items-start">
                         <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">Modest infrastructure modifications needed</span>
+                        <span className="text-gray-700">Fully integrated with safety interlocks, flame arrestors, and gas leak sensors. 
+</span>
+                      </li>
+                       <li className="flex items-start">
+                        <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">Performance tuning completed without compromising DG reliability.  
+</span>
                       </li>
                     </ul>
                   </div>
                   
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-800">Implementation Results</h4>
+                    <h4 className="text-lg font-semibold text-gray-800">Key Outcomes</h4>
                     <ul className="space-y-2 mt-2">
                       <li className="flex items-start">
                         <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">36% reduction in backup power costs</span>
+                        <span className="text-gray-700">Achieved 50–60% diesel substitution during optimal load conditions. </span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">ROI achieved in 11 months</span>
+                        <span className="text-gray-700">Marked reduction in emissions and visible smoke, enhancing air quality. </span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">32% reduction in carbon footprint</span>
+                        <span className="text-gray-700">Substantial fuel cost savings, contributing to lower CAM charges. </span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">Improved generator performance and reduced maintenance needs</span>
+                        <span className="text-gray-700">Fully compliant with CPCB and local SPCB authority regulations. </span>
                       </li>
                     </ul>
                   </div>
@@ -474,6 +489,79 @@ const DFKAssessmentPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+        <motion.section
+        ref={testimonialsRef}
+        initial={{ opacity: 0, y: 40 }}
+        animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+        className="py-20 bg-gradient-to-b from-gray-900 to-black"
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={testimonialsInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-gray-100 font-medium"
+              >
+                SUCCESS STORIES
+              </motion.span>
+              
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-3xl md:text-4xl font-bold mt-2 mb-6 text-gray-100"
+              >
+                What Our Clients Say
+              </motion.h2>
+            </div>
+            
+            {[
+              {
+                quote: "Trust Reinforced: Satisfied with the results, the customer placed an additional order for dual-fuel conversion of another 625 kVA DG Set at their adjacent tower block. We commend EAMOT for successfully supplying, installing, testing, and commissioning dual fuel kits for four DG sets (500 kVA, two 625 kVA, and 1010 kVA) at our Condominium. The project was completed professionally, on time, and with minimal disruption. We appreciate EAMOT’s quality work, with no issues currently, and anticipate a hassle-free operation. ",
+                author: "Thank you,",
+                position: "Property Manager ",
+                company: "",
+                delay: 0.4
+              },
+              // {
+              //   quote: "I was skeptical about achieving the promised fuel savings, but EAMOT's precision implementation has delivered exactly as promised - a 58% average substitution rate with zero operational disruption during installation. Their 72-hour testing protocol is the most thorough I've seen.",
+              //   author: "Ananya Patel",
+              //   position: "Operations Director",
+              //   company: "Reliance Data Centers",
+              //   delay: 0.7
+              // }
+            ].map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: testimonial.delay }}
+                className="mb-12 last:mb-0"
+              >
+                <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8 relative">
+                  <div className="absolute top-6 left-6 text-6xl text-primary opacity-20">"</div>
+                  <p className="text-gray-300 relative z-10 mb-6">
+                    {testimonial.quote}
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center  font-bold">
+                      {/* {testimonial.author.charAt(0)}{testimonial.author.split(' ')[1].charAt(0)} */}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-400">{testimonial.author}</div>
+                      <div className="text-sm text-gray-400">{testimonial.position}, {testimonial.company}</div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-black to-gray-900 text-white">

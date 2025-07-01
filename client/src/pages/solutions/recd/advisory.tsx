@@ -1,149 +1,189 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { 
-  BookOpen, 
-  FileText, 
-  CheckCircle, 
-  AlertTriangle, 
-  BarChart4, 
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  BookOpen,
+  FileText,
+  CheckCircle,
+  AlertTriangle,
+  BarChart4,
   Clipboard,
   Users,
   FileCheck,
   Building,
   Ruler,
-  CheckSquare
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Link } from 'wouter';
-import ContactModal from '@/components/Popup/ContectModal';
+  CheckSquare,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { Link } from "wouter";
+import ContactModal from "@/components/Popup/ContectModal";
 
 const RECDAdvisoryPage: React.FC = () => {
-     const [isModalOpen, setIsModalOpen] = useState(false);
-          const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
   // Advisory Services
   const advisoryServices = [
     {
       icon: <FileCheck className="h-8 w-8 text-primary" />,
-      title: 'Regulatory Compliance Assessment',
-      description: 'Comprehensive evaluation of your facility against current emission standards and identification of compliance gaps.',
-      color: 'bg-blue-50'
+      title: "Regulatory Compliance Assessment",
+      description:
+        "Comprehensive evaluation of your facility against current emission standards and identification of compliance gaps.",
+      color: "bg-blue-50",
     },
     {
       icon: <BarChart4 className="h-8 w-8 text-primary" />,
-      title: 'Technical Feasibility Analysis',
-      description: 'Detailed assessment of technical requirements for RECD implementation on your specific diesel generator models.',
-      color: 'bg-amber-50'
+      title: "Technical Feasibility Analysis",
+      description:
+        "Detailed assessment of technical requirements for RECD implementation on your specific diesel generator models.",
+      color: "bg-amber-50",
     },
     {
       icon: <AlertTriangle className="h-8 w-8 text-primary" />,
-      title: 'Risk Evaluation',
-      description: 'Analysis of potential operational impacts, performance considerations, and implementation challenges.',
-      color: 'bg-red-50'
+      title: "Risk Evaluation",
+      description:
+        "Analysis of potential operational impacts, performance considerations, and implementation challenges.",
+      color: "bg-red-50",
     },
     {
       icon: <Building className="h-8 w-8 text-primary" />,
-      title: 'Facility Assessment',
-      description: 'On-site evaluation of installation requirements, space constraints, and infrastructure modifications needed.',
-      color: 'bg-green-50'
+      title: "Facility Assessment",
+      description:
+        "On-site evaluation of installation requirements, space constraints, and infrastructure modifications needed.",
+      color: "bg-green-50",
     },
     {
       icon: <FileText className="h-8 w-8 text-primary" />,
-      title: 'Documentation & Reporting',
-      description: 'Preparation of comprehensive assessment reports, compliance documentation, and implementation roadmaps.',
-      color: 'bg-indigo-50'
+      title: "Documentation & Reporting",
+      description:
+        "Preparation of comprehensive assessment reports, compliance documentation, and implementation roadmaps.",
+      color: "bg-indigo-50",
     },
     {
       icon: <Users className="h-8 w-8 text-primary" />,
-      title: 'Stakeholder Consultation',
-      description: 'Engagement with regulatory authorities, manufacturer representatives, and facility management teams.',
-      color: 'bg-purple-50'
-    }
+      title: "Stakeholder Consultation",
+      description:
+        "Engagement with regulatory authorities, manufacturer representatives, and facility management teams.",
+      color: "bg-purple-50",
+    },
   ];
 
   // Benefits
   const benefits = [
     {
-      title: 'Regulatory Compliance',
-      description: 'Ensure full compliance with CPCB/SPCB emission control regulations and avoid penalties.',
-      icon: <CheckSquare className="h-6 w-6 text-primary" />
+      title: "Regulatory Compliance",
+      description:
+        "Ensure full compliance with CPCB/SPCB emission control regulations and avoid penalties.",
+      icon: <CheckSquare className="h-6 w-6 text-primary" />,
     },
     {
-      title: 'Cost Optimization',
-      description: 'Identify the most cost-effective RECD implementation approach for your specific requirements.',
-      icon: <BarChart4 className="h-6 w-6 text-primary" />
+      title: "Cost Optimization",
+      description:
+        "Identify the most cost-effective RECD implementation approach for your specific requirements.",
+      icon: <BarChart4 className="h-6 w-6 text-primary" />,
     },
     {
-      title: 'Risk Mitigation',
-      description: 'Identify and address potential technical challenges before implementation begins.',
-      icon: <AlertTriangle className="h-6 w-6 text-primary" />
+      title: "Risk Mitigation",
+      description:
+        "Identify and address potential technical challenges before implementation begins.",
+      icon: <AlertTriangle className="h-6 w-6 text-primary" />,
     },
     {
-      title: 'Implementation Roadmap',
-      description: 'Receive a clear, step-by-step implementation plan with timelines and resource requirements.',
-      icon: <Clipboard className="h-6 w-6 text-primary" />
-    }
+      title: "Implementation Roadmap",
+      description:
+        "Receive a clear, step-by-step implementation plan with timelines and resource requirements.",
+      icon: <Clipboard className="h-6 w-6 text-primary" />,
+    },
   ];
 
   // Implementation Process
   const implementationSteps = [
     {
-      step: '1',
-      title: 'Initial Consultation',
-      description: 'Discussion of your facility specifications, generator details, and compliance requirements.'
+      step: "1",
+      title: "Initial Consultation",
+      description:
+        "Discussion of your facility specifications, generator details, and compliance requirements.",
     },
     {
-      step: '2',
-      title: 'On-site Assessment',
-      description: 'Comprehensive inspection of your generators, installation environment, and operational patterns.'
+      step: "2",
+      title: "On-site Assessment",
+      description:
+        "Comprehensive inspection of your generators, installation environment, and operational patterns.",
     },
     {
-      step: '3',
-      title: 'Technical Analysis',
-      description: 'Detailed evaluation of RECD options, compatibility factors, and performance considerations.'
+      step: "3",
+      title: "Technical Analysis",
+      description:
+        "Detailed evaluation of RECD options, compatibility factors, and performance considerations.",
     },
     {
-      step: '4',
-      title: 'Compliance Verification',
-      description: 'Analysis of regulatory requirements specific to your facility location and generator specifications.'
+      step: "4",
+      title: "Compliance Verification",
+      description:
+        "Analysis of regulatory requirements specific to your facility location and generator specifications.",
     },
     {
-      step: '5',
-      title: 'Solution Design',
-      description: 'Development of customized RECD implementation plan with technical specifications and procedures.'
+      step: "5",
+      title: "Solution Design",
+      description:
+        "Development of customized RECD implementation plan with technical specifications and procedures.",
     },
     {
-      step: '6',
-      title: 'Recommendation Report',
-      description: 'Delivery of comprehensive advisory report with implementation roadmap and compliance documentation.'
-    }
+      step: "6",
+      title: "Recommendation Report",
+      description:
+        "Delivery of comprehensive advisory report with implementation roadmap and compliance documentation.",
+    },
   ];
 
   return (
     <>
-
-                    <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-black to-gray-900 text-white py-24">
         <div className="absolute inset-0 opacity-20">
-          <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
+          <svg
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            className="w-full h-full"
+          >
             <defs>
-              <pattern id="grid-pattern" patternUnits="userSpaceOnUse" width="20" height="20">
-                <rect width="20" height="20" fill="none" stroke="currentColor" strokeWidth="0.5" />
+              <pattern
+                id="grid-pattern"
+                patternUnits="userSpaceOnUse"
+                width="20"
+                height="20"
+              >
+                <rect
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="0.5"
+                />
                 <circle cx="10" cy="10" r="1" fill="currentColor" />
-                <path d="M10,0 V20 M0,10 H20" stroke="currentColor" strokeWidth="0.5" />
+                <path
+                  d="M10,0 V20 M0,10 H20"
+                  stroke="currentColor"
+                  strokeWidth="0.5"
+                />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid-pattern)" />
           </svg>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-center">
             <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
-              <motion.h1 
+              <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -151,13 +191,15 @@ const RECDAdvisoryPage: React.FC = () => {
               >
                 RECD Compliance Advisory
               </motion.h1>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-xl opacity-90 mb-8 max-w-xl"
               >
-                Expert guidance to navigate Retrofit Emission Control Device (RECD) requirements for your diesel generators, ensuring regulatory compliance and optimal implementation approach.
+                Expert guidance to navigate Retrofit Emission Control Device
+                (RECD) requirements for your diesel generators, ensuring
+                regulatory compliance and optimal implementation approach.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -165,15 +207,27 @@ const RECDAdvisoryPage: React.FC = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="flex flex-wrap gap-4"
               >
-                <Button asChild size="lg" onClick={openModal} className="bg-white text-primary hover:bg-white/90">
+                <Button
+                  asChild
+                  size="lg"
+                  onClick={openModal}
+                  className="bg-white text-primary hover:bg-white/90"
+                >
                   <Link href="#">Request Advisory Services</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="bg-white text-primary hover:bg-white/90">
-                  <Link href="/solutions/recd/procurement">View RECD Procurement</Link>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="bg-white text-primary hover:bg-white/90"
+                >
+                  <Link href="/solutions/recd/procurement">
+                    View RECD Procurement
+                  </Link>
                 </Button>
               </motion.div>
             </div>
-            
+
             <div className="w-full lg:w-1/2 lg:pl-10">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -183,10 +237,14 @@ const RECDAdvisoryPage: React.FC = () => {
               >
                 <div className="flex items-center mb-4">
                   <BookOpen className="h-6 w-6 text-white mr-3" />
-                  <h3 className="text-xl font-semibold">RECD Regulatory Overview</h3>
+                  <h3 className="text-xl font-semibold">
+                    RECD Regulatory Overview
+                  </h3>
                 </div>
                 <p className="text-white/80 mb-4">
-                  As per CPCB/SPCB guidelines, diesel generators require Retrofit Emission Control Devices to reduce particulate matter and other pollutants to compliant levels.
+                  As per CPCB/SPCB guidelines, diesel generators require
+                  Retrofit Emission Control Devices to reduce particulate matter
+                  and other pollutants to compliant levels.
                 </p>
                 <div className="space-y-3 mt-6">
                   <div className="flex items-start">
@@ -194,8 +252,13 @@ const RECDAdvisoryPage: React.FC = () => {
                       <span className="text-sm font-bold">1</span>
                     </div>
                     <div>
-                      <h4 className="font-medium text-white">Applicable to generators ≥ 125 kVA</h4>
-                      <p className="text-sm text-white/70">All DG sets with capacity of 125 kVA and above require RECD implementation</p>
+                      <h4 className="font-medium text-white">
+                        Applicable to generators ≥ 41 KW
+                      </h4>
+                      <p className="text-sm text-white/70">
+                        All DG sets with capacity of 125 kVA and above require
+                        RECD implementation
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -203,8 +266,13 @@ const RECDAdvisoryPage: React.FC = () => {
                       <span className="text-sm font-bold">2</span>
                     </div>
                     <div>
-                      <h4 className="font-medium text-white">CPCB Type Approval Required</h4>
-                      <p className="text-sm text-white/70">Only approved RECD systems with valid certification can be installed</p>
+                      <h4 className="font-medium text-white">
+                        CPCB Type Approval Required
+                      </h4>
+                      <p className="text-sm text-white/70">
+                        Only approved RECD systems with valid certification can
+                        be installed
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -212,8 +280,13 @@ const RECDAdvisoryPage: React.FC = () => {
                       <span className="text-sm font-bold">3</span>
                     </div>
                     <div>
-                      <h4 className="font-medium text-white">Compliance Timeline</h4>
-                      <p className="text-sm text-white/70">Implementation deadlines vary by region and SPCB jurisdiction</p>
+                      <h4 className="font-medium text-white">
+                        Compliance Timeline
+                      </h4>
+                      <p className="text-sm text-white/70">
+                        Implementation deadlines vary by region and SPCB
+                        jurisdiction
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -227,9 +300,12 @@ const RECDAdvisoryPage: React.FC = () => {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our RECD Advisory Services</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">
+              Our RECD Advisory Services
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Comprehensive evaluation and guidance for implementing Retrofit Emission Control Devices on your diesel generators
+              Comprehensive evaluation and guidance for implementing Retrofit
+              Emission Control Devices on your diesel generators
             </p>
           </div>
 
@@ -245,16 +321,20 @@ const RECDAdvisoryPage: React.FC = () => {
                   visible: {
                     opacity: 1,
                     y: 0,
-                    transition: { duration: 0.5, delay: index * 0.1 }
-                  }
+                    transition: { duration: 0.5, delay: index * 0.1 },
+                  },
                 }}
               >
                 <Card className="h-full border-none shadow-md hover:shadow-xl transition-shadow duration-300">
                   <CardContent className="pt-6">
-                    <div className={`w-16 h-16 rounded-2xl ${service.color} flex items-center justify-center mb-6`}>
+                    <div
+                      className={`w-16 h-16 rounded-2xl ${service.color} flex items-center justify-center mb-6`}
+                    >
                       {service.icon}
                     </div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-800">{service.title}</h3>
+                    <h3 className="text-xl font-bold mb-3 text-gray-800">
+                      {service.title}
+                    </h3>
                     <p className="text-gray-600">{service.description}</p>
                   </CardContent>
                 </Card>
@@ -268,16 +348,19 @@ const RECDAdvisoryPage: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Advisory Process</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">
+              Our Advisory Process
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              A structured approach to evaluate your RECD requirements and develop an optimal implementation strategy
+              A structured approach to evaluate your RECD requirements and
+              develop an optimal implementation strategy
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               <div className="absolute left-8 top-8 bottom-8 w-0.5 bg-primary-100 hidden md:block"></div>
-              
+
               {implementationSteps.map((step, index) => (
                 <motion.div
                   key={index}
@@ -290,9 +373,11 @@ const RECDAdvisoryPage: React.FC = () => {
                   <div className="md:absolute md:left-0 md:top-0 flex items-center justify-center w-16 h-16 bg-primary text-white rounded-full font-bold text-xl mb-4 md:mb-0">
                     {step.step}
                   </div>
-                  
+
                   <div className="bg-gray-50 p-6 rounded-lg shadow-md">
-                    <h3 className="text-xl font-bold mb-2 text-gray-800">{step.title}</h3>
+                    <h3 className="text-xl font-bold mb-2 text-gray-800">
+                      {step.title}
+                    </h3>
                     <p className="text-gray-700">{step.description}</p>
                   </div>
                 </motion.div>
@@ -306,9 +391,12 @@ const RECDAdvisoryPage: React.FC = () => {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Benefits of Our Advisory Services</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">
+              Benefits of Our Advisory Services
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Our expert guidance provides valuable advantages for your RECD implementation
+              Our expert guidance provides valuable advantages for your RECD
+              implementation
             </p>
           </div>
 
@@ -327,7 +415,9 @@ const RECDAdvisoryPage: React.FC = () => {
                     {benefit.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2 text-gray-800">{benefit.title}</h3>
+                    <h3 className="text-xl font-bold mb-2 text-gray-800">
+                      {benefit.title}
+                    </h3>
                     <p className="text-gray-600">{benefit.description}</p>
                   </div>
                 </div>
@@ -338,85 +428,280 @@ const RECDAdvisoryPage: React.FC = () => {
       </section>
 
       {/* Case Study */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto bg-primary-50 rounded-xl overflow-hidden shadow-lg">
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-gray-800">Case Study: Manufacturing Facility</h2>
-                
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                  Case Study: NBFC
+                </h2>
+
                 <div className="space-y-4 mb-6">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800">The Challenge</h3>
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      Client Overview
+                    </h3>
                     <p className="text-gray-600">
-                      A large manufacturing facility operating multiple DG sets needed to comply with new emission regulations but faced space constraints and technical compatibility challenges.
+                      A prominent Non-Banking Financial Company (NBFC) with a
+                      strong presence across metro and tier- 2 cities, operating
+                      critical backend IT systems and customer-facing branches
+                      that require 24/7 power availability.{" "}
                     </p>
                   </div>
-                  
+
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800">Our Approach</h3>
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      Challenge
+                    </h3>
                     <p className="text-gray-600">
-                      We conducted a comprehensive on-site assessment, technical compatibility analysis, and regulatory compliance review to develop a phased implementation plan.
+                      With increasing focus on emission norms and green
+                      compliance in urban zones, the client was required to
+                      retrofit emission control on their existing DG Set (125
+                      kVA) at a key regional office. The primary concerns:
+                      ∙Maintaining uninterrupted operations during installation.
+                      ∙Ensuring CPCB compliance without replacing the existing
+                      DG Set. ∙Fast implementation due to an upcoming audit and
+                      regulatory deadline{" "}
                     </p>
                   </div>
                 </div>
-                
+
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">The Results</h3>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    The Results
+                  </h3>
                   <ul className="space-y-2">
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
-                      <span className="text-gray-600">Full compliance achieved within regulatory timeline</span>
+                      <span className="text-gray-600">
+                        Full compliance achieved within regulatory timeline
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
-                      <span className="text-gray-600">32% cost savings through optimized implementation</span>
+                      <span className="text-gray-600">
+                        Zero operational disruption during installation
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
-                      <span className="text-gray-600">Zero operational disruption during installation</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
-                      <span className="text-gray-600">Custom solution for space-constrained installation</span>
+                      <span className="text-gray-600">
+                        Custom solution for space-constrained installation
+                      </span>
                     </li>
                   </ul>
                 </div>
               </div>
-              
+
               <div className="bg-gradient-to-r from-primary-800 to-primary-900 text-white p-8 flex flex-col">
                 <h3 className="text-xl font-semibold mb-6">Assessment Scope</h3>
-                
+
                 <div className="space-y-4 flex-grow">
                   <div>
                     <p className="font-medium">Facility:</p>
-                    <p className="text-white/80 text-sm">Manufacturing facility with 6 diesel generators (150-500 kVA)</p>
+                    <p className="text-white/80 text-sm">
+                      Manufacturing facility with 6 diesel generators (150-500
+                      kVA)
+                    </p>
                   </div>
-                  
+
                   <div>
                     <p className="font-medium">Regulatory Requirements:</p>
-                    <p className="text-white/80 text-sm">CPCB/SPCB emission compliance with PM reduction &gt;70%</p>
+                    <p className="text-white/80 text-sm">
+                      CPCB/SPCB emission compliance with PM reduction &gt;70%
+                    </p>
                   </div>
-                  
+
                   <div>
                     <p className="font-medium">Technical Challenges:</p>
-                    <p className="text-white/80 text-sm">Space constraints, multiple generator makes/models, continuous operation requirement</p>
+                    <p className="text-white/80 text-sm">
+                      Space constraints, multiple generator makes/models,
+                      continuous operation requirement
+                    </p>
                   </div>
-                  
+
                   <div>
                     <p className="font-medium">Implementation Timeline:</p>
-                    <p className="text-white/80 text-sm">6-month regulatory deadline for full compliance</p>
+                    <p className="text-white/80 text-sm">
+                      6-month regulatory deadline for full compliance
+                    </p>
                   </div>
                 </div>
-                
-                <Button asChild variant="outline" className="mt-8 border-white text-white hover:bg-white/10 self-start">
+
+                <Button
+                  asChild
+                  variant="outline"
+                  className="mt-8 border-white text-white hover:bg-white/10 self-start"
+                >
                   <Link href="/contact">Request Similar Assessment</Link>
                 </Button>
               </div>
             </div>
           </div>
         </div>
+      </section> */}
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto bg-primary-50 rounded-xl overflow-hidden shadow-lg">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {/* Left side: Case Study Details */}
+              <div className="p-8 bg-white">
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                  Case Study: NBFC
+                </h2>
+
+                <div className="space-y-4 mb-6">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      Client Overview
+                    </h3>
+                    <p className="text-gray-600">
+                      A prominent Non-Banking Financial Company (NBFC) with a
+                      strong presence across metro and tier-2 cities, operating
+                      critical backend IT systems and customer-facing branches
+                      that require 24/7 power availability.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      Challenge
+                    </h3>
+                    <p className="text-gray-600">
+                      With increasing focus on emission norms and green
+                      compliance in urban zones, the client was required to
+                      retrofit emission control on their existing DG Set (125
+                      kVA) at a key regional office. The primary concerns:
+                      <br />∙ Maintaining uninterrupted operations during
+                      installation.
+                      <br />∙ Ensuring CPCB compliance without replacing the
+                      existing DG Set.
+                      <br />∙ Fast implementation due to an upcoming audit and
+                      regulatory deadline.
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    The Results
+                  </h3>
+                  <ul className="space-y-2">
+                    <li className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                      <span className="text-gray-600">
+                        Full compliance achieved within regulatory timeline
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                      <span className="text-gray-600">
+                        Zero operational disruption during installation
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                      <span className="text-gray-600">
+                        Custom solution for space-constrained installation
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Right side: Assessment Scope */}
+              <div className="bg-gradient-to-r from-primary-800 to-primary-900 text-gray-800 p-8 flex flex-col">
+                {/* <h2 className="text-2xl font-bold mb-4 text-gray-800">Our Solution</h2> */}
+
+                <div className="space-y-4 flex-grow">
+                  <div>
+                    <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                      Our Solution
+                    </h2>
+                    EAMOT provided a customized Retrofit Emission Control Device
+                    (RECD) solution compatible with the client’s existing DG
+                    Set. The project was planned with the goal of minimal
+                    downtime and zero operational disruption.{" "}
+                    <p className="text-gray-800  text-sm">
+                      Manufacturing facility with 6 diesel generators (150-500
+                      kVA)
+                    </p>
+                  </div>
+
+                  <div>
+                    <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                      Execution Highlights:
+                    </h2>
+                    <p className="text-gray-800 text-sm">
+                      ∙Site audit completed in under 2 hours to assess fitment
+                      and routing. <br />
+                      ∙Installation scheduled during non-peak hours (Saturday
+                      afternoon). <br />
+                      ∙Actual DG Set downtime during fitting: 45 minutes. <br />
+                      ∙Installation and compliance certification handed over the
+                      same day.{" "}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                      Results Achieved: :
+                    </h2>
+                    <p className="text-gray-800 text-sm">
+                      1. Achieved 70% reduction in Particulate Matter (PM)
+                      emissions.<br />
+                      2. Fully compliant with CPCB guidelines for emission
+                      retrofits.<br />
+                       3. Zero business disruption to NBFC
+                      operations.<br />
+                       4. Strengthened client’s sustainability
+                      credentials ahead of audit.{" "}
+                    </p>
+                  </div>
+
+                  {/* <div>
+                    <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                      Implementation Timeline:
+                    </h2>
+                    <p className="text-gray-800 text-sm">
+                      6-month regulatory deadline for full compliance
+                    </p>
+                  </div> */}
+                </div>
+
+                {/* <Button
+                  asChild
+                  variant="outline"
+                  className="mt-8 border-white text-gray-800 hover:bg-white/10 self-start"
+                >
+                  <Link href="/contact">Request Similar Assessment</Link>
+                </Button> */}
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
+
+      <section className="py-16 bg-gray-50">
+  <div className="container mx-auto px-4">
+    <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-8 md:p-12">
+      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
+        What Our Clients Say
+      </h2>
+
+      <div className="bg-gray-100 p-6 rounded-lg border-l-4 border-primary-600">
+        <p className="text-gray-700 italic text-lg">
+          “The RECD retrofit was smoother than expected. The EAMOT team delivered what they promised –
+          a clean install with no impact on our operations.”
+        </p>
+        {/* <p className="mt-4 text-sm font-medium text-gray-600 text-right">– Shradha Kapoor, Jun 27</p> */}
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-black to-gray-900 text-white">
@@ -428,11 +713,21 @@ const RECDAdvisoryPage: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl font-bold mb-6">Ready to Ensure RECD Compliance?</h2>
+            <h2 className="text-3xl font-bold mb-6">
+              Statutory Compliance instead RECD Compliance
+            </h2>
             <p className="opacity-90 mb-8">
-              Contact our emission compliance specialists to begin the assessment and advisory process for your facility. Our experts will help you navigate regulatory requirements and develop an optimal implementation strategy.
+              Contact our emission compliance specialists to begin the
+              assessment and advisory process for your facility. Our experts
+              will help you navigate regulatory requirements and develop an
+              optimal implementation strategy.
             </p>
-            <Button asChild size="lg" onClick={openModal} className="bg-white text-primary hover:bg-white/90">
+            <Button
+              asChild
+              size="lg"
+              onClick={openModal}
+              className="bg-white text-primary hover:bg-white/90"
+            >
               <Link href="#">Request Advisory Services</Link>
             </Button>
           </motion.div>

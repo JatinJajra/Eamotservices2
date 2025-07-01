@@ -3,8 +3,12 @@ import { motion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import ContactModal from "@/components/Popup/ContectModal";
 
 export default function ProductDemoPage() {
+       const [isModalOpen, setIsModalOpen] = useState(false);
+            const openModal = () => setIsModalOpen(true);
+      const closeModal = () => setIsModalOpen(false);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -12,10 +16,12 @@ export default function ProductDemoPage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
+                                                     <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 relative overflow-hidden">
+      {/* <section className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -30,9 +36,39 @@ export default function ProductDemoPage() {
         </div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
         </div>
-      </section>
+      </section> */}
+      <section className="relative py-20 overflow-hidden text-white">
+  {/* Rich Blue Gradient Background */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#154679] to-[#103b5c]"></div>
+
+  {/* Optional Dark Overlay */}
+  <div className="absolute inset-0 bg-black opacity-30"></div>
+
+  {/* Top Pattern */}
+  <div className="absolute top-0 left-0 w-full overflow-hidden z-10">
+    <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+  </div>
+
+  {/* Main Content */}
+  <div className="container mx-auto px-4 relative z-20">
+    <div className="max-w-3xl mx-auto text-center">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-montserrat leading-tight mb-6">
+        Interactive <span className="text-accent">Product Demonstrations</span>
+      </h1>
+      <p className="text-lg md:text-xl opacity-90 mb-8">
+        Explore our products through interactive demonstrations to better understand their features and benefits.
+      </p>
+    </div>
+  </div>
+
+  {/* Bottom Pattern */}
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden z-10">
+    <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+  </div>
+</section>
+
       
       {/* Demo Section */}
       <section className="py-16 md:py-24 bg-white">
@@ -73,7 +109,7 @@ export default function ProductDemoPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild className="bg-accent hover:bg-accent/90 text-white text-center font-poppins font-medium px-8 py-6 h-auto">
-                <a href="#contact">Schedule Consultation</a>
+                <a href="#" onClick={openModal}>Schedule Consultation</a>
               </Button>
               <Button asChild variant="outline" className="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white text-center font-poppins font-medium px-8 py-6 h-auto">
                 <a href="tel:8970001110">Call Now: 897 000 111 02</a>
@@ -151,7 +187,7 @@ function DieselGeneratorDemo() {
                 {/* Generator Image/Animation */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <img 
-                    src="https://www.eamot.com/assets/img/services/1.jpg" 
+                    src="assets/img/services/1.jpg" 
                     alt="Diesel Generator" 
                     className="w-full h-full object-cover"
                   />
@@ -381,7 +417,7 @@ function UPSDemo() {
                 {/* UPS Image/Animation */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <img 
-                    src="https://www.eamot.com/assets/img/services/3.jpg" 
+                    src="assets/img/services/3.jpg" 
                     alt="UPS System" 
                     className="w-full h-full object-cover"
                   />
@@ -639,7 +675,7 @@ function StabilizerDemo() {
                 {/* Stabilizer Image/Animation */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <img 
-                    src="https://www.eamot.com/assets/img/services/2.jpg" 
+                    src="assets/img/services/2.jpg" 
                     alt="Voltage Stabilizer" 
                     className="w-full h-full object-cover"
                   />

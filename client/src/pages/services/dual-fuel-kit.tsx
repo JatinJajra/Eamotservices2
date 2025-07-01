@@ -1,8 +1,13 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import ContactModal from "@/components/Popup/ContectModal";
 
 export default function DualFuelKitPage() {
+      const [isModalOpen, setIsModalOpen] = useState(false);
+          const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -11,9 +16,9 @@ export default function DualFuelKitPage() {
       transition={{ duration: 0.5 }}
     >
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 relative overflow-hidden">
+      {/* <section className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -28,9 +33,46 @@ export default function DualFuelKitPage() {
         </div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+          <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
         </div>
-      </section>
+      </section> */}
+                           <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
+      <section className="bg-[#154679] text-white py-20 relative overflow-hidden">
+  {/* Top Decorative Pattern */}
+  <div className="absolute top-0 left-0 w-full overflow-hidden opacity-20 pointer-events-none">
+    <img
+      src="assets/img/hero/nav-parrten-top.png"
+      alt=""
+      className="w-full"
+    />
+  </div>
+
+  {/* Content */}
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="max-w-3xl mx-auto text-center">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-montserrat leading-tight mb-6">
+        Dual Fuel <span className="text-accent">Kit</span>
+      </h1>
+      <p className="text-lg md:text-xl text-gray-300 mb-8">
+        Convert your diesel generators to cost-effective, eco-friendly dual fuel operation with our advanced conversion kits.
+      </p>
+        <Button asChild className="bg-accent hover:bg-accent/90 text-white text-center font-poppins font-medium px-8 py-6 h-auto">
+        <a href="#" onClick={openModal}>Get A Quote</a>
+      </Button>
+    </div>
+  </div>
+
+  {/* Bottom Decorative Pattern */}
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden opacity-20 pointer-events-none">
+    <img
+      src="assets/img/hero/nav-parrten-botoom.png"
+      alt=""
+      className="w-full"
+    />
+  </div>
+</section>
+
       
       {/* Overview Section */}
       <section className="py-16 md:py-24 bg-white">
@@ -75,12 +117,7 @@ export default function DualFuelKitPage() {
               </ul>
               
               <Button 
-                onClick={() => {
-                  const footer = document.getElementById('footer');
-                  if (footer) {
-                    footer.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+                onClick={openModal}
                 className="bg-primary hover:bg-primary/90 text-white font-poppins font-medium"
               >
                 Discuss Your Requirements
@@ -95,7 +132,7 @@ export default function DualFuelKitPage() {
             >
               <div className="rounded-xl overflow-hidden shadow-xl">
                 <img 
-                  src="https://www.eamot.com/assets/img/gallery/05.jpg" 
+                  src="assets/img/gallery/05.jpg" 
                   alt="Dual Fuel Kit System" 
                   className="w-full h-auto rounded-xl"
                 />
@@ -148,7 +185,7 @@ export default function DualFuelKitPage() {
                   </h3>
                   
                   <p className="text-gray-600">
-                    The system introduces natural gas or LPG into the engine's air intake, creating a gas-air mixture.
+                    The system introduces natural gas or PNG into the engine's air intake, creating a gas-air mixture.
                   </p>
                 </CardContent>
               </Card>
@@ -243,7 +280,7 @@ export default function DualFuelKitPage() {
               className="order-2 md:order-1"
             >
               <img 
-                src="https://www.eamot.com/assets/img/service/service-05.jpg" 
+                src="assets/img/service/service-05.jpg" 
                 alt="Dual Fuel Kit Installation" 
                 className="rounded-xl shadow-xl w-full h-auto"
               />
@@ -555,12 +592,7 @@ export default function DualFuelKitPage() {
             </p>
             
             <Button 
-              onClick={() => {
-                const footer = document.getElementById('footer');
-                if (footer) {
-                  footer.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
+              onClick={openModal}
               className="bg-white text-primary hover:bg-gray-100 font-poppins font-medium"
               size="lg"
             >

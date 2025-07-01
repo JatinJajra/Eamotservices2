@@ -7,8 +7,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
+import ContactModal from "@/components/Popup/ContectModal";
 
 export default function EnergyCalculatorPage() {
+       const [isModalOpen, setIsModalOpen] = useState(false);
+            const openModal = () => setIsModalOpen(true);
+      const closeModal = () => setIsModalOpen(false);
   // Diesel Generator Calculator
   const [dieselGenForm, setDieselGenForm] = useState({
     kvaRating: "",
@@ -171,9 +175,9 @@ export default function EnergyCalculatorPage() {
         transition={{ duration: 0.5 }}
       >
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 relative overflow-hidden">
+        {/* <section className="bg-gradient-to-r from-primary to-primary-700 text-white py-20 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full overflow-hidden">
-            <img src="https://www.eamot.com/assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+            <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
           </div>
           
           <div className="container mx-auto px-4 relative z-10">
@@ -188,9 +192,42 @@ export default function EnergyCalculatorPage() {
           </div>
           
           <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-            <img src="https://www.eamot.com/assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+            <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
           </div>
-        </section>
+        </section> */}
+                                                       <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
+
+        <section className="relative py-20 overflow-hidden text-white">
+  {/* Custom Rich Blue Gradient */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#154679] to-[#103b5c]"></div>
+
+  {/* Optional Black Overlay for Depth */}
+  <div className="absolute inset-0 bg-black opacity-30"></div>
+
+  {/* Top Pattern */}
+  <div className="absolute top-0 left-0 w-full overflow-hidden z-10">
+    <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
+  </div>
+
+  {/* Main Content */}
+  <div className="container mx-auto px-4 relative z-20">
+    <div className="max-w-3xl mx-auto text-center">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-montserrat leading-tight mb-6">
+        Energy <span className="text-accent">Calculators</span>
+      </h1>
+      <p className="text-lg md:text-xl opacity-90 mb-8">
+        Estimate costs, consumption, and savings with our interactive energy management calculators.
+      </p>
+    </div>
+  </div>
+
+  {/* Bottom Pattern */}
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden z-10">
+    <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
+  </div>
+</section>
+
         
         {/* Calculators Section */}
         <section className="py-16 md:py-24 bg-white">
@@ -532,7 +569,7 @@ export default function EnergyCalculatorPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild className="bg-accent hover:bg-accent/90 text-white text-center font-poppins font-medium px-8 py-6 h-auto">
-                  <a href="/#contact">Request Consultation</a>
+                  <a href="#" onClick={openModal}>Request Consultation</a>
                 </Button>
                 <Button asChild variant="outline" className="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white text-center font-poppins font-medium px-8 py-6 h-auto">
                   <a href="tel:8970001110">Call Now: 897 000 111 02</a>
