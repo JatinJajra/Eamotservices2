@@ -77,35 +77,40 @@ console.log(heroVisual, "heroVisual");
     <>
       {/* Hero Section */}
       <ContactModal isOpen={isModalOpen} onClose={closeModal} />
-      <motion.section
-        ref={heroRef}
-        initial={{ opacity: 0, y: 50 }}
-        animate={heroInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
-        className="pt-20 pb-16 bg-gradient-to-b from-black to-gray-800 text-white"
-      >
-<div className="container mx-auto px-4 flex flex-col-reverse lg:flex-row items-center justify-between gap-8">
+<motion.section
+  ref={heroRef}
+  initial={{ opacity: 0, y: 50 }}
+  animate={heroInView ? { opacity: 1, y: 0 } : {}}
+  transition={{ duration: 0.6 }}
+  className="pt-20 pb-16 bg-gradient-to-b from-black to-gray-800 text-white"
+>
+  <div className="container mx-auto px-4">
+    <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
 
-          <div className="lg:w-1/2 lg:pr-12 mb-10 lg:mb-0">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">{title}</h1>
-            <p className="text-xl md:text-2xl text-primary font-semibold mb-6">{subtitle}</p>
-            <p className="text-white text-lg mb-8 leading-relaxed">{description}</p>
-            <div className="flex space-x-4">
-              <Button  onClick={openModal} className="bg-primary hover:bg-primary/90 text-white font-semibold">
-                Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              {/* <Button variant="outline" className="border-white text-white hover:bg-white/10 font-semibold">
-                Learn More
-              </Button> */}
-            </div>
-          </div>
-         {heroVisual && (
- <div className="lg:w-1/2 w-full flex justify-center items-center">
-    {heroVisual}
-  </div>
-  )}
+      {/* Left Content */}
+      <div className="w-full lg:w-1/2 lg:pr-12">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">{title}</h1>
+        <p className="text-xl md:text-2xl text-primary font-semibold mb-6">{subtitle}</p>
+        <p className="text-white text-lg mb-8 leading-relaxed">{description}</p>
+        <div className="flex space-x-4">
+          <Button onClick={openModal} className="bg-primary hover:bg-primary/90 text-white font-semibold">
+            Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
         </div>
-      </motion.section>
+      </div>
+
+      {/* Right Visual */}
+      {heroVisual && (
+        <div className="w-full lg:w-1/2 flex justify-center items-center">
+          {heroVisual}
+        </div>
+      )}
+
+    </div>
+  </div>
+</motion.section>
+
+
 
       {/* Features Section */}
       <motion.section
