@@ -272,44 +272,45 @@ const ServoMonitoringPage: React.FC = () => {
       </motion.section>
       
       {/* Live Demo Section */}
-      <motion.section
-        ref={demoRef}
-        initial={{ opacity: 0, y: 40 }}
-        animate={demoInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
-        className="py-20 bg-gradient-to-b from-black to-gray-900"
+   <motion.section
+  ref={demoRef}
+  initial={{ opacity: 0, y: 40 }}
+  animate={demoInView ? { opacity: 1, y: 0 } : {}}
+  transition={{ duration: 0.6 }}
+  className="py-20 bg-gradient-to-b from-black to-gray-900"
+>
+  <div className="mx-auto px-4 w-full max-w-[90rem]">
+    <div className="text-center mb-16">
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={demoInView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-primary font-medium"
       >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={demoInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-primary font-medium"
-            >
-              REAL-TIME INTELLIGENCE
-            </motion.span>
-            
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={demoInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-3xl md:text-4xl font-bold mt-2 mb-6"
-            >
-              How Our AI-Powered Monitoring Works
-            </motion.h2>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={demoInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-xl text-gray-300 max-w-3xl mx-auto"
-            >
-              Experience unmatched visibility and control with our next-generation voltage monitoring system
-            </motion.p>
-          </div>
+        REAL-TIME INTELLIGENCE
+      </motion.span>
+
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        animate={demoInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="text-3xl md:text-4xl font-bold mt-2 mb-6"
+      >
+        How Our AI-Powered Monitoring Works
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={demoInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="text-xl text-gray-300 max-w-3xl mx-auto"
+      >
+        Experience unmatched visibility and control with our next-generation voltage monitoring system
+      </motion.p>
+    </div>
+
           
-          <div className="relative max-w-5xl mx-auto">
+          {/* <div className="relative max-w-5xl mx-auto">
             <div className="aspect-[16/9] rounded-xl overflow-hidden shadow-2xl border border-gray-800">
               <img 
                 src="/images/monitoring-dashboard.jpg" 
@@ -358,7 +359,114 @@ const ServoMonitoringPage: React.FC = () => {
                 </motion.div>
               ))}
             </div>
+          </div> */}
+           <div style={{ backgroundColor: "#0f172a", color: "white", fontFamily: "sans-serif", padding: "2rem" }}>
+      <div className="container">
+        <div className="left">
+          <div className="card">
+            <h3>System Health</h3>
+            <div>
+              <div>
+                Overall Status: <span style={{ color: "#4ade80" }}>Excellent</span>
+              </div>
+              <div>Efficiency: 98.2%</div>
+              <div>Uptime: 99.8%</div>
+            </div>
           </div>
+          <div className="card">
+            <h3>Alerts</h3>
+            <div style={{ fontSize: "0.75rem" }}>
+              <div style={{ color: "#4ade80" }}>🟢 All systems normal</div>
+              <div style={{ color: "#facc15" }}>🟡 Maintenance due in 15 days</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="center">
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.9rem", marginBottom: "1rem" }}>
+            <div style={{ color: "#4ade80" }}>🟢 System Online</div>
+            <div>Last Update: 15:42:38</div>
+          </div>
+
+          <div className="phase-grid">
+            {[
+              { phase: "Phase 1", voltage: "220V", width: "92%" },
+              { phase: "Phase 2", voltage: "225V", width: "94%" },
+              { phase: "Phase 3", voltage: "218V", width: "91%" },
+            ].map((item, i) => (
+              <div className="card" key={i}>
+                <div>{item.phase}</div>
+                <div style={{ fontSize: "1.25rem", fontWeight: "bold" }}>{item.voltage}</div>
+                <div className="bar">
+                  <div className="bar-inner" style={{ width: item.width }}></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ fontSize: "0.75rem", color: "#60a5fa", marginBottom: "0.5rem" }}>
+            ⚡ Voltage Trend – Real-time
+          </div>
+          <div className="voltage-trend">
+            <svg width="100%" height="100%">
+              <path d="M0,30 Q75,20 150,25 T300,30" stroke="#3b82f6" strokeWidth="2" fill="none" />
+              <path d="M0,35 Q75,25 150,30 T300,35" stroke="#22c55e" strokeWidth="2" fill="none" />
+            </svg>
+          </div>
+
+          <div className="metrics">
+            <div>
+              Load
+              <br />
+              <span style={{ color: "#facc15" }}>75%</span>
+            </div>
+            <div>
+              Freq
+              <br />
+              50.1Hz
+            </div>
+            <div>
+              Temp
+              <br />
+              <span style={{ color: "#4ade80" }}>42°C</span>
+            </div>
+            <div>
+              Status
+              <br />
+              <span style={{ color: "#4ade80" }}>STABLE</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="right">
+          <div className="card">
+            <h3>Performance</h3>
+            <div>
+              Power Factor: 0.95
+              <div className="bar">
+                <div className="bar-inner" style={{ width: "95%" }}></div>
+              </div>
+            </div>
+            <div style={{ marginTop: "0.5rem" }}>
+              Regulation: ±1%
+              <div className="bar">
+                <div className="bar-inner bar-blue" style={{ width: "98%" }}></div>
+              </div>
+            </div>
+          </div>
+
+          <div className="card">
+            <h3>Energy Savings</h3>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ fontSize: "1.5rem", color: "#4ade80", fontWeight: "bold" }}>₹15,240</div>
+              <div style={{ fontSize: "0.75rem", color: "#9ca3af" }}>This Month</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Include styles in your index.css or scoped CSS */}
+    </div>
         </div>
       </motion.section>
       

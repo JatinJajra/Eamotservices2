@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Wrench, Cable, ClipboardList, Zap, BookOpen, Shield, Users, CheckCircle, AlertTriangle, Clock, BarChart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 import ContactModal from '@/components/Popup/ContectModal';
+import {
+  Search,
+  Settings,
+  BarChart3,
+} from "lucide-react";
 
 const ServoInstallationPage: React.FC = () => {
      const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,85 +20,185 @@ const ServoInstallationPage: React.FC = () => {
   const { ref: benefitsRef, inView: benefitsInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: statsRef, inView: statsInView } = useIntersectionObserver({ threshold: 0.2 });
   const { ref: ctaRef, inView: ctaInView } = useIntersectionObserver({ threshold: 0.2 });
+  const [barHeights, setBarHeights] = useState([27, 56, 57, 55, 64, 44, 46]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newHeights = barHeights.map(() =>
+        Math.floor(Math.random() * 50) + 25
+      );
+      setBarHeights(newHeights);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div className="bg-black text-white">
     <ContactModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Advanced Hero Section */}
+   
+
+
+
+
+
       <motion.section
-        ref={heroRef}
-        initial={{ opacity: 0 }}
-        animate={heroInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.8 }}
-        className="relative min-h-[90vh] flex items-center"
-      >
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-transparent z-10"></div>
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="/videos/servo-installation-hero.mp4" type="video/mp4" />
-            {/* Fallback image if video doesn't load */}
-            <img 
-              src="/images/servo-installation.jpg" 
-              alt="Servo Stabilizer Installation" 
-              className="w-full h-full object-cover"
-            />
-          </video>
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-20">
-          <div className="max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-4 inline-block py-1 px-3 bg-primary/20 text-primary rounded-full"
-            >
-              <span className="font-semibold text-sm">Industry-Leading Implementation</span>
-            </motion.div>
-            
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
-            >
-              Servo Stabilizer <span className="text-primary">Installation</span>
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-xl md:text-2xl text-gray-300 mb-8"
-            >
-              Transform your power quality management with our precision servo stabilizer installation service. 
-              Our expert technicians ensure flawless implementation, perfect system integration, and comprehensive 
-              performance validation - maximizing your stabilizer's effectiveness from day one.
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-wrap gap-4"
-            >
-              <Button size="lg" onClick={openModal} className="bg-primary hover:bg-primary/90 text-white">
-                Schedule Expert Installation
-              </Button>
-                {/* <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-                  Download Installation Guide
-                </Button> */}
-            </motion.div>
+  ref={heroRef}
+  initial={{ opacity: 0 }}
+  animate={heroInView ? { opacity: 1 } : {}}
+  transition={{ duration: 0.8 }}
+  className="relative min-h-[90vh] flex items-center"
+>
+  {/* Background Video */}
+  <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-transparent z-10"></div>
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="w-full h-full object-cover"
+    >
+      <source src="/videos/servo-installation-hero.mp4" type="video/mp4" />
+      <img
+        src="/images/servo-installation.jpg"
+        alt="Servo Stabilizer Installation"
+        className="w-full h-full object-cover"
+      />
+    </video>
+  </div>
+
+  {/* Grid Layout */}
+  <div className="container mx-auto px-4 relative z-20">
+    <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8">
+      {/* LEFT: Text Content */}
+      <div className="lg:col-span-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={heroInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-4 inline-block py-1 px-3 bg-primary/20 text-primary rounded-full"
+        >
+          <span className="font-semibold text-sm">Industry-Leading Implementation</span>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={heroInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+        >
+          Servo Stabilizer <span className="text-primary">Installation</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={heroInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-xl md:text-2xl text-gray-300 mb-8"
+        >
+          Transform your power quality management with our precision servo stabilizer installation service. 
+          Our expert technicians ensure flawless implementation, perfect system integration, and comprehensive 
+          performance validation - maximizing your stabilizer's effectiveness from day one.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={heroInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="flex flex-wrap gap-4"
+        >
+          <Button size="lg" onClick={openModal} className="bg-primary hover:bg-primary/90 text-white">
+            Schedule Expert Installation
+          </Button>
+        </motion.div>
+      </div>
+
+      {/* RIGHT: Installation Monitor */}
+      <motion.div className="lg:col-span-6 w-full max-w-xl">
+        <div className="relative w-full h-full p-4 bg-gradient-to-br from-slate-900 to-blue-900 rounded-lg shadow-lg">
+          <div className="mb-4">
+            <h3 className="text-lg font-bold text-white mb-1">Installation Monitor</h3>
+            <p className="text-sm text-blue-300">Real-time Installation Status</p>
+          </div>
+
+          {/* Voltage Regulation */}
+          <div className="mb-6 bg-black/20 rounded-lg p-3">
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-sm text-gray-300">Voltage Regulation Test</span>
+              <span className="text-sm text-green-400">±2% Variance</span>
+            </div>
+            <div className="flex items-end justify-between h-20 gap-1">
+              {barHeights.map((h, idx) => (
+                <motion.div
+                  key={idx}
+                  className="bg-gradient-to-t from-primary to-blue-300 rounded-t flex-1"
+                  animate={{ height: `${h}%` }}
+                  transition={{ duration: 0.5 }}
+                />
+              ))}
+            </div>
+            <div className="flex justify-between text-xs text-gray-400 mt-1">
+              <span>215V</span>
+              <span>Current: 224V</span>
+              <span>235V</span>
+            </div>
+          </div>
+
+          {/* Installation Steps */}
+          <div className="mb-4">
+            <h4 className="text-sm font-semibold text-gray-300 mb-2">Installation Steps</h4>
+            <div className="space-y-1">
+              <div className="flex items-center gap-3 p-2 rounded text-sm bg-green-900/30 text-green-300">
+                <Search className="h-4 w-4" />
+                <span>Pre-Installation Check</span>
+                <CheckCircle className="h-3 w-3 ml-auto" />
+              </div>
+              <div className="flex items-center gap-3 p-2 rounded text-sm bg-green-900/30 text-green-300">
+                <Wrench className="h-4 w-4" />
+                <span>Mounting & Wiring</span>
+                <CheckCircle className="h-3 w-3 ml-auto" />
+              </div>
+              <div className="flex items-center gap-3 p-2 rounded text-sm bg-primary/20 text-primary">
+                <Settings className="h-4 w-4 animate-pulse" />
+                <span>Calibration</span>
+              </div>
+              <div className="flex items-center gap-3 p-2 rounded text-sm bg-gray-700/30 text-gray-400">
+                <BarChart3 className="h-4 w-4" />
+                <span>Load Testing</span>
+              </div>
+              <div className="flex items-center gap-3 p-2 rounded text-sm bg-gray-700/30 text-gray-400">
+                <CheckCircle className="h-4 w-4" />
+                <span>Final Verification</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Calibration Efficiency */}
+          <div className="bg-black/30 rounded p-3 border border-primary/30">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-gray-300">Calibration Efficiency</span>
+              <motion.span
+                className="text-lg font-bold text-primary"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ repeat: Infinity, duration: 1.5 }}
+              >
+                96%
+              </motion.span>
+            </div>
           </div>
         </div>
-      </motion.section>
+      </motion.div>
+    </div>
+  </div>
+</motion.section>
+
+
+
+
+
+
 
       {/* Installation Process Section */}
       <motion.section

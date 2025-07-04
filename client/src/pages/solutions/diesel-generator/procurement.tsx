@@ -1,8 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ServicePageTemplate from '@/components/ServicePageTemplate';
 import { ShieldCheck, Timer, Flame, BarChart3, Settings, Truck, FileText, Zap } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Shield } from 'lucide-react';
+import {  Volume2, Droplet,  } from "lucide-react";
 
 const DGProcurementPage: React.FC = () => {
+const [currentIndex, setCurrentIndex] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentIndex((prev) => (prev + 1) % statusData.length);
+  }, 3000); // 3 seconds
+  return () => clearInterval(interval);
+}, []);
+  
+  const statusData = [
+  {
+    icon: <Volume2 className="h-4 w-4" />,
+    label: "Noise Level",
+    value: "< 75 dB"
+  },
+  {
+    icon: <Droplet className="h-4 w-4" />,
+    label: "Fuel Efficiency",
+    value: "3.2L/hr"
+  },
+  {
+    icon: <Zap className="h-4 w-4" />,
+    label: "Power Output",
+    value: "500 kVA"
+  },
+  {
+    icon: <Shield className="h-4 w-4" />,
+    label: "CPCB IV+",
+    value: "Compliant"
+  }
+];
   const features = [
     {
       icon: <ShieldCheck className="h-5 w-5 text-primary" />,
@@ -104,6 +138,62 @@ const DGProcurementPage: React.FC = () => {
     },
   ];
 
+
+const DGHeroVisual = (
+  <div className="w-full lg:w-[500px] max-w-full rounded-lg shadow-xl border-2 border-primary/20 bg-gradient-to-br from-gray-900 to-gray-800 p-6 min-h-[400px] flex items-center justify-center">
+      <div className="relative w-full h-full flex flex-col items-center justify-center">
+        {/* Top Generator Panel */}
+        <motion.div className="relative w-full flex justify-center">
+          <div className="w-48 h-32 bg-gradient-to-b from-gray-700 to-gray-800 rounded-lg relative">
+            <div className="absolute inset-2 bg-gray-600 rounded">
+              <div className="absolute top-2 left-2 right-2 h-6 bg-primary/20 rounded flex items-center justify-center">
+                <motion.div className="w-2 h-2 bg-green-400 rounded-full mr-2" />
+                <span className="text-xs text-white">RUNNING</span>
+              </div>
+            </div>
+            <div className="absolute -top-4 right-4 w-3 h-8 bg-gray-700 rounded-t">
+              {[16, 13, 10].map((y, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute -top-2 left-1/2 w-1 h-3 bg-gray-400 opacity-60 rounded-full"
+                  style={{
+                    transform: `translateY(-${y}px) scale(${1 - i * 0.1})`,
+                    left: "50%",
+                    transformOrigin: "center"
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Dynamic Info Panel */}
+        <div className="mt-6 w-full max-w-xs">
+          <motion.div
+            key={statusData[currentIndex].label}
+            className="bg-black/30 rounded-lg p-3 border border-primary/30"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 text-primary">
+                {statusData[currentIndex].icon}
+                <span className="text-sm text-gray-300">
+                  {statusData[currentIndex].label}
+                </span>
+              </div>
+              <span className="text-primary font-bold">
+                {statusData[currentIndex].value}
+              </span>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </div>
+);
+
   return (
     <ServicePageTemplate
       title="DG Procurement (CPCB IV+ Compliant)"
@@ -119,6 +209,8 @@ const DGProcurementPage: React.FC = () => {
         buttonText: "Get a Customized Quote",
         buttonLink: "#footer"
       }}
+     heroVisual={DGHeroVisual} // ← custom visual goes here
+
     />
   );
 };

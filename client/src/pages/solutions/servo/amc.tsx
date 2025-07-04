@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Wrench, Clock, AlertTriangle, Calendar, Settings, Shield, 
@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 import ContactModal from '@/components/Popup/ContectModal';
+import { Battery, BarChart3 } from "lucide-react";
 
 const ServoAMCPage: React.FC = () => {
      const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,6 +23,21 @@ const ServoAMCPage: React.FC = () => {
   const { ref: statsRef, inView: statsInView } = useIntersectionObserver({ threshold: 0.1 });
   const { ref: ctaRef, inView: ctaInView } = useIntersectionObserver({ threshold: 0.2 });
 
+
+   const values = [89,88,96, 99, 90, 93];
+  
+    const [index, setIndex] = useState(0);
+  
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setIndex((prev) => (prev + 1) % values.length);
+      }, 2500);
+      return () => clearInterval(interval);
+    }, []);
+  
+    const percentage = values[index];
+  
+
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-50 to-white">
                 <ContactModal isOpen={isModalOpen} onClose={closeModal} />
@@ -32,96 +48,123 @@ const ServoAMCPage: React.FC = () => {
         className="relative min-h-[90vh] bg-gray-900 overflow-hidden flex items-center"
       >
         {/* Hero background with overlay */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/80 to-gray-900/95 z-10"></div>
-          <div className="absolute inset-0 z-0">
-            <img
-              src="/images/servo-amc.jpg"
-              alt="Servo Stabilizer Maintenance"
-              className="w-full h-full object-cover object-center opacity-30"
-            />
-          </div>
-          
-          {/* Animated particles/circuit lines */}
-          <div className="absolute inset-0 z-10 opacity-20">
-            <svg width="100%" height="100%" className="absolute inset-0">
-              <defs>
-                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(79, 209, 197, 0.3)" strokeWidth="1"/>
-                </pattern>
-                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="rgba(79, 209, 197, 0.5)" />
-                  <stop offset="100%" stopColor="rgba(79, 70, 229, 0.2)" />
-                </linearGradient>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
-              <circle cx="20%" cy="30%" r="70" stroke="url(#gradient)" strokeWidth="2" fill="none">
-                <animate attributeName="r" from="70" to="90" dur="3s" repeatCount="indefinite" />
-                <animate attributeName="opacity" from="0.6" to="0.2" dur="3s" repeatCount="indefinite" />
-              </circle>
-              <circle cx="70%" cy="60%" r="50" stroke="url(#gradient)" strokeWidth="2" fill="none">
-                <animate attributeName="r" from="50" to="80" dur="4s" repeatCount="indefinite" />
-                <animate attributeName="opacity" from="0.5" to="0.1" dur="4s" repeatCount="indefinite" />
-              </circle>
+       <div className="container mx-auto px-4 relative z-20">
+  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    
+    {/* LEFT: Hero Text Content */}
+    <div className="lg:col-span-6">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={heroInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        className="inline-flex items-center px-3 py-1.5 mb-6 rounded-full bg-primary/10 text-primary"
+      >
+        <Sparkles className="w-4 h-4 mr-2" />
+        <span className="text-sm font-medium">Premium Protection & Optimization</span>
+      </motion.div>
+
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={heroInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7, delay: 0.4 }}
+        className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+      >
+        Servo Stabilizer <span className="text-primary">Annual Maintenance</span> Contract
+      </motion.h1>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={heroInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7, delay: 0.6 }}
+        className="text-xl text-gray-300 mb-10 leading-relaxed"
+      >
+        Safeguard your critical power infrastructure with our industry-leading Maintenance Program.
+        Our comprehensive AMC delivers proactive optimization, guaranteed uptime, and complete 
+        performance protection - eliminating stabilizer-related risks from your operation.
+      </motion.p>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={heroInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7, delay: 0.8 }}
+        className="flex flex-wrap gap-4"
+      >
+        <Button size="lg" className="bg-primary hover:bg-primary/90 text-white" onClick={() => {
+          const section = document.getElementById('plans');
+          if (section) {
+            window.scrollTo({ top: section.offsetTop, behavior: 'smooth' });
+          }
+        }}>
+          View Protection Plans
+        </Button>
+        <Button variant="outline" onClick={openModal} size="lg" className="bg-primary hover:bg-primary/90 text-white">
+          Schedule Consultation
+        </Button>
+      </motion.div>
+    </div>
+
+    {/* RIGHT: Status Panel */}
+    <div className="lg:col-span-6">
+      <div className="rounded-lg shadow-xl border-2 border-primary/20 bg-gradient-to-br from-gray-900 to-gray-800 p-6 min-h-[400px] flex items-center justify-center">
+        <div className="relative w-full h-full flex flex-col items-center justify-center">
+          {/* Circular Progress */}
+          <div className="relative mb-6">
+            <svg className="w-32 h-32 transform -rotate-90">
+              <circle
+                cx="64"
+                cy="64"
+                r="56"
+                stroke="rgba(156, 163, 175, 0.3)"
+                strokeWidth="8"
+                fill="none"
+              />
+              <motion.circle
+                cx="64"
+                cy="64"
+                r="56"
+                stroke="#10b981"
+                strokeWidth="8"
+                fill="none"
+                strokeLinecap="round"
+                strokeDasharray="351.86"
+                strokeDashoffset={(100 - percentage) * 3.52}
+                transition={{ duration: 0.6 }}
+              />
             </svg>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <motion.div
+                key={percentage}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-2xl font-bold text-green-400"
+              >
+                {percentage}%
+              </motion.div>
+              <div className="text-xs text-gray-400">Health Score</div>
+            </div>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
+            <div className="bg-black/30 rounded-lg p-3 border border-primary/30 text-center">
+              <Settings className="h-4 w-4 text-blue-400 mx-auto mb-1" />
+              <div className="text-xs text-gray-400 mb-1">Next Service</div>
+              <div className="text-lg font-bold text-blue-400">1 day</div>
+            </div>
+            <div className="bg-black/30 rounded-lg p-3 border border-primary/30 text-center">
+              <Shield className="h-4 w-4 text-green-400 mx-auto mb-1" />
+              <div className="text-xs text-gray-400 mb-1">Coverage</div>
+              <div className="text-lg font-bold text-green-400">24/7</div>
+            </div>
           </div>
         </div>
-        
-        <div className="container mx-auto px-4 relative z-20">
-          <div className="max-w-3xl">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="inline-flex items-center px-3 py-1.5 mb-6 rounded-full bg-primary/10 text-primary"
-            >
-              <Sparkles className="w-4 h-4 mr-2" />
-              <span className="text-sm font-medium">Premium Protection & Optimization</span>
-            </motion.div>
-            
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
-            >
-              Servo Stabilizer <span className="text-primary">Annual Maintenance</span> Contract
-            </motion.h1>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.6 }}
-              className="text-xl text-gray-300 mb-10 leading-relaxed"
-            >
-              Safeguard your critical power infrastructure with our industry-leading Maintenance Program.
-              Our comprehensive AMC delivers proactive optimization, guaranteed uptime, and complete 
-              performance protection - eliminating stabilizer-related risks from your operation.
-            </motion.p>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.8 }}
-              className="flex flex-wrap gap-4"
-            >
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white"   onClick={() => {
-    const section = document.getElementById('plans');
-    if (section) {
-      window.scrollTo({
-        top: section.offsetTop,
-        behavior: 'smooth',
-      });
-    }
-  }}>
-                View Protection Plans
-              </Button>
-              <Button variant="outline" onClick={openModal} size="lg" className="bg-primary hover:bg-primary/90 text-white">
-                Schedule Consultation
-              </Button>
-            </motion.div>
-          </div>
-        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
         
         {/* Floating stats cards */}
         <div className="hidden lg:block absolute bottom-[-80px] left-1/2 transform -translate-x-1/2 z-30 w-full max-w-5xl px-4">
@@ -151,6 +194,8 @@ const ServoAMCPage: React.FC = () => {
           </motion.div>
         </div>
       </motion.section>
+
+      
       
       {/* Spacer for floating cards */}
       <div className="h-20 lg:h-28 bg-gray-50 w-full"></div>

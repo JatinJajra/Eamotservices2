@@ -140,7 +140,7 @@ export default function StabilizerPage() {
               </Button>
             </div>
             
-            <div className="relative">
+            {/* <div className="relative">
               <img 
                 src="assets/img/services/2.jpg" 
                 alt="Voltage Stabilizer" 
@@ -157,7 +157,77 @@ export default function StabilizerPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
+
+            <div className="relative">
+  {/* SVG Replaced Here */}
+  <div className="w-full rounded-lg shadow-lg overflow-hidden">
+    <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+      <defs>
+        <linearGradient id="stabGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{ stopColor: "#10b981", stopOpacity: 1 }} />
+          <stop offset="100%" style={{ stopColor: "#059669", stopOpacity: 1 }} />
+        </linearGradient>
+        <linearGradient id="meterGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style={{ stopColor: "#fbbf24", stopOpacity: 1 }} />
+          <stop offset="100%" style={{ stopColor: "#f59e0b", stopOpacity: 1 }} />
+        </linearGradient>
+      </defs>
+
+      <rect width="400" height="300" fill="#f8fafc" />
+      <rect x="100" y="120" width="200" height="80" fill="url(#stabGrad)" rx="8" />
+      <rect x="110" y="130" width="180" height="60" fill="#1e293b" rx="4" />
+      <circle cx="150" cy="160" r="20" fill="url(#meterGrad)" />
+      <circle cx="150" cy="160" r="18" fill="#0f172a" />
+      <path d="M135 160 L150 145 L165 160" stroke="#10b981" strokeWidth="2" fill="none" />
+      <text x="150" y="185" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="8" fill="#6b7280">VOLTS</text>
+
+      <rect x="200" y="140" width="40" height="15" fill="#ef4444" rx="2" />
+      <text x="220" y="150" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="8" fill="white">INPUT</text>
+      <rect x="200" y="160" width="40" height="15" fill="#10b981" rx="2" />
+      <text x="220" y="170" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="8" fill="white">OUTPUT</text>
+
+      <circle cx="260" cy="145" r="4" fill="#10b981">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="260" cy="160" r="4" fill="#3b82f6" />
+      <circle cx="260" cy="175" r="4" fill="#f59e0b" />
+
+      <circle cx="180" cy="160" r="8" fill="#4b5563" />
+      <line x1="180" y1="155" x2="180" y2="165" stroke="#e5e7eb" strokeWidth="2" />
+
+      <rect x="80" y="155" width="20" height="10" fill="#64748b" rx="2" />
+      <rect x="300" y="155" width="20" height="10" fill="#64748b" rx="2" />
+      <line x1="70" y1="160" x2="80" y2="160" stroke="#ef4444" strokeWidth="4" />
+      <line x1="320" y1="160" x2="330" y2="160" stroke="#10b981" strokeWidth="4" />
+
+      <g opacity="0.7">
+        <path d="M20 140 Q30 130 40 140 T60 145 T80 135" stroke="#ef4444" strokeWidth="2" fill="none" />
+        <text x="50" y="125" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="10" fill="#ef4444">Unstable</text>
+        <path d="M320 140 Q330 140 340 140 T360 140 T380 140" stroke="#10b981" strokeWidth="2" fill="none" />
+        <text x="350" y="125" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="10" fill="#10b981">Stable</text>
+      </g>
+
+      <rect x="90" y="200" width="220" height="15" fill="#64748b" rx="4" />
+      <text x="200" y="250" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="16" fontWeight="bold" fill="#374151">Voltage Stabilizer</text>
+      <text x="200" y="270" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="12" fill="#6b7280">Automatic Voltage Regulation</text>
+    </svg>
+  </div>
+
+  {/* Bottom Overlay Info Box */}
+  <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-xl">
+    <div className="flex items-center">
+      <div className="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center mr-4">
+        <i className="fas fa-bolt text-primary text-xl"></i>
+      </div>
+      <div>
+        <h4 className="font-bold text-gray-800 mb-1">Stable Power</h4>
+        <p className="text-gray-600 text-sm">Equipment protection</p>
+      </div>
+    </div>
+  </div>
+</div>
+
           </div>
         </div>
       </section>

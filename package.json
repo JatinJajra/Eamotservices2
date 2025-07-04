@@ -4,8 +4,8 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=production node dist/index.js",
-    "dev": "NODE_ENV=development tsx server/index.ts",
+     "dev": "concurrently \"npm:server\" \"npm:client\"",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
     "client": "vite",
     "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "check": "tsc",

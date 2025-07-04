@@ -142,7 +142,7 @@ const DGOverhaulPage: React.FC = () => {
         "Exhaust system restoration with emissions compliance",
         "Complete fluid replacement with premium lubricants"
       ],
-      image: "https://images.unsplash.com/photo-1582628151997-96bf810a1a66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+      image: "/assets/img/06.png",
       color: "from-green-50 to-green-100"
     },
     {

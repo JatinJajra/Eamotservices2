@@ -137,24 +137,79 @@ export default function UPSPage() {
               </Button>
             </div>
             
-            <div className="relative">
-              <img 
-                src="assets/img/services/3.jpg" 
-                alt="UPS Maintenance" 
-                className="rounded-lg shadow-lg w-full"
-              />
-              <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-xl">
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center mr-4">
-                    <i className="fas fa-battery-full text-primary text-xl"></i>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-800 mb-1">100% Reliability</h4>
-                    <p className="text-gray-600 text-sm">Zero downtime solutions</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="relative">
+  <div className="rounded-lg shadow-lg w-full bg-white flex items-center justify-center">
+    {/* Inline SVG for UPS System */}
+    <svg
+      viewBox="0 0 400 300"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-auto object-contain"
+    >
+      <defs>
+        <linearGradient id="upsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#7c3aed" stopOpacity="1" />
+          <stop offset="100%" stopColor="#5b21b6" stopOpacity="1" />
+        </linearGradient>
+        <linearGradient id="batteryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#10b981" stopOpacity="1" />
+          <stop offset="100%" stopColor="#059669" stopOpacity="1" />
+        </linearGradient>
+      </defs>
+
+      <rect width="400" height="300" fill="#f8fafc" />
+      <rect x="50" y="100" width="120" height="100" fill="url(#upsGrad)" rx="8" />
+      <rect x="60" y="110" width="100" height="40" fill="#1e293b" rx="4" />
+      <rect x="65" y="115" width="90" height="30" fill="#0f172a" rx="2" />
+      <text x="110" y="130" textAnchor="middle" fontFamily="monospace" fontSize="10" fill="#10b981">100%</text>
+      <text x="110" y="142" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#22d3ee">ONLINE</text>
+
+      <circle cx="75" cy="170" r="6" fill="#ef4444" />
+      <circle cx="95" cy="170" r="6" fill="#10b981" />
+      <circle cx="115" cy="170" r="6" fill="#3b82f6" />
+      <circle cx="135" cy="170" r="6" fill="#f59e0b" />
+
+      <rect x="200" y="120" width="40" height="60" fill="url(#batteryGrad)" rx="4" />
+      <rect x="250" y="120" width="40" height="60" fill="url(#batteryGrad)" rx="4" />
+      <rect x="300" y="120" width="40" height="60" fill="url(#batteryGrad)" rx="4" />
+
+      {[205, 255, 305].map(x =>
+        [125, 135, 145, 155, 165].map(y => (
+          <rect key={`${x}-${y}`} x={x} y={y} width="30" height="8" fill="#065f46" rx="1" />
+        ))
+      )}
+
+      <line x1="170" y1="150" x2="200" y2="150" stroke="#6b7280" strokeWidth="3" />
+      <line x1="240" y1="150" x2="250" y2="150" stroke="#6b7280" strokeWidth="3" />
+      <line x1="290" y1="150" x2="300" y2="150" stroke="#6b7280" strokeWidth="3" />
+
+      <g>
+        <circle cx="185" cy="145" r="2" fill="#f59e0b">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="185" cy="155" r="2" fill="#f59e0b">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" begin="0.3s" repeatCount="indefinite" />
+        </circle>
+      </g>
+
+      <rect x="40" y="200" width="310" height="15" fill="#64748b" rx="4" />
+      <text x="200" y="250" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="16" fontWeight="bold" fill="#374151">UPS System</text>
+      <text x="200" y="270" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="12" fill="#6b7280">Uninterruptible Power Supply</text>
+    </svg>
+  </div>
+
+  <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-xl">
+    <div className="flex items-center">
+      <div className="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center mr-4">
+        <i className="fas fa-battery-full text-primary text-xl"></i>
+      </div>
+      <div>
+        <h4 className="font-bold text-gray-800 mb-1">100% Reliability</h4>
+        <p className="text-gray-600 text-sm">Zero downtime solutions</p>
+      </div>
+    </div>
+  </div>
+</div>
+
           </div>
         </div>
       </section>

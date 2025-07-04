@@ -50,7 +50,7 @@ export default function AboutPage() {
               variants={fadeInUp}
               className="text-xl opacity-90 mb-8 text-gray-700"
             >
-              Driving innovation in energy management solutions since 2007
+              Driving innovation in energy management solutions since 2000
             </motion.p>
           </motion.div>
         </div>

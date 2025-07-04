@@ -123,28 +123,95 @@ export default function DualFuelKitPage() {
                 Discuss Your Requirements
               </Button>
             </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="relative"
-            >
-              <div className="rounded-xl overflow-hidden shadow-xl">
-                <img 
-                  src="assets/img/gallery/05.jpg" 
-                  alt="Dual Fuel Kit System" 
-                  className="w-full h-auto rounded-xl"
-                />
-              </div>
-              
-              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-secondary rounded-full flex items-center justify-center z-10 shadow-lg">
-                <div className="text-white text-center">
-                  <div className="text-xl font-bold">40%</div>
-                  <div className="text-xs">Cost Saving</div>
-                </div>
-              </div>
-            </motion.div>
+<motion.div
+  initial={{ opacity: 0, x: 50 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.7, delay: 0.4 }}
+  className="relative w-full max-w-xl mx-auto"
+>
+  <div className="w-full h-72 sm:h-80 md:h-96 rounded-xl overflow-hidden shadow-xl bg-white flex items-center justify-center">
+    <svg
+      viewBox="0 0 400 300"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-full object-contain"
+    >
+      <defs>
+        <linearGradient id="dualGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#0891b2" stopOpacity="1" />
+          <stop offset="100%" stopColor="#0e7490" stopOpacity="1" />
+        </linearGradient>
+        <linearGradient id="gasGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#16a34a" stopOpacity="1" />
+          <stop offset="100%" stopColor="#15803d" stopOpacity="1" />
+        </linearGradient>
+      </defs>
+
+      <rect width="400" height="300" fill="#f8fafc" />
+      <rect x="120" y="140" width="160" height="60" fill="#374151" rx="8" />
+      <rect x="140" y="120" width="120" height="40" fill="url(#dualGrad)" rx="6" />
+      <rect x="150" y="125" width="100" height="30" fill="#1e293b" rx="3" />
+      <rect x="160" y="130" width="30" height="8" fill="#f59e0b" rx="2" />
+      <text x="175" y="136" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="6" fill="white">DIESEL</text>
+      <rect x="200" y="130" width="30" height="8" fill="#10b981" rx="2" />
+      <text x="215" y="136" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="6" fill="white">GAS</text>
+
+      <circle cx="165" cy="145" r="3" fill="#f59e0b">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="180" cy="145" r="3" fill="#64748b" />
+      <circle cx="195" cy="145" r="3" fill="#10b981" />
+      <circle cx="210" cy="145" r="3" fill="#3b82f6" />
+      <circle cx="225" cy="145" r="3" fill="#ef4444" />
+
+      <rect x="60" y="160" width="40" height="60" fill="#374151" rx="4" />
+      <rect x="65" y="165" width="30" height="50" fill="#1e293b" rx="2" />
+      <rect x="68" y="195" width="24" height="15" fill="#f59e0b" rx="1" />
+      <text x="80" y="203" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="8" fill="white">DIESEL</text>
+
+      <rect x="300" y="160" width="40" height="60" fill="url(#gasGrad)" rx="4" />
+      <rect x="305" y="165" width="30" height="50" fill="#166534" rx="2" />
+      <rect x="308" y="195" width="24" height="15" fill="#22c55e" rx="1" />
+      <text x="320" y="203" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="8" fill="white">GAS</text>
+
+      <path d="M100 180 Q110 170 120 180" stroke="#f59e0b" strokeWidth="3" fill="none" />
+      <path d="M280 180 Q290 170 300 180" stroke="#22c55e" strokeWidth="3" fill="none" />
+
+      <circle cx="200" cy="180" r="15" fill="#64748b" />
+      <circle cx="200" cy="180" r="12" fill="#374151" />
+      <path d="M200 175 L205 185 L195 185 Z" fill="#f59e0b" />
+
+      <rect x="195" y="195" width="10" height="25" fill="#6b7280" />
+      <rect x="190" y="220" width="20" height="8" fill="#374151" rx="2" />
+
+      <g opacity="0.8">
+        <circle cx="110" cy="175" r="2" fill="#f59e0b">
+          <animate attributeName="cx" values="110;140;170" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="290" cy="175" r="2" fill="#22c55e">
+          <animate attributeName="cx" values="290;260;230" dur="2.5s" repeatCount="indefinite" />
+        </circle>
+      </g>
+
+      <rect x="160" y="80" width="80" height="30" fill="#1e293b" rx="4" />
+      <text x="200" y="95" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="10" fill="#10b981">EFFICIENCY</text>
+      <text x="200" y="105" textAnchor="middle" fontFamily="monospace" fontSize="12" fill="#22d3ee">85%</text>
+
+      <rect x="50" y="230" width="300" height="15" fill="#64748b" rx="4" />
+      <text x="200" y="270" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="16" fontWeight="bold" fill="#374151">Dual Fuel Kit</text>
+      <text x="200" y="290" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="12" fill="#6b7280">Diesel + Gas Conversion System</text>
+    </svg>
+  </div>
+
+  <div className="absolute -bottom-6 -right-6 w-20 h-20 sm:w-24 sm:h-24 bg-secondary rounded-full flex items-center justify-center z-10 shadow-lg">
+    <div className="text-white text-center text-xs sm:text-sm">
+      <div className="text-lg sm:text-xl font-bold">40%</div>
+      <div>Cost Saving</div>
+    </div>
+  </div>
+</motion.div>
+
+
+
           </div>
         </div>
       </section>
@@ -272,19 +339,25 @@ export default function DualFuelKitPage() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true }}
-              className="order-2 md:order-1"
-            >
-              <img 
-                src="assets/img/service/service-05.jpg" 
-                alt="Dual Fuel Kit Installation" 
-                className="rounded-xl shadow-xl w-full h-auto"
-              />
-            </motion.div>
+ <motion.div
+  initial={{ opacity: 0, x: -50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.7 }}
+  viewport={{ once: true }}
+  className="order-2 md:order-1"
+>
+  <div className="rounded-xl shadow-xl w-full overflow-hidden">
+    <img 
+      src="/assets/img/05.png" 
+      alt="Dual Fuel Kit Installation" 
+      className="w-full object-contain"
+    />
+  </div>
+</motion.div>
+
+
+
+
             
             <motion.div
               initial={{ opacity: 0, x: 50 }}

@@ -14,6 +14,15 @@ export default function Header() {
   const servicesRef = useRef<HTMLDivElement>(null);
   const solutionsRef = useRef<HTMLDivElement>(null);
   const energyToolsRef = useRef<HTMLDivElement>(null);
+  const [spareDropdownOpen, setSpareDropdownOpen] = useState(false);
+  const [dgDropdownOpen, setDgDropdownOpen] = useState(false);
+  const [upsDropdownOpen, setUpsDropdownOpen] = useState(false);
+  const [servoDropdownOpen, setServoDropdownOpen] = useState(false);
+  const [recdDropdownOpen, setRecdDropdownOpen] = useState(false);
+  const [dfkDropdownOpen, setDfkDropdownOpen] = useState(false);
+  const [emissionDropdownOpen, setEmissionDropdownOpen] = useState(false);
+  const [installDropdownOpen, setInstallDropdownOpen] = useState(false);
+  const [amcDropdownOpen, setAmcDropdownOpen] = useState(false);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
@@ -477,7 +486,7 @@ export default function Header() {
                         : "text-gray-700"
                     }`}
                   >
-                    Lithium-Ion Inverters
+                    Battery Energy Storage System
                   </span>
                 </Link>
                 <Link href="/services/dual-fuel-kit">
@@ -809,131 +818,327 @@ export default function Header() {
 
               {/* Mobile Solutions Dropdown */}
               <div className="border-b border-gray-100 pb-2">
-                <button
+                {/* <button
                   className="flex items-center justify-between w-full py-2"
                   onClick={() =>
                     setSolutionsDropdownOpen(!solutionsDropdownOpen)
                   }
+                > */}
+                <span
+                  className={
+                    location.startsWith("/solutions")
+                      ? "text-primary font-medium"
+                      : ""
+                  }
                 >
-                  <span
-                    className={
-                      location.startsWith("/solutions")
-                        ? "text-primary font-medium"
-                        : ""
-                    }
-                  >
-                    Our Solutions
-                  </span>
-                  <i
+                  Our Solutions
+                </span>
+                {/* <i
                     className={`fas fa-chevron-down text-sm transition-transform duration-300 ${
                       solutionsDropdownOpen ? "rotate-180" : ""
                     }`}
                   ></i>
-                </button>
+                </button> */}
 
-                {solutionsDropdownOpen && (
+                {
                   <div className="pl-4 space-y-2 mt-2">
                     <div className="mb-3">
-                      <h3 className="font-medium text-primary">
-                        Diesel Generator Solutions
-                      </h3>
-                      <ul className="pl-4 mt-1 space-y-1">
-                        <li>
-                          <Link href="/solutions/diesel-generator/procurement">
-                            <span className="block py-1 text-sm">
-                              DG Procurement (CPCB IV+ Compliant)
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/solutions/diesel-generator/installation">
-                            <span className="block py-1 text-sm">
-                              DG Installation & Shifting
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/solutions/diesel-generator/amc">
-                            <span className="block py-1 text-sm">DG AMC</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/solutions/diesel-generator/overhaul">
-                            <span className="block py-1 text-sm">
-                              DG Overhaul & Repairs
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/solutions/diesel-generator/monitoring">
-                            <span className="block py-1 text-sm">
-                              IoT-based DG Monitoring
-                            </span>
-                          </Link>
-                        </li>
-                      </ul>
+                      <div
+                        className="flex items-center justify-between py-2 cursor-pointer"
+                        onClick={() => setDgDropdownOpen(!dgDropdownOpen)}
+                      >
+                        <h3 className="font-medium text-primary">
+                          Diesel Generator Solutions
+                        </h3>
+                        <i
+                          className={`fas fa-chevron-down text-xs transition-transform duration-200 ${
+                            dgDropdownOpen ? "rotate-180" : ""
+                          }`}
+                        ></i>
+                      </div>
+
+                      {dgDropdownOpen && (
+                        <ul className="pl-4 mt-1 space-y-1">
+                          <li>
+                            <Link href="/solutions/diesel-generator/procurement">
+                              <span className="block py-1 text-sm">
+                                DG Procurement (CPCB IV+ Compliant)
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/diesel-generator/installation">
+                              <span className="block py-1 text-sm">
+                                DG Installation & Shifting
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/diesel-generator/amc">
+                              <span className="block py-1 text-sm">DG AMC</span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/diesel-generator/overhaul">
+                              <span className="block py-1 text-sm">
+                                DG Overhaul & Repairs
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/diesel-generator/monitoring">
+                              <span className="block py-1 text-sm">
+                                IoT-based DG Monitoring
+                              </span>
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
                     </div>
 
                     <div className="mb-3">
-                      <h3 className="font-medium text-primary">
-                        UPS System Solutions
-                      </h3>
-                      <ul className="pl-4 mt-1 space-y-1">
-                        <li>
-                          <Link href="/solutions/ups/sourcing">
-                            <span className="block py-1 text-sm">
-                              UPS System Sourcing
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/solutions/ups/battery">
-                            <span className="block py-1 text-sm">
-                              UPS Battery Sizing & Supply
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/solutions/ups/amc">
-                            <span className="block py-1 text-sm">UPS AMC</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/solutions/ups/monitoring">
-                            <span className="block py-1 text-sm">
-                              Load Management & Monitoring
-                            </span>
-                          </Link>
-                        </li>
-                      </ul>
+                      <div
+                        className="flex items-center justify-between py-2 cursor-pointer"
+                        onClick={() => setUpsDropdownOpen(!upsDropdownOpen)}
+                      >
+                        <h3 className="font-medium text-primary">
+                          UPS System Solutions
+                        </h3>
+                        <i
+                          className={`fas fa-chevron-down text-xs transition-transform duration-200 ${
+                            upsDropdownOpen ? "rotate-180" : ""
+                          }`}
+                        ></i>
+                      </div>
+
+                      {upsDropdownOpen && (
+                        <ul className="pl-4 mt-1 space-y-1">
+                          <li>
+                            <Link href="/solutions/ups/sourcing">
+                              <span className="block py-1 text-sm">
+                                UPS System Sourcing
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/ups/battery">
+                              <span className="block py-1 text-sm">
+                                UPS Battery Sizing & Supply
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/ups/amc">
+                              <span className="block py-1 text-sm">
+                                UPS AMC
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/ups/monitoring">
+                              <span className="block py-1 text-sm">
+                                Load Management & Monitoring
+                              </span>
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
+                    </div>
+
+                    <div className="mb-3">
+                      <div
+                        className="flex items-center justify-between py-2 cursor-pointer"
+                        onClick={() => setServoDropdownOpen(!servoDropdownOpen)}
+                      >
+                        <h3 className="font-medium text-primary">
+                          Servo Stabilizer Solutions
+                        </h3>
+                        <i
+                          className={`fas fa-chevron-down text-xs transition-transform duration-200 ${
+                            servoDropdownOpen ? "rotate-180" : ""
+                          }`}
+                        ></i>
+                      </div>
+
+                      {servoDropdownOpen && (
+                        <ul className="pl-4 mt-1 space-y-1">
+                          <li>
+                            <Link href="/solutions/servo/sizing">
+                              <span className="block py-1 text-sm">
+                                Sizing & Selection Support
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/servo/procurement">
+                              <span className="block py-1 text-sm">
+                                Procurement & Delivery
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/servo/installation">
+                              <span className="block py-1 text-sm">
+                                Installation & Commissioning
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/servo/amc">
+                              <span className="block py-1 text-sm">
+                                Stabilizer AMC
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/servo/monitoring">
+                              <span className="block py-1 text-sm">
+                                Remote Voltage Monitoring
+                              </span>
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
+                    </div>
+
+                    <div className="mb-3">
+                      <div
+                        className="flex items-center justify-between py-2 cursor-pointer"
+                        onClick={() => setRecdDropdownOpen(!recdDropdownOpen)}
+                      >
+                        <h3 className="font-medium text-primary">
+                          RECD Compliance Solutions
+                        </h3>
+                        <i
+                          className={`fas fa-chevron-down text-xs transition-transform duration-200 ${
+                            recdDropdownOpen ? "rotate-180" : ""
+                          }`}
+                        ></i>
+                      </div>
+
+                      {recdDropdownOpen && (
+                        <ul className="pl-4 mt-1 space-y-1">
+                          <li>
+                            <Link href="/solutions/recd/advisory">
+                              <span className="block py-1 text-sm">
+                                CQAM Norms & Compliance Advisory
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/recd/procurement">
+                              <span className="block py-1 text-sm">
+                                RECD Procurement
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/recd/integration">
+                              <span className="block py-1 text-sm">
+                                Installation & Integration
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/recd/monitoring">
+                              <span className="block py-1 text-sm">
+                                Emission Performance Monitoring
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/recd/documentation">
+                              <span className="block py-1 text-sm">
+                                Regulatory Documentation Support
+                              </span>
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
+                    </div>
+
+                    <div className="mb-3">
+                      <div
+                        className="flex items-center justify-between py-2 cursor-pointer"
+                        onClick={() => setDfkDropdownOpen(!dfkDropdownOpen)}
+                      >
+                        <h3 className="font-medium text-primary">
+                          Dual Fuel Kit Conversions
+                        </h3>
+                        <i
+                          className={`fas fa-chevron-down text-xs transition-transform duration-200 ${
+                            dfkDropdownOpen ? "rotate-180" : ""
+                          }`}
+                        ></i>
+                      </div>
+
+                      {dfkDropdownOpen && (
+                        <ul className="pl-4 mt-1 space-y-1">
+                          <li>
+                            <Link href="/solutions/dfk/assessment">
+                              <span className="block py-1 text-sm">
+                                DFK Suitability Assessment
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/dfk/procurement">
+                              <span className="block py-1 text-sm">
+                                DFK Procurement
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/dfk/installation">
+                              <span className="block py-1 text-sm">
+                                Installation & Calibration
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/dfk/analytics">
+                              <span className="block py-1 text-sm">
+                                Fuel Savings Analytics
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/dfk/maintenance">
+                              <span className="block py-1 text-sm">
+                                Post-conversion Maintenance
+                              </span>
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
                     </div>
                   </div>
-                )}
+                }
               </div>
 
               {/* Mobile Services Dropdown */}
               <div className="border-b border-gray-100 pb-2">
-                <button
+                {/* <button
                   className="flex items-center justify-between w-full py-2"
                   onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
+                > */}
+                <span
+                  className={
+                    location.startsWith("/services")
+                      ? "text-primary font-medium"
+                      : ""
+                  }
                 >
-                  <span
-                    className={
-                      location.startsWith("/services")
-                        ? "text-primary font-medium"
-                        : ""
-                    }
-                  >
-                    Our Services
-                  </span>
-                  <i
+                  Our Services
+                </span>
+                {/* <i
                     className={`fas fa-chevron-down text-sm transition-transform duration-300 ${
                       servicesDropdownOpen ? "rotate-180" : ""
                     }`}
                   ></i>
-                </button>
+                </button> */}
 
-                {servicesDropdownOpen && (
+                {
                   <div className="pl-4 space-y-2 mt-2">
                     <Link href="/services/diesel-generator">
                       <span className="block py-1">
@@ -952,31 +1157,252 @@ export default function Header() {
                     <Link href="/services/dual-fuel-kit">
                       <span className="block py-1">Dual Fuel Kit Services</span>
                     </Link>
+
+                    <div className="mb-3">
+                      <div
+                        className="flex items-center justify-between py-2 cursor-pointer"
+                        onClick={() =>
+                          setInstallDropdownOpen(!installDropdownOpen)
+                        }
+                      >
+                        <h3 className="font-medium text-primary">
+                          Installation & Integration
+                        </h3>
+                        <i
+                          className={`fas fa-chevron-down text-xs transition-transform duration-200 ${
+                            installDropdownOpen ? "rotate-180" : ""
+                          }`}
+                        ></i>
+                      </div>
+
+                      {installDropdownOpen && (
+                        <ul className="pl-4 mt-1 space-y-1">
+                          <li>
+                            <Link href="/services/installation/assessment">
+                              <span className="block py-1 text-sm">
+                                Site Assessment & Planning
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/services/installation/turnkey">
+                              <span className="block py-1 text-sm">
+                                Turnkey Installation Projects
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/services/installation/synchronization">
+                              <span className="block py-1 text-sm">
+                                Synchronization & Load Testing
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/services/installation/documentation">
+                              <span className="block py-1 text-sm">
+                                Documentation & Handover
+                              </span>
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
+                    </div>
+
+                    <div className="mb-3">
+                      <div
+                        className="flex items-center justify-between py-2 cursor-pointer"
+                        onClick={() => setAmcDropdownOpen(!amcDropdownOpen)}
+                      >
+                        <h3 className="font-medium text-primary">
+                          Annual Maintenance
+                        </h3>
+                        <i
+                          className={`fas fa-chevron-down text-xs transition-transform duration-200 ${
+                            amcDropdownOpen ? "rotate-180" : ""
+                          }`}
+                        ></i>
+                      </div>
+
+                      {amcDropdownOpen && (
+                        <ul className="pl-4 mt-1 space-y-1">
+                          <li>
+                            <Link href="/solutions/diesel-generator/amc">
+                              <span className="block py-1 text-sm">DG AMC</span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/ups/amc">
+                              <span className="block py-1 text-sm">
+                                UPS AMC
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/solutions/servo/amc">
+                              <span className="block py-1 text-sm">
+                                Servo Stabilizer AMC
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/services/amc/preventive">
+                              <span className="block py-1 text-sm">
+                                Preventive Maintenance
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/services/amc/emergency">
+                              <span className="block py-1 text-sm">
+                                Emergency Breakdown Services
+                              </span>
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
+                    </div>
+
+                    <div className="mb-3">
+                      <div
+                        className="flex items-center justify-between py-2 cursor-pointer"
+                        onClick={() => setSpareDropdownOpen(!spareDropdownOpen)}
+                      >
+                        <h3 className="font-medium text-primary">
+                          Spare Parts Sourcing
+                        </h3>
+                        <i
+                          className={`fas fa-chevron-down text-xs transition-transform duration-200 ${
+                            spareDropdownOpen ? "rotate-180" : ""
+                          }`}
+                        ></i>
+                      </div>
+
+                      {spareDropdownOpen && (
+                        <ul className="pl-4 mt-1 space-y-1">
+                          <li>
+                            <Link href="/services/parts/dg-engine">
+                              <span className="block py-1 text-sm">
+                                DG Engine & Alternator Parts
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/services/parts/ups-modules">
+                              <span className="block py-1 text-sm">
+                                UPS Modules & Batteries
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/services/parts/servo-control">
+                              <span className="block py-1 text-sm">
+                                Servo Control Components
+                              </span>
+                            </Link>
+                          </li>
+                          {/* Uncomment below if needed */}
+                          {/*
+      <li>
+        <Link href="/services/parts/recd-spares">
+          <span className="block py-1 text-sm">RECD Spares</span>
+        </Link>
+      </li>
+      */}
+                          <li>
+                            <Link href="/services/parts/logistics">
+                              <span className="block py-1 text-sm">
+                                Logistics & Delivery Support
+                              </span>
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
+                    </div>
+
+                    <div className="mb-3">
+                      <div
+                        className="flex items-center justify-between py-2 cursor-pointer"
+                        onClick={() =>
+                          setEmissionDropdownOpen(!emissionDropdownOpen)
+                        }
+                      >
+                        <h3 className="font-medium text-primary">
+                          Emission Compliance
+                        </h3>
+                        <i
+                          className={`fas fa-chevron-down text-xs transition-transform duration-200 ${
+                            emissionDropdownOpen ? "rotate-180" : ""
+                          }`}
+                        ></i>
+                      </div>
+
+                      {emissionDropdownOpen && (
+                        <ul className="pl-4 mt-1 space-y-1">
+                          <li>
+                            <Link href="/services/emission/cqam">
+                              <span className="block py-1 text-sm">
+                                CQAM Registration Support
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/services/emission/recd-integration">
+                              <span className="block py-1 text-sm">
+                                On-field RECD Integration
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/services/emission/testing">
+                              <span className="block py-1 text-sm">
+                                Emission Testing Coordination
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/services/emission/reporting">
+                              <span className="block py-1 text-sm">
+                                Compliance Reporting
+                              </span>
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
+                    </div>
                   </div>
-                )}
+                }
               </div>
 
-              <Link href="/#blog">
+              <a href="/#blog">
                 <span className="block py-2">Blog</span>
-              </Link>
+              </a>
 
               {/* Mobile Energy Tools Dropdown */}
               <div className="border-b border-gray-100 pb-2">
-                <button
+                {/* <button
                   className="flex items-center justify-between w-full py-2"
                   onClick={() =>
                     setEnergyToolsDropdownOpen(!energyToolsDropdownOpen)
                   }
+                > */}
+                  <span
+                   className={
+                    location.startsWith("/energy")
+                      ? "text-primary font-medium"
+                      : ""
+                  }
                 >
-                  <span>Energy Tools</span>
-                  <i
+                  Energy Tools
+                </span>
+                  {/* <i
                     className={`fas fa-chevron-down text-sm transition-transform duration-300 ${
                       energyToolsDropdownOpen ? "rotate-180" : ""
                     }`}
-                  ></i>
-                </button>
+                  ></i> */}
+                {/* </button> */}
 
-                {energyToolsDropdownOpen && (
+                {(
                   <div className="pl-4 space-y-2 mt-2">
                     <Link href="/energy-calculator">
                       <span className="block py-1">Energy Calculator</span>
@@ -986,12 +1412,12 @@ export default function Header() {
                         Energy Savings Calculator
                       </span>
                     </Link>
-                    <Link href="/product-demo">
+                    {/* <Link href="/product-demo">
                       <span className="block py-1">Product Demos</span>
                     </Link>
                     <Link href="/loading-states">
                       <span className="block py-1">Loading States</span>
-                    </Link>
+                    </Link> */}
                   </div>
                 )}
               </div>
