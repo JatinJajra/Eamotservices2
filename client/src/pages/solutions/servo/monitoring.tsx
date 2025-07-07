@@ -360,113 +360,304 @@ const ServoMonitoringPage: React.FC = () => {
               ))}
             </div>
           </div> */}
-           <div style={{ backgroundColor: "#0f172a", color: "white", fontFamily: "sans-serif", padding: "2rem" }}>
-      <div className="container">
-        <div className="left">
-          <div className="card">
-            <h3>System Health</h3>
-            <div>
-              <div>
-                Overall Status: <span style={{ color: "#4ade80" }}>Excellent</span>
-              </div>
-              <div>Efficiency: 98.2%</div>
-              <div>Uptime: 99.8%</div>
-            </div>
+         <div
+  style={{
+    backgroundColor: "#0f172a",
+    color: "white",
+    fontFamily: "sans-serif",
+    padding: "2rem",
+  }}
+>
+  <div
+    style={{
+      maxWidth: "1200px",
+      margin: "auto",
+      display: "flex",
+      flexWrap: "wrap",
+      gap: "1rem",
+    }}
+  >
+    {/* Left Section */}
+    <div
+      style={{
+        flex: 1,
+        minWidth: "220px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+      }}
+    >
+      <div
+        style={{
+          background: "rgba(30, 41, 59, 0.5)",
+          border: "1px solid #334155",
+          borderRadius: "0.5rem",
+          padding: "1rem",
+        }}
+      >
+        <h3>System Health</h3>
+        <div>
+          <div>
+            Overall Status:{" "}
+            <span style={{ color: "#4ade80" }}>Excellent</span>
           </div>
-          <div className="card">
-            <h3>Alerts</h3>
-            <div style={{ fontSize: "0.75rem" }}>
-              <div style={{ color: "#4ade80" }}>🟢 All systems normal</div>
-              <div style={{ color: "#facc15" }}>🟡 Maintenance due in 15 days</div>
-            </div>
+          <div>Efficiency: 98.2%</div>
+          <div>Uptime: 99.8%</div>
+        </div>
+      </div>
+      <div
+        style={{
+          background: "rgba(30, 41, 59, 0.5)",
+          border: "1px solid #334155",
+          borderRadius: "0.5rem",
+          padding: "1rem",
+        }}
+      >
+        <h3>Alerts</h3>
+        <div style={{ fontSize: "0.75rem" }}>
+          <div style={{ color: "#4ade80" }}>🟢 All systems normal</div>
+          <div style={{ color: "#facc15" }}>
+            🟡 Maintenance due in 15 days
           </div>
         </div>
+      </div>
+    </div>
 
-        <div className="center">
-          <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.9rem", marginBottom: "1rem" }}>
-            <div style={{ color: "#4ade80" }}>🟢 System Online</div>
-            <div>Last Update: 15:42:38</div>
-          </div>
+    {/* Center Section */}
+    <div
+      style={{
+        flex: 2,
+        minWidth: "300px",
+        background:
+          "linear-gradient(to bottom right, #0f172a, #1e293b)",
+        padding: "1rem",
+        borderRadius: "1rem",
+        border: "1px solid #1e293b",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          fontSize: "0.9rem",
+          marginBottom: "1rem",
+        }}
+      >
+        <div style={{ color: "#4ade80" }}>🟢 System Online</div>
+        <div>Last Update: 15:42:38</div>
+      </div>
 
-          <div className="phase-grid">
-            {[
-              { phase: "Phase 1", voltage: "220V", width: "92%" },
-              { phase: "Phase 2", voltage: "225V", width: "94%" },
-              { phase: "Phase 3", voltage: "218V", width: "91%" },
-            ].map((item, i) => (
-              <div className="card" key={i}>
-                <div>{item.phase}</div>
-                <div style={{ fontSize: "1.25rem", fontWeight: "bold" }}>{item.voltage}</div>
-                <div className="bar">
-                  <div className="bar-inner" style={{ width: item.width }}></div>
-                </div>
-              </div>
-            ))}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "0.75rem",
+          marginBottom: "1rem",
+        }}
+      >
+        {[
+          { phase: "Phase 1", voltage: "220V", width: "92%" },
+          { phase: "Phase 2", voltage: "225V", width: "94%" },
+          { phase: "Phase 3", voltage: "218V", width: "91%" },
+        ].map((item, i) => (
+          <div
+            key={i}
+            style={{
+              background: "rgba(30, 41, 59, 0.5)",
+              border: "1px solid #334155",
+              borderRadius: "0.5rem",
+              padding: "1rem",
+            }}
+          >
+            <div>{item.phase}</div>
+            <div
+              style={{
+                fontSize: "1.25rem",
+                fontWeight: "bold",
+              }}
+            >
+              {item.voltage}
+            </div>
+            <div
+              style={{
+                height: "4px",
+                background: "#475569",
+                borderRadius: "9999px",
+                overflow: "hidden",
+              }}
+            >
+              <div
+                style={{
+                  width: item.width,
+                  height: "100%",
+                  background: "#4ade80",
+                }}
+              ></div>
+            </div>
           </div>
+        ))}
+      </div>
 
-          <div style={{ fontSize: "0.75rem", color: "#60a5fa", marginBottom: "0.5rem" }}>
-            ⚡ Voltage Trend – Real-time
-          </div>
-          <div className="voltage-trend">
-            <svg width="100%" height="100%">
-              <path d="M0,30 Q75,20 150,25 T300,30" stroke="#3b82f6" strokeWidth="2" fill="none" />
-              <path d="M0,35 Q75,25 150,30 T300,35" stroke="#22c55e" strokeWidth="2" fill="none" />
-            </svg>
-          </div>
+      <div
+        style={{
+          fontSize: "0.75rem",
+          color: "#60a5fa",
+          marginBottom: "0.5rem",
+        }}
+      >
+        ⚡ Voltage Trend – Real-time
+      </div>
 
-          <div className="metrics">
-            <div>
-              Load
-              <br />
-              <span style={{ color: "#facc15" }}>75%</span>
-            </div>
-            <div>
-              Freq
-              <br />
-              50.1Hz
-            </div>
-            <div>
-              Temp
-              <br />
-              <span style={{ color: "#4ade80" }}>42°C</span>
-            </div>
-            <div>
-              Status
-              <br />
-              <span style={{ color: "#4ade80" }}>STABLE</span>
-            </div>
+      <div
+        style={{
+          height: "60px",
+          background:
+            "repeating-linear-gradient(to right, #334155 0 1px, transparent 1px 40px)",
+          marginBottom: "1rem",
+        }}
+      >
+        <svg width="100%" height="100%">
+          <path
+            d="M0,30 Q75,20 150,25 T300,30"
+            stroke="#3b82f6"
+            strokeWidth="2"
+            fill="none"
+          />
+          <path
+            d="M0,35 Q75,25 150,30 T300,35"
+            stroke="#22c55e"
+            strokeWidth="2"
+            fill="none"
+          />
+        </svg>
+      </div>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: "0.5rem",
+        }}
+      >
+        {[
+          { label: "Load", value: "75%", color: "#facc15" },
+          { label: "Freq", value: "50.1Hz" },
+          { label: "Temp", value: "42°C", color: "#4ade80" },
+          { label: "Status", value: "STABLE", color: "#4ade80" },
+        ].map((metric, idx) => (
+          <div
+            key={idx}
+            style={{
+              fontSize: "0.75rem",
+              textAlign: "center",
+              background: "rgba(30, 41, 59, 0.5)",
+              padding: "0.5rem",
+              borderRadius: "0.5rem",
+              border: "1px solid #334155",
+            }}
+          >
+            {metric.label}
+            <br />
+            <span style={{ color: metric.color || "inherit" }}>
+              {metric.value}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Right Section */}
+    <div
+      style={{
+        flex: 1,
+        minWidth: "220px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+      }}
+    >
+      <div
+        style={{
+          background: "rgba(30, 41, 59, 0.5)",
+          border: "1px solid #334155",
+          borderRadius: "0.5rem",
+          padding: "1rem",
+        }}
+      >
+        <h3>Performance</h3>
+        <div>
+          Power Factor: 0.95
+          <div
+            style={{
+              height: "4px",
+              background: "#475569",
+              borderRadius: "9999px",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                height: "100%",
+                width: "95%",
+                background: "#4ade80",
+              }}
+            ></div>
           </div>
         </div>
-
-        <div className="right">
-          <div className="card">
-            <h3>Performance</h3>
-            <div>
-              Power Factor: 0.95
-              <div className="bar">
-                <div className="bar-inner" style={{ width: "95%" }}></div>
-              </div>
-            </div>
-            <div style={{ marginTop: "0.5rem" }}>
-              Regulation: ±1%
-              <div className="bar">
-                <div className="bar-inner bar-blue" style={{ width: "98%" }}></div>
-              </div>
-            </div>
-          </div>
-
-          <div className="card">
-            <h3>Energy Savings</h3>
-            <div style={{ textAlign: "center" }}>
-              <div style={{ fontSize: "1.5rem", color: "#4ade80", fontWeight: "bold" }}>₹15,240</div>
-              <div style={{ fontSize: "0.75rem", color: "#9ca3af" }}>This Month</div>
-            </div>
+        <div style={{ marginTop: "0.5rem" }}>
+          Regulation: ±1%
+          <div
+            style={{
+              height: "4px",
+              background: "#475569",
+              borderRadius: "9999px",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                height: "100%",
+                width: "98%",
+                background: "#60a5fa",
+              }}
+            ></div>
           </div>
         </div>
       </div>
 
-      {/* Include styles in your index.css or scoped CSS */}
+      <div
+        style={{
+          background: "rgba(30, 41, 59, 0.5)",
+          border: "1px solid #334155",
+          borderRadius: "0.5rem",
+          padding: "1rem",
+        }}
+      >
+        <h3>Energy Savings</h3>
+        <div style={{ textAlign: "center" }}>
+          <div
+            style={{
+              fontSize: "1.5rem",
+              color: "#4ade80",
+              fontWeight: "bold",
+            }}
+          >
+            ₹15,240
+          </div>
+          <div
+            style={{
+              fontSize: "0.75rem",
+              color: "#9ca3af",
+            }}
+          >
+            This Month
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
+
         </div>
       </motion.section>
       
