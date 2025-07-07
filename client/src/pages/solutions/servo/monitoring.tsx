@@ -1129,3 +1129,4 @@ const ServoMonitoringPage: React.FC = () => {
 };
 
 export default ServoMonitoringPage;
+// jai ganeshaye namh jai maa gungal jai teetis koti devi devta ki jai ho
