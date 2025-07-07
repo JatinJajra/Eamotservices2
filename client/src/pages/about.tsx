@@ -128,7 +128,7 @@ export default function AboutPage() {
               </div> */}
               <div className="rounded-xl overflow-hidden shadow-xl w-full aspect-[16/9]">
                 <img
-                  src="http://13.232.18.39/assets/img/team/team-photo.jpg"
+                  src="assets/img/team/team-photo.jpg"
                   alt="EAMOT Team"
                   className="w-full h-full object-cover"
                 />
