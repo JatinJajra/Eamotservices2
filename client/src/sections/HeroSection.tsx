@@ -354,7 +354,7 @@ export default function HeroSection() {
             {[
               { value: "350+", label: "Assets Supported" },
               { value: "25+", label: "Years of Proven Expertise" },
-              { value: "500+ ", label: " DG Sets Installed." },
+              { value: "3500+ ", label: " DG Sets Installed." },
               // { value: "15+ ", label: "Years Experience" },
               // { value: "25% ", label: "Energy Savings" }
 

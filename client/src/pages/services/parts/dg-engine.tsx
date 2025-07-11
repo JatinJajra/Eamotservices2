@@ -229,8 +229,8 @@ export default function DGEnginePartsPage() {
                       </div>
                       
                       <p className="mb-6 text-gray-300">
-                        We source genuine and OEM-compatible replacement parts for all major diesel engine Parts, 
-                        including 'Cummins, Kirloskar, Ashok Leyland, TMTL, Mahindra and more'.
+                     We source genuine and OEM-compatible replacement parts for all major diesel engine Parts, including Cummins, Kirloskar, Ashok Leyland, TMTL, Mahindra and more.
+
                       </p>
                       
                       <div className="space-y-4">
@@ -443,10 +443,10 @@ export default function DGEnginePartsPage() {
                         <h3 className="text-2xl font-bold">Alternator Parts</h3>
                       </div>
                       
-                      <p className="mb-6 text-gray-300">
+                      {/* <p className="mb-6 text-gray-300">
                         We provide genuine and compatible alternator components for all major brands including 
                         'Stamford, Leroy Somer, Marathon, AVK' with Crompton Greaves'
-                      </p>
+                      </p> */}
                       
                       <div className="space-y-4">
                         <div className="bg-white/10 p-4 rounded-lg">

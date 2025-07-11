@@ -237,7 +237,7 @@ export default function EmergencyBreakdownServicesPage() {
                 {
                   icon: <Phone className="h-5 w-5 text-white" />,
                   title: "Emergency Call Intake",
-                  description: "Our 24/7 emergency hotline connects you with technical specialists who gather critical information and categorize the severity of your breakdown."
+                  description: "Our  emergency hotline connects you with technical specialists who gather critical information and categorize the severity of your breakdown."
                 },
                 {
                   icon: <Truck className="h-5 w-5 text-white" />,

@@ -89,7 +89,7 @@ const UPSAMCPage: React.FC = () => {
         "Checking logs and event history from UPS memory ",
         "Extended technical support (7 AM - 9 PM, 7 days)",
         "Recommendations on battery or part replacement in advance ",
-        "+Everything in basic",
+        "+Includes everything in the basic plan",
         "Recommendations on battery or part replacement in advance "
       ],
       icon: <Shield className="h-10 w-10 text-primary" />,

@@ -130,9 +130,9 @@ export default function LogisticsPage() {
         <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white">
           <a href="#" onClick={openModal}>Request Logistics Support</a>
         </Button>
-        <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary">
+        {/* <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary">
           <a href="#services">Explore Services</a>
-        </Button>
+        </Button> */}
       </div>
     </div>
   </motion.div>
@@ -863,7 +863,7 @@ export default function LogisticsPage() {
                       <div className="space-y-4">
                         <div className="flex items-center">
                           <Clock className="h-5 w-5 mr-3" />
-                          <span>24/7 emergency logistics hotline</span>
+                          <span> emergency logistics hotline</span>
                         </div>
                         <div className="flex items-center">
                           <Package className="h-5 w-5 mr-3" />

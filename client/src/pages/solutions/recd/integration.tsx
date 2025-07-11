@@ -121,7 +121,7 @@ const RECDIntegrationPage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-xl text-slate-300 mb-8 leading-relaxed"
+              className="text-lg text-slate-300 mb-8 leading-relaxed"
             >
               Transform your regulatory compliance journey with our revolutionary installation approach. 
               Unlike traditional integrators that compromise generator performance, our proprietary methodology 

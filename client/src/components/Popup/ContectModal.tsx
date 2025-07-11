@@ -11,6 +11,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import emailjs from "emailjs-com";
+
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -86,17 +88,52 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       setIsSubmitting(false);
     }
   };
+
+//    const onSubmit = async (data: ContactFormData) => {
+//   setIsSubmitting(true);
+
+//   try {
+//     const result = await emailjs.send(
+//       "service_gsqe139",
+//       "template_6kb6f3k",
+//       {
+//         from_name: data.name,
+//         from_email: data.email,
+//         subject: data.subject,
+//         message: data.message,
+//       },
+//       "TqpABKAmgxfYRL7Jl"
+//     );
+
+//     toast({
+//       title: "Message Sent",
+//       description: "Thanks for contacting us. We'll get back to you soon!",
+//     });
+
+//     reset();
+//   } catch (error) {
+//     console.error("EmailJS Error:", error);
+//     toast({
+//       title: "Error",
+//       description: "There was a problem sending your message. Please try again.",
+//       variant: "destructive",
+//     });
+//   } finally {
+//     setIsSubmitting(false);
+//   }
+// };
   return (
     <AnimatePresence>
       {isOpen && (
         <>
-          <motion.div
-            className="fixed inset-0 bg-black bg-opacity-50 z-40"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-          />
+     <motion.div
+  className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-40"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  onClick={onClose}
+/>
+
           <motion.div
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
             initial={{ scale: 0.8, opacity: 0 }}

@@ -778,9 +778,9 @@ const ServoMonitoringPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
+                  {/* <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
                     Explore Analytics Features
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </TabsContent>
@@ -807,9 +807,9 @@ const ServoMonitoringPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
+                  {/* <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
                     View Security Standards
-                  </Button>
+                  </Button> */}
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-xl border border-gray-700">
                   <img 
@@ -914,9 +914,9 @@ const ServoMonitoringPage: React.FC = () => {
                 <p className="text-gray-400">{feature.description}</p>
                 
                 <div className="mt-6">
-                  <a href="#" className="text-primary flex items-center text-sm hover:text-primary/80 transition-colors">
+                  {/* <a href="#" className="text-primary flex items-center text-sm hover:text-primary/80 transition-colors">
                     Learn more <ChevronRight className="h-4 w-4 ml-1" />
-                  </a>
+                  </a> */}
                 </div>
               </motion.div>
             ))}

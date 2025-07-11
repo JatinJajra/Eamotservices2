@@ -497,7 +497,7 @@ const ServoProcurementPage: React.FC = () => {
             >
               <div className="rounded-lg overflow-hidden border-2 border-gray-800 shadow-2xl relative">
                 <img 
-                  src="/images/servo-procurement.jpg" 
+                  src="/assets/img/servo-procurement.jpg" 
                   alt="Servo Stabilizer Procurement" 
                   className="w-full h-auto"
                 />
@@ -511,6 +511,26 @@ const ServoProcurementPage: React.FC = () => {
           </div>
         </div>
       </motion.section>
+       <section className="py-16 bg-gradient-to-r from-primary to-primary-dark">
+  <div className="container mx-auto px-4 text-center">
+    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+      {/* hello */}
+    </h2>
+    <p className="text-white text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+      {/* hello */}
+    </p>
+    <Button
+      className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-6 font-semibold shadow-lg"
+      size="lg"
+      asChild
+    >
+      <a href="#" onClick={openModal}>
+        Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
+       </a>
+    </Button>
+  </div>
+</section>
+
     </>
   );
 };

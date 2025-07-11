@@ -57,7 +57,7 @@ const services = [
   {
     id: 6,
     image: "assets/img/services/solutions.jpg",
-    title: "Duel Fuel Kit",
+    title: "Dual Fuel Kit",
     description: "Enabling diesel generators to efficiently operate on dual fuel sources.",
     link: "/services/dual-fuel-kit",
     icon: <Fuel className="w-6 h-6" />,

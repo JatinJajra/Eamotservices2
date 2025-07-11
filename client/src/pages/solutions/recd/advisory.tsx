@@ -256,7 +256,7 @@ const RECDAdvisoryPage: React.FC = () => {
                         Applicable to generators ≥ 41 KW
                       </h4>
                       <p className="text-sm text-white/70">
-                        All DG sets with capacity of 125 kVA and above require
+                        All DG sets with capacity of 41 kw and above require
                         RECD implementation
                       </p>
                     </div>
@@ -569,44 +569,57 @@ const RECDAdvisoryPage: React.FC = () => {
                     <h3 className="text-lg font-semibold text-gray-800">
                       Challenge
                     </h3>
-                    <p className="text-gray-600">
-                      With increasing focus on emission norms and green
-                      compliance in urban zones, the client was required to
-                      retrofit emission control on their existing DG Set (125
-                      kVA) at a key regional office. The primary concerns:
-                      <br />∙ Maintaining uninterrupted operations during
-                      installation.
-                      <br />∙ Ensuring CPCB compliance without replacing the
-                      existing DG Set.
-                      <br />∙ Fast implementation due to an upcoming audit and
-                      regulatory deadline.
-                    </p>
+                    <div className="text-gray-600">
+                      <p>   With increasing focus on emission norms and green
+                          compliance in urban zones, the client was required to
+                          retrofit emission control on their existing DG Set
+                          (125 kVA) at a key regional office.</p>
+                          <h3 className="text-sm font-semibold text-gray-800 mt-2">
+                       The primary concerns:
+                    </h3>
+                      <ul className="list-disc list-outside pl-5 mt-2 space-y-1">
+                        <li>
+                          Maintaining uninterrupted operations during
+                          installation.
+                        </li>
+                        <li>
+                          Ensuring CPCB compliance without replacing the
+                          existing DG Set.
+                        </li>
+                        <li>
+                          Fast implementation due to an upcoming audit and
+                          regulatory deadline.
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
 
+                  
+
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  {/* <h3 className="text-lg font-semibold text-gray-800 mb-2">
                     The Results
-                  </h3>
+                  </h3> */}
                   <ul className="space-y-2">
-                    <li className="flex items-start">
+                    {/* <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
                       <span className="text-gray-600">
                         Full compliance achieved within regulatory timeline
                       </span>
-                    </li>
-                    <li className="flex items-start">
+                    </li> */}
+                    {/* <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
                       <span className="text-gray-600">
                         Zero operational disruption during installation
                       </span>
-                    </li>
-                    <li className="flex items-start">
+                    </li> */}
+                    {/* <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
                       <span className="text-gray-600">
                         Custom solution for space-constrained installation
                       </span>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>
@@ -616,49 +629,90 @@ const RECDAdvisoryPage: React.FC = () => {
                 {/* <h2 className="text-2xl font-bold mb-4 text-gray-800">Our Solution</h2> */}
 
                 <div className="space-y-4 flex-grow">
-                  <div>
-                    <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                  <div className="">
+                    <h3 className="text-lg font-semibold text-gray-800">
                       Our Solution
-                    </h2>
-                    EAMOT provided a customized Retrofit Emission Control Device
-                    (RECD) solution compatible with the client’s existing DG
-                    Set. The project was planned with the goal of minimal
-                    downtime and zero operational disruption.{" "}
-                    <p className="text-gray-800  text-sm">
+                    </h3>
+                    <p className="text-gray-600">
+                      EAMOT provided a customized Retrofit Emission Control
+                      Device (RECD) solution compatible with the client’s
+                      existing DG Set. The project was planned with the goal of
+                      minimal downtime and zero operational disruption.{" "}
+                    </p>
+                    {/* <p className="text-gray-800  text-sm">
                       Manufacturing facility with 6 diesel generators (150-500
                       kVA)
-                    </p>
+                    </p> */}
                   </div>
 
                   <div>
-                    <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                      <h3 className="text-lg font-semibold text-gray-800">
                       Execution Highlights:
-                    </h2>
-                    <p className="text-gray-800 text-sm">
-                      ∙Site audit completed in under 2 hours to assess fitment
-                      and routing. <br />
-                      ∙Installation scheduled during non-peak hours (Saturday
-                      afternoon). <br />
-                      ∙Actual DG Set downtime during fitting: 45 minutes. <br />
-                      ∙Installation and compliance certification handed over the
-                      same day.{" "}
-                    </p>
+                    </h3>
+                    <ul className="space-y-2">
+                      <li className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                        <span className="text-gray-600">
+                          Site audit completed in under 2 hours to assess
+                          fitment and routing.
+                        </span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                        <span className="text-gray-600">
+                          Installation scheduled during non-peak hours (Saturday
+                          afternoon).
+                        </span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                        <span className="text-gray-600">
+                          Actual DG Set downtime during fitting: 45 minutes.
+                        </span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                        <span className="text-gray-600">
+                          Installation and compliance certification handed over
+                          the same day.
+                        </span>
+                      </li>
+                    </ul>
                   </div>
 
                   <div>
-                    <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                   <h3 className="text-lg font-semibold text-gray-800">
                       Results Achieved: :
-                    </h2>
-                    <p className="text-gray-800 text-sm">
-                      1. Achieved 70% reduction in Particulate Matter (PM)
-                      emissions.<br />
-                      2. Fully compliant with CPCB guidelines for emission
-                      retrofits.<br />
-                       3. Zero business disruption to NBFC
-                      operations.<br />
-                       4. Strengthened client’s sustainability
-                      credentials ahead of audit.{" "}
-                    </p>
+                    </h3>
+                    <ul className="space-y-2">
+                      <li className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                        <span className="text-gray-600">
+                          Achieved 70% reduction in Particulate Matter (PM)
+                          emissions.{" "}
+                        </span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                        <span className="text-gray-600">
+                          Fully compliant with CPCB guidelines for emission
+                          retrofits.
+                        </span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                        <span className="text-gray-600">
+                          Zero business disruption to NBFC operations.{" "}
+                        </span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                        <span className="text-gray-600">
+                          Strengthened client’s sustainability credentials ahead
+                          of audit.{" "}
+                        </span>
+                      </li>
+                    </ul>
                   </div>
 
                   {/* <div>
@@ -684,20 +738,68 @@ const RECDAdvisoryPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50">
-  <div className="container mx-auto px-4">
-    <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-8 md:p-12">
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
-        What Our Clients Say
-      </h2>
+      {/* <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-8 md:p-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
+              What Our Clients Say
+            </h2>
 
-      <div className="bg-gray-100 p-6 rounded-lg border-l-4 border-primary-600">
-        <p className="text-gray-700 italic text-lg">
-          “The RECD retrofit was smoother than expected. The EAMOT team delivered what they promised –
-          a clean install with no impact on our operations.”
-        </p>
-        {/* <p className="mt-4 text-sm font-medium text-gray-600 text-right">– Shradha Kapoor, Jun 27</p> */}
+            <div className="bg-gray-100 p-6 rounded-lg border-l-4 border-primary-600">
+              <p className="text-gray-700 italic text-lg">
+                “The RECD retrofit was smoother than expected. The EAMOT team
+                delivered what they promised – a clean install with no impact on
+                our operations.”
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>  */}
+
+      <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
+  <div className="container mx-auto px-4">
+    <div className="max-w-3xl mx-auto">
+      <div className="text-center mb-12">
+        <span className="text-primary font-medium">
+          SUCCESS STORIES
+        </span>
+        <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6 text-white">
+          What Our Clients Say
+        </h2>
       </div>
+
+      {[
+        {
+          quote: "“The RECD retrofit was smoother than expected. The EAMOT team delivered what they promised – a clean install with no impact on our operations.”.",
+          author: "",
+          position: "Chief Engineer",
+          company: "",
+        },
+        // {
+        //   quote: "I was skeptical about achieving the promised fuel savings, but EAMOT's precision implementation has delivered exactly as promised - a 58% average substitution rate with zero operational disruption during installation. Their 72-hour testing protocol is the most thorough I've seen.",
+        //   author: "Ananya Patel",
+        //   position: "Operations Director",
+        //   company: "Reliance Data Centers",
+        // }
+      ].map((testimonial, index) => (
+        <div key={index} className="mb-12 last:mb-0">
+          <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8 relative">
+            <div className="absolute top-6 left-6 text-6xl text-primary opacity-20">"</div>
+            <p className="text-gray-300 relative z-10 mb-6">
+              {testimonial.quote}
+            </p>
+            <div className="flex items-center gap-4">
+              {/* <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+                {testimonial.author.charAt(0)}{testimonial.author.split(' ')[1].charAt(0)}
+              </div> */}
+              <div>
+                <div className="font-semibold text-white">{testimonial.author}</div>
+                <div className="text-sm text-gray-400">{testimonial.position}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 </section>

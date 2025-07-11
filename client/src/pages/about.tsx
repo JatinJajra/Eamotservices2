@@ -7,7 +7,6 @@ import { useState } from "react";
 
 export default function AboutPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },

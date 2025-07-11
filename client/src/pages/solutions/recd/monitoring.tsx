@@ -750,9 +750,9 @@ const RECDMonitoringPage: React.FC = () => {
             {[
               {
                 title: "Eliminate Regulatory Penalties",
-                description: "Our clients have maintained 99.997% uptime of their compliance systems, resulting in zero regulatory penalties across 12,500+ operational months.",
+                description: "Our clients have maintained 99.97% uptime of their compliance systems, resulting in zero regulatory penalties across 12,500+ operational months.",
                 icon: <Shield className="h-10 w-10 text-blue-500" />,
-                metric: "99.997%",
+                metric: "99.97%",
                 metricLabel: "Compliance Uptime"
               },
               {
@@ -810,9 +810,9 @@ const RECDMonitoringPage: React.FC = () => {
                 <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
                 <p className="text-slate-400 text-sm">{benefit.description}</p>
                 <div className="mt-6">
-                  <Button variant="link" className="text-blue-400 hover:text-blue-300 p-0 h-auto font-normal text-sm flex items-center">
+                  {/* <Button variant="link" className="text-blue-400 hover:text-blue-300 p-0 h-auto font-normal text-sm flex items-center">
                     Learn more <ArrowUpRight className="ml-1 h-3 w-3" />
-                  </Button>
+                  </Button> */}
                 </div>
               </motion.div>
             ))}
@@ -831,7 +831,7 @@ const RECDMonitoringPage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { value: "99.997%", label: "Compliance Uptime" },
+              { value: "99.97%", label: "Compliance Uptime" },
               { value: "72hr", label: "Advance Warning" },
               { value: "2,500+", label: "Protected Facilities" },
               { value: "0", label: "Regulatory Penalties" }
@@ -907,7 +907,7 @@ const RECDMonitoringPage: React.FC = () => {
               </Button>
             </motion.div>
             
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0 }}
               animate={ctaInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.7 }}
@@ -923,7 +923,7 @@ const RECDMonitoringPage: React.FC = () => {
                   <div className="text-white/80 text-sm">{metric.label}</div>
                 </div>
               ))}
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </motion.section>

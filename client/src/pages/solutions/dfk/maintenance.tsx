@@ -356,8 +356,8 @@ const DFKMaintenancePage: React.FC = () => {
                   <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                   <p className="text-slate-400 text-sm mb-4">{plan.description}</p>
                   <div className="mt-4">
-                    <span className="text-3xl font-bold">{plan.price}</span>
-                    <span className="text-slate-400 text-sm ml-1">{plan.frequency}</span>
+                    {/* <span className="text-3xl font-bold">{plan.price}</span>
+                    <span className="text-slate-400 text-sm ml-1">{plan.frequency}</span> */}
                   </div>
                 </div>
                 
@@ -944,9 +944,9 @@ const DFKMaintenancePage: React.FC = () => {
                 transition={{ duration: 0.5, delay: 0.6 }}
                 className="mt-8"
               >
-                <Button className="bg-green-600 hover:bg-green-700 text-white">
+                {/* <Button className="bg-green-600 hover:bg-green-700 text-white">
                   View Client Success Stories <ChevronRight className="ml-2 h-4 w-4" />
-                </Button>
+                </Button> */}
               </motion.div>
             </div>
 
@@ -1100,7 +1100,7 @@ const DFKMaintenancePage: React.FC = () => {
               </Button>
             </motion.div>
             
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0 }}
               animate={ctaInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.7 }}
@@ -1116,7 +1116,7 @@ const DFKMaintenancePage: React.FC = () => {
                   <div className="text-white/80 text-sm">{metric.label}</div>
                 </div>
               ))}
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </motion.section>

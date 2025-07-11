@@ -372,7 +372,7 @@ const DFKAssessmentPage: React.FC = () => {
       </section>
 
       {/* Case Study */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -393,14 +393,7 @@ and commitment to sustainability and compliance. </p>
                         <span className="text-gray-700">To reduce diesel dependency, lower operational fuel costs, and adopt a cleaner energy solution 
 while maintaining uninterrupted power backup for residents. </span>
                       </li>
-                      {/* <li className="flex items-start">
-                        <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">Natural gas connection available at site perimeter</span>
-                      </li>
-                      <li className="flex items-start">
-                        <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">Minor infrastructure modifications required</span>
-                      </li> */}
+                      
                     </ul>
                   </div>
                   
@@ -429,7 +422,6 @@ while maintaining uninterrupted power backup for residents. </span>
               </div>
               
               <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-8 shadow-lg">
-                {/* <h3 className="text-2xl font-bold text-gray-800 mb-4">Case Study: Commercial Complex</h3> */}
                 <div className="space-y-4">
                   <div>
                     <h4 className="text-lg font-semibold text-gray-800">Solution Implemented</h4>
@@ -488,7 +480,137 @@ schedules.</span>
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+
+    <section className="py-20 bg-white">
+  <div className="container mx-auto px-4">
+    <div className="w-full">
+      <div className="bg-gradient-to-br from-primary-50 to-orange-50 rounded-xl p-10 shadow-lg">
+        <h3 className="text-2xl font-bold text-gray-800 mb-8">
+          Case Study: Dual-Fuel Conversion at a Premium High-Rise Condominium
+        </h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {/* LEFT COLUMN */}
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-lg font-semibold text-gray-800">Client Overview</h4>
+              <p className="text-gray-700">
+                A prestigious residential high-rise condominium in Gurgaon, known for its upscale living standards
+                and commitment to sustainability and compliance.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-lg font-semibold text-gray-800">Objective</h4>
+              <ul className="space-y-2 mt-2">
+                <li className="flex items-start">
+                  <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">
+                    To reduce diesel dependency, lower operational fuel costs, and adopt a cleaner energy solution
+                    while maintaining uninterrupted power backup for residents.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-lg font-semibold text-gray-800">DG Set Profile</h4>
+              <ul className="space-y-2 mt-2">
+                <li className="flex items-start">
+                  <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">1 × 500 kVA</span>
+                </li>
+                <li className="flex items-start">
+                  <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">1 × 625 kVA</span>
+                </li>
+                <li className="flex items-start">
+                  <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">1 × 1010 kVA</span>
+                </li>
+                {/* <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">No operational disruptions during conversion</span>
+                </li> */}
+              </ul>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN */}
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-lg font-semibold text-gray-800">Solution Implemented</h4>
+              <p className="text-gray-700">
+                EAMOT successfully installed Dual-Fuel Conversion Kits (PNG + Diesel) on all three DG Sets,
+                enabling the systems to run efficiently on a combination of piped natural gas (PNG) and diesel.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-lg font-semibold text-gray-800">Implementation Highlights</h4>
+              <ul className="space-y-2 mt-2">
+                <li className="flex items-start">
+                  <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">Detailed site survey and statutory planning approvals</span>
+                </li>
+                <li className="flex items-start">
+                  <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">
+                    Installation done with minimal downtime, aligned with resident comfort and power schedules.
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">
+                    Fully integrated with safety interlocks, flame arrestors, and gas leak sensors.
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <ChevronRight className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">
+                    Performance tuning completed without compromising DG reliability.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-lg font-semibold text-gray-800">Key Outcomes</h4>
+              <ul className="space-y-2 mt-2">
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">
+                    Achieved 50–60% diesel substitution during optimal load conditions.
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">
+                    Marked reduction in emissions and visible smoke, enhancing air quality.
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">
+                    Substantial fuel cost savings, contributing to lower CAM charges.
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">
+                    Fully compliant with CPCB and local SPCB authority regulations.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         <motion.section
         ref={testimonialsRef}
@@ -520,18 +642,18 @@ schedules.</span>
             </div>
             
             {[
-              {
-                quote: "Trust Reinforced: Satisfied with the results, the customer placed an additional order for dual-fuel conversion of another 625 kVA DG Set at their adjacent tower block. We commend EAMOT for successfully supplying, installing, testing, and commissioning dual fuel kits for four DG sets (500 kVA, two 625 kVA, and 1010 kVA) at our Condominium. The project was completed professionally, on time, and with minimal disruption. We appreciate EAMOT’s quality work, with no issues currently, and anticipate a hassle-free operation. ",
+              {firstquote: "Trust Reinforced: Satisfied with the results, the customer placed an additional order for dual-fuel conversion of another 625 kVA DG Set at their adjacent tower block.",
+                quote: "We commend EAMOT for successfully supplying, installing, testing, and commissioning dual fuel kits for four DG sets (500 kVA, two 625 kVA, and 1010 kVA) at our Condominium. The project was completed professionally, on time, and with minimal disruption. We appreciate EAMOT’s quality work, with no issues currently, and anticipate a hassle-free operation.  ",
                 author: "Thank you,",
                 position: "Property Manager ",
                 company: "",
                 delay: 0.4
               },
               // {
-              //   quote: "I was skeptical about achieving the promised fuel savings, but EAMOT's precision implementation has delivered exactly as promised - a 58% average substitution rate with zero operational disruption during installation. Their 72-hour testing protocol is the most thorough I've seen.",
-              //   author: "Ananya Patel",
+              //   quote: "Trust Reinforced: Satisfied with the results, the customer placed an additional order for dual-fuel conversion of another 625 kVA DG Set at their adjacent tower block..",
+              //   author: "Thank you,",
               //   position: "Operations Director",
-              //   company: "Reliance Data Centers",
+              //   company: "",
               //   delay: 0.7
               // }
             ].map((testimonial, index) => (
@@ -544,16 +666,19 @@ schedules.</span>
               >
                 <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8 relative">
                   <div className="absolute top-6 left-6 text-6xl text-primary opacity-20">"</div>
+                   <p className="text-gray-300 relative z-10 mb-6">
+                    <b>{testimonial.firstquote}</b>
+                  </p>
                   <p className="text-gray-300 relative z-10 mb-6">
-                    {testimonial.quote}
+                    <em>{testimonial.quote}</em>
                   </p>
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center  font-bold">
-                      {/* {testimonial.author.charAt(0)}{testimonial.author.split(' ')[1].charAt(0)} */}
-                    </div>
+                    {/* <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center  font-bold">
+                      {testimonial.author.charAt(0)}{testimonial.author.split(' ')[1].charAt(0)}
+                    </div> */}
                     <div>
-                      <div className="font-semibold text-gray-400">{testimonial.author}</div>
-                      <div className="text-sm text-gray-400">{testimonial.position}, {testimonial.company}</div>
+                      <div className="font-semibold text-gray-400"></div>
+                      <div className="text-sm text-gray-400">{testimonial.position} {testimonial.company}</div>
                     </div>
                   </div>
                 </div>
@@ -578,7 +703,7 @@ schedules.</span>
               Contact our dual fuel specialists to begin the assessment process for your diesel generators. Our experts will evaluate your specific requirements and provide detailed guidance on conversion benefits and implementation.
             </p>
             <Button asChild size="lg" onClick={openModal} className="bg-white text-primary hover:bg-white/90">
-              <Link href="/contact">Request Assessment</Link>
+              <Link href="#" onClick={openModal}>Request Assessment</Link>
             </Button>
           </motion.div>
         </div>

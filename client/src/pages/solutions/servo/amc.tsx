@@ -167,7 +167,7 @@ const ServoAMCPage: React.FC = () => {
 
         
         {/* Floating stats cards */}
-        <div className="hidden lg:block absolute bottom-[-80px] left-1/2 transform -translate-x-1/2 z-30 w-full max-w-5xl px-4">
+        {/* <div className="hidden lg:block absolute bottom-[-80px] left-1/2 transform -translate-x-1/2 z-30 w-full max-w-5xl px-4">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
@@ -192,11 +192,11 @@ const ServoAMCPage: React.FC = () => {
               </Card>
             ))}
           </motion.div>
-        </div>
+        </div> */}
       </motion.section>
 
       
-      
+       
       {/* Spacer for floating cards */}
       <div className="h-20 lg:h-28 bg-gray-50 w-full"></div>
       
@@ -273,13 +273,13 @@ const ServoAMCPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
+                  {/* <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
                     View Maintenance Schedule
-                  </Button>
+                  </Button> */}
                 </div>
                 <div className="relative rounded-xl overflow-hidden aspect-video shadow-xl">
                   <img 
-                    src="/images/preventive-maintenance.jpg" 
+                    src="asstes/img/preventive-maintenance.jpg" 
                     alt="Preventive Maintenance" 
                     className="w-full h-full object-cover"
                   />
@@ -322,9 +322,9 @@ const ServoAMCPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
+                  {/* <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
                     View Emergency Protocols
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </TabsContent>
@@ -351,9 +351,9 @@ const ServoAMCPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
+                  {/* <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
                     View Performance Data
-                  </Button>
+                  </Button> */}
                 </div>
                 <div className="relative rounded-xl overflow-hidden aspect-video shadow-xl">
                   <img 
@@ -494,20 +494,20 @@ const ServoAMCPage: React.FC = () => {
               {
                 quote: "Since implementing EAMOT's maintenance program, we've experienced zero stabilizer-related downtime over the past 3 years. The proactive approach has been a game-changer for our operations.",
                 author: "Rajesh Kumar",
-                position: "Chief Engineer, Pharmaceutical Manufacturing",
-                company: "SunPharma Industries"
+                position: "Chief Engineer",
+                company: ""
               },
               {
                 quote: "Their emergency response is exceptional. When we experienced an unexpected voltage issue, the EAMOT team was on-site within 2 hours and had our systems back to optimal performance that same day.",
                 author: "Ananya Sharma",
                 position: "Facility Manager",
-                company: "DataCore Solutions"
+                company: ""
               },
               {
                 quote: "The ROI on our stabilizer AMC has been tremendous. Not only have we avoided costly emergency repairs, but their optimization protocols have improved our energy efficiency by nearly 15%.",
                 author: "Vikram Mehta",
-                position: "Operations Director",
-                company: "Trinity Manufacturing"
+                position: "Operations Manager",
+                company: ""
               }
             ].map((testimonial, index) => (
               <motion.div
@@ -527,7 +527,7 @@ const ServoAMCPage: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-white">{testimonial.author}</h4>
-                    <p className="text-sm text-gray-400">{testimonial.position}, {testimonial.company}</p>
+                    <p className="text-sm text-gray-400">{testimonial.position} {testimonial.company}</p>
                   </div>
                 </div>
               </motion.div>
@@ -580,7 +580,7 @@ const ServoAMCPage: React.FC = () => {
               {
                 name: "Standard",
                 description: "Essential protection for non-critical applications",
-                price: "Starting at ₹/year",
+                // price: "Starting at ₹/year",
                 features: [
                   "Bi-annual preventive maintenance",
                   // "8-hour emergency response",
@@ -594,7 +594,7 @@ const ServoAMCPage: React.FC = () => {
               {
                 name: "Premium",
                 description: "Comprehensive coverage for mission-critical systems",
-                price: "Starting at ₹/year",
+                // price: "Starting at ₹/year",
                 features: [
                   "Quarterly preventive maintenance",
                   // "4-hour emergency response",
@@ -609,7 +609,7 @@ const ServoAMCPage: React.FC = () => {
               {
                 name: "Enterprise",
                 description: "Maximum protection for high-performance environments",
-                price: "Starting at ₹/year",
+                // price: "Starting at ₹/year",
                 features: [
                   "Monthly preventive maintenance",
                   // "2-hour emergency response guarantee",
@@ -637,7 +637,7 @@ const ServoAMCPage: React.FC = () => {
                 )}
                 <h3 className="text-2xl font-bold mb-2 text-gray-900">{plan.name}</h3>
                 <p className="text-gray-600 mb-4">{plan.description}</p>
-                <div className="text-xl font-bold text-primary mb-6">{plan.price}</div>
+                {/* <div className="text-xl font-bold text-primary mb-6">{plan.price}</div> */}
                 
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, i) => (

@@ -932,19 +932,19 @@ export default function RECDIntegrationPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                company: "Global Manufacturing Corp.",
+                company: "",
                 quote: "Reduced our emissions by 82% while actually improving operational efficiency. The ROI was realized within 14 months.",
                 industry: "Manufacturing",
                 result: "82% Emission Reduction"
               },
               {
-                company: "TransPower Energy",
+                company: "",
                 quote: "EAMOT's RECD integration was seamless and caused zero downtime. Our compliance team now has complete confidence in our reports.",
                 industry: "Energy",
                 result: "Zero Implementation Downtime"
               },
               {
-                company: "Oceanwide Shipping",
+                company: "",
                 quote: "The ability to monitor our emissions in real-time has transformed our operations and helped us meet international regulations with ease.",
                 industry: "Maritime",
                 result: "Full Regulatory Compliance"

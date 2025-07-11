@@ -109,7 +109,6 @@ const DGOverhaulPage: React.FC = () => {
       description: "Comprehensive multi-point inspection to identify all issues affecting generator performance and reliability.",
       tasks: [
         "Generator operation assessment for output, noise, vibration, fuel consumption, and irregularities",
-        "Generator operation assessment for output, noise, vibration, fuel consumption, and irregularities",
         "Compression testing to evaluate cylinder performance and diagnose piston ring or valve issues",
         "Detailed examination of injectors, turbochargers, bearings, liners, and valves for wear, tolerances, and serviceability",
         "Controller and electrical system diagnostics using advanced tools"

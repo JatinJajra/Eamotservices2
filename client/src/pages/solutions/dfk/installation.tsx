@@ -580,31 +580,31 @@ const DFKInstallationPage: React.FC = () => {
             {[
               {
                 title: "Up to 60% Diesel Reduction",
-                description: "lowering operating costs significantly.",
+                description: "Lowering operating costs significantly.",
                 icon: <BarChart className="h-8 w-8 text-primary" />,
                 color: "bg-blue-900/20 border-blue-600/30"
               },
               {
                 title: "Cleaner Emissions",
-                description: "aligning with green building and sustainability goals.",
+                description: "Aligning with green building and sustainability goals.",
                 icon: <Clock className="h-8 w-8 text-primary" />,
                 color: "bg-green-900/20 border-green-600/30"
               },
               {
                 title: "Faster ROI",
-                description: "typically within 12–18 months depending on usage.",
+                description: "Typically within 12–18 months depending on usage.",
                 icon: <Gauge className="h-8 w-8 text-primary" />,
                 color: "bg-purple-900/20 border-purple-600/30"
               },
               {
                 title: "No Engine Modification",
-                description: "retaining OEM warranty and serviceability.",
+                description: "Retaining OEM warranty and serviceability.",
                 icon: <DollarSign className="h-8 w-8 text-primary" />,
                 color: "bg-amber-900/20 border-amber-600/30"
               },
               {
                 title: "Zero Downtime for Residents",
-                description: "installation done with minimal disruption.",
+                description: "Installation done with minimal disruption.",
                 icon: <ShieldCheck className="h-8 w-8 text-primary" />,
                 color: "bg-red-900/20 border-red-600/30"
               },
@@ -697,7 +697,7 @@ const DFKInstallationPage: React.FC = () => {
                     </div>
                     <div>
                       <div className="font-semibold">{testimonial.author}</div>
-                      <div className="text-sm text-gray-400">{testimonial.position}, {testimonial.company}</div>
+                      <div className="text-sm text-gray-400">{testimonial.position}</div>
                     </div>
                   </div>
                 </div>

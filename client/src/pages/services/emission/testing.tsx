@@ -378,7 +378,7 @@ export default function EmissionTestingPage() {
           <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
-        <motion.div 
+        {/* <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: heroInView ? 1 : 0, y: heroInView ? 0 : 20 }}
           transition={{ duration: 0.7, delay: 0.2 }}
@@ -408,7 +408,7 @@ export default function EmissionTestingPage() {
               </Button>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
           <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
@@ -425,7 +425,7 @@ export default function EmissionTestingPage() {
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
         
         {/* Grid pattern background */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
         <style dangerouslySetInnerHTML={{ __html: `
           .bg-grid-pattern {
             background-image: 

@@ -904,8 +904,8 @@ const DFKAnalyticsPage: React.FC = () => {
               className="mt-10 text-center"
             >
               <div className="flex items-center justify-center text-white/90">
-                <CheckCircle className="h-5 w-5 mr-2 text-green-300" />
-                <span>No commitment required • Free detailed analysis • ROI guarantee</span>
+                {/* <CheckCircle className="h-5 w-5 mr-2 text-green-300" />
+                <span>No commitment required • Free detailed analysis • ROI guarantee</span> */}
               </div>
             </motion.div>
           </div>

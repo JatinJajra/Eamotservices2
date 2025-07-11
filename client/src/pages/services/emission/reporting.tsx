@@ -370,7 +370,7 @@ export default function ComplianceReportingPage() {
           <img src="assets/img/hero/nav-parrten-top.png" alt="" className="w-full" />
         </div>
         
-        <motion.div 
+        {/* <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: heroInView ? 1 : 0, y: heroInView ? 0 : 20 }}
           transition={{ duration: 0.7, delay: 0.2 }}
@@ -400,7 +400,7 @@ export default function ComplianceReportingPage() {
               </Button>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
           <img src="assets/img/hero/nav-parrten-botoom.png" alt="" className="w-full" />
@@ -412,12 +412,11 @@ export default function ComplianceReportingPage() {
         ref={featuresRef}
         className="py-16 md:py-24 bg-white relative"
       >
-        {/* Background decorative elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-100 rounded-full blur-3xl opacity-30"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
+       {/* Background decorative elements */}
+<div className="absolute top-0 right-0 w-64 h-64 bg-indigo-100 rounded-full blur-3xl opacity-30 pointer-events-none"></div>
+<div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-30 pointer-events-none"></div>
         
-        {/* Subtle data flow background */}
-        <div className="absolute inset-0 overflow-hidden">
+<div className="absolute inset-0 overflow-hidden pointer-events-none">
           <svg className="absolute w-full h-full opacity-5" viewBox="0 0 100 100" preserveAspectRatio="none">
             <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="#4f46e5" strokeWidth="0.5" strokeDasharray="6,3" />
             <path d="M0,20 L100,50" fill="none" stroke="#4f46e5" strokeWidth="0.5" strokeDasharray="6,3" />
@@ -523,10 +522,10 @@ export default function ComplianceReportingPage() {
                   </ul>
                   
                   <div className="mt-4 pt-4 border-t border-gray-100">
-                    <a href="#contact" className="text-indigo-600 font-medium flex items-center hover:underline">
+                    {/* <a href="#contact" className="text-indigo-600 font-medium flex items-center hover:underline">
                       Learn more
                       <ArrowRight className="h-4 w-4 ml-1" />
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               </motion.div>
@@ -534,6 +533,10 @@ export default function ComplianceReportingPage() {
           </div>
         </div>
       </section>
+
+
+
+
       
       {/* Services Categories */}
       <section 
