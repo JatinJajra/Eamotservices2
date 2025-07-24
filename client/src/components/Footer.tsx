@@ -21,7 +21,7 @@ export default function Footer() {
               {/* <a href="#" className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-600 text-white flex items-center justify-center transition duration-300">
                 <i className="fab fa-twitter"></i>
               </a> */}
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-600 text-white flex items-center justify-center transition duration-300">
+              <a href="https://www.linkedin.com/company/eamotservices" target="blank" className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-600 text-white flex items-center justify-center transition duration-300">
                 <i className="fab fa-linkedin-in"></i>
               </a>
               {/* <a href="#" className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-600 text-white flex items-center justify-center transition duration-300">
@@ -70,7 +70,7 @@ export default function Footer() {
                   <span className="text-white hover:text-accent transition duration-300 cursor-pointer">Stabilizer</span>
                 </Link>
               </li>
-              <li><a href="#" className="text-white hover:text-accent transition duration-300">Lithium ION Inverter</a></li>
+              <li><a href="#" className="text-white hover:text-accent transition duration-300">Battery Energy Storage System</a></li>
               <li><a href="#" className="text-white hover:text-accent transition duration-300">Retro Fit Diesel Generator</a></li>
               <li><a href="#" className="text-white hover:text-accent transition duration-300">Dual Fuel Kit</a></li>
             </ul>
@@ -86,7 +86,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <i className="fas fa-phone-alt mr-3 text-accent"></i>
-                <a href="tel:8970001110" className="text-white hover:text-accent transition duration-300">897 000 111 02</a>
+                <a href="tel:8970001110" className="text-white hover:text-accent transition duration-300">080-41663297</a>
               </li>
               <li className="flex items-center">
                 <i className="fas fa-envelope mr-3 text-accent"></i>

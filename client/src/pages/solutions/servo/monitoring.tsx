@@ -662,7 +662,7 @@ const ServoMonitoringPage: React.FC = () => {
       </motion.section>
       
       {/* Feature Comparison */}
-      <motion.section
+      {/* <motion.section
         ref={featureRef}
         initial={{ opacity: 0, y: 40 }}
         animate={featureInView ? { opacity: 1, y: 0 } : {}}
@@ -725,15 +725,13 @@ const ServoMonitoringPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  {/* <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
-                    View Technical Specifications
-                  </Button> */}
+                 
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-xl border border-gray-700">
                   <img 
-                    src="/images/voltage-monitoring.jpg" 
+                    src="/assets/img/voltage-monitoring.avif" 
                     alt="High-Resolution Voltage Monitoring" 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover "
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -778,9 +776,7 @@ const ServoMonitoringPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  {/* <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
-                    Explore Analytics Features
-                  </Button> */}
+                 
                 </div>
               </div>
             </TabsContent>
@@ -807,9 +803,7 @@ const ServoMonitoringPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  {/* <Button className="mt-8 bg-primary hover:bg-primary/90 text-white">
-                    View Security Standards
-                  </Button> */}
+                 
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-xl border border-gray-700">
                   <img 
@@ -827,7 +821,10 @@ const ServoMonitoringPage: React.FC = () => {
             </TabsContent>
           </Tabs>
         </div>
-      </motion.section>
+      </motion.section> */}
+
+  
+
       
       {/* Dashboard Features Grid */}
       <motion.section
@@ -914,9 +911,7 @@ const ServoMonitoringPage: React.FC = () => {
                 <p className="text-gray-400">{feature.description}</p>
                 
                 <div className="mt-6">
-                  {/* <a href="#" className="text-primary flex items-center text-sm hover:text-primary/80 transition-colors">
-                    Learn more <ChevronRight className="h-4 w-4 ml-1" />
-                  </a> */}
+
                 </div>
               </motion.div>
             ))}

@@ -684,7 +684,7 @@ export default function SynchronizationPage() {
                   <a href="#" onClick={openModal}>Schedule Testing Service</a>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary">
-                  <a href="tel:8970001110">Call Us: 897 000 111 02</a>
+                  <a href="tel:08041663297">Call Us: 080-41663297</a>
                 </Button>
               </div>
             </motion.div>

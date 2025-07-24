@@ -86,7 +86,7 @@ export default function Header() {
       <ContactModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Top Info Bar */}
-      <div className="bg-primary text-white py-2 md:py-3">
+      {/* <div className="bg-primary text-white py-2 md:py-3">
         <div className="container mx-auto px-4 flex flex-col md:flex-row md:justify-between items-center">
           <div className="flex items-center mb-2 md:mb-0">
             <span className="font-poppins text-sm md:text-base">
@@ -95,11 +95,11 @@ export default function Header() {
           </div>
           <div className="flex flex-col md:flex-row items-center md:space-x-6 text-xs md:text-sm">
             <a
-              href="tel:8970001110"
+              href="tel:08041663297"
               className="flex items-center mb-1 md:mb-0 hover:text-accent transition duration-300"
             >
               <i className="fas fa-phone-alt mr-2"></i>
-              897 000 111 02
+              080-41663297
             </a>
             <a
               href="mailto:info@emotservices.com"
@@ -115,7 +115,39 @@ export default function Header() {
             </div>
           </div>
         </div>
+      </div> */}
+
+      <div className="bg-primary text-white py-2 md:py-3 hidden md:block">
+  <div className="container mx-auto px-4 flex flex-col md:flex-row md:justify-between items-center">
+    <div className="flex items-center mb-2 md:mb-0">
+      <span className="font-poppins text-sm md:text-base">
+        Backed by Experience, Powered by IoT
+      </span>
+    </div>
+    <div className="flex flex-col md:flex-row items-center md:space-x-6 text-xs md:text-sm">
+      <a
+        href="tel:08041663297"
+        className="flex items-center mb-1 md:mb-0 hover:text-accent transition duration-300"
+      >
+        <i className="fas fa-phone-alt mr-2"></i>
+        080-41663297
+      </a>
+      <a
+        href="mailto:info@emotservices.com"
+        className="flex items-center mb-1 md:mb-0 hover:text-accent transition duration-300"
+      >
+        <i className="fas fa-envelope mr-2"></i>
+        info@emotservices.com
+      </a>
+      <div className="flex items-center text-xs md:text-sm">
+        <i className="fas fa-map-marker-alt mr-2"></i>
+        <span className="hidden md:inline">Bengaluru, Karnataka</span>
+        <span className="inline md:hidden">Bengaluru</span>
       </div>
+    </div>
+  </div>
+</div>
+
 
       {/* Main Navigation */}
       <nav className="container mx-auto px-4 py-3 flex items-center justify-between">

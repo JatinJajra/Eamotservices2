@@ -67,7 +67,9 @@ const ServoAMCPage: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={heroInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.4 }}
-        className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+        // className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
+
       >
         Servo Stabilizer <span className="text-primary">Annual Maintenance</span> Contract
       </motion.h1>
@@ -76,7 +78,7 @@ const ServoAMCPage: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={heroInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.6 }}
-        className="text-xl text-gray-300 mb-10 leading-relaxed"
+        className="text-base text-gray-300 mb-10 leading-relaxed"
       >
         Safeguard your critical power infrastructure with our industry-leading Maintenance Program.
         Our comprehensive AMC delivers proactive optimization, guaranteed uptime, and complete 
@@ -279,7 +281,7 @@ const ServoAMCPage: React.FC = () => {
                 </div>
                 <div className="relative rounded-xl overflow-hidden aspect-video shadow-xl">
                   <img 
-                    src="asstes/img/preventive-maintenance.jpg" 
+                    src="/assets/img/01.jpg" 
                     alt="Preventive Maintenance" 
                     className="w-full h-full object-cover"
                   />
@@ -307,7 +309,7 @@ const ServoAMCPage: React.FC = () => {
                   <ul className="space-y-4">
                     {[
                       "Guaranteed 4-hour on-site response for critical issues",
-                      "24/7/365 dedicated hotline with technical experts",
+                      "24/7/365 technical experts Dedicated ",
                       "Specialized rapid response units throughout the region",
                       "Priority parts availability for AMC customers",
                       "Comprehensive incident reports with follow-up actions"
@@ -355,7 +357,7 @@ const ServoAMCPage: React.FC = () => {
                     View Performance Data
                   </Button> */}
                 </div>
-                <div className="relative rounded-xl overflow-hidden aspect-video shadow-xl">
+                {/* <div className="relative rounded-xl overflow-hidden aspect-video shadow-xl">
                   <img 
                     src="/images/performance-optimization.jpg" 
                     alt="Performance Optimization" 
@@ -364,7 +366,106 @@ const ServoAMCPage: React.FC = () => {
                   <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
                     <h4 className="text-white font-medium">Advanced calibration process for optimal performance</h4>
                   </div>
-                </div>
+                </div> */}
+                <div className="relative rounded-xl overflow-hidden  shadow-xl">
+  <svg
+    viewBox="0 0 400 300"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-full h-full object-cover"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <defs>
+      <linearGradient id="monitorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#3b82f6" />
+        <stop offset="100%" stopColor="#1e40af" />
+      </linearGradient>
+      <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#1e293b" />
+        <stop offset="100%" stopColor="#0f172a" />
+      </linearGradient>
+      <radialGradient id="radarGrad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.8" />
+        <stop offset="100%" stopColor="#1e40af" stopOpacity="0.2" />
+      </radialGradient>
+    </defs>
+
+    <rect width="400" height="300" fill="url(#bgGrad)" />
+    <rect x="50" y="50" width="300" height="180" rx="8" fill="#1f2937" stroke="#374151" strokeWidth="2" />
+    <rect x="60" y="60" width="280" height="160" rx="4" fill="#0f172a" />
+    <g stroke="#374151" strokeWidth="0.5" opacity="0.6">
+      {[80, 100, 120, 140, 160, 180, 200].map((y) => (
+        <line key={`h-${y}`} x1="60" y1={y} x2="340" y2={y} />
+      ))}
+      {[80, 120, 160, 200, 240, 280, 320].map((x) => (
+        <line key={`v-${x}`} x1={x} y1="60" x2={x} y2="220" />
+      ))}
+    </g>
+    <path d="M 80 140 Q 100 120 120 140 Q 140 160 160 140 Q 180 120 200 140 Q 220 160 240 140 Q 260 120 280 140 Q 300 160 320 140"
+      stroke="#10b981" strokeWidth="2" fill="none" />
+    {[0, 0.2, 0.4, 0.6, 0.8, 1].map((delay, i) => (
+      <circle key={i} cx={80 + i * 40} cy="140" r="2" fill="#10b981">
+        <animate attributeName="r" values="2;4;2" dur="1s" begin={`${delay}s`} repeatCount="indefinite" />
+      </circle>
+    ))}
+    <path d="M 80 160 Q 100 150 120 160 Q 140 170 160 160 Q 180 150 200 160 Q 220 170 240 160 Q 260 150 280 160 Q 300 170 320 160"
+      stroke="#f59e0b" strokeWidth="2" fill="none" />
+    <rect x="70" y="70" width="60" height="25" rx="3" fill="#374151" />
+    <text x="100" y="85" textAnchor="middle" fontFamily="Arial" fontSize="10" fill="#10b981">50.02 Hz</text>
+    <rect x="140" y="70" width="60" height="25" rx="3" fill="#374151" />
+    <text x="170" y="85" textAnchor="middle" fontFamily="Arial" fontSize="10" fill="#3b82f6">230.5 V</text>
+    <rect x="210" y="70" width="60" height="25" rx="3" fill="#374151" />
+    <text x="240" y="85" textAnchor="middle" fontFamily="Arial" fontSize="10" fill="#f59e0b">15.2 A</text>
+    <rect x="280" y="70" width="50" height="25" rx="3" fill="#374151" />
+    <text x="305" y="85" textAnchor="middle" fontFamily="Arial" fontSize="9" fill="#ef4444">0.5s</text>
+
+    <g transform="translate(360, 120)">
+      <rect x="-8" y="-20" width="16" height="40" rx="2" fill="#6b7280" />
+      <circle r="6" fill="#3b82f6">
+        <animate attributeName="fill" values="#3b82f6;#10b981;#3b82f6" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <text x="0" y="30" textAnchor="middle" fontFamily="Arial" fontSize="8" fill="white">Sensor</text>
+    </g>
+
+    <g transform="translate(50, 250)">
+      <rect width="120" height="30" rx="4" fill="#1f2937" stroke="#374151" />
+      <text x="60" y="18" textAnchor="middle" fontFamily="Arial" fontSize="11" fill="#3b82f6">2,000 samples/sec</text>
+      <text x="60" y="28" textAnchor="middle" fontFamily="Arial" fontSize="8" fill="#6b7280">High Resolution</text>
+    </g>
+
+    <g transform="translate(200, 250)">
+      <rect width="80" height="30" rx="4" fill="#1f2937" stroke="#374151" />
+      <circle cx="20" cy="15" r="4" fill="#10b981">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" />
+      </circle>
+      <text x="50" y="18" fontFamily="Arial" fontSize="10" fill="white">LIVE</text>
+    </g>
+
+    <g transform="translate(300, 250)">
+      <rect width="80" height="30" rx="4" fill="#1f2937" stroke="#374151" />
+      <text x="40" y="18" textAnchor="middle" fontFamily="Arial" fontSize="9" fill="#f59e0b">ANALYZING</text>
+      <rect x="10" y="20" width="60" height="2" fill="#374151" />
+      <rect x="10" y="20" width="30" height="2" fill="#f59e0b">
+        <animateTransform attributeName="transform" type="translate" values="0,0; 30,0; 0,0" dur="2s" repeatCount="indefinite" />
+      </rect>
+    </g>
+
+    <text x="200" y="30" textAnchor="middle" fontFamily="Arial" fontSize="16" fontWeight="bold" fill="white">
+      High-Resolution Voltage Monitoring
+    </text>
+
+    <g transform="translate(20, 120)">
+      <text x="0" y="0" fontFamily="Arial" fontSize="12" fill="#3b82f6">±0.1%</text>
+      <text x="0" y="12" fontFamily="Arial" fontSize="8" fill="#6b7280">Precision</text>
+    </g>
+  </svg>
+
+  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+    <h4 className="text-white font-medium">
+      Advanced calibration process for optimal performance
+    </h4>
+  </div>
+</div>
+
               </div>
             </TabsContent>
           </Tabs>

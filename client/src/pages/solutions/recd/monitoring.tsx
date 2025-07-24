@@ -549,16 +549,16 @@ const RECDMonitoringPage: React.FC = () => {
           </div>
           
           <Tabs defaultValue="monitoring" className="w-full max-w-5xl mx-auto">
-            <TabsList className="grid w-full grid-cols-3 mb-12 bg-transparent">
+            <TabsList className="grid w-full grid-cols-2 mb-12 bg-transparent">
               <TabsTrigger value="monitoring" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white py-3 text-base">
                 Ultra-Precise Monitoring
               </TabsTrigger>
               <TabsTrigger value="prediction" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white py-3 text-base">
                 Predictive Intelligence
               </TabsTrigger>
-              <TabsTrigger value="security" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white py-3 text-base">
+              {/* <TabsTrigger value="security" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white py-3 text-base">
                 Compliance Security
-              </TabsTrigger>
+              </TabsTrigger> */}
             </TabsList>
             
             <TabsContent value="monitoring" className="mt-6">
@@ -593,7 +593,7 @@ const RECDMonitoringPage: React.FC = () => {
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-xl h-80">
                   <img 
-                    src="/images/precision-monitoring.jpg" 
+                    src="/assets/img/precision-monitoring.png" 
                     alt="Precision Monitoring" 
                     className="w-full h-full object-cover"
                   />
@@ -657,7 +657,7 @@ const RECDMonitoringPage: React.FC = () => {
               </div>
             </TabsContent>
             
-            <TabsContent value="security" className="mt-6">
+            {/* <TabsContent value="security" className="mt-6">
               <div className="grid md:grid-cols-2 gap-10 items-center p-6 bg-slate-800/50 border border-slate-700 rounded-xl">
                 <div>
                   <h3 className="text-2xl font-bold mb-6 text-white">Bulletproof Compliance Security</h3>
@@ -683,9 +683,7 @@ const RECDMonitoringPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  {/* <Button className="mt-8 bg-purple-600 hover:bg-purple-700 text-white">
-                    Explore Security Features
-                  </Button> */}
+                
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-xl h-80">
                   <img 
@@ -703,7 +701,7 @@ const RECDMonitoringPage: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </TabsContent>
+            </TabsContent> */}
           </Tabs>
         </div>
       </motion.section>

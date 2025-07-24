@@ -22,6 +22,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ContactModal from "@/components/Popup/ContectModal";
+import { AlertTriangle } from "lucide-react"; 
+
 
 const DGMonitoringPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -724,9 +726,23 @@ Delivered dashboards for electrical safety and operational control`,
                         <h4 className="text-lg font-semibold text-gray-800 mb-2">
                           The Challenge
                         </h4>
-                        <p className="text-gray-700 whitespace-pre-line">
+                        {/* <p className="text-gray-700 whitespace-pre-line">
                           {study.challenge}
-                        </p>
+                        </p> */}
+ 
+
+<ul className="text-gray-700 space-y-2">
+  {study.challenge
+    .split('\n')
+    .filter(line => line.trim() !== "") // skip blank lines
+    .map((line, index) => (
+      <li key={index} className="flex items-start gap-2">
+        <AlertTriangle className="text-red-500 w-5 h-5 mt-1" />
+        <span>{line}</span>
+      </li>
+    ))}
+</ul>
+
                       </div>
 
                       <div>

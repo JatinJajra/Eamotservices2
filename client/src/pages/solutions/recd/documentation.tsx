@@ -79,7 +79,7 @@ const StatCard = ({ icon, value, label, description, delay, inView }: StatCardPr
         </div>
         <div>
           <h3 className="text-3xl font-bold text-white">{value}</h3>
-          <p className="text-sm text-primary/100 uppercase font-medium mt-1 mb-3">{label}</p>
+<p className="text-sm text-primary/100 uppercase font-bold mt-1 mb-3">{label}</p>
           <p className="text-gray-400 text-sm">{description}</p>
         </div>
       </div>
@@ -599,10 +599,10 @@ const RECDDocumentationPage: React.FC = () => {
                   question: "What makes your documentation services different from others?",
                   answer: "Unlike traditional compliance services that focus solely on meeting minimum requirements, our approach transforms regulatory documentation into a strategic asset. We combine proprietary methodologies, direct authority relationships, and advanced technology to deliver guaranteed approvals, accelerated timelines, and complete protection against regulatory risks."
                 },
-                {
-                  question: "How can you guarantee 100% compliance?",
-                  answer: "Our 100% compliance guarantee is backed by our unique combination of regulatory expertise, proprietary documentation methodologies, and direct authority relationships. In the rare event of a compliance issue, our guarantee includes legal defense support and remediation services at no additional cost – a level of protection unavailable anywhere else in the industry."
-                },
+                // {
+                //   question: "How can you guarantee 100% compliance?",
+                //   answer: "Our 100% compliance guarantee is backed by our unique combination of regulatory expertise, proprietary documentation methodologies, and direct authority relationships. In the rare event of a compliance issue, our guarantee includes legal defense support and remediation services at no additional cost – a level of protection unavailable anywhere else in the industry."
+                // },
                 {
                   question: "What types of regulatory documentation do you handle?",
                   answer: "We provide comprehensive documentation services across all environmental, health, safety, and energy regulations, including CPCB/SPCB permits, emissions certifications, safety compliance documentation, and regulatory reporting requirements for all industries and operation types throughout India."

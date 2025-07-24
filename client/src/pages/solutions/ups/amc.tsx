@@ -97,7 +97,7 @@ const UPSAMCPage: React.FC = () => {
     },
     {
       name: "Platinum",
-      ideal: "Critical environments like hospitals, data centers, etc.",
+      ideal: "Critical environments like hospitals, data centers, etc",
       features: [
         "Monthly preventive maintenance visits",
         "Assistance with remote monitoring setup provided where applicable",
@@ -294,14 +294,14 @@ const UPSAMCPage: React.FC = () => {
             alt="UPS Maintenance" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+          {/* <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
             <div className="bg-white/90 backdrop-blur-sm rounded-lg py-3 px-5 shadow-lg">
               <div className="flex items-center gap-2">
                 <Phone className="h-5 w-5 text-primary" />
                 <span className="text-primary font-semibold">24/7 AMC Helpline: 1800-200-3000</span>
               </div>
             </div>
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </div>
@@ -498,7 +498,7 @@ const UPSAMCPage: React.FC = () => {
             <p className="max-w-2xl mx-auto mb-8 opacity-90 text-gray-700">
               Contact our service team to discuss AMC options tailored to your specific UPS maintenance requirements.
             </p>
-            <Button asChild size="lg" onClick={openModal} className="bg-white text-primary hover:bg-white/90">
+            <Button asChild size="lg" onClick={openModal} className="bg-primary text-white hover:bg-white/90">
               <Link href="#">Explore AMC Options</Link>
             </Button>
           </motion.div>
@@ -507,5 +507,4 @@ const UPSAMCPage: React.FC = () => {
     </>
   );
 };
-
 export default UPSAMCPage;

@@ -1111,7 +1111,7 @@ export default function EnergySavingsCalculator() {
                 <a href="#contact">Schedule Consultation</a>
               </Button>
               <Button asChild variant="outline" className="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white text-center font-poppins font-medium px-8 py-6 h-auto">
-                <a href="tel:8970001110">Call Now: 897 000 111 02</a>
+                <a href="tel:08041663297">Call Now: 080-41663297</a>
               </Button>
             </div>
           </div>

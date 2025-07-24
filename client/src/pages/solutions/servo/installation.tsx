@@ -16,7 +16,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import ContactModal from "@/components/Popup/ContectModal";
-import { Search, Settings, BarChart3 } from "lucide-react";
+import { Search, Settings, BarChart3 ,Check} from "lucide-react";
+
 
 const ServoInstallationPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,6 +41,48 @@ const ServoInstallationPage: React.FC = () => {
     threshold: 0.2,
   });
   const [barHeights, setBarHeights] = useState([27, 56, 57, 55, 64, 44, 46]);
+
+  
+
+  const benefitList = [
+  {
+    title: "Why Professional Commissioning Matters",
+    points: [
+      "Optimized stabilizer efficiency",
+      "Maximum equipment protection",
+      "Compliance with warranty and safety standards",
+      "Reduction in service interruptions and repairs",
+    ],
+    icon: <BarChart className="h-8 w-8 text-primary" />,
+    image: "/images/servo-peak-performance.jpg",
+    metric: "98%",
+    metricLabel: "EFFICIENCY",
+  },
+  {
+    title: "What You Need to Provide",
+    points: [
+      "Ensure availability of stabilized input power",
+      "Keep the installation area accessible and ready",
+      "Provide access to the LT panel or main connection point",
+      "Ensure load availability for commissioning tests",
+    ],
+    icon: <Clock className="h-8 w-8 text-primary" />,
+    image: "/images/servo-extended-life.jpg",
+    metric: "+40%",
+    metricLabel: "LONGER LIFE",
+  },
+  {
+    title: "Post-Installation Support",
+    points: [
+      "Operator training and handholding",
+      "Preventive maintenance recommendations",
+      "Fast support for any post-installation performance concerns",
+    ],
+    icon: <CheckCircle className="h-8 w-8 text-primary" />,
+    image: "/images/servo-disruption.jpg",
+    metric: "-60%",
+    metricLabel: "DOWNTIME",
+  },]
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -356,10 +399,12 @@ const ServoInstallationPage: React.FC = () => {
                 className="relative rounded-xl overflow-hidden aspect-video"
               >
                 <img
-                  src="/assets/img/servo-expert-team.jpg"
+                  src="/assets/img/servo-expert-team.png"
                   alt="Expert Installation Team"
                   className="w-full h-full object-cover"
+                  style={{ objectPosition: "center 30%" }}
                 />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="flex items-center gap-3 mb-2">
@@ -475,12 +520,12 @@ const ServoInstallationPage: React.FC = () => {
             </p>
           </div>
 
-<div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
             {[
               {
                 title: "Why Professional Commissioning Matters",
                 description: (
-<ul className="list-disc list-outside pl-5 text-gray-700 space-y-1">
+                  <ul className="list-disc list-outside pl-5 text-gray-700 space-y-1">
                     <li>Optimized stabilizer efficiency</li>
                     <li>Maximum equipment protection</li>
                     <li>Compliance with warranty and safety standards</li>
@@ -495,7 +540,7 @@ const ServoInstallationPage: React.FC = () => {
               {
                 title: "What You Need to Provide",
                 description: (
-<ul className="list-disc list-outside pl-5 text-gray-700 space-y-1">
+                  <ul className="list-disc list-outside pl-5 text-gray-700 space-y-1">
                     <li>Ensure availability of stabilized input power</li>
                     <li>Keep the installation area accessible and ready</li>
                     <li>
@@ -512,7 +557,7 @@ const ServoInstallationPage: React.FC = () => {
               {
                 title: "Post-Installation Support",
                 description: (
-<ul className="list-disc list-outside pl-5 text-gray-700 space-y-1">
+                  <ul className="list-disc list-outside pl-5 text-gray-700 space-y-1">
                     <li>Operator training and handholding</li>
                     <li>Preventive maintenance recommendations</li>
                     <li>
@@ -535,11 +580,7 @@ const ServoInstallationPage: React.FC = () => {
                 className="relative group rounded-xl overflow-hidden h-96"
               >
                 <div className="absolute inset-0 z-0">
-                  {/* <img 
-          src={benefit.image} 
-          alt={benefit.title} 
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-110"
-        /> */}
+             
                   <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/50 to-white/100"></div>
                 </div>
 
@@ -567,7 +608,63 @@ const ServoInstallationPage: React.FC = () => {
                 </div>
               </motion.div>
             ))}
+          </div> */}
+
+
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+  {benefitList.map((benefit, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      animate={benefitsInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
+      className="relative group rounded-xl overflow-hidden  min-h-[24rem]"
+    >
+      <div className="absolute inset-0 z-0">
+        {/* Optional background image */}
+        {/* <img
+          src={benefit.image}
+          alt={benefit.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-110"
+        /> */}
+        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/50 to-white/100"></div>
+      </div>
+
+      <div className="relative z-10 h-full flex flex-col p-6 justify-between">
+        <div>
+          <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+            {benefit.icon}
           </div>
+          <h3 className="text-2xl font-bold mb-3 text-gray-900">
+            {benefit.title}
+          </h3>
+
+          {/* Tick point list here */}
+          <ul className="space-y-2">
+            {benefit.points.map((point, i) => (
+              <li key={i} className="flex items-start gap-2 text-gray-700">
+                <Check className="w-5 h-5 text-primary mt-1 shrink-0" />
+  <span><strong>{point}</strong></span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-6">
+          <div className="flex items-end">
+            <span className="text-4xl font-bold text-primary">
+              {benefit.metric}
+            </span>
+            <span className="text-sm ml-2 mb-1 text-primary/80">
+              {benefit.metricLabel}
+            </span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  ))}
+</div>
         </div>
       </motion.section>
 

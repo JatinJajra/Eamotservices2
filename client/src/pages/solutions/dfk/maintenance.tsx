@@ -1008,7 +1008,7 @@ const DFKMaintenancePage: React.FC = () => {
               </div>
 
               <div className="mt-6">
-                <Button variant="outline" className="w-full border-slate-600 text-black">
+                <Button variant="outline" onClick={openModal} className="w-full border-slate-600 text-black">
                   Get Your Custom ROI Analysis
                 </Button>
               </div>
@@ -1018,14 +1018,13 @@ const DFKMaintenancePage: React.FC = () => {
       </div>
     </motion.section>
       {/* CTA Section */}
-        <motion.section
+        {/* <motion.section
       ref={ctaRef}
       initial={{ opacity: 0, y: 40 }}
       animate={ctaInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6 }}
       className="py-20 bg-gradient-to-r from-green-600 to-green-800 relative overflow-hidden"
     >
-      {/* Decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/10 -mt-24 -mr-24"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/10 -mb-20 -ml-20"></div>
@@ -1052,7 +1051,6 @@ const DFKMaintenancePage: React.FC = () => {
         transition={{ duration: 0.6 }}
         className="py-20 bg-gradient-to-r from-green-600 to-green-800 relative overflow-hidden"
       >
-        {/* Decorative elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/10 -mt-24 -mr-24"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/10 -mb-20 -ml-20"></div>
@@ -1100,26 +1098,49 @@ const DFKMaintenancePage: React.FC = () => {
               </Button>
             </motion.div>
             
-            {/* <motion.div
-              initial={{ opacity: 0 }}
-              animate={ctaInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.7 }}
-              className="mt-10 flex flex-wrap justify-center gap-x-10 gap-y-4"
-            >
-              {[
-                { value: "300+", label: "Satisfied Clients" },
-                { value: "94-97%", label: "Efficiency Retention" },
-                { value: "5-7 Years", label: "Extended Lifespan" }
-              ].map((metric, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-2xl font-bold text-white">{metric.value}</div>
-                  <div className="text-white/80 text-sm">{metric.label}</div>
-                </div>
-              ))}
-            </motion.div> */}
+        
           </div>
         </div>
-      </motion.section>
+      </motion.section> */}
+
+      <section className="py-20 bg-gradient-to-r from-green-600 to-green-800 relative overflow-hidden">
+  {/* Decorative elements */}
+  <div className="absolute inset-0 opacity-10">
+    <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/10 -mt-24 -mr-24"></div>
+    <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/10 -mb-20 -ml-20"></div>
+    <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-white/10"></div>
+  </div>
+
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="max-w-3xl mx-auto text-center">
+      <div className="inline-flex items-center gap-2 mb-6 text-white bg-white/10 px-4 py-1 rounded-full">
+        <AlertTriangle className="h-4 w-4" />
+        <span className="font-medium text-sm">DON'T LOSE YOUR FUEL SAVINGS</span>
+      </div>
+
+      <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+        Stop Losing ₹12-18 Lakhs in Degraded Performance
+      </h2>
+
+      <p className="text-xl text-white/90 mb-10">
+        The longer you wait, the more your system efficiency declines. Join the 300+ organizations
+        that maintain peak performance year after year through our industry-leading maintenance program.
+      </p>
+
+      <div>
+        <Button
+          size="lg"
+          onClick={openModal}
+          asChild
+          className="bg-white text-green-700 hover:bg-gray-100 px-8 py-6 text-lg"
+        >
+          <a href="#">Lock In Your Performance Guarantee</a>
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+
     </div>
   );
 };

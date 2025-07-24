@@ -568,14 +568,13 @@ export default function EmergencyBreakdownServicesPage() {
                 Ready for Immediate Emergency Assistance?
               </h2>
               <p className="text-lg md:text-xl opacity-90 mb-8 max-w-3xl mx-auto">
-                Our emergency response team is available 24/7 to help you resolve critical 
-                power equipment failures and minimize operational disruption.
+              Our emergency response team will help you resolve critical power equipment failures and minimize operational disruption.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white">
-                  <a href="tel:+918970001110" className="flex items-center">
+                  <a href="tel:08041663297" className="flex items-center">
                     <Phone className="mr-2 h-5 w-5" />
-                    Emergency Hotline: 897 000 111 0
+                    Emergency Hotline: 080-41663297
                   </a>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary">

@@ -497,7 +497,7 @@ const ServoProcurementPage: React.FC = () => {
             >
               <div className="rounded-lg overflow-hidden border-2 border-gray-800 shadow-2xl relative">
                 <img 
-                  src="/assets/img/servo-procurement.jpg" 
+                  src="/assets/img/servo-procurement.png" 
                   alt="Servo Stabilizer Procurement" 
                   className="w-full h-auto"
                 />
@@ -514,10 +514,13 @@ const ServoProcurementPage: React.FC = () => {
        <section className="py-16 bg-gradient-to-r from-primary to-primary-dark">
   <div className="container mx-auto px-4 text-center">
     <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-      {/* hello */}
+     Ready to Source Your Dual Fuel Solution?
+
     </h2>
     <p className="text-white text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-      {/* hello */}
+      Contact our procurement specialists to begin the selection and acquisition process for your dual fuel conversion kits.
+
+
     </p>
     <Button
       className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-6 font-semibold shadow-lg"
@@ -533,8 +536,7 @@ const ServoProcurementPage: React.FC = () => {
 
     </>
   );
-};
+}
 
 export default ServoProcurementPage;
-
 // deployment

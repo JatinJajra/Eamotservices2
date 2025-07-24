@@ -103,7 +103,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-montserrat font-semibold text-gray-800 mb-1">Call Us</h4>
-                  <p className="text-gray-800"><a href="tel:8970001110" className="text-gray-800 hover:text-primary transition duration-300">897 000 111 02</a></p>
+                  <p className="text-gray-800"><a href="tel:08041663297" className="text-gray-800 hover:text-primary transition duration-300">080-41663297</a></p>
                 </div>
               </div>
               

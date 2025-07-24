@@ -54,11 +54,10 @@ export default function LithiumIonInverterPage() {
   <div className="container mx-auto px-4 relative z-10">
     <div className="max-w-3xl mx-auto text-center">
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-montserrat leading-tight mb-6">
-        Lithium ION <span className="text-accent">Inverter</span>
+        Battery Energy Storage <span className="text-accent">Systems</span>
       </h1>
       <p className="text-lg md:text-xl text-gray-300 mb-8">
-        Advanced lithium-ion battery inverter systems for reliable, efficient, and sustainable power backup solutions.
-      </p>
+         Transform your energy infrastructure with our comprehensive Battery Energy Storage Systems (BESS), featuring advanced lithium-ion technology and intelligent retrofit solutions for maximum efficiency and reliability.      </p>
         <Button asChild className="bg-accent hover:bg-accent/90 text-white text-center font-poppins font-medium px-8 py-6 h-auto">
         <a href="#" onClick={openModal}>Get A Quote</a>
       </Button>
@@ -74,6 +73,25 @@ export default function LithiumIonInverterPage() {
     />
   </div>
 </section>
+
+<section 
+        // ref={featuresRef} 
+        className="py-16  bg-white"
+      >
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4 font-medium">
+              Complete BESS Ecosystem
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6 text-gray-800">
+              Our Battery Energy  <span className="text-primary">Storage Systems</span>
+            </h2>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+             Comprise integrated lithium-ion inverters and intelligent retrofit solutions, delivering comprehensive energy management capabilities.
+            </p>
+          </div>
+          </div>
+          </section>
 
       
       {/* Overview Section */}
@@ -118,12 +136,12 @@ export default function LithiumIonInverterPage() {
                 </li>
               </ul>
               
-              <Button 
+              {/* <Button 
                 onClick={openModal}
                 className="bg-primary hover:bg-primary/90 text-white font-poppins font-medium"
               >
                 Discuss Your Requirements
-              </Button>
+              </Button> */}
             </motion.div>
             
             <motion.div
@@ -132,13 +150,96 @@ export default function LithiumIonInverterPage() {
               transition={{ duration: 0.7, delay: 0.4 }}
               className="relative"
             >
-              <div className="rounded-xl overflow-hidden shadow-xl">
+              {/* <div className="rounded-xl overflow-hidden shadow-xl">
                 <img 
                   src="assets/img/gallery/04.jpg" 
                   alt="Lithium Ion Inverter System" 
                   className="w-full h-auto rounded-xl"
                 />
+              </div> */}
+
+<div className="bg-gray-900 flex items-center justify-center min-h-[350px]">
+      <div className="relative w-full max-w-5xl h-[400px] bg-gradient-to-br from-emerald-500 via-blue-500 to-cyan-600 rounded-xl shadow-2xl overflow-hidden">
+        
+        {/* Grid Background */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="grid grid-cols-8 grid-rows-8 h-full">
+            {Array.from({ length: 64 }).map((_, i) => (
+              <div key={i} className="border border-white/20" />
+            ))}
+          </div>
+        </div>
+
+        {/* Icons */}
+        <div className="absolute top-6 right-6 w-16 h-16 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
+          <div className="text-2xl">⚡</div>
+        </div>
+        <div className="absolute bottom-6 left-6 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
+          <div className="text-lg">🔌</div>
+        </div>
+
+        {/* Content Center */}
+        <div className="relative h-full flex items-center justify-center text-white">
+          <div className="text-center">
+            <div className="bg-white/20 backdrop-blur-md rounded-2xl p-6 border border-white/30">
+              <div className="text-6xl mb-4">🔋</div>
+              <h3 className="text-2xl font-bold mb-3">Lithium-ION Inverter</h3>
+              <p className="text-white/90 mb-4">Next-Generation Power Technology</p>
+              <div className="grid grid-cols-2 gap-4 mt-6">
+
+                {/* Feature 1 */}
+                <div className="bg-emerald-500/30 rounded-lg p-3 backdrop-blur-sm">
+                  <div className="flex items-center justify-center mb-2">
+                    <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse mr-2"></div>
+                    <span className="text-sm font-semibold">95%</span>
+                  </div>
+                  <div className="text-xs opacity-90">Efficiency</div>
+                </div>
+
+                {/* Feature 2 */}
+                <div className="bg-blue-500/30 rounded-lg p-3 backdrop-blur-sm">
+                  <div className="flex items-center justify-center mb-2">
+                    <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse mr-2"></div>
+                    <span className="text-sm font-semibold">10+</span>
+                  </div>
+                  <div className="text-xs opacity-90">Years Life</div>
+                </div>
+
+                {/* Feature 3 */}
+                <div className="bg-cyan-500/30 rounded-lg p-3 backdrop-blur-sm">
+                  <div className="flex items-center justify-center mb-2">
+                    <div className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse mr-2"></div>
+                    <span className="text-sm font-semibold">Fast</span>
+                  </div>
+                  <div className="text-xs opacity-90">Charging</div>
+                </div>
+
+                {/* Feature 4 */}
+                <div className="bg-teal-500/30 rounded-lg p-3 backdrop-blur-sm">
+                  <div className="flex items-center justify-center mb-2">
+                    <div className="w-3 h-3 bg-teal-400 rounded-full animate-pulse mr-2"></div>
+                    <span className="text-sm font-semibold">Zero</span>
+                  </div>
+                  <div className="text-xs opacity-90">Maintenance</div>
+                </div>
+
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Top Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
+
+        {/* Bottom Right Badge */}
+        <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-secondary rounded-full flex items-center justify-center z-10 shadow-lg">
+          <div className="text-white text-center">
+            <div className="text-xl font-bold">Li-ion</div>
+            <div className="text-xs">Technology</div>
+          </div>
+        </div>
+      </div>
+    </div>
               
               <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-secondary rounded-full flex items-center justify-center z-10 shadow-lg">
                 <div className="text-white text-center">
@@ -150,6 +251,169 @@ export default function LithiumIonInverterPage() {
           </div>
         </div>
       </section>
+
+      <section className="py-16 md:py-24 bg-white">
+  <div className="container mx-auto px-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      
+      {/* Image First */}
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 0.4 }}
+        className="relative"
+      >
+        {/* <div className="rounded-xl overflow-hidden shadow-xl">
+          <img 
+            src="assets/img/gallery/04.jpg" 
+            alt="Lithium Ion Inverter System" 
+            className="w-full h-auto rounded-xl"
+          />
+        </div> */}
+
+         
+    <div className="bg-gray-900 flex items-center justify-center min-h-[400px]">
+      <div className="relative bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-700 rounded-xl shadow-2xl w-full max-w-4xl h-[400px] overflow-hidden">
+
+        {/* SVG Animation */}
+        <div className="absolute inset-0 opacity-20">
+          <svg className="w-full h-full" viewBox="0 0 400 400" fill="none">
+            <path d="M50 50 L150 50 L150 100 L250 100 L250 150 L350 150" stroke="white" strokeWidth="2" className="stroke-dash" />
+            <path d="M350 250 L250 250 L250 300 L150 300 L150 350 L50 350" stroke="white" strokeWidth="2" className="stroke-dash" />
+            <circle cx="150" cy="50" r="4" fill="white" className="animate-pulse" />
+            <circle cx="150" cy="100" r="4" fill="white" className="animate-pulse" />
+            <circle cx="250" cy="100" r="4" fill="white" className="animate-pulse" />
+            <circle cx="250" cy="150" r="4" fill="white" className="animate-pulse" />
+          </svg>
+        </div>
+
+        {/* Top Left Icons */}
+        <div className="absolute top-6 left-6 flex space-x-2">
+          <div className="w-10 h-10 bg-white/15 rounded-lg flex items-center justify-center backdrop-blur-sm">
+            <span className="text-xs font-bold text-white">AI</span>
+          </div>
+          <div className="w-10 h-10 bg-white/15 rounded-lg flex items-center justify-center backdrop-blur-sm">
+            <span className="text-xs font-bold text-white">IoT</span>
+          </div>
+        </div>
+
+        {/* Top Right Gear */}
+        <div className="absolute top-6 right-6 w-12 h-12 bg-white/15 rounded-full flex items-center justify-center backdrop-blur-sm">
+          <div className="text-lg animate-spin-slow">⚙️</div>
+        </div>
+
+        {/* Bottom Right Lights */}
+        <div className="absolute bottom-6 right-6 w-16 h-8 bg-white/15 rounded-full flex items-center justify-center backdrop-blur-sm">
+          <div className="flex space-x-1">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse-delay" style={{ animationDelay: "0.5s" }}></div>
+            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse-delay" style={{ animationDelay: "1s" }}></div>
+          </div>
+        </div>
+
+        {/* Center Info */}
+        <div className="relative h-full flex items-center justify-center text-white px-4">
+          <div className="text-center">
+            <div className="bg-white/20 backdrop-blur-lg rounded-3xl p-8 border border-white/30 max-w-sm">
+              <div className="text-6xl mb-4">🔄</div>
+              <h3 className="text-2xl font-bold mb-3">Intelligent Retrofit</h3>
+              <p className="text-white/90 mb-6">AI-Powered System Integration</p>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { label: "Connected", value: "IoT", color: "green" },
+                  { label: "Optimized", value: "AI", color: "blue" },
+                  { label: "Sync", value: "Auto", color: "purple" },
+                  { label: "Downtime", value: "Zero", color: "indigo" },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className={`bg-${item.color}-500/30 rounded-xl p-3 backdrop-blur-sm border border-${item.color}-400/30`}
+                  >
+                    <div className="flex items-center justify-center mb-2">
+                      <div
+                        className={`w-3 h-3 bg-${item.color}-400 rounded-full animate-pulse mr-2`}
+                      ></div>
+                      <span className="text-sm font-semibold">{item.value}</span>
+                    </div>
+                    <div className="text-xs opacity-90">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Gradient Caption */}
+        <div className="absolute bottom-6 left-6 right-6">
+          <div className="bg-black/70 backdrop-blur-sm rounded-lg p-4">
+            <h3 className="text-white font-semibold mb-2">Smart Integration Technology</h3>
+            <p className="text-gray-300 text-sm">Seamless retrofit with existing infrastructure</p>
+          </div>
+        </div>
+
+        {/* Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-xl"></div>
+      </div>
+    </div>
+        
+        <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-secondary rounded-full flex items-center justify-center z-10 shadow-lg">
+          <div className="text-white text-center">
+            <div className="text-xl font-bold">Li-ion</div>
+            <div className="text-xs">Technology</div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Content Second */}
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+      >
+        <div className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4">
+          <span className="font-semibold">Next-Generation Power Backup</span>
+        </div>
+        
+        <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6 text-gray-800">
+          Intelligent Retrofit  <span className="text-primary">Integration</span>
+        </h2>
+        
+        <p className="text-gray-600 mb-6 leading-relaxed">
+         Seamlessly upgrade existing power infrastructure with our comprehensive retrofit solutions, minimizing downtime and disruption.
+        </p>
+        
+        <ul className="space-y-3 mb-8">
+          <li className="flex items-start">
+            <i className="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+            <span className="text-gray-700">Non-invasive integration with existing systems </span>
+          </li>
+          <li className="flex items-start">
+            <i className="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+            <span className="text-gray-700"> Modular design for easy capacity expansion</span>
+          </li>
+          <li className="flex items-start">
+            <i className="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+            <span className="text-gray-700"> Smart load management and optimization</span>
+          </li>
+          <li className="flex items-start">
+            <i className="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+            <span className="text-gray-700">Comprehensive safety and protection systems Make the text appear on the right side and the image banner on the left side for the Retrofit.</span>
+          </li>
+        </ul>
+        
+        {/* <Button 
+          onClick={openModal}
+          className="bg-primary hover:bg-primary/90 text-white font-poppins font-medium"
+        >
+          Discuss Your Requirements
+        </Button> */}
+      </motion.div>
+
+    </div>
+  </div>
+</section>
+
       
       {/* Key Benefits Section */}
       <section className="py-16 bg-gray-50">
@@ -160,11 +424,11 @@ export default function LithiumIonInverterPage() {
             </div>
             
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4 text-gray-800">
-              Why Choose Lithium-ION <span className="text-primary">Inverter Systems</span>
+               Why Choose Battery Energy Storage Systems  <span className="text-primary">(BESS)</span>
             </h2>
             
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Our lithium-ion inverter systems offer numerous advantages over traditional battery backup solutions.
+              Our Battery Energy Storage Systems (BESS) combine advanced lithium-ion inverter technology with intelligent retrofit solutions to offer a smarter, more efficient alternative to traditional energy backup systems.
             </p>
           </div>
           
@@ -186,7 +450,7 @@ export default function LithiumIonInverterPage() {
                   </h3>
                   
                   <p className="text-gray-600 mb-4">
-                    Lithium-ion batteries typically last 3,000-5,000 cycles compared to 300-500 cycles for lead-acid batteries, providing a much longer service life.
+                    BESS solutions are built to last, significantly outpacing conventional battery systems in both longevity and reliability.
                   </p>
                   
                   <ul className="space-y-2">
@@ -224,7 +488,7 @@ export default function LithiumIonInverterPage() {
                   </h3>
                   
                   <p className="text-gray-600 mb-4">
-                    Lithium-ion inverters deliver better performance across all key metrics, including charge/discharge efficiency and power output.
+                    Engineered for superior performance, our BESS ensures reliable power delivery and rapid energy recovery when it matters most.
                   </p>
                   
                   <ul className="space-y-2">
@@ -262,7 +526,7 @@ export default function LithiumIonInverterPage() {
                   </h3>
                   
                   <p className="text-gray-600 mb-4">
-                    Our lithium-ion systems are designed with sustainability in mind, offering significant environmental advantages.
+                    Our BESS platforms support clean energy initiatives and reduce environmental harm associated with legacy systems.
                   </p>
                   
                   <ul className="space-y-2">
@@ -388,7 +652,7 @@ export default function LithiumIonInverterPage() {
               </h2>
               
               <p className="text-gray-600 mb-6">
-                Our lithium-ion inverter systems incorporate cutting-edge technology to deliver reliable, efficient power with intelligent features and comprehensive protection.
+                Our BESS systems incorporate cutting-edge technology to deliver reliable, efficient power with intelligent features and comprehensive protection.
               </p>
               
               <p className="text-gray-600 mb-6">
@@ -429,7 +693,7 @@ export default function LithiumIonInverterPage() {
             </h2>
             
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Our lithium-ion inverter systems are designed to meet the power backup needs of various applications and industries.
+              Our systems are designed to meet the power backup needs of various applications and industries.
             </p>
           </div>
           

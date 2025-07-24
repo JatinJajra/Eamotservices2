@@ -443,11 +443,172 @@ const RECDIntegrationPage: React.FC = () => {
                   </Button> */}
                 </div>
                 <div className="relative rounded-xl overflow-hidden shadow-xl h-80">
-                  {/* <img 
-                    src="/images/zero-operational-impact.jpg" 
-                    alt="Zero Operational Impact" 
-                    className="w-full h-full object-cover"
-                  /> */}
+                   <svg
+    width="100%"
+    height="100%"
+    viewBox="0 0 400 300"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-full h-full"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <defs>
+      <linearGradient id="zeroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#10b981" />
+        <stop offset="100%" stopColor="#047857" />
+      </linearGradient>
+      <linearGradient id="impactGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#3b82f6" />
+        <stop offset="100%" stopColor="#1e40af" />
+      </linearGradient>
+      <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#1e293b" />
+        <stop offset="100%" stopColor="#0f172a" />
+      </linearGradient>
+    </defs>
+
+    <rect width="400" height="300" fill="url(#bgGrad)" />
+    <rect x="50" y="150" width="300" height="100" rx="8" fill="#374151" />
+    <rect x="60" y="160" width="280" height="80" rx="4" fill="#1f2937" />
+    <rect x="80" y="180" width="60" height="20" rx="2" fill="url(#impactGrad)" />
+    <rect x="160" y="180" width="60" height="20" rx="2" fill="url(#impactGrad)" />
+    <rect x="240" y="180" width="60" height="20" rx="2" fill="url(#impactGrad)" />
+
+    <circle cx="110" cy="190" r="3" fill="#10b981">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="190" cy="190" r="3" fill="#10b981">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="270" cy="190" r="3" fill="#10b981">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" begin="0.5s" repeatCount="indefinite" />
+    </circle>
+
+    <g transform="translate(200, 100)">
+      <rect x="-30" y="-20" width="60" height="40" rx="4" fill="#6b7280" />
+      <rect x="-25" y="-15" width="50" height="30" rx="2" fill="#374151" />
+      <rect x="-15" y="-10" width="30" height="20" rx="1" fill="#1f2937" />
+      <circle cx="-5" cy="-5" r="2" fill="#10b981" />
+      <circle cx="0" cy="-5" r="2" fill="#f59e0b" />
+      <circle cx="5" cy="-5" r="2" fill="#ef4444" />
+      <rect x="35" y="-5" width="15" height="3" fill="#8b5cf6" />
+      <circle cx="45" cy="-8" r="2" fill="#8b5cf6" />
+      <rect x="-20" y="10" width="40" height="4" rx="2" fill="#374151" />
+      <rect x="-20" y="10" width="28" height="4" rx="2" fill="#10b981" />
+      <text x="0" y="30" textAnchor="middle" fontFamily="Arial" fontSize="9" fill="white">
+        Generator Under Service
+      </text>
+    </g>
+
+    <g transform="translate(100, 50)">
+      <circle r="25" fill="url(#zeroGrad)" stroke="white" strokeWidth="2" />
+      <text x="0" y="-5" textAnchor="middle" fontFamily="Arial" fontSize="20" fontWeight="bold" fill="white">
+        0
+      </text>
+      <text x="0" y="8" textAnchor="middle" fontFamily="Arial" fontSize="8" fill="white">
+        IMPACT
+      </text>
+      <text x="0" y="40" textAnchor="middle" fontFamily="Arial" fontSize="10" fill="white">
+        Zero Downtime
+      </text>
+    </g>
+
+    <g transform="translate(300, 50)">
+      <circle r="25" fill="url(#impactGrad)" stroke="white" strokeWidth="2" />
+      <text x="0" y="-3" textAnchor="middle" fontFamily="Arial" fontSize="12" fontWeight="bold" fill="white">
+        100%
+      </text>
+      <text x="0" y="8" textAnchor="middle" fontFamily="Arial" fontSize="7" fill="white">
+        OPERATIONAL
+      </text>
+      <text x="0" y="40" textAnchor="middle" fontFamily="Arial" fontSize="10" fill="white">
+        Continuous
+      </text>
+    </g>
+
+    <g stroke="#10b981" strokeWidth="2" fill="none">
+      <path d="M 30 120 Q 50 100 70 120">
+        <animate attributeName="stroke-dasharray" values="0,20;20,0" dur="1s" repeatCount="indefinite" />
+      </path>
+      <path d="M 80 140 L 80 170">
+        <animate attributeName="stroke-dasharray" values="0,20;20,0" dur="1s" repeatCount="indefinite" />
+      </path>
+      <path d="M 160 140 L 160 170">
+        <animate attributeName="stroke-dasharray" values="0,20;20,0" dur="1s" begin="0.3s" repeatCount="indefinite" />
+      </path>
+      <path d="M 240 140 L 240 170">
+        <animate attributeName="stroke-dasharray" values="0,20;20,0" dur="1s" begin="0.6s" repeatCount="indefinite" />
+      </path>
+    </g>
+
+    <g transform="translate(350, 120)">
+      <rect x="-10" y="-15" width="20" height="30" rx="2" fill="#f59e0b" />
+      <text x="0" y="-20" textAnchor="middle" fontFamily="Arial" fontSize="8" fill="white">
+        Bypass
+      </text>
+      <text x="0" y="25" textAnchor="middle" fontFamily="Arial" fontSize="7" fill="white">
+        Active
+      </text>
+      <circle cx="0" cy="0" r="4" fill="#22c55e">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" />
+      </circle>
+    </g>
+
+    <g transform="translate(50, 260)">
+      <rect width="300" height="30" rx="4" fill="#1f2937" stroke="#374151" />
+      <rect x="10" y="10" width="280" height="4" rx="2" fill="#374151" />
+      <rect x="10" y="10" width="168" height="4" rx="2" fill="#10b981" />
+      <text x="20" y="8" fontFamily="Arial" fontSize="8" fill="#6b7280">
+        Start
+      </text>
+      <text x="140" y="8" fontFamily="Arial" fontSize="8" fill="#10b981">
+        Current
+      </text>
+      <text x="270" y="8" fontFamily="Arial" fontSize="8" fill="#6b7280">
+        Complete
+      </text>
+      <circle cx="178" cy="12" r="3" fill="#10b981">
+        <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <text x="150" y="25" textAnchor="middle" fontFamily="Arial" fontSize="10" fill="white">
+        Service in Progress - No Interruption
+      </text>
+    </g>
+
+    <g transform="translate(30, 220)">
+      <rect width="120" height="20" rx="3" fill="#10b981" opacity="0.9" />
+      <text x="60" y="13" textAnchor="middle" fontFamily="Arial" fontSize="9" fill="white">
+        Production: Normal
+      </text>
+    </g>
+    <g transform="translate(160, 220)">
+      <rect width="120" height="20" rx="3" fill="#3b82f6" opacity="0.9" />
+      <text x="60" y="13" textAnchor="middle" fontFamily="Arial" fontSize="9" fill="white">
+        Power: Stable
+      </text>
+    </g>
+    <g transform="translate(290, 220)">
+      <rect width="100" height="20" rx="3" fill="#8b5cf6" opacity="0.9" />
+      <text x="50" y="13" textAnchor="middle" fontFamily="Arial" fontSize="9" fill="white">
+        Service: Active
+      </text>
+    </g>
+
+    <text x="200" y="25" textAnchor="middle" fontFamily="Arial" fontSize="16" fontWeight="bold" fill="white">
+      Zero Operational Impact
+    </text>
+
+    <g transform="translate(20, 120)">
+      <text x="0" y="0" fontFamily="Arial" fontSize="12" fontWeight="bold" fill="#10b981">
+        99.9%
+      </text>
+      <text x="0" y="12" fontFamily="Arial" fontSize="8" fill="#6b7280">
+        Uptime
+      </text>
+      <text x="0" y="22" fontFamily="Arial" fontSize="8" fill="#6b7280">
+        Maintained
+      </text>
+    </g>
+  </svg>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                   <div className="absolute bottom-6 left-6 right-6">
                     <div className="flex items-center gap-3 mb-2">
@@ -464,7 +625,7 @@ const RECDIntegrationPage: React.FC = () => {
               <div className="grid md:grid-cols-2 gap-10 items-center p-6 bg-slate-800/50 border border-slate-700 rounded-xl">
                 <div className="order-2 md:order-1 relative rounded-xl overflow-hidden shadow-xl h-80">
                   <img 
-                    src="/images/performance-enhancement.jpg" 
+                    src="/assets/img/performance-enhancement.png" 
                     alt="Performance Enhancement" 
                     className="w-full h-full object-cover"
                   />

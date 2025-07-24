@@ -579,25 +579,25 @@ schedules.</span>
               <h4 className="text-lg font-semibold text-gray-800">Key Outcomes</h4>
               <ul className="space-y-2 mt-2">
                 <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0 me-2"  />
                   <span className="text-gray-700">
                     Achieved 50–60% diesel substitution during optimal load conditions.
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0 me-2" />
                   <span className="text-gray-700">
                     Marked reduction in emissions and visible smoke, enhancing air quality.
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0 me-2" />
                   <span className="text-gray-700">
                     Substantial fuel cost savings, contributing to lower CAM charges.
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0 me-2" />
                   <span className="text-gray-700">
                     Fully compliant with CPCB and local SPCB authority regulations.
                   </span>

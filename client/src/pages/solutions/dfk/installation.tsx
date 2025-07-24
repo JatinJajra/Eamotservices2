@@ -254,7 +254,7 @@ const DFKInstallationPage: React.FC = () => {
             ))}
           </div>
           
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={metricsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 1.2 }}
@@ -271,7 +271,6 @@ const DFKInstallationPage: React.FC = () => {
               
               <div className="md:w-1/2">
                 <div className="h-48 bg-gray-900 rounded-lg p-4 relative overflow-hidden">
-                  {/* Fuel savings comparison chart (simplified visual) */}
                   <div className="absolute inset-0 flex items-end">
                     <div className="flex-1 flex items-end">
                       <div className="w-full h-[40%] bg-gray-600 rounded-t-sm relative">
@@ -297,8 +296,69 @@ const DFKInstallationPage: React.FC = () => {
                   </div>
                 </div>
               </div>
+            
             </div>
-          </motion.div>
+          </motion.div> */}
+                <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={metricsInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: 1.2 }}
+      className="mt-16 max-w-6xl mx-auto bg-gray-800/50 border border-gray-700 rounded-xl p-6"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+        {/* Left Text */}
+        <div className="md:col-span-6">
+          <h3 className="text-2xl font-bold mb-3">Industry-Leading Performance</h3>
+          <p className="text-gray-300">
+            Our proprietary calibration technology consistently outperforms standard dual fuel conversions by
+            maximizing substitution rates while maintaining optimal engine performance and reliability.
+          </p>
+        </div>
+
+        {/* Right Chart */}
+        <div className="md:col-span-6">
+          <div className="bg-gray-900 text-white rounded-xl shadow-lg p-6 w-full flex flex-col gap-6">
+            <h2 className="text-2xl font-bold text-green-400">
+              Diesel Substitution Rate Comparison
+            </h2>
+
+            <div className="w-full flex flex-col items-center relative">
+              <div className="relative w-full h-60 flex items-end justify-around px-4 bg-gray-800 rounded-lg shadow-inner overflow-hidden">
+                {/* Y-Axis Labels */}
+                <div className="absolute top-0 left-0 w-full h-full">
+                  <div className="h-full w-full flex flex-col justify-between text-gray-600 text-xs pr-2">
+                    <div className="border-t border-gray-600 pt-1 text-right">70%</div>
+                    <div className="border-t border-gray-600 pt-1 text-right">60%</div>
+                    <div className="border-t border-gray-600 pt-1 text-right">50%</div>
+                    <div className="border-t border-gray-600 pt-1 text-right">40%</div>
+                    <div className="border-t border-gray-600 pt-1 text-right">30%</div>
+                  </div>
+                </div>
+
+                {/* Bars */}
+                <div className="flex flex-col items-center justify-end z-10 h-full">
+                  <div
+                    className="w-12 bg-gray-500 rounded-t transition-all duration-1000 ease-out"
+                    style={{ height: "40%" }}
+                  ></div>
+                  <span className="mt-2 text-sm">Standard</span>
+                  <span className="text-xs text-gray-400">30–40%</span>
+                </div>
+
+                <div className="flex flex-col items-center justify-end z-10 h-full">
+                  <div
+                    className="w-12 bg-green-500 rounded-t transition-all duration-1000 ease-out delay-150"
+                    style={{ height: "70%" }}
+                  ></div>
+                  <span className="mt-2 text-sm font-semibold text-green-400">EAMOT</span>
+                  <span className="text-xs text-gray-400">50–70%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
         </div>
       </motion.section>
       
@@ -420,13 +480,13 @@ const DFKInstallationPage: React.FC = () => {
                 </div>
                 
                 <div className="hidden md:block md:w-[calc(50%-2rem)]">
-                  <div className="aspect-video rounded-xl overflow-hidden border border-gray-700">
+                  {/* <div className="aspect-video rounded-xl overflow-hidden border border-gray-700">
                     <img 
                       src={step.image} 
                       alt={step.title} 
                       className="w-full h-full object-cover"
                     />
-                  </div>
+                  </div> */}
                 </div>
               </motion.div>
             ))}
@@ -444,28 +504,29 @@ const DFKInstallationPage: React.FC = () => {
       >
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="md:w-1/2">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={teamInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative rounded-xl overflow-hidden"
-              >
-                <img 
-                  src="/images/dfk-expert-team.jpg" 
-                  alt="Expert DFK Installation Team" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="bg-primary rounded-full w-3 h-3 animate-pulse"></div>
-                    <span className="text-primary font-semibold">Elite Installation Team</span>
-                  </div>
-                  <p className="text-white">Our specialized technicians have completed 450+ successful conversions with a perfect safety record</p>
-                </div>
-              </motion.div>
-            </div>
+         <div className="md:w-1/2">
+  <motion.div
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={teamInView ? { opacity: 1, scale: 1 } : {}}
+    transition={{ duration: 0.6, delay: 0.2 }}
+    className="relative rounded-xl overflow-hidden h-[29.5rem]"
+  >
+    <img 
+      src="/assets/img/dfk-expert-team.png" 
+      alt="Expert DFK Installation Team" 
+      className="w-full h-full object-cover"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+    <div className="absolute bottom-6 left-6 right-6">
+      <div className="flex items-center gap-3 mb-2">
+        <div className="bg-primary rounded-full w-3 h-3 animate-pulse"></div>
+        {/* <span className="text-gray font-semibold">Elite Installation Team</span> */}
+      </div>
+      <p className="text-white">Our specialized technicians have completed 450+ successful conversions with a perfect safety record</p>
+    </div>
+  </motion.div>
+</div>
+
             
             <div className="md:w-1/2">
               <motion.span

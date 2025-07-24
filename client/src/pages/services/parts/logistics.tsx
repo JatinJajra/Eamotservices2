@@ -863,7 +863,7 @@ export default function LogisticsPage() {
                       <div className="space-y-4">
                         <div className="flex items-center">
                           <Clock className="h-5 w-5 mr-3" />
-                          <span> emergency logistics hotline</span>
+                          <span> Emergency logistics hotline</span>
                         </div>
                         <div className="flex items-center">
                           <Package className="h-5 w-5 mr-3" />

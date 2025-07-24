@@ -155,7 +155,7 @@ const DGOverhaulPage: React.FC = () => {
         "Noise level and vibration measurement",
         "Documentation and certification of all work performed"
       ],
-      image: "https://images.unsplash.com/photo-1581092921461-39b10c61b97a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      image: "/assets/img/dg.png",
       color: "from-purple-50 to-purple-100"
     }
   ];

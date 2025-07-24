@@ -49,7 +49,7 @@ const services = [
     image: "assets/img/services/5.jpg",
     title: "Retro Fit Diesel Generator",
     description: "Inspecting, cleaning, and recalibrating for optimal emission reduction performance.",
-    link: "#",
+    link: "/services/lithium-ion-inverter",
     icon: <CircuitBoard className="w-6 h-6" />,
     color: "from-red-500 to-red-700",
     bgGlow: "bg-red-400"
@@ -196,7 +196,7 @@ function ServiceCard({ service, index }: ServiceProps) {
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.5 }}
         />
-        <div className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-70`}></div>
+        <div className={`absolute inset-0 bg-gradient-to-t  opacity-70`}></div>
         
         {/* Floating icon */}
         <motion.div
