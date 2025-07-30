@@ -57,7 +57,7 @@ export default function LithiumIonInverterPage() {
         Battery Energy Storage <span className="text-accent">Systems</span>
       </h1>
       <p className="text-lg md:text-xl text-gray-300 mb-8">
-         Transform your energy infrastructure with our comprehensive Battery Energy Storage Systems (BESS), featuring advanced lithium-ion technology and intelligent retrofit solutions for maximum efficiency and reliability.      </p>
+         Our Battery Energy Storage Systems comprise integrated lithium-ion inverters and intelligent retrofit solutions, delivering comprehensive energy management capabilities.</p>
         <Button asChild className="bg-accent hover:bg-accent/90 text-white text-center font-poppins font-medium px-8 py-6 h-auto">
         <a href="#" onClick={openModal}>Get A Quote</a>
       </Button>
@@ -359,7 +359,7 @@ export default function LithiumIonInverterPage() {
         
         <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-secondary rounded-full flex items-center justify-center z-10 shadow-lg">
           <div className="text-white text-center">
-            <div className="text-xl font-bold">Li-ion</div>
+            <div className="text-xl font-bold">Retro-Fit</div>
             <div className="text-xs">Technology</div>
           </div>
         </div>
@@ -806,7 +806,7 @@ export default function LithiumIonInverterPage() {
             </h2>
             
             <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-              Contact us today to learn how our lithium-ion inverter systems can provide reliable, efficient power backup for your specific needs.
+              Contact us today to learn how our battery energy storage systems can provide reliable, efficient power backup for your specific needs.
             </p>
             
             <Button 

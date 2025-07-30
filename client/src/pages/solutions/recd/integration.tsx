@@ -625,7 +625,7 @@ const RECDIntegrationPage: React.FC = () => {
               <div className="grid md:grid-cols-2 gap-10 items-center p-6 bg-slate-800/50 border border-slate-700 rounded-xl">
                 <div className="order-2 md:order-1 relative rounded-xl overflow-hidden shadow-xl h-80">
                   <img 
-                    src="/assets/img/performance-enhancement.png" 
+                    src="" 
                     alt="Performance Enhancement" 
                     className="w-full h-full object-cover"
                   />

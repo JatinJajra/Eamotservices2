@@ -21,7 +21,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ContactModal from "@/components/Popup/ContectModal";
 import { CheckCircle, Users } from "lucide-react";
 
-
 const DGInstallationPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
@@ -71,18 +70,17 @@ const DGInstallationPage: React.FC = () => {
     },
   ];
   const phaseVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.15 },
-  }),
-};
-const progressBarVariants = {
-  initial: { width: 0 },
-  animate: { width: "62%", transition: { duration: 1 } },
-};
-
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.15 },
+    }),
+  };
+  const progressBarVariants = {
+    initial: { width: 0 },
+    animate: { width: "62%", transition: { duration: 1 } },
+  };
 
   const shiftingConsiderations = [
     {
@@ -260,133 +258,157 @@ const progressBarVariants = {
 
             {/* Right Custom Visual */}
             <div className="w-full lg:w-1/2">
-    <div className="lg:flex justify-center">
-      <motion.div
-        className="w-full max-w-md"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="relative w-full h-full p-4 bg-gradient-to-br from-slate-900 to-slate-800 rounded-lg">
-          {/* Header */}
-          <div className="mb-4">
-            <h3 className="text-lg font-bold text-white mb-1">
-              Installation Progress
-            </h3>
-            <p className="text-sm text-gray-400">Project #DG-2024-089</p>
-          </div>
-
-          {/* Progress Bar */}
-          <div className="mb-6">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-sm text-gray-300">Overall Progress</span>
-              <span className="text-lg font-bold text-primary">62%</span>
-            </div>
-            <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
-              <motion.div
-                className="bg-gradient-to-r from-primary to-blue-400 h-3 rounded-full"
-                variants={progressBarVariants}
-                initial="initial"
-                animate="animate"
-              />
-            </div>
-          </div>
-
-          {/* Project Phases */}
-          <div className="mb-6">
-            <h4 className="text-sm font-semibold text-gray-300 mb-3">
-              Project Phases
-            </h4>
-            <div className="space-y-2">
-              {/* Completed Phases */}
-              {[
-                { name: "Site Survey", days: "2 days" },
-                { name: "Foundation Work", days: "5 days" },
-              ].map((phase, i) => (
+              <div className="lg:flex justify-center">
                 <motion.div
-                  key={i}
-                  custom={i}
-                  initial="hidden"
-                  animate="visible"
-                  variants={phaseVariants}
-                  className="flex items-center justify-between p-2 rounded bg-green-900/30 border-l-2 border-green-400"
+                  className="w-full max-w-md"
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
                 >
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-400" />
-                    <span className="text-sm text-green-300">{phase.name}</span>
-                  </div>
-                  <span className="text-xs text-gray-500">{phase.days}</span>
-                </motion.div>
-              ))}
+                  <div className="relative w-full h-full p-4 bg-gradient-to-br from-slate-900 to-slate-800 rounded-lg">
+                    {/* Header */}
+                    <div className="mb-4">
+                      <h3 className="text-lg font-bold text-white mb-1">
+                        Installation Progress
+                      </h3>
+                      <p className="text-sm text-gray-400">
+                        Project #DG-2024-089
+                      </p>
+                    </div>
 
-              {/* Active Phase */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35 }}
-                className="flex items-center justify-between p-2 rounded bg-primary/20 border-l-2 border-primary"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="h-4 w-4 rounded-full bg-primary animate-pulse" />
-                  <span className="text-sm text-primary">Equipment Install</span>
-                </div>
-                <span className="text-xs text-gray-500">3 days</span>
-              </motion.div>
+                    {/* Progress Bar */}
+                    <div className="mb-6">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm text-gray-300">
+                          Overall Progress
+                        </span>
+                        <span className="text-lg font-bold text-primary">
+                          62%
+                        </span>
+                      </div>
+                      <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+                        <motion.div
+                          className="bg-gradient-to-r from-primary to-blue-400 h-3 rounded-full"
+                          variants={progressBarVariants}
+                          initial="initial"
+                          animate="animate"
+                        />
+                      </div>
+                    </div>
 
-              {/* Pending Phases */}
-              {[
-                { name: "Testing & Commissioning", days: "2 days" },
-                { name: "Documentation", days: "1 day" },
-              ].map((phase, i) => (
-                <motion.div
-                  key={i}
-                  custom={i + 3}
-                  initial="hidden"
-                  animate="visible"
-                  variants={phaseVariants}
-                  className="flex items-center justify-between p-2 rounded bg-gray-700/30 border-l-2 border-gray-600"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="h-4 w-4 rounded-full bg-gray-600" />
-                    <span className="text-sm text-gray-400">{phase.name}</span>
+                    {/* Project Phases */}
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-gray-300 mb-3">
+                        Project Phases
+                      </h4>
+                      <div className="space-y-2">
+                        {/* Completed Phases */}
+                        {[
+                          { name: "Site Survey", days: "2 days" },
+                          { name: "Foundation Work", days: "5 days" },
+                        ].map((phase, i) => (
+                          <motion.div
+                            key={i}
+                            custom={i}
+                            initial="hidden"
+                            animate="visible"
+                            variants={phaseVariants}
+                            className="flex items-center justify-between p-2 rounded bg-green-900/30 border-l-2 border-green-400"
+                          >
+                            <div className="flex items-center gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-400" />
+                              <span className="text-sm text-green-300">
+                                {phase.name}
+                              </span>
+                            </div>
+                            <span className="text-xs text-gray-500">
+                              {phase.days}
+                            </span>
+                          </motion.div>
+                        ))}
+
+                        {/* Active Phase */}
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.35 }}
+                          className="flex items-center justify-between p-2 rounded bg-primary/20 border-l-2 border-primary"
+                        >
+                          <div className="flex items-center gap-2">
+                            <div className="h-4 w-4 rounded-full bg-primary animate-pulse" />
+                            <span className="text-sm text-primary">
+                              Equipment Install
+                            </span>
+                          </div>
+                          <span className="text-xs text-gray-500">3 days</span>
+                        </motion.div>
+
+                        {/* Pending Phases */}
+                        {[
+                          { name: "Testing & Commissioning", days: "2 days" },
+                          { name: "Documentation", days: "1 day" },
+                        ].map((phase, i) => (
+                          <motion.div
+                            key={i}
+                            custom={i + 3}
+                            initial="hidden"
+                            animate="visible"
+                            variants={phaseVariants}
+                            className="flex items-center justify-between p-2 rounded bg-gray-700/30 border-l-2 border-gray-600"
+                          >
+                            <div className="flex items-center gap-2">
+                              <div className="h-4 w-4 rounded-full bg-gray-600" />
+                              <span className="text-sm text-gray-400">
+                                {phase.name}
+                              </span>
+                            </div>
+                            <span className="text-xs text-gray-500">
+                              {phase.days}
+                            </span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Stats */}
+                    <div className="grid grid-cols-2 gap-3">
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 }}
+                        className="bg-black/30 rounded p-3 border border-primary/30"
+                      >
+                        <div className="flex items-center gap-2 mb-1">
+                          <Users className="h-4 w-4 text-blue-400" />
+                          <span className="text-xs text-gray-400">
+                            Active Team
+                          </span>
+                        </div>
+                        <div className="text-lg font-bold text-blue-400">
+                          7 members
+                        </div>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7 }}
+                        className="bg-black/30 rounded p-3 border border-primary/30"
+                      >
+                        <div className="flex items-center gap-2 mb-1">
+                          <Clock className="h-4 w-4 text-orange-400" />
+                          <span className="text-xs text-gray-400">
+                            Est. Complete
+                          </span>
+                        </div>
+                        <div className="text-lg font-bold text-orange-400">
+                          4 days
+                        </div>
+                      </motion.div>
+                    </div>
                   </div>
-                  <span className="text-xs text-gray-500">{phase.days}</span>
                 </motion.div>
-              ))}
+              </div>
             </div>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 gap-3">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="bg-black/30 rounded p-3 border border-primary/30"
-            >
-              <div className="flex items-center gap-2 mb-1">
-                <Users className="h-4 w-4 text-blue-400" />
-                <span className="text-xs text-gray-400">Active Team</span>
-              </div>
-              <div className="text-lg font-bold text-blue-400">7 members</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              className="bg-black/30 rounded p-3 border border-primary/30"
-            >
-              <div className="flex items-center gap-2 mb-1">
-                <Clock className="h-4 w-4 text-orange-400" />
-                <span className="text-xs text-gray-400">Est. Complete</span>
-              </div>
-              <div className="text-lg font-bold text-orange-400">4 days</div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  </div>
           </div>
         </div>
       </section>
@@ -534,11 +556,23 @@ const progressBarVariants = {
                       </li>
                     </ul>
                   </div>
-                  <div className="relative">
+                  {/* <div className="relative">
                     <img
                       src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
                       alt="Diesel Generator Installation"
                       className="rounded-xl shadow-lg object-cover h-full"
+                    />
+                    <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-md">
+                      <p className="text-primary font-bold text-sm">
+                        Factory-Certified Installation
+                      </p>
+                    </div>
+                  </div> */}
+                  <div className="relative h-[350px] md:h-auto">
+                    <img
+                      src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+                      alt="Diesel Generator Installation"
+                      className="rounded-xl shadow-lg object-cover w-full h-full"
                     />
                     <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-md">
                       <p className="text-primary font-bold text-sm">

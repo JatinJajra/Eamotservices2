@@ -39,7 +39,7 @@ export default function BlogSection() {
   return (
     <section id="blog" className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
-        <motion.div 
+        {/* <motion.div 
           className="flex flex-col md:flex-row justify-between items-center mb-16"
           ref={titleRef}
           initial={{ opacity: 0, y: 20 }}
@@ -56,10 +56,24 @@ export default function BlogSection() {
             </h2>
           </div>
           
-          <Button asChild className="mt-4 md:mt-0 bg-primary hover:bg-primary/90 text-white">
-            <a href="#">More News</a>
-          </Button>
-        </motion.div>
+         
+        </motion.div> */}
+        <motion.div 
+  className="text-center mb-16"
+  ref={titleRef}
+  initial={{ opacity: 0, y: 20 }}
+  animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+  transition={{ duration: 0.6 }}
+>
+  <div className="inline-block px-4 py-1 bg-primary-50 text-primary rounded-full mb-4">
+    <span className="font-semibold">Our Blogs</span>
+  </div>
+
+  <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-gray-800">
+    Our <span className="text-primary">Blog</span> & Insights
+  </h2>
+</motion.div>
+
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8" ref={blogRef}>
           {blogPosts.map((post, index) => (
