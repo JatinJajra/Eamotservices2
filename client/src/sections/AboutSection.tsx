@@ -166,9 +166,9 @@ export default function AboutSection() {
                   className="relative z-20"
                 >
                   <img 
-                    src="assets/img/home/2.jpg" 
+                    src="assets/img/home/2.png" 
                     alt="EAMOT Team" 
-                    className="w-full rounded-lg transform transition-transform duration-500 group-hover:scale-105" 
+      className="w-full h-[600px] object-cover rounded-lg transform transition-transform duration-500 group-hover:scale-105" 
                   />
                   
                   {/* Overlay gradient on hover */}

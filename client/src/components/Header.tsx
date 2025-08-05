@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation,  } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ContactModal from "./Popup/ContectModal";
 
 export default function Header() {
-  const [location] = useLocation();
+  // const [location] = useLocation();
+  const [location, setLocation] = useLocation();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
@@ -23,10 +25,28 @@ export default function Header() {
   const [emissionDropdownOpen, setEmissionDropdownOpen] = useState(false);
   const [installDropdownOpen, setInstallDropdownOpen] = useState(false);
   const [amcDropdownOpen, setAmcDropdownOpen] = useState(false);
+const [dgOpen, setDgOpen] = useState(false);
+const [upsOpen, setUpsOpen] = useState(false);
+const [servoOpen, setServoOpen] = useState(false);
+const [recdOpen, setRecdOpen] = useState(false);
+const [dfkOpen, setDfkOpen] = useState(false);
+
+
+
+
+  //  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const [installOpen, setInstallOpen] = useState(false);
+  const [amcOpen, setAmcOpen] = useState(false);
+  const [sparesOpen, setSparesOpen] = useState(false);
+  const [emissionOpen, setEmissionOpen] = useState(false);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -76,6 +96,12 @@ export default function Header() {
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
+
+
+// Add this at the top of your component
+
+
+
 
   return (
     <header
@@ -849,13 +875,8 @@ export default function Header() {
               </Link>
 
               {/* Mobile Solutions Dropdown */}
-              <div className="border-b border-gray-100 pb-2">
-                {/* <button
-                  className="flex items-center justify-between w-full py-2"
-                  onClick={() =>
-                    setSolutionsDropdownOpen(!solutionsDropdownOpen)
-                  }
-                > */}
+              {/* <div className="border-b border-gray-100 pb-2">
+                
                 <span
                   className={
                     location.startsWith("/solutions")
@@ -865,12 +886,7 @@ export default function Header() {
                 >
                   Our Solutions
                 </span>
-                {/* <i
-                    className={`fas fa-chevron-down text-sm transition-transform duration-300 ${
-                      solutionsDropdownOpen ? "rotate-180" : ""
-                    }`}
-                  ></i>
-                </button> */}
+               
 
                 {
                   <div className="pl-4 space-y-2 mt-2">
@@ -1146,14 +1162,144 @@ export default function Header() {
                     </div>
                   </div>
                 }
-              </div>
+              </div> */}
+
+              <div ref={dropdownRef} className="border-b border-gray-100 pb-2">
+  {/* Header row */}
+  <div className="flex items-center justify-between w-full py-2">
+    <span
+      onClick={(e) => {
+        e.stopPropagation();
+        setSolutionsDropdownOpen((prev) => !prev);
+      }}
+      className={`cursor-pointer ${
+        location.startsWith("/solutions") ? "text-primary font-medium" : ""
+      }`}
+    >
+      Our Solutions
+    </span>
+    <i
+      onClick={(e) => {
+        e.stopPropagation();
+        setSolutionsDropdownOpen((prev) => !prev);
+      }}
+      className={`fas fa-chevron-down ml-2 text-sm text-gray-700 transition-transform duration-300 ${
+        solutionsDropdownOpen ? "rotate-180" : ""
+      } cursor-pointer`}
+    ></i>
+  </div>
+
+  {/* Dropdown content */}
+  <div
+    className={`mt-2 pl-3 transition-all duration-300 ${
+      solutionsDropdownOpen
+        ? "max-h-[1000px] opacity-100"
+        : "max-h-0 opacity-0 overflow-hidden"
+    }`}
+    onClick={(e) => e.stopPropagation()}
+  >
+    {/* Main nested dropdowns */}
+    {[
+      {
+        title: "Diesel Generator Solutions",
+        isOpen: dgOpen,
+        setOpen: setDgOpen,
+        links: [
+          { label: "DG Procurement (CPCB IV+ Compliant)", path: "/solutions/diesel-generator/procurement" },
+          { label: "DG Installation & Shifting", path: "/solutions/diesel-generator/installation" },
+          { label: "DG AMC", path: "/solutions/diesel-generator/amc" },
+          { label: "DG Overhaul & Repairs", path: "/solutions/diesel-generator/overhaul" },
+          { label: "IoT-based DG Monitoring", path: "/solutions/diesel-generator/monitoring" },
+        ],
+      },
+      {
+        title: "UPS System Solutions",
+        isOpen: upsOpen,
+        setOpen: setUpsOpen,
+        links: [
+          { label: "UPS System Sourcing", path: "/solutions/ups/sourcing" },
+          { label: "UPS Battery Sizing & Supply", path: "/solutions/ups/battery" },
+          { label: "UPS AMC", path: "/solutions/ups/amc" },
+          { label: "Load Management & Monitoring", path: "/solutions/ups/monitoring" },
+        ],
+      },
+      {
+        title: "Servo Stabilizer Solutions",
+        isOpen: servoOpen,
+        setOpen: setServoOpen,
+        links: [
+          { label: "Sizing & Selection Support", path: "/solutions/servo/sizing" },
+          { label: "Procurement & Delivery", path: "/solutions/servo/procurement" },
+          { label: "Installation & Commissioning", path: "/solutions/servo/installation" },
+          { label: "Stabilizer AMC", path: "/solutions/servo/amc" },
+          { label: "Remote Voltage Monitoring", path: "/solutions/servo/monitoring" },
+        ],
+      },
+      {
+        title: "RECD Compliance Solutions",
+        isOpen: recdOpen,
+        setOpen: setRecdOpen,
+        links: [
+          { label: "CQAM Norms & Compliance Advisory", path: "/solutions/recd/advisory" },
+          { label: "RECD Procurement", path: "/solutions/recd/procurement" },
+          { label: "Installation & Integration", path: "/solutions/recd/integration" },
+          { label: "Emission Performance Monitoring", path: "/solutions/recd/monitoring" },
+          { label: "Regulatory Documentation Support", path: "/solutions/recd/documentation" },
+        ],
+      },
+      {
+        title: "Dual Fuel Kit Conversions",
+        isOpen: dfkOpen,
+        setOpen: setDfkOpen,
+        links: [
+          { label: "DFK Suitability Assessment", path: "/solutions/dfk/assessment" },
+          { label: "DFK Procurement", path: "/solutions/dfk/procurement" },
+          { label: "Installation & Calibration", path: "/solutions/dfk/installation" },
+          { label: "Fuel Savings Analytics", path: "/solutions/dfk/analytics" },
+          { label: "Post-conversion Maintenance", path: "/solutions/dfk/maintenance" },
+        ],
+      },
+    ].map(({ title, isOpen, setOpen, links }) => (
+      <div key={title} className="mt-2">
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+            setSolutionsDropdownOpen(true);
+            setOpen(!isOpen);
+          }}
+          className="flex items-center justify-between cursor-pointer font-semibold text-gray-800"
+        >
+          <span>{title}</span>
+          <i
+            className={`fas fa-chevron-down transition-transform duration-300 ${
+              isOpen ? "rotate-180" : ""
+            }`}
+          />
+        </div>
+        <div className={`${isOpen ? "block" : "hidden"} pl-4 mt-2 space-y-1`}>
+          {links.map(({ label, path }) => (
+            <div
+              key={path}
+              onClick={(e) => {
+                e.stopPropagation();
+                setLocation(path);
+                setTimeout(() => setSolutionsDropdownOpen(false), 100);
+              }}
+              className="cursor-pointer text-sm"
+            >
+              {label}
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
 
               {/* Mobile Services Dropdown */}
-              <div className="border-b border-gray-100 pb-2">
-                {/* <button
-                  className="flex items-center justify-between w-full py-2"
-                  onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
-                > */}
+              {/* <div className="border-b border-gray-100 pb-2">
+              
                 <span
                   className={
                     location.startsWith("/services")
@@ -1163,32 +1309,52 @@ export default function Header() {
                 >
                   Our Services
                 </span>
-                {/* <i
-                    className={`fas fa-chevron-down text-sm transition-transform duration-300 ${
-                      servicesDropdownOpen ? "rotate-180" : ""
-                    }`}
-                  ></i>
-                </button> */}
+              
 
                 {
+
+
+
+
                   <div className="pl-4 space-y-2 mt-2">
-                    <Link href="/services/diesel-generator">
-                      <span className="block py-1">
-                        Diesel Generator Services
-                      </span>
-                    </Link>
-                    <Link href="/services/ups">
-                      <span className="block py-1">UPS Systems</span>
-                    </Link>
-                    <Link href="/services/stabilizer">
-                      <span className="block py-1">Servo Stabilizers</span>
-                    </Link>
-                    <Link href="/services/lithium-ion-inverter">
-                      <span className="block py-1">Lithium-Ion Inverters</span>
-                    </Link>
-                    <Link href="/services/dual-fuel-kit">
-                      <span className="block py-1">Dual Fuel Kit Services</span>
-                    </Link>
+<ul className="">
+  <li className="mt-3">
+    <Link href="/services/diesel-generator">
+      <span className="block py-1 text-[18px]">
+        Diesel Generator Services
+      </span>
+    </Link>
+  </li>
+
+  <li className="mt-3">
+    <Link href="/services/stabilizer">
+      <span className="block py-1 text-[18px]">
+        Servo Stabilizers
+      </span>
+    </Link>
+  </li>
+
+  <li className="mt-3">
+    <Link href="/services/lithium-ion-inverter">
+      <span className="block py-1 text-[18px]">
+        Lithium-Ion Inverters
+      </span>
+    </Link>
+  </li>
+
+  <li className="mt-3">
+    <Link href="/services/dual-fuel-kit">
+      <span className="block py-1 text-[18px]">
+       Dual Fuel Kit Services
+      </span>
+    </Link>
+  </li>
+</ul>
+
+
+                    
+                  
+                   
 
                     <div className="mb-3">
                       <div
@@ -1333,14 +1499,7 @@ export default function Header() {
                               </span>
                             </Link>
                           </li>
-                          {/* Uncomment below if needed */}
-                          {/*
-      <li>
-        <Link href="/services/parts/recd-spares">
-          <span className="block py-1 text-sm">RECD Spares</span>
-        </Link>
-      </li>
-      */}
+                        
                           <li>
                             <Link href="/services/parts/logistics">
                               <span className="block py-1 text-sm">
@@ -1404,20 +1563,244 @@ export default function Header() {
                     </div>
                   </div>
                 }
-              </div>
+              </div> */}
 
-              <a href="/#blog">
+
+
+
+<div ref={dropdownRef} className="border-b border-gray-100 pb-2">
+  {/* Header row - NO onClick on this wrapper */}
+  <div className="flex items-center justify-between w-full py-2">
+    <span
+      onClick={(e) => {
+        e.stopPropagation();
+        setServicesDropdownOpen((prev) => !prev);
+      }}
+      className={`cursor-pointer ${
+        location.startsWith("/services") ? "text-primary font-medium" : ""
+      }`}
+    >
+      Our Services
+    </span>
+    <i
+      onClick={(e) => {
+        e.stopPropagation();
+        setServicesDropdownOpen((prev) => !prev);
+      }}
+      className={`fas fa-chevron-down ml-2 text-sm text-gray-700 transition-transform duration-300 ${
+        servicesDropdownOpen ? "rotate-180" : ""
+      } cursor-pointer`}
+    ></i>
+  </div>
+
+  {/* Dropdown content */}
+  <div
+    className={`mt-2 pl-3 transition-all duration-300 ${
+      servicesDropdownOpen
+        ? "max-h-[1000px] opacity-100"
+        : "max-h-0 opacity-0 overflow-hidden"
+    }`}
+    onClick={(e) => e.stopPropagation()} // Prevent parent from toggling
+  >
+    {/* Main links */}
+    <ul className="space-y-2">
+      {[
+        { path: "/services/diesel-generator", label: "Diesel Generator Services" },
+        { path: "/services/stabilizer", label: "Servo Stabilizers" },
+        { path: "/services/lithium-ion-inverter", label: "Lithium-Ion Inverters" },
+        { path: "/services/dual-fuel-kit", label: "Dual Fuel Kit Services" },
+      ].map(({ path, label }) => (
+        <li key={path}>
+          <div
+            onClick={(e) => {
+              e.stopPropagation(); // prevent bubbling
+              setLocation(path);
+              setTimeout(() => setServicesDropdownOpen(false), 100); // optional close
+            }}
+            className="block py-1 text-[16px] cursor-pointer"
+          >
+            {label}
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    {/* Nested dropdowns */}
+    <div className="mt-4 space-y-2">
+      {[
+        {
+          title: "Installation & Integration",
+          isOpen: installOpen,
+          setOpen: setInstallOpen,
+  links: [
+      { label: "Site Assessment & Planning", path: "/services/installation/assessment" },
+      { label: "Turnkey Installation Projects", path: "/services/installation/turnkey" },
+      { label: "Synchronization & Load Testing", path: "/services/installation/synchronization" },
+      { label: "Documentation & Handover", path: "/services/installation/documentation" },
+    ],
+        },
+        {
+          title: "Annual Maintenance",
+          isOpen: amcOpen,
+          setOpen: setAmcOpen,
+          links: [
+    { label: "DG AMC", path: "/solutions/diesel-generator/amc" },
+    { label: "UPS AMC", path: "/solutions/ups/amc" },
+    { label: "Servo Stabilizer AMC", path: "/solutions/servo/amc" },
+    { label: "Preventive Maintenance", path: "/services/amc/preventive" },
+    { label: "Emergency Breakdown Services", path: "/services/amc/emergency" },
+  ],
+        },
+        {
+          title: "Spare Parts Sourcing",
+          isOpen: sparesOpen,
+          setOpen: setSparesOpen,
+          links: [
+    { label: "DG Engine & Alternator Parts", path: "/services/parts/dg-engine" },
+    { label: "UPS Modules & Batteries", path: "/services/parts/ups-modules" },
+    { label: "Servo Control Components", path: "/services/parts/servo-control" },
+    { label: "Logistics & Delivery Support", path: "/services/parts/logistics" },
+  ],
+        },
+        {
+          title: "Emission Compliance",
+          isOpen: emissionOpen,
+          setOpen: setEmissionOpen,
+          links: [
+    { label: "CQAM Registration Support", path: "/services/emission/cqam" },
+    { label: "On-field RECD Integration", path: "/services/emission/recd-integration" },
+    { label: "Emission Testing Coordination", path: "/services/emission/testing" },
+    { label: "Compliance Reporting", path: "/services/emission/reporting" },
+  ],
+        },
+      ].map(({ title, isOpen, setOpen, links }) => (
+        <div key={title}>
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+              setServicesDropdownOpen(true) // Prevent triggering Services toggle
+              setOpen(!isOpen);
+            }}
+            className="flex items-center justify-between cursor-pointer font-semibold text-gray-800"
+          >
+            <span>{title}</span>
+            <i
+              className={`fas fa-chevron-down transition-transform duration-300 ${
+                isOpen ? "rotate-180" : ""
+              }`}
+            />
+          </div>
+          <div className={`${isOpen ? "block" : "hidden"} pl-4 mt-2 space-y-1`}>
+            {links.map(({ label, path }) => (
+              <div
+                key={path}
+                onClick={(e) => {
+                  e.stopPropagation(); // Important to keep parent stable
+                  setLocation(path);
+                  setTimeout(() => setServicesDropdownOpen(false), 100); // optional
+                }}
+                className="cursor-pointer"
+              >
+                {label}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{/* jai ganeshaye namh jai maa gungal jai teetis koti devi devta ki jai ho */}
+
+
+
+
+
+
+
+
+
+
+
+    
+              
+
+
+             
+
+<div ref={dropdownRef} className="border-b border-gray-100 pb-2">
+  {/* Header row */}
+  <div className="flex items-center justify-between w-full py-2">
+    <span
+      onClick={(e) => {
+        e.stopPropagation();
+        setEnergyToolsDropdownOpen((prev) => !prev);
+      }}
+      className={`cursor-pointer ${
+        location.startsWith("/energy") ? "text-primary font-medium" : ""
+      }`}
+    >
+      Energy Tools
+    </span>
+    <i
+      onClick={(e) => {
+        e.stopPropagation();
+        setEnergyToolsDropdownOpen((prev) => !prev);
+      }}
+      className={`fas fa-chevron-down ml-2 text-sm text-gray-700 transition-transform duration-300 ${
+        energyToolsDropdownOpen ? "rotate-180" : ""
+      } cursor-pointer`}
+    ></i>
+  </div>
+
+  {/* Dropdown content */}
+  <div
+    className={`mt-2 pl-4 transition-all duration-300 ${
+      energyToolsDropdownOpen
+        ? "max-h-[1000px] opacity-100"
+        : "max-h-0 opacity-0 overflow-hidden"
+    }`}
+    onClick={(e) => e.stopPropagation()}
+  >
+    <ul className="space-y-2 mt-2">
+      <li>
+        <div
+          onClick={() => {
+            setLocation("/energy-calculator");
+            setTimeout(() => setEnergyToolsDropdownOpen(false), 100);
+          }}
+          className="block py-1 text-[16px] cursor-pointer"
+        >
+          Energy Calculator
+        </div>
+      </li>
+      <li>
+        <div
+          onClick={() => {
+            setLocation("/energy-savings-calculator");
+            setTimeout(() => setEnergyToolsDropdownOpen(false), 100);
+          }}
+          className="block py-1 text-[16px] cursor-pointer"
+        >
+          Energy Savings Calculator
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+ <a href="/#blog">
                 <span className="block py-2">Blog</span>
               </a>
 
               {/* Mobile Energy Tools Dropdown */}
-              <div className="border-b border-gray-100 pb-2">
-                {/* <button
-                  className="flex items-center justify-between w-full py-2"
-                  onClick={() =>
-                    setEnergyToolsDropdownOpen(!energyToolsDropdownOpen)
-                  }
-                > */}
+              {/* <div className="border-b border-gray-100 pb-2">
+                
                   <span
                    className={
                     location.startsWith("/energy")
@@ -1427,32 +1810,33 @@ export default function Header() {
                 >
                   Energy Tools
                 </span>
-                  {/* <i
-                    className={`fas fa-chevron-down text-sm transition-transform duration-300 ${
-                      energyToolsDropdownOpen ? "rotate-180" : ""
-                    }`}
-                  ></i> */}
-                {/* </button> */}
+                 
 
                 {(
                   <div className="pl-4 space-y-2 mt-2">
-                    <Link href="/energy-calculator">
-                      <span className="block py-1">Energy Calculator</span>
-                    </Link>
-                    <Link href="/energy-savings-calculator">
-                      <span className="block py-1">
-                        Energy Savings Calculator
-                      </span>
-                    </Link>
-                    {/* <Link href="/product-demo">
-                      <span className="block py-1">Product Demos</span>
-                    </Link>
-                    <Link href="/loading-states">
-                      <span className="block py-1">Loading States</span>
-                    </Link> */}
+
+
+<ul className="">
+  <li className="mt-3">
+    <Link href="/energy-calculator">
+      <span className="block py-1 text-[18px]">
+        Energy Calculator
+      </span>
+    </Link>
+  </li>
+    <li className="mt-3">
+    <Link href="/energy-savings-calculator">
+      <span className="block py-1 text-[18px]">
+        Energy Savings Calculator
+      </span>
+    </Link>
+  </li>
+  </ul>
+
+                  
                   </div>
                 )}
-              </div>
+              </div> */}
 
               <Link href="/careers">
                 <span
